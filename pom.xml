@@ -24,5 +24,6 @@
     </dependencyManagement>
     <modules>
         <module>teamgreen-insieme</module>
+	<module>teamgreen-pms</module>
     </modules>
 </project>
