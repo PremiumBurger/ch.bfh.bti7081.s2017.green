@@ -6,3 +6,6 @@
   |_|\___|\__,_|_| |_| |_|  \____|_|  \___|\___|_| |_|
 
 ```
+
+TeamGreen PSM Diary:
+http://htmlpreview.github.io/?https://github.com/PremiumBurger/ch.bfh.bti7081.s2017.green/blob/master/teamgreen-pms/src/main/resources/doc/diary.html
