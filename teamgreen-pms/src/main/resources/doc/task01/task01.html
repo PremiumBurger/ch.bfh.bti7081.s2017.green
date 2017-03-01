@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,66 +9,131 @@
     <title>PMS Task01</title>
 
     <!-- Bootstrap -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
-          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 </head>
+
 <body>
     <div class="container">
         <div class="jumbotron">
-            <h1>PMS - Task 01</h1>
-
-
-            <h2>CS Task 1: First Analysis</h2>
-
-
-            <h3>Target Users</h3>
-
-            System-Rollen
-            - Medical Users --> doctors, nurses, health visitors), : Vollzugriff
-            - Clinical Staff, Receptionist : Data-Input
-
-            Indirekte Benutzer
-            Hospital Management : Kein Zugang, Erhält die generierten Reporte
-
-
-
-            <h3>Key features</h3>
-
-            Medical Users:
-            - Medikamentierung einsehen, bearbeiten
-            - Behandlung definieren, bearbeiten, einsehen
-            - Warnungen bei Medikamentmissbrauch
-
-
-            Clinical Staff:
-            - Stammdatenpflege (Adresse, Versicherung, Kontaktpersonen)
-            - Reporte generieren (--> Gemäss Anforderung vom Management)
-
-
-            System-Features:
-            - Abwicklung eines potenziel gefährdeten / gefährlichen Patienten
-            - Statistik für Management
-            - Journal für jeden Patienten
-
-
-            Successfactors --> Müssen erfüllt sein, damit der Projektabschluss als erfolgreich angesehen werden kann
-
-
-            <h3>Critical success factors</h3>
-
-            Müssen erfüllt sein, damit der Projektabschluss als erfolgreich angesehen werden kann
-
-            Datenschutzregelung --> Zugriffsberechtigungen
-            Zentralisierte Daten --> Online Zugriff 7/24 --> Sicherheit
-
+            <h1>Task 01 - First analysis</h1>
+            <p>In your team, identify
+                <ol>
+                    <li>target users</li>
+                    <li>key features (from the users' perspective)</li>
+                    <li>critical success factors</li>
+                </ol>
+            </p>
         </div>
+
+        <h2>Target Users</h2>
+        <div class="alert alert-info">
+            <span class="glyphicon glyphicon-info-sign"></span>
+            Benutzer welche dieses System bewirtschaften werden
+        </div>
+        <table class="table table-striped">
+            <thead>
+                <th>#</th>
+                <th>Rolle</th>
+                <th>Jobbezeichnung</th>
+                <th>Zugriff</th>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>Medical Users</td>
+                    <td>Docotrs, Nurses, Healt visitors</td>
+                    <td>Vollzugriff (admin)</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>Other clinical staff</td>
+                    <td>Receptionist</td>
+                    <td>Data-Input</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>Hospital management</td>
+                    <td>?</td>
+                    <td>No access (erhalten generierte Reports durch Receptionst's)</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2>Key features</h2>
+        <div class="alert alert-info">
+        <span class="glyphicon glyphicon-info-sign"></span>
+            Hauptpunkte welche dafür sprechen dieses System zu bauen
+        </div>
+        <table class="table table-striped">
+            <thead>
+                <th>Rolle</th>
+                <th>Features</th>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Medical Users</td>
+                    <td>
+                        <ul>
+                            <li>Medikamentierung - CRUD</li>
+                            <li>Behandlungen - CRUD</li>
+                            <li>System warnt fall Medikamente falsch dosiert verschriben werden</li>
+                        </ul>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Clinical Staff</td>
+                    <td>
+                        <ul>
+                            <li>Patientenverwaltung (Stammdatenpflege)</li>
+                            <li>Patienten können als "gefährdet" gekennzeichnet werden</li>
+                            <li>Auflisten von Ärtzten / Kliniken welche für den Patienten X geeignet sind</li>
+                            <li>Planen von Terminen - Patient <b>X</b> am <b>dd.MM.yyyyT14:30:00</b> mit Artzt <b>Y</b> in Klinik <b>Z</b></li>
+                            <li>System verhindert Konsultationsüberschneidungen des selben Artztes</li>
+                            <li>Reporte generieren (Anforderungen von Management)</li>
+                        </ul>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2>Critical success factors</h2>
+        <div class="alert alert-info">
+            <span class="glyphicon glyphicon-info-sign"></span>
+            Müssen erfüllt sein, damit der Projektabschluss als erfolgreich angesehen werden kann
+        </div>
+        <table class="table table-striped">
+            <thead>
+                <th>Faktor</th>
+                <th>Beschreibung</th>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Datenschutzregelung</td>
+                    <td>
+                        <ul>
+                            <li>Artztgeheimnis</li>
+                            <li>Rechtliche Bestimmungen</li>
+                            <li>Zugriffsberechtigungen</li>
+                        </ul>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Zentralisierte Daten</td>
+                    <td>
+                        <ul>
+                            <li>Online Zugriff (7/24)</li>
+                            <li>Sicherheit</li>
+                        </ul>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
     </div>
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
-        integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
-        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 </body>
+
 </html>
