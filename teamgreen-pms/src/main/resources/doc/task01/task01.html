@@ -28,7 +28,7 @@
         <h2>Target Users</h2>
         <div class="alert alert-info">
             <span class="glyphicon glyphicon-info-sign"></span>
-            Benutzer welche dieses System bewirtschaften werden
+            Benutzer, welche dieses System bewirtschaften werden
         </div>
         <table class="table table-striped">
             <thead>
@@ -36,25 +36,29 @@
                 <th>Rolle</th>
                 <th>Jobbezeichnung</th>
                 <th>Zugriff</th>
+                <th>Rollenbeschreibung</th>
             </thead>
             <tbody>
                 <tr>
                     <td>1</td>
-                    <td>Medical Users</td>
-                    <td>Docotrs, Nurses, Healt visitors</td>
-                    <td>Vollzugriff (admin)</td>
+                    <td>Medical User</td>
+                    <td>Docotr, Nurse, Health visitor</td>
+                    <td>Vollzugriff</td>
+                    <td>Administratoren des Systems</td>
                 </tr>
                 <tr>
                     <td>2</td>
-                    <td>Other clinical staff</td>
+                    <td>Clinical Staff</td>
                     <td>Receptionist</td>
                     <td>Data-Input</td>
+                    <td>Verwaltet Termine mit Patienten</td>
                 </tr>
                 <tr>
                     <td>3</td>
-                    <td>Hospital management</td>
+                    <td>Medical Records Staff</td>
                     <td>?</td>
-                    <td>No access (erhalten generierte Reports durch Receptionst's)</td>
+                    <td>Data-Output</td>
+                    <td>Können Reports generieren für das Management</td>
                 </tr>
             </tbody>
         </table>
@@ -62,7 +66,7 @@
         <h2>Key features</h2>
         <div class="alert alert-info">
         <span class="glyphicon glyphicon-info-sign"></span>
-            Hauptpunkte welche dafür sprechen dieses System zu bauen
+            Hauptpunkte, welche dafür sprechen dieses System zu bauen
         </div>
         <table class="table table-striped">
             <thead>
@@ -71,10 +75,10 @@
             </thead>
             <tbody>
                 <tr>
-                    <td>Medical Users</td>
+                    <td>Medical User</td>
                     <td>
                         <ul>
-                            <li>Medikamentierung - CRUD</li>
+                            <li>Medikamentierung / Rezepte - CRUD</li>
                             <li>Behandlungen - CRUD</li>
                             <li>System warnt falls Medikamente falsch dosiert verschrieben werden</li>
                         </ul>
@@ -85,8 +89,9 @@
                     <td>
                         <ul>
                             <li>Patientenverwaltung (Stammdatenpflege)</li>
+                            <li>Patienten können als "obdachlos" gekennzeichnet werden</li>
                             <li>Patienten können als "gefährdet" gekennzeichnet werden</li>
-                            <li>Auflisten von Ärzten / Kliniken welche für den Patienten X geeignet sind</li>
+                            <li>Auflisten von Ärzten / Kliniken welche für den Patienten X geeignet sind (auch unter berücksichtigung der Kennzeichnung "gefährdet")</li>
                             <li>Planen von Terminen - Patient <b>X</b> am <b>dd.MM.yyyyT14:30:00</b> mit Arzt <b>Y</b> in Klinik <b>Z</b></li>
                             <li>System verhindert Konsultationsüberschneidungen des selben Arztes</li>
                             <li>Reporte generieren (Anforderungen von Management)</li>
@@ -111,8 +116,7 @@
                     <td>Datenschutzregelung</td>
                     <td>
                         <ul>
-                            <li>Artztgeheimnis</li>
-                            <li>Rechtliche Bestimmungen</li>
+                            <li>Rechtliche Bestimmungen (Datenschutzgesetz, Gesundheitsgesetz)</li>
                             <li>Zugriffsberechtigungen</li>
                         </ul>
                     </td>
@@ -121,13 +125,22 @@
                     <td>Zentralisierte Daten</td>
                     <td>
                         <ul>
-                            <li>Online Zugriff (7/24)</li>
+                            <li>Verfügbarkeit (Online Zugriff 7/24)</li>
                             <li>Sicherheit</li>
                         </ul>
                     </td>
                 </tr>
             </tbody>
         </table>
+
+
+        <h2>Offene Fragen</h2>
+        <div class="alert alert-warning" role="alert">
+            <ul>
+                <li>Muss das System Hilfestellungen zur Kontaktierung eines obdachlosen Patienten bieten?</li>
+            </ul>
+        </div>
+
     </div>
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
