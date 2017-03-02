@@ -11,6 +11,10 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
     </head>
     <body>
+
+
+
+
         <div class="container">
             <div class="jumbotron">
 
@@ -64,22 +68,21 @@
                     </div>
                 </div>
 
-
                 <hr />
                 <div class="panel panel-default">
                     <!-- Default panel contents -->
-                    <div class="panel-heading"><h4>Dienstag 28. Februar 2017</h4></div>
+                    <div class="panel-heading"><h4>Dienstag, 28. Februar 2017</h4></div>
                     <!-- List group -->
                     <ul class="list-group">
                         <li class="list-group-item">
                             <span class="badge">Alle</span>
                             <b>2000 - 2100</b>
-                            <span>Umsetzung <a href="///htmlpreview.github.io/?https://github.com/PremiumBurger/ch.bfh.bti7081.s2017.green/blob/master/teamgreen-pms/src/main/resources/doc/task01/task01.html">Task01:</a> Brainstorming im Plenum zum Erkennen von Requirements in den gegebenen Bereichen (target users, features, CSF)</span>
+                            <span>Umsetzung Task01: Brainstorming im Plenum zum Erkennen von Requirements in den gegebenen Bereichen (target users, features, CSF). Gefundene Punkte in Plaintext aufgenommen. Weitere Bearbeitung durch unten aufgeführte Gruppen.</span>
                         </li>
                         <li class="list-group-item">
                             <span class="badge">Alle</span>
                             <b>2100 - 2125</b> 
-                            <span>Umsetzung <a href="///htmlpreview.github.io/?https://github.com/PremiumBurger/ch.bfh.bti7081.s2017.green/blob/master/teamgreen-pms/src/main/resources/doc/task02/task02.html">Task02:</a> Sammeln von Pro- und Kontra Argumenten für die Umsetzung mit Agiler oder Plan-Driven Projektabwicklung.</span>
+                            <span>Umsetzung Task02: Sammeln von Pro- und Kontra Argumenten für die Umsetzung mit Agiler oder Plan-Driven Projektabwicklung. Gefundene Punkte in Plaintext aufgenommen. Weitere Bearbeitung durch unten aufgeführte Gruppen.</span>
                         </li>
                         <li class="list-group-item">
                             <span class="badge">Alle</span>
@@ -87,10 +90,22 @@
                             <span>
                                 Aufteilung der Arbeiten bis Freitag:
                                 <ul>
-                                    <li>Task01 Präsentation vorbereiten: vonac1, ladel1, jodet1</li>
-                                    <li>Task02 Präsentation vorbereiten: schms27, thekem1, baiuj1</li>
+                                    <li>Task01: Präsentation vorbereiten: vonac1, ladel1, jodet1</li>
+                                    <li>Task02: Präsentation vorbereiten: schms27, thekem1, baiuj1</li>
                                 </ul>
                             </span>
+                        </li>
+                    </ul>
+                </div>
+
+                <hr />
+                <div class="panel panel-default">
+                    <div class="panel-heading"><h4>Donnerstag, 02. März 2017</h4></div>
+                    <ul class="list-group">
+                        <li class="list-group-item">
+                            <span class="badge">vonac1</span>
+                            <b>1545 - 1630</b>
+                            <span>Task01: Lesen der Anforderungsdokumente und ergänzen von noch nicht aufgeführten Punkten im Dokument.</span>
                         </li>
                     </ul>
                 </div>
@@ -122,5 +137,16 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
         <!-- Bootstrap JS -->
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+        <!-- link up defined patterns -->
+        <script type="text/javascript">
+            var replaced = $("body").html();
+            replaced = replaced.replace(/Task01/g,'<a href="///htmlpreview.github.io/?https://github.com/PremiumBurger/ch.bfh.bti7081.s2017.green/blob/master/teamgreen-pms/src/main/resources/doc/task01/task01.html">Task01</a>');
+            replaced = replaced.replace(/Task02/g,'<a href="///htmlpreview.github.io/?https://github.com/PremiumBurger/ch.bfh.bti7081.s2017.green/blob/master/teamgreen-pms/src/main/resources/doc/task02/task02.html">Task02</a>');
+
+            <!-- more to define -->
+
+            $("body").html(replaced);
+        </script>
     </body>
 </html>
