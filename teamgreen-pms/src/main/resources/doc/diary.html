@@ -145,13 +145,19 @@
 
         <!-- link up defined patterns -->
         <script type="text/javascript">
-            var replaced = $("body").html();
-            replaced = replaced.replace(/Task01/g,'<a href="///htmlpreview.github.io/?https://github.com/PremiumBurger/ch.bfh.bti7081.s2017.green/blob/master/teamgreen-pms/src/main/resources/doc/task01/task01.html">Task01</a>');
-            replaced = replaced.replace(/Task02/g,'<a href="///htmlpreview.github.io/?https://github.com/PremiumBurger/ch.bfh.bti7081.s2017.green/blob/master/teamgreen-pms/src/main/resources/doc/task02/task02.html">Task02</a>');
-
-            <!-- more to define -->
-
-            $("body").html(replaced);
+            $(function() {
+                var $panels = $('.panel');
+                var taskFinderPattern = /(Task\d\d)/gi;
+                for (var i = 0; i < $panels.length; i++) {
+                    var $currentPanel = $panels.eq(i);
+                    var html = $currentPanel.html();
+                    html = html.replace(taskFinderPattern, function(m) {
+                        var matchLower = m.toLowerCase();
+                        return '<a href="///htmlpreview.github.io/?https://github.com/PremiumBurger/ch.bfh.bti7081.s2017.green/blob/master/teamgreen-pms/src/main/resources/doc/' + matchLower + '/' + matchLower + '.html">' + m + '</a>';
+                    });
+                    $currentPanel.html(html);
+                }
+            });
         </script>
     </body>
 </html>
