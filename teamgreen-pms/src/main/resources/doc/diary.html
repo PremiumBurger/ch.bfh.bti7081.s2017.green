@@ -77,12 +77,12 @@
                         <li class="list-group-item">
                             <span class="badge">Alle</span>
                             <b>2000 - 2100</b>
-                            <span>Umsetzung Task01: Brainstorming im Plenum zum Erkennen von Requirements in den gegebenen Bereichen (target users, features, CSF). Gefundene Punkte in Plaintext aufgenommen. Weitere Bearbeitung durch unten aufgeführte Gruppen.</span>
+                            <span>Umsetzung cs01:Task01: Brainstorming im Plenum zum Erkennen von Requirements in den gegebenen Bereichen (target users, features, CSF). Gefundene Punkte in Plaintext aufgenommen. Weitere Bearbeitung durch unten aufgeführte Gruppen.</span>
                         </li>
                         <li class="list-group-item">
                             <span class="badge">Alle</span>
-                            <b>2100 - 2125</b> 
-                            <span>Umsetzung Task02: Sammeln von Pro- und Kontra Argumenten für die Umsetzung mit Agiler oder Plan-Driven Projektabwicklung. Gefundene Punkte in Plaintext aufgenommen. Weitere Bearbeitung durch unten aufgeführte Gruppen.</span>
+                            <b>2100 - 2125</b>
+                            <span>Umsetzung cs01:Task02: Sammeln von Pro- und Kontra Argumenten für die Umsetzung mit Agiler oder Plan-Driven Projektabwicklung. Gefundene Punkte in Plaintext aufgenommen. Weitere Bearbeitung durch unten aufgeführte Gruppen.</span>
                         </li>
                         <li class="list-group-item">
                             <span class="badge">Alle</span>
@@ -90,8 +90,8 @@
                             <span>
                                 Aufteilung der Arbeiten bis Freitag:
                                 <ul>
-                                    <li>Task01: Präsentation vorbereiten: vonac1, ladel1, jodet1</li>
-                                    <li>Task02: Präsentation vorbereiten: schms27, thekem1, baiuj1</li>
+                                    <li>cs01:Task01: Präsentation vorbereiten: vonac1, ladel1, jodet1</li>
+                                    <li>cs01:Task02: Präsentation vorbereiten: schms27, thekem1, baiuj1</li>
                                 </ul>
                             </span>
                         </li>
@@ -105,12 +105,12 @@
                         <li class="list-group-item">
                             <span class="badge">vonac1</span>
                             <b>1545 - 1630</b>
-                            <span>Task01: Lesen der Anforderungsdokumente und ergänzen von noch nicht aufgeführten Punkten im Dokument.</span>
+                            <span>cs01:Task01: Lesen der Anforderungsdokumente und ergänzen von noch nicht aufgeführten Punkten im Dokument.</span>
                         </li>
                         <li class="list-group-item">
                             <span class="badge">schms27</span>
                             <b>1815 - 1915</b>
-                            <span>Task02: Ergänzen der Fragestellung im Dokument, Vergleich der gefundenen Argumente mit Vorlesungsskript, Argumente für beide Prozessmodelle ergänzt</span>
+                            <span>cs01:Task02: Ergänzen der Fragestellung im Dokument, Vergleich der gefundenen Argumente mit Vorlesungsskript, Argumente für beide Prozessmodelle ergänzt</span>
                         </li>
                     </ul>
                 </div>
@@ -122,7 +122,7 @@
                         <li class="list-group-item">
                             <span class="badge">Alle (Skype)</span>
                             <b>1830 - 2130</b>
-                            <span>Einlesen in CS02 und erarbeiten von CS02 - Task 01 - 03.</span>
+                            <span>Einlesen in CS02 und erarbeiten von cs02:Task01, cs02:Task02, cs02:Task03.</span>
                         </li>
                     </ul>
                 </div>
@@ -159,13 +159,18 @@
         <script type="text/javascript">
             $(function() {
                 var $panels = $('.panel');
-                var taskFinderPattern = /(Task\d\d)/gi;
+                var taskFinderPattern = /(cs\d\d:Task\d\d)/gi;
                 for (var i = 0; i < $panels.length; i++) {
                     var $currentPanel = $panels.eq(i);
                     var html = $currentPanel.html();
                     html = html.replace(taskFinderPattern, function(m) {
-                        var matchLower = m.toLowerCase();
-                        return '<a href="///htmlpreview.github.io/?https://github.com/PremiumBurger/ch.bfh.bti7081.s2017.green/blob/master/teamgreen-pms/src/main/resources/doc/' + matchLower + '/' + matchLower + '.html">' + m + '</a>';
+
+                        var split = m.split(":");
+                        var parentFolder = split[0];
+                        var folder = split[1];
+
+                        var matchLower = folder.toLowerCase();
+                        return '<a href="///htmlpreview.github.io/?https://github.com/PremiumBurger/ch.bfh.bti7081.s2017.green/blob/master/teamgreen-pms/src/main/resources/doc/' + parentFolder + '/' + matchLower + '/' + matchLower + '.html">' + m + '</a>';
                     });
                     $currentPanel.html(html);
                 }
