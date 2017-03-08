@@ -14,134 +14,132 @@
 </head>
 
 <body>
-<div id="presentation">
-    <div class="container">
-        <div data-pp="1">
-            <div class="jumbotron">
-                <h1>Task 01 - First analysis</h1>
-                <p>In your team, identify
-                <ol>
-                    <li>target users</li>
-                    <li>key features (from the users' perspective)</li>
-                    <li>critical success factors</li>
-                </ol>
-                </p>
+    <div id="presentation">
+        <div class="container">
+            <div data-pp="1">
+                <div class="jumbotron">
+                    <h1>Task 01 - First analysis</h1>
+                    <p>In your team, identify
+                        <ol>
+                            <li>target users</li>
+                            <li>key features (from the users' perspective)</li>
+                            <li>critical success factors</li>
+                        </ol>
+                    </p>
+                </div>
             </div>
-        </div>
-        <div data-pp="2">
-            <h2>Target Users</h2>
-            <div class="alert alert-info">
-                <span class="glyphicon glyphicon-info-sign"></span>
-                Benutzer, welche dieses System bewirtschaften werden
+            <div data-pp="2">
+                <h2>Target Users</h2>
+                <div class="alert alert-info">
+                    <span class="glyphicon glyphicon-info-sign"></span> Benutzer, welche dieses System bewirtschaften werden
+                </div>
+                <table class="table table-striped">
+                    <thead>
+                        <th>#</th>
+                        <th>Rolle</th>
+                        <th>Jobbezeichnung</th>
+                        <th>Zugriff</th>
+                        <th>Rollenbeschreibung</th>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>Medical User</td>
+                            <td>Docotr, Nurse, Health visitor</td>
+                            <td>Vollzugriff</td>
+                            <td>Administratoren des Systems</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>Clinical Staff</td>
+                            <td>Receptionist</td>
+                            <td>Data-Input</td>
+                            <td>Verwaltet Termine mit Patienten</td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>Medical Records Staff</td>
+                            <td>?</td>
+                            <td>Data-Output</td>
+                            <td>Können Reports generieren für das Management</td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
-            <table class="table table-striped">
-                <thead>
-                <th>#</th>
-                <th>Rolle</th>
-                <th>Jobbezeichnung</th>
-                <th>Zugriff</th>
-                <th>Rollenbeschreibung</th>
-                </thead>
-                <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>Medical User</td>
-                    <td>Docotr, Nurse, Health visitor</td>
-                    <td>Vollzugriff</td>
-                    <td>Administratoren des Systems</td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>Clinical Staff</td>
-                    <td>Receptionist</td>
-                    <td>Data-Input</td>
-                    <td>Verwaltet Termine mit Patienten</td>
-                </tr>
-                <tr>
-                    <td>3</td>
-                    <td>Medical Records Staff</td>
-                    <td>?</td>
-                    <td>Data-Output</td>
-                    <td>Können Reports generieren für das Management</td>
-                </tr>
-                </tbody>
-            </table>
-        </div>
-        <div data-pp="3">
-            <h2>Key features</h2>
-            <div class="alert alert-info">
-                <span class="glyphicon glyphicon-info-sign"></span>
-                Hauptpunkte, welche dafür sprechen dieses System zu bauen
+            <div data-pp="3">
+                <h2>Key features</h2>
+                <div class="alert alert-info">
+                    <span class="glyphicon glyphicon-info-sign"></span> Hauptpunkte, welche dafür sprechen dieses System
+                    zu bauen
+                </div>
+                <table class="table table-striped">
+                    <thead>
+                        <th>Rolle</th>
+                        <th>Features</th>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Medical User</td>
+                            <td>
+                                <ul>
+                                    <li>Medikamentierung / Rezepte - CRUD</li>
+                                    <li>Behandlungen - CRUD</li>
+                                    <li>System warnt falls Medikamente falsch dosiert verschrieben werden</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Clinical Staff</td>
+                            <td>
+                                <ul>
+                                    <li>Patientenverwaltung (Stammdatenpflege)</li>
+                                    <li>Patienten können als "obdachlos" gekennzeichnet werden</li>
+                                    <li>Patienten können als "gefährdet" gekennzeichnet werden</li>
+                                    <li>Auflisten von Ärzten / Kliniken welche für den Patienten X geeignet sind (auch unter
+                                        berücksichtigung der Kennzeichnung "gefährdet")
+                                    </li>
+                                    <li>Planen von Terminen - Patient <b>X</b> am <b>dd.MM.yyyyT14:30:00</b> mit Arzt <b>Y</b>                                        in Klinik <b>Z</b></li>
+                                    <li>System verhindert Konsultationsüberschneidungen des selben Arztes</li>
+                                    <li>Reporte generieren (Anforderungen von Management)</li>
+                                </ul>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
-            <table class="table table-striped">
-                <thead>
-                <th>Rolle</th>
-                <th>Features</th>
-                </thead>
-                <tbody>
-                <tr>
-                    <td>Medical User</td>
-                    <td>
-                        <ul>
-                            <li>Medikamentierung / Rezepte - CRUD</li>
-                            <li>Behandlungen - CRUD</li>
-                            <li>System warnt falls Medikamente falsch dosiert verschrieben werden</li>
-                        </ul>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Clinical Staff</td>
-                    <td>
-                        <ul>
-                            <li>Patientenverwaltung (Stammdatenpflege)</li>
-                            <li>Patienten können als "obdachlos" gekennzeichnet werden</li>
-                            <li>Patienten können als "gefährdet" gekennzeichnet werden</li>
-                            <li>Auflisten von Ärzten / Kliniken welche für den Patienten X geeignet sind (auch unter
-                                berücksichtigung der Kennzeichnung "gefährdet")
-                            </li>
-                            <li>Planen von Terminen - Patient <b>X</b> am <b>dd.MM.yyyyT14:30:00</b> mit Arzt <b>Y</b>
-                                in Klinik <b>Z</b></li>
-                            <li>System verhindert Konsultationsüberschneidungen des selben Arztes</li>
-                            <li>Reporte generieren (Anforderungen von Management)</li>
-                        </ul>
-                    </td>
-                </tr>
-                </tbody>
-            </table>
-        </div>
-        <div data-pp="4">
-            <h2>Critical success factors</h2>
-            <div class="alert alert-info">
-                <span class="glyphicon glyphicon-info-sign"></span>
-                Müssen erfüllt sein, damit der Projektabschluss als erfolgreich angesehen werden kann
+            <div data-pp="4">
+                <h2>Critical success factors</h2>
+                <div class="alert alert-info">
+                    <span class="glyphicon glyphicon-info-sign"></span> Müssen erfüllt sein, damit der Projektabschluss als
+                    erfolgreich angesehen werden kann
+                </div>
+                <table class="table table-striped">
+                    <thead>
+                        <th>Faktor</th>
+                        <th>Beschreibung</th>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Datenschutzregelung</td>
+                            <td>
+                                <ul>
+                                    <li>Rechtliche Bestimmungen (Datenschutzgesetz, Gesundheitsgesetz)</li>
+                                    <li>Zugriffsberechtigungen</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Zentralisierte Daten</td>
+                            <td>
+                                <ul>
+                                    <li>Verfügbarkeit (Online Zugriff 7/24)</li>
+                                    <li>Sicherheit</li>
+                                </ul>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
-            <table class="table table-striped">
-                <thead>
-                <th>Faktor</th>
-                <th>Beschreibung</th>
-                </thead>
-                <tbody>
-                <tr>
-                    <td>Datenschutzregelung</td>
-                    <td>
-                        <ul>
-                            <li>Rechtliche Bestimmungen (Datenschutzgesetz, Gesundheitsgesetz)</li>
-                            <li>Zugriffsberechtigungen</li>
-                        </ul>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Zentralisierte Daten</td>
-                    <td>
-                        <ul>
-                            <li>Verfügbarkeit (Online Zugriff 7/24)</li>
-                            <li>Sicherheit</li>
-                        </ul>
-                    </td>
-                </tr>
-                </tbody>
-            </table>
-        </div>
         </div>
     </div>
 
@@ -151,8 +149,8 @@
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
-<!-- Include presentation plugin -->
-<script src="presentationLight_V-0.1.js"></script>
+    <!-- Include presentation plugin -->
+    <script src="../../presentationLight_V-0.1.js"></script>
 </body>
 
 </html>
