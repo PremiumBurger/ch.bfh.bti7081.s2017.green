@@ -22,8 +22,10 @@ $(document).ready(function(){
     presentationActive = false;
     aNumbers = [];
     aNumberslength = 0;
-    $('<button id="startPresentation" style="position:fixed; bottom: 0; left: 0">Start Presentation</button>').insertAfter($("#presentation")).show();
-    $('<button id="stopPresentation" style="position:fixed; bottom: 0; left: 0">Stop Presentation</button>').insertAfter($("#presentation")).hide();
+    $('body')
+        .append($('<button type="button" class="btn btn-default" id="startPresentation" style="position:fixed; bottom: 0; left: 0">Start Presentation</button>').show())
+        .append($('<button type="button" class="btn btn-default" id="stopPresentation" style="position:fixed; bottom: 0; left: 0">Stop Presentation</button>').hide());
+
     document.getElementById("startPresentation").onclick = startPresentation;
     document.getElementById("stopPresentation").onclick = stopPresentation;
     // Mouse forward Navigation
