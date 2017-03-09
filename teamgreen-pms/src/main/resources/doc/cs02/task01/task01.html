@@ -107,23 +107,23 @@
                 <tbody>
                 <tr>
                     <th class="col-md-2">Name</th>
-                    <td>Test</td>
+                    <td>Blutzucker messen</td>
                 </tr>
                 <tr>
                     <th>Scenario</th>
-                    <td>Test</td>
+                    <td>TODO: ergänzen</td>
                 </tr>
                 <tr>
                     <th>Actors</th>
-                    <td>TEst</td>
+                    <td>User, System</td>
                 </tr>
                 <tr>
                     <th>Starting Event and Preconditions</th>
-                    <td>Test</td>
+                    <td>Entweder manuell durch Benutzer ausgelöst oder periodisch durch System, PIP ist installiert und läuft</td>
                 </tr>
                 <tr>
                     <th>Result and Postconditions</th>
-                    <td>TEst</td>
+                    <td>Aktueller Messwert des Blutzuckers wurde an Steuerung übertragen, Log nachgeführt, Messwert auf Benutzerdisplay angezeigt</td>
                 </tr>
                 </tbody>
             </table>
@@ -137,15 +137,49 @@
                 </thead>
                 <tbody>
                 <tr>
-                    <td>1</td>
-                    <td></td>
-                    <td></td>
+                    <td>1.0</td>
+                    <td>System</td>
+                    <td>Periodische Messung auslösen</td>
                 </tr>
-
+                <tr>
+                    <td>1.0</td>
+                    <td>Benutzer</td>
+                    <td>Option: Messung wird zwischen automatischen Systemmessungen durch Benutzer manuell ausgelöst</td>
+                </tr>
+                <tr>
+                    <td>2.0</td>
+                    <td>System</td>
+                    <td>Sendet Befehl zum Auslösen der Messung an Sensor</td>
+                </tr>
+                <tr>
+                    <td>2.1</td>
+                    <td>System</td>
+                    <td>Exception: Sensor nicht verfügbar, inkorrekt angebracht</td>
+                </tr>
+                <tr>
+                    <td>3.0</td>
+                    <td>System</td>
+                    <td>Messwert von Sensor ermitteln</td>
+                </tr>
+                <tr>
+                    <td>3.1</td>
+                    <td>System</td>
+                    <td>Messdaten prüfen</td>
+                </tr>
+                <tr>
+                    <td>3.2</td>
+                    <td>System</td>
+                    <td>Exception: Messdaten nicht plausibel</td>
+                </tr>
+                <tr>
+                    <td>4.0</td>
+                    <td>System</td>
+                    <td>Messwerte an Steuerung übermitteln, auf Display anzeigen und in Log führen</td>
+                </tr>
                 </tbody>
             </table>
 
-            <b>Exceptions Variants:</b>
+            <b>Exceptions, Variants:</b>
             <table class="table table-striped">
                 <thead>
                 <th>#</th>
@@ -154,11 +188,166 @@
                 </thead>
                 <tbody>
                 <tr>
-                    <td>1</td>
+                    <td>2.1</td>
+                    <td></td>
+                    <td>Sensor nicht verfügbar, inkorrekt angebracht, Messdaten nicht plausibel</td>
+                </tr>
+                <tr>
+                    <td>2.1.1</td>
+                    <td>System</td>
+                    <td>Fehlermeldung an Benutzer mit Angabe zum Problem, Fehler loggen, Vorgang abbrechen</td>
+                </tr>
+                <tr>
+                    <td>2.1.2</td>
+                    <td>Benutzer</td>
+                    <td>Prüfen ob Sensor richtig angebracht wurde, Vorgang erneut starten</td>
+                </tr>
+                <tr>
+                    <td>2.1.3</td>
+                    <td>Benutzer</td>
+                    <td>Option: Wenn Fehler weiterhin besteht, fachkundige Hilfe beiziehen</td>
+                </tr>
+                <tr>
+                    <td>3.2</td>
+                    <td></td>
+                    <td>Messdaten nicht plausibel</td>
+                </tr>
+                <tr>
+                    <td>3.2.1</td>
+                    <td>System</td>
+                    <td>Erneut messen</td>
+                </tr>
+                <tr>
+                    <td>3.2.2</td>
+                    <td>System</td>
+                    <td>Wenn Messdaten plausibel -> Vorgang fortsetzen, sonst Fehlermeldung an Benutzer</td>
+                </tr>
+
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="panel panel-default">
+        <div class="panel-heading">Insulin ermitteln</div>
+        <div class="panel-body">
+
+            <table class="table table-bordered">
+                <tbody>
+                <tr>
+                    <th class="col-md-2">Name</th>
+                    <td>Insulin ermitteln</td>
+                </tr>
+                <tr>
+                    <th>Scenario</th>
+                    <td>TODO: ergänzen</td>
+                </tr>
+                <tr>
+                    <th>Actors</th>
+                    <td>System</td>
+                </tr>
+                <tr>
+                    <th>Starting Event and Preconditions</th>
+                    <td>Periodisch durch System, Blutzucker wurde erfolgreich gemessen und an Steuerung weitergeleitet</td>
+                </tr>
+                <tr>
+                    <th>Result and Postconditions</th>
+                    <td>Insulinbedarf wurde ermittelt</td>
+                </tr>
+                </tbody>
+            </table>
+
+            <b>Steps:</b>
+            <table class="table table-striped">
+                <thead>
+                <th>#</th>
+                <th>Actor</th>
+                <th>Description</th>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>1.0</td>
                     <td></td>
                     <td></td>
                 </tr>
+                </tbody>
+            </table>
 
+            <b>Exceptions, Variants:</b>
+            <table class="table table-striped">
+                <thead>
+                <th>#</th>
+                <th>Actor</th>
+                <th>Description</th>
+                </thead>
+                <tbody>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="panel panel-default">
+        <div class="panel-heading">Insulin spritzen</div>
+        <div class="panel-body">
+
+            <table class="table table-bordered">
+                <tbody>
+                <tr>
+                    <th class="col-md-2">Name</th>
+                    <td>Insulin spritzen</td>
+                </tr>
+                <tr>
+                    <th>Scenario</th>
+                    <td>TODO: ergänzen</td>
+                </tr>
+                <tr>
+                    <th>Actors</th>
+                    <td>System</td>
+                </tr>
+                <tr>
+                    <th>Starting Event and Preconditions</th>
+                    <td>Berechneter Insulinbedarf ist grösser als definierter Grenzwert</td>
+                </tr>
+                <tr>
+                    <th>Result and Postconditions</th>
+                    <td>Insulin in Blutbahn des Patienten injiziert</td>
+                </tr>
+                </tbody>
+            </table>
+
+            <b>Steps:</b>
+            <table class="table table-striped">
+                <thead>
+                <th>#</th>
+                <th>Actor</th>
+                <th>Description</th>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>1.0</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                </tbody>
+            </table>
+
+            <b>Exceptions, Variants:</b>
+            <table class="table table-striped">
+                <thead>
+                <th>#</th>
+                <th>Actor</th>
+                <th>Description</th>
+                </thead>
+                <tbody>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
                 </tbody>
             </table>
         </div>
