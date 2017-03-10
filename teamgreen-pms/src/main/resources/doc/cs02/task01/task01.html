@@ -139,7 +139,7 @@
                 <tbody>
                 <tr>
                     <td>1.0</td>
-                    <td>System</td>
+                    <td>Insulinpumpe</td>
                     <td>Periodische Messung auslösen</td>
                 </tr>
                 <tr>
@@ -149,32 +149,32 @@
                 </tr>
                 <tr>
                     <td>2.0</td>
-                    <td>System</td>
+                    <td>Insulinpumpe</td>
                     <td>Sendet Befehl zum Auslösen der Messung an Sensor</td>
                 </tr>
                 <tr>
                     <td>2.1</td>
-                    <td>System</td>
+                    <td>Insulinpumpe</td>
                     <td>Exception: Sensor nicht verfügbar, inkorrekt angebracht</td>
                 </tr>
                 <tr>
                     <td>3.0</td>
-                    <td>System</td>
+                    <td>Insulinpumpe</td>
                     <td>Messwert von Sensor ermitteln</td>
                 </tr>
                 <tr>
                     <td>3.1</td>
-                    <td>System</td>
+                    <td>Insulinpumpe</td>
                     <td>Messdaten prüfen</td>
                 </tr>
                 <tr>
                     <td>3.2</td>
-                    <td>System</td>
+                    <td>Insulinpumpe</td>
                     <td>Exception: Messdaten nicht plausibel</td>
                 </tr>
                 <tr>
                     <td>4.0</td>
-                    <td>System</td>
+                    <td>Insulinpumpe</td>
                     <td>Messwerte an Steuerung übermitteln, auf Display anzeigen und in Log führen</td>
                 </tr>
                 </tbody>
@@ -195,7 +195,7 @@
                 </tr>
                 <tr>
                     <td>2.1.1</td>
-                    <td>System</td>
+                    <td>Insulinpumpe</td>
                     <td>Fehlermeldung an Benutzer mit Angabe zum Problem, Fehler loggen, Vorgang abbrechen</td>
                 </tr>
                 <tr>
@@ -215,12 +215,12 @@
                 </tr>
                 <tr>
                     <td>3.2.1</td>
-                    <td>System</td>
+                    <td>Insulinpumpe</td>
                     <td>Erneut messen</td>
                 </tr>
                 <tr>
                     <td>3.2.2</td>
-                    <td>System</td>
+                    <td>Insulinpumpe</td>
                     <td>Wenn Messdaten plausibel -> Vorgang fortsetzen, sonst Fehlermeldung an Benutzer</td>
                 </tr>
 
@@ -245,7 +245,7 @@
                 </tr>
                 <tr>
                     <th>Actors</th>
-                    <td>System</td>
+                    <td>Insulinpumpe</td>
                 </tr>
                 <tr>
                     <th>Starting Event and Preconditions</th>
@@ -268,8 +268,23 @@
                 <tbody>
                 <tr>
                     <td>1.0</td>
-                    <td></td>
-                    <td></td>
+                    <td>Insulinpumpe</td>
+                    <td>Pumpe prüft periodisch Insulinbedarf aufgrund der Messungen des Blutzuckers</td>
+                </tr>
+                <tr>
+                    <td>2.0</td>
+                    <td>Insulinpumpe</td>
+                    <td>Exception: Messwerte überschreiten Maximal- oder Minimalwerte</td>
+                </tr>
+                <tr>
+                    <td>2.0</td>
+                    <td>Insulinpumpe</td>
+                    <td>Messwerte werden analysiert und zu relevanten Datensätzen für die Injektion vorbereiten</td>
+                </tr>
+                <tr>
+                    <td>2.1</td>
+                    <td>Insulinpumpe</td>
+                    <td>Injektion ready an Controller senden</td>
                 </tr>
                 </tbody>
             </table>
@@ -283,9 +298,14 @@
                 </thead>
                 <tbody>
                 <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                    <td>1.0</td>
+                    <td>Insulinpumpe</td>
+                    <td>Insulin Pumpe registriert zu hohe Messwerte</td>
+                </tr>
+                <tr>
+                    <td>2.0</td>
+                    <td>Patient</td>
+                    <td>Manuelle Anpassung der Dosis durch Patient</td>
                 </tr>
                 </tbody>
             </table>
@@ -307,7 +327,7 @@
                 </tr>
                 <tr>
                     <th>Actors</th>
-                    <td>System</td>
+                    <td>Insulinpumpe</td>
                 </tr>
                 <tr>
                     <th>Starting Event and Preconditions</th>
@@ -330,8 +350,33 @@
                 <tbody>
                 <tr>
                     <td>1.0</td>
-                    <td></td>
-                    <td></td>
+                    <td>Insulinpumpe</td>
+                    <td>Ermittelte Insulinmenge zur Injektion vorbereiten</td>
+                </tr>
+                <tr>
+                    <td>1.1</td>
+                    <td>Insulinpumpe</td>
+                    <td>Exception: Pumpe nicht korrekt angeschlossen</td>
+                </tr>
+                <tr>
+                    <td>1.2</td>
+                    <td>Benutzer</td>
+                    <td>Option: Patient kann Injektion manuell abbrechen</td>
+                </tr>
+                <tr>
+                    <td>2.0</td>
+                    <td>Insulinpumpe, Patient</td>
+                    <td>Informieren Patient zur bevorstehenden Insulin Injektion</td>
+                </tr>
+                <tr>
+                    <td>3.0</td>
+                    <td>Insulinpumpe</td>
+                    <td>Loggen der bevorstehenden Injektion</td>
+                </tr>
+                <tr>
+                    <td>4.0</td>
+                    <td>Insulinpumpe</td>
+                    <td>Injektion durchführen</td>
                 </tr>
                 </tbody>
             </table>
@@ -345,9 +390,14 @@
                 </thead>
                 <tbody>
                 <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                    <td>1.0</td>
+                    <td>Insulinpumpe</td>
+                    <td>Pumpe nicht korrekt angeschlossen</td>
+                </tr>
+                <tr>
+                    <td>2.0</td>
+                    <td>Patient</td>
+                    <td>Patient bricht Injektion manuell ab</td>
                 </tr>
                 </tbody>
             </table>
