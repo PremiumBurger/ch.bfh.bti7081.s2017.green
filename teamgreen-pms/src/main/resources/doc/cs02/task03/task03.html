@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -10,35 +11,153 @@
     <!-- Bootstrap -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 </head>
+
 <body>
-<div class="container">
-    <div class="jumbotron">
-        <h1>Task 01 - Elicitate Requirements</h1>
-        <p>Given the description of the Personal Insulin Pump (PIP) in the CS2
-introduction and your results from Tasks 1 and 2, try to elicitate the
-requirements.
-<ol>
-<li>Start with high-level user requirements.</li>
-<li>Then elaborate high-level system requirements.</li>
-<li>Detail these system requirements into:</li>
-</ol>
-<ul>
-<li>Functional Requirements</li>
-<li>Non-Functional Requirements</li>
-<li>Domain Requirements</li>
-</ul>
-        </p>
+    <div class="container">
+        <div class="jumbotron">
+            <h1>Task 01 - Elicitate Requirements</h1>
+            <p>Given the description of the Personal Insulin Pump (PIP) in the CS2 introduction and your results from Tasks
+                1 and 2, try to elicitate the requirements.
+                <ol>
+                    <li>Start with high-level user requirements.</li>
+                    <li>Then elaborate high-level system requirements.</li>
+                    <li>Detail these system requirements into:</li>
+                </ol>
+                <ul>
+                    <li>Functional Requirements</li>
+                    <li>Non-Functional Requirements</li>
+                    <li>Domain Requirements</li>
+                </ul>
+            </p>
+        </div>
+        <h2>User Requirements</h2>
+        <ol>
+            <li>Das System muss den Blutzuckerspiegel ausgleichen können.</li>
+            <li>Der Benutzer muss den Batteriestand verständlich auf dem Display ablesen können.</li>
+            <li>Der Benutzer muss den Insulinvorrat ablesen verständlich auf dem Display ablesen können.</li>
+            <li>Der Benutzer muss über Fehlfunktionen verständlich auf dem Display informiert werden.</li>
+            <li>Der Benutzer kann eine History des Insulinspiegels und der Injektionen auf dem Display ablesen.</li>
+        </ol>
+
+        <h2>System Requirements</h2>
+        <div class="alert alert-info">
+            <span class="glyphicon glyphicon-info-sign"></span> User Story:
+            <h4>1. Das System muss den Blutzuckerspiegel ausgleichen können.</h4>
+        </div>
+        <div>
+            <b>Functional requirements:</b>
+            <ul>
+                <li>Das System entnimmt dem Patienten in regelmässigen Abständen Blut.</li>
+                <li>Der Blutzuckerspiegel gemessen.</li>
+                <li>Der Prozessor errechnet aus dem Verlauf und den Messdaten den Insulinbedarf und injeziert bei bedarf.</li>
+            </ul>
+            <b>Non Functional requirements:</b>
+            <ul>
+                <li>Zeitlich und quantitativ opimale Injektion.</li>
+                <li>24/7 Verfübar.</li>
+                <li>Batterielaufzeit von mindestens 14 Tage</li>
+            </ul>
+            <b>Domain:</b>
+            <ul>
+                <li>Muss der Internationalen Insulin Pumpen Norm nach FDA (:-) ) entsprechen</li>
+            </ul>
+        </div>
+
+
+        <div class="alert alert-info">
+            <span class="glyphicon glyphicon-info-sign"></span> User Story:
+            <h4>2. Der Benutzer muss den Batteriestand verständlich auf dem Display ablesen können.
+            </h4>
+        </div>
+        <div>
+            <b>Functional requirements:</b>
+            <ul>
+                <li>Die Batteriespannung wird ausgelesen und auf dem Display angezeigt.</li>
+                <li>Falls der Batteriestand in den kritischen bereich kommt, wird ein akustischer Alarm und eine Meldung auf
+                    dem Display ausgegeben</li>
+            </ul>
+            <b>Non Functional requirements:</b>
+            <ul>
+                <li>Die akustische Warnung soll bei 20% restspannung der Batterie erfolgen.</li>
+                <li>Eine grafische Warnung soll bereits bei 30% Restspannung auf dem Display ersichtlich sein</li>
+            </ul>
+        </div>
+
+
+        <div class="alert alert-info">
+            <span class="glyphicon glyphicon-info-sign"></span> User Story:
+            <h4>3. Der Benutzer muss den Insulinvorrat ablesen verständlich auf dem Display ablesen können.
+            </h4>
+        </div>
+        <div>
+            <b>Functional requirements:</b>
+            <ul>
+                <li>Jeweils nach der Injektion wird die verbleibende Restmenge an Insulin berechnet. Bei i unterschreiten des
+                    Grenzwertes wird ein Alarm mit einer Meldung auf dem Display ausgegeben.</li>
+            </ul>
+            <b>Non Functional requirements:</b>
+            <ul>
+                <li>Die erste grafische Warnung soll bei einer rest Dosis das einem Tages Dosis entspricht am Display ersichtlich
+                    sein</li>
+                <li>Eine akustische Warnung soll erfolgen wenn das rest Insulin nur noch für 1 injektion genügt</li>
+            </ul>
+        </div>
+
+
+
+        <div class="alert alert-info">
+            <span class="glyphicon glyphicon-info-sign"></span> User Story:
+            <h4>4. Der Benutzer muss über Fehlfunktionen verständlich auf dem Display informiert werden.
+            </h4>
+        </div>
+        <div>
+            <b>Functional requirements:</b>
+            <ul>
+                <li>Die Komponenten (Pumpe, Nadel, Controller..) sind mit Sensoren ausgestattet, die eine Fehlermeldung ausgeben,
+                    sobald ein Problem auftritt (z.B. Pumpen-Fehlfunktion, Verstopfungen in den Leitungen, Nadel ist nicht
+                    sauber appliziert).. Es erfolgt ein Alarm / eine Meldung auf dem Display.</li>
+            </ul>
+            <b>Non Functional requirements:</b>
+            <ul>
+                <li>Hinweise zur Behebung des Problems auf dem Display</li>
+            </ul>
+        </div>
+
+
+        <div class="alert alert-info">
+            <span class="glyphicon glyphicon-info-sign"></span> User Story:
+            <h4>5. Der Benutzer kann eine History des Insulinspiegels und der Injektionen auf dem Display ablesen.
+            </h4>
+        </div>
+        <div>
+            <b>Functional requirements:</b>
+            <ul>
+                <li>Folgende Daten aus dem letzten Injektionen sollen auf dem Display ersichtlich sein.
+                    <ol>
+                        <li>Zeitpunkt der Injektion</li>
+                        <li>Insulin Dosis</li>
+                        <li>Blutzuckerspiegel</li>
+                </li>
+            </ul>
+            <b>Non Functional requirements:</b>
+            <ul>
+                <li>Saubere, übersichtliche graphische Darstellung auf dem Display</li>
+                <li>Die letzten 50 Injektions daten sollen im Log vorhanden sein</li>
+            </ul>
+        </div>
+
+
+
     </div>
 
 
-    <p>the content</p>
-</div>
 
-<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 
-<!-- Include all compiled plugins (below), or include individual files as needed -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 </body>
+
 </html>
