@@ -1,5 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
+<!-- Include plugin to add external .html files -->
+<script src="https://www.w3schools.com/lib/w3data.js"></script>
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -125,18 +127,55 @@
                 </tr>
                 </tbody>
             </table>
-            <!-- Interviewfragen ausgelagert, da direkt aus Google Doc -> HTML convertiert -->
+            <!-- Interviewfragen ausgelagert, da direkt aus Google Doc -> HTML konvertiert -->
             <b>Interviewfragen als Richtlinie</b>
-            <iframe frameborder="0" src="./ressources/interviewfragen.html"
-                    onload="this.style.height=this.contentDocument.body.scrollHeight + 15 +'px';"
-                    width="740">
-            </iframe>
+            <div w3-include-html="./ressources/interviewfragen.html"></div>
         </div>
     </div>
     <div class="panel panel-default" data-pp="30">
         <div class="panel-heading"><h3>Synthesize</h3></div>
         <div class="panel-body">
-
+            <div class="panel-heading"><h4>Personas</h4></div>
+            <div class="panel panel-default" data-pp="31">
+                <div class="panel-heading">Patient: Beat Orderline, 40</div>
+                <p>Beat fühlte sich schon als Kind nirgends recht zuhause, der Vater war Alkoholiker,
+                    die Mutter verliess die Familie als er noch ein Baby war.
+                    Beat musste alleine zurechtkommen und wurde regelrecht vernachlässigt.
+                    Dadurch geriet Beat schon früh auf die schiefe Bahn, fand bereits als Jugendlicher in harten
+                    Drogen Zuflucht. Dies verstärkte das dauernde Gefühl des Unwohlseins in seinem eigenen Körper noch.
+                    Beat findet sich oft scheinbar grundlos in einem Zustand der inneren Anspannung wieder,
+                    dass er durch die Flucht in Betäubungsmittel temporär verdrängen konnte.
+                    In der Zwischenzeit hat Beat den Drogenentzug zwar geschafft, die schwankende Gefühlslage ist
+                    aber geblieben. Ausserdem verletzt Beat sich seit Jahren regelmässig selber.
+                    Dies hilft ihm besonders in Zeiten, wo die innere Anspannung unerträglich wird und sein
+                    Selbstwertgefühl gegen null sinkt. In letzter Zeit kamen zu seinen Problemen massive
+                    Angstzustände hinzu, so dass Beat nachts nicht mehr richtig schlafen kann und auf Anraten
+                    seines Hausarztes beim örtlichen Sozialdienst um Hilfe ersuchte.
+                </p>
+            </div>
+            <div class="panel panel-default" data-pp="32">
+                <div class="panel-heading">Sozialarbeiterin bei psychiatrischer Spitex: Sabine Pitex, 25</div>
+                <ul>
+                    <li>Besucht täglich unterschiedliche Patienten/Klienten bei zuhause</li>
+                    <li>Ein mobiles Gerät mit den Grundinformationen und einem Terminplan hat sie immer dabei</li>
+                    <li>Sie hat einen klar definierten Zeitplan</li>
+                    <li>Vor dem Besuch hat sie wenig Zeit das Krankheitsbild zu studieren</li>
+                    <li>Bei Auffälligkeiten beim Patienten hat sie verschiedene Stellen, welche sie kontaktieren kann.</li>
+                    <li>Der Patient/Klient wird von verschiedenen anderen Spitex Mitarbeitern betreut</li>
+                    <li>Sie informiert die anderen Sozialarbeiter nach jedem Besuch über Änderungen</li>
+                </ul>
+            </div>
+            <div class="panel panel-default" data-pp="33">
+                <div class="panel-heading">Sozialarbeiterin bei psychiatrischer Beratungsstelle: Beatrice Eratung, 37</div>
+                <ul>
+                    <li>Hat jeden Tag mehrere Gespräche mit Klienten in ihrem Büro</li>
+                    <li>Vor dem Gespräch bleibt nicht viel Zeit um sich in die Dossiers einzulesen</li>
+                    <li>Sie hat im Dossier eine Grobübersicht mit den wichtigsten Infos zum Patienten</li>
+                    <li>Die Dossiers werden in Papierform abgelegt und sie nimmt sie an das Gespräch mit</li>
+                    <li>Nach dem Gespräch aktualisiert sie das Dossier und legt es ab</li>
+                    <li>Wenn andere Behörden eingeschaltet werden müssen, werden diese per Telefon kontaktiert</li>
+                </ul>
+            </div>
         </div>
     </div>
     <div class="panel panel-default" data-pp="40">
@@ -180,7 +219,55 @@
     <div class="panel panel-default" data-pp="140">
         <div class="panel-heading"><h3>Design</h3></div>
         <div class="panel-body">
-
+            <div class="panel-heading"><h4>Storyboards</h4></div>
+            <div class="panel panel-default" data-pp="141">
+                <div class="panel-heading">Spitex Visite 1: Erfassung</div>
+                <div class="panel-body">
+                    <img src="./stories/story_visite_01.PNG" alt="story visite erfassung" style='height: 100%; width: 100%; object-fit: contain'/>
+                </div>
+            </div>
+            <div class="panel panel-default" data-pp="142">
+                <div class="panel-heading">Spitex Visite 2: weiteres Vorgehen</div>
+                <div class="panel-body">
+                    <img src="./stories/story_visite_02.PNG" alt="story visite weiteres vorgehen" style='height: 100%; width: 100%; object-fit: contain'/>
+                </div>
+            </div>
+            <div class="panel panel-default" data-pp="143">
+                <div class="panel-heading">Spitex Visite 3: Patient unauffindbar</div>
+                <div class="panel-body">
+                    <img src="./stories/story_visite_03.PNG" alt="story visite patient unaffindbar" style='height: 100%; width: 100%; object-fit: contain'/>
+                </div>
+            </div>
+            <div class="panel panel-default" data-pp="144">
+                <div class="panel-heading">Spitex Visite 4: Terminplanung</div>
+                <div class="panel-body">
+                    <img src="./stories/story_visite_04.PNG" alt="story visite terminplanung" style='height: 100%; width: 100%; object-fit: contain'/>
+                </div>
+            </div>
+            <div class="panel panel-default" data-pp="144">
+                <div class="panel-heading">Spitex Visite 5: Notfallkit Borderliner</div>
+                <div class="panel-body">
+                    <img src="./stories/story_notfallkit.png" alt="story visite notfallkit" style='height: 100%; width: 100%; object-fit: contain'/>
+                </div>
+            </div>
+            <div class="panel panel-default" data-pp="144">
+                <div class="panel-heading">Spitex Visite 6: Notfallknopf</div>
+                <div class="panel-body">
+                    <img src="./stories/story_notfallknopf.png" alt="story visite notfallknopf" style='height: 100%; width: 100%; object-fit: contain'/>
+                </div>
+            </div>
+            <div class="panel panel-default" data-pp="144">
+                <div class="panel-heading">Spitex Visite 7: Selbstverletzung</div>
+                <div class="panel-body">
+                    <img src="./stories/story_selbstverletzung.png" alt="story visite selbstverletzung" style='height: 100%; width: 100%; object-fit: contain'/>
+                </div>
+            </div>
+            <div class="panel panel-default" data-pp="144">
+                <div class="panel-heading">Spitex Visite 8: Medikamentenverordnung</div>
+                <div class="panel-body">
+                    <img src="./stories/story_medikamentenverordnung.png" alt="story visite medikamente" style='height: 100%; width: 100%; object-fit: contain'/>
+                </div>
+            </div>
         </div>
     </div>
     <div class="panel panel-default" data-pp="150">
@@ -246,6 +333,10 @@
     $(function() {
         $('.container').presi();
     });
+</script>
+<!-- Include plugin to add external .html files -->
+<script>//noinspection JSUnresolvedFunction
+w3IncludeHTML();
 </script>
 </body>
 </html>
