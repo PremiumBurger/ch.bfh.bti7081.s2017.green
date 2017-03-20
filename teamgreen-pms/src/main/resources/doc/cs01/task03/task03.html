@@ -2,6 +2,7 @@
 <html lang="en">
 <!-- Include plugin to add external .html files -->
 <script src="https://www.w3schools.com/lib/w3data.js"></script>
+
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -12,482 +13,527 @@
     <!-- Bootstrap -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 </head>
+
 <body>
-<div class="container">
-    <div class="jumbotron">
-        <h1>Task 03 - Design Thinking</h1>
-        <p>Design a Web-based, mobile application for your target user by
-            following the Design Thinking Process:
-        <ol>
-            <li>Scoping</li>
-            <ul>
-                <li>define: project scope, out of scope, and success measures</li>
-            </ul>
-            <li>Research</li>
-            <ul>
-                <li>investigate: literature, case studies, state of the art systems, …</li>
-                <li>conduct: ≥ 1 interview/field study</li>
-            </ul>
-            <li>Synthesize</li>
-            <ul>
-                <li>collect, order, and analyze all material in your group</li>
-                <li>define: ≥ 2 personas as target user(s) for your application</li>
-                <li>define: main features (i.e., user requirements)</li>
-            </ul>
-            <li>Design</li>
-            <ul>
-                <li>design ≥ 2 storyboards per team member</li>
-                <li>discuss and iterate </li>
-                <li>make sure your storyboards are detailed enough to show the
-                    usage of a real system</li>
-            </ul>
-            <li>Prototype</li>
-            <ul>
-                <li>≥ 3 card-based prototypes for your most promising storyboards</li>
-            </ul>
-            <li>Validate</li>
-            <ul>
-                <li>test your storyboards/prototypes with friends or family (i.e.,
-                    outside this class)</li>
-                <li>first define your evaluation questions</li>
-                <li>then how you will find the answer </li>
-            </ul>
-        </ol>
-        <p>Aim for 3 iterations (start simple and then elaborate)
-    </div>
-    <!-- Iteration #1 -->
-    <h2>Iteration #1</h2>
-    <div class="panel panel-default" data-pp="10">
-        <div class="panel-heading"><h3>Scoping</h3></div>
-        <div class="panel-body">
-            <b>Problem</b>
-            <ul>
-                <li>Kein zentrales Zuweiserportal für Sozialarbeiter oder sonstige Beratungsstellen</li>
-                <li>Keine zentrale Informationsquelle über Klienten</li>
-                <li>Kein zentrales Besprechungsjournal über den Klienten</li>
-            </ul>
-            <b>Abgrenzung</b>
-            <ul>
-                <li>Einschränkung auf die Rolle eines Gesundheitsexperten (health visitors)</li>
-                <li>Einschränkung auf bestimmtes Krankheitsbild (Borderline)</li>
-                <li>Einschränkung auf Webapplikation für Mobilgeräte</li>
-            </ul>
-            <b>Erfolgsmasstab</b>
-            <ul>
-                <li>Kundenfeedback</li>
-                <li>Benutzerfreundlichkeit</li>
-                <li>Verständnis der Borderline Persönlichkeitsstörung</li>
-                <li>Umsetzen der relevanten Anforderungen</li>
-            </ul>
-
-        </div>
-    </div>
-    <div class="panel panel-default" data-pp="20">
-        <div class="panel-heading"><h3>Research</h3></div>
-        <div class="panel-body">
-            <b>Webresearch zur Borderline-Persönlichkeitsstörung</b>
-
-            <table class="table table-bordered">
-                <tbody>
-                <tr>
-                    <th class="col-md-2">Name</th>
-                    <td>Borderline Persönlichkeitsstörung</td>
-                </tr>
-                <tr>
-                    <th>Ursachen</th>
-                    <td>Genetische Faktoren, Traumatische Erlebnisse in der Kindheit, körperliche oder sexuelle Gewalterfahrungen</td>
-                </tr>
-                <tr>
-                    <th>Krankheitsbild</th>
-                    <td>Borderline Patienten können ihre inneren Gefühlszustände schlecht oder gar nicht kontrollieren.
-                        In vielen Fällen fühlen die Patienten extreme innere Spannungszustände, die sie durch extreme
-                        Massnahmen wie Selbstverletzung oder Einnahme von Drogen abzubauen versuchen. Häufig ist die
-                        Krankheit auch von einer verzerrten Selbswahrnehmung begleitet, so sagen viele Patienten
-                        beispielsweise von sich selbst, dass sie sich zeitweise nicht selbst fühlen können,
-                        die Aussenwelt nur wie durch einen Nebel wahrnehmen oder an Halluzinationen leiden.</td>
-                </tr>
-                <tr>
-                    <th>Begleiterkrankungen</th>
-                    <td>In den meisten Fällen tritt Borderline in Kombination mit anderen Erkrankungen auf, beispielsweise
-                        Depressionen, Angststörungen, Zwangshandlungen oder weiteren Persönlichkeitsstörungen.
-                    </td>
-                </tr>
-                <tr>
-                    <th>Behandlung/Therapie</th>
-                    <td>Psychotherapie unterstützt durch medikamentöse Behandlung
-                    </td>
-                </tr>
-                <tr>
-                    <th>Quellen und weitere Ressourcen</th>
-                    <td>
-                        <div><a href="https://www.neurologen-und-psychiater-im-netz.org/psychiatrie-psychosomatik-psychotherapie/stoerungen-erkrankungen/borderline-stoerung/was-ist-eine-borderline-persoenlichkeitsstoerung-bps/">Neurologen und Psychiater im Netz</a></div>
-                        <div><a href="http://www.sprechzimmer.ch/sprechzimmer/Krankheitsbilder/Borderline_Syndrom_Borderline_Persoenlichkeitsstoerung.php">Sprechzimmer.ch</a></div>
-                        <div><a href="https://www.pdgr.ch/Selbsttest-Borderline.1646.0.html?&tx_kequestionnaire_pi1[page]=1">Borderline Selbsttest</a></div>
-                    </td>
-                </tr>
-                </tbody>
-            </table>
-            <!-- Interviewfragen ausgelagert, da direkt aus Google Doc -> HTML konvertiert -->
-            <b>Interviewfragen als Richtlinie</b>
-            <div w3-include-html="./ressources/interviewfragen.html"></div>
-        </div>
-    </div>
-    <div class="panel panel-default" data-pp="30">
-        <div class="panel-heading"><h3>Synthesize</h3></div>
-        <div class="panel-body">
-            <div class="panel-heading"><h4>Personas</h4></div>
-            <div class="panel panel-default" data-pp="31">
-                <div class="panel-heading">Patient: Beat Orderline, 40</div>
-
-                <div class="panel-body">
-                    <p>Beat fühlte sich schon als Kind nirgends recht zuhause, der Vater war Alkoholiker,
-                        die Mutter verliess die Familie als er noch ein Baby war.
-                        Beat musste alleine zurechtkommen und wurde regelrecht vernachlässigt.
-                        Dadurch geriet Beat schon früh auf die schiefe Bahn, fand bereits als Jugendlicher in harten
-                        Drogen Zuflucht. Dies verstärkte das dauernde Gefühl des Unwohlseins in seinem eigenen Körper
-                        noch.
-                        Beat findet sich oft scheinbar grundlos in einem Zustand der inneren Anspannung wieder,
-                        dass er durch die Flucht in Betäubungsmittel temporär verdrängen konnte.
-                        In der Zwischenzeit hat Beat den Drogenentzug zwar geschafft, die schwankende Gefühlslage ist
-                        aber geblieben. Ausserdem verletzt Beat sich seit Jahren regelmässig selber.
-                        Dies hilft ihm besonders in Zeiten, wo die innere Anspannung unerträglich wird und sein
-                        Selbstwertgefühl gegen null sinkt. In letzter Zeit kamen zu seinen Problemen massive
-                        Angstzustände hinzu, so dass Beat nachts nicht mehr richtig schlafen kann und auf Anraten
-                        seines Hausarztes beim örtlichen Sozialdienst um Hilfe ersuchte.
-                    </p>
-                </div>
-            </div>
-            <div class="panel panel-default" data-pp="32">
-                <div class="panel-heading">Sozialarbeiterin bei psychiatrischer Spitex: Sabine Pitex, 25</div>
-                <div class="panel-body">
+    <div class="container">
+        <div class="jumbotron">
+            <h1>Task 03 - Design Thinking</h1>
+            <p>Design a Web-based, mobile application for your target user by following the Design Thinking Process:
+                <ol>
+                    <li>Scoping</li>
                     <ul>
-                        <li>Besucht täglich unterschiedliche Patienten/Klienten bei zuhause</li>
-                        <li>Ein mobiles Gerät mit den Grundinformationen und einem Terminplan hat sie immer dabei</li>
-                        <li>Sie hat einen klar definierten Zeitplan</li>
-                        <li>Vor dem Besuch hat sie wenig Zeit das Krankheitsbild zu studieren</li>
-                        <li>Bei Auffälligkeiten beim Patienten hat sie verschiedene Stellen, welche sie kontaktieren
-                            kann.
-                        </li>
-                        <li>Der Patient/Klient wird von verschiedenen anderen Spitex Mitarbeitern betreut</li>
-                        <li>Sie informiert die anderen Sozialarbeiter nach jedem Besuch über Änderungen</li>
+                        <li>define: project scope, out of scope, and success measures</li>
                     </ul>
-                </div>
-            </div>
-            <div class="panel panel-default" data-pp="33">
-                <div class="panel-heading">Sozialarbeiterin bei psychiatrischer Beratungsstelle: Beatrice Eratung, 37</div>
-                <div class="panel-body">
+                    <li>Research</li>
                     <ul>
-                        <li>Hat jeden Tag mehrere Gespräche mit Klienten in ihrem Büro</li>
-                        <li>Vor dem Gespräch bleibt nicht viel Zeit um sich in die Dossiers einzulesen</li>
-                        <li>Sie hat im Dossier eine Grobübersicht mit den wichtigsten Infos zum Patienten</li>
-                        <li>Die Dossiers werden in Papierform abgelegt und sie nimmt sie an das Gespräch mit</li>
-                        <li>Nach dem Gespräch aktualisiert sie das Dossier und legt es ab</li>
-                        <li>Wenn andere Behörden eingeschaltet werden müssen, werden diese per Telefon kontaktiert</li>
+                        <li>investigate: literature, case studies, state of the art systems, …</li>
+                        <li>conduct: ≥ 1 interview/field study</li>
                     </ul>
+                    <li>Synthesize</li>
+                    <ul>
+                        <li>collect, order, and analyze all material in your group</li>
+                        <li>define: ≥ 2 personas as target user(s) for your application</li>
+                        <li>define: main features (i.e., user requirements)</li>
+                    </ul>
+                    <li>Design</li>
+                    <ul>
+                        <li>design ≥ 2 storyboards per team member</li>
+                        <li>discuss and iterate </li>
+                        <li>make sure your storyboards are detailed enough to show the usage of a real system</li>
+                    </ul>
+                    <li>Prototype</li>
+                    <ul>
+                        <li>≥ 3 card-based prototypes for your most promising storyboards</li>
+                    </ul>
+                    <li>Validate</li>
+                    <ul>
+                        <li>test your storyboards/prototypes with friends or family (i.e., outside this class)</li>
+                        <li>first define your evaluation questions</li>
+                        <li>then how you will find the answer </li>
+                    </ul>
+                </ol>
+                <p>Aim for 3 iterations (start simple and then elaborate)
+        </div>
+        <!-- Iteration #1 -->
+
+        <div class="alert alert-info wow rotateInDownLeft">
+            <span class="glyphicon glyphicon-info-sign"></span>
+            <h2>Iteration #1</h2>
+        </div>
+        <div class="panel panel-default" data-pp="10">
+            <div class="panel-heading">
+                <h3>Scoping</h3>
+            </div>
+            <div class="panel-body">
+                <b>Problem</b>
+                <ul>
+                    <li>Kein zentrales Zuweiserportal für Sozialarbeiter oder sonstige Beratungsstellen</li>
+                    <li>Keine zentrale Informationsquelle über Klienten</li>
+                    <li>Kein zentrales Besprechungsjournal über den Klienten</li>
+                </ul>
+                <b>Abgrenzung</b>
+                <ul>
+                    <li>Einschränkung auf die Rolle eines Gesundheitsexperten (health visitors)</li>
+                    <li>Einschränkung auf bestimmtes Krankheitsbild (Borderline)</li>
+                    <li>Einschränkung auf Webapplikation für Mobilgeräte</li>
+                </ul>
+                <b>Erfolgsmasstab</b>
+                <ul>
+                    <li>Kundenfeedback</li>
+                    <li>Benutzerfreundlichkeit</li>
+                    <li>Verständnis der Borderline Persönlichkeitsstörung</li>
+                    <li>Umsetzen der relevanten Anforderungen</li>
+                </ul>
+
+            </div>
+        </div>
+        <div class="panel panel-default" data-pp="20">
+            <div class="panel-heading">
+                <h3>Research</h3>
+            </div>
+            <div class="panel-body">
+                <b>Webresearch zur Borderline-Persönlichkeitsstörung</b>
+
+                <table class="table table-bordered">
+                    <tbody>
+                        <tr>
+                            <th class="col-md-2">Name</th>
+                            <td>Borderline Persönlichkeitsstörung</td>
+                        </tr>
+                        <tr>
+                            <th>Ursachen</th>
+                            <td>Genetische Faktoren, Traumatische Erlebnisse in der Kindheit, körperliche oder sexuelle Gewalterfahrungen</td>
+                        </tr>
+                        <tr>
+                            <th>Krankheitsbild</th>
+                            <td>Borderline Patienten können ihre inneren Gefühlszustände schlecht oder gar nicht kontrollieren.
+                                In vielen Fällen fühlen die Patienten extreme innere Spannungszustände, die sie durch extreme
+                                Massnahmen wie Selbstverletzung oder Einnahme von Drogen abzubauen versuchen. Häufig ist
+                                die Krankheit auch von einer verzerrten Selbswahrnehmung begleitet, so sagen viele Patienten
+                                beispielsweise von sich selbst, dass sie sich zeitweise nicht selbst fühlen können, die Aussenwelt
+                                nur wie durch einen Nebel wahrnehmen oder an Halluzinationen leiden.</td>
+                        </tr>
+                        <tr>
+                            <th>Begleiterkrankungen</th>
+                            <td>In den meisten Fällen tritt Borderline in Kombination mit anderen Erkrankungen auf, beispielsweise
+                                Depressionen, Angststörungen, Zwangshandlungen oder weiteren Persönlichkeitsstörungen.
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Behandlung/Therapie</th>
+                            <td>Psychotherapie unterstützt durch medikamentöse Behandlung
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Quellen und weitere Ressourcen</th>
+                            <td>
+                                <div><a href="https://www.neurologen-und-psychiater-im-netz.org/psychiatrie-psychosomatik-psychotherapie/stoerungen-erkrankungen/borderline-stoerung/was-ist-eine-borderline-persoenlichkeitsstoerung-bps/">Neurologen und Psychiater im Netz</a></div>
+                                <div><a href="http://www.sprechzimmer.ch/sprechzimmer/Krankheitsbilder/Borderline_Syndrom_Borderline_Persoenlichkeitsstoerung.php">Sprechzimmer.ch</a></div>
+                                <div><a href="https://www.pdgr.ch/Selbsttest-Borderline.1646.0.html?&tx_kequestionnaire_pi1[page]=1">Borderline Selbsttest</a></div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <!-- Interviewfragen ausgelagert, da direkt aus Google Doc -> HTML konvertiert -->
+                <b>Interviewfragen als Richtlinie</b>
+                <div w3-include-html="./ressources/interviewfragen.html"></div>
+            </div>
+        </div>
+        <div class="panel panel-default" data-pp="30">
+            <div class="panel-heading">
+                <h3>Synthesize</h3>
+            </div>
+            <div class="panel-body">
+                <div class="panel-heading">
+                    <h4>Personas</h4>
+                </div>
+                <div class="panel panel-default" data-pp="31">
+                    <div class="panel-heading">Patient: Beat Orderline, 40</div>
+
+                    <div class="panel-body">
+                        <p>Beat fühlte sich schon als Kind nirgends recht zuhause, der Vater war Alkoholiker, die Mutter verliess
+                            die Familie als er noch ein Baby war. Beat musste alleine zurechtkommen und wurde regelrecht
+                            vernachlässigt. Dadurch geriet Beat schon früh auf die schiefe Bahn, fand bereits als Jugendlicher
+                            in harten Drogen Zuflucht. Dies verstärkte das dauernde Gefühl des Unwohlseins in seinem eigenen
+                            Körper noch. Beat findet sich oft scheinbar grundlos in einem Zustand der inneren Anspannung
+                            wieder, dass er durch die Flucht in Betäubungsmittel temporär verdrängen konnte. In der Zwischenzeit
+                            hat Beat den Drogenentzug zwar geschafft, die schwankende Gefühlslage ist aber geblieben. Ausserdem
+                            verletzt Beat sich seit Jahren regelmässig selber. Dies hilft ihm besonders in Zeiten, wo die
+                            innere Anspannung unerträglich wird und sein Selbstwertgefühl gegen null sinkt. In letzter Zeit
+                            kamen zu seinen Problemen massive Angstzustände hinzu, so dass Beat nachts nicht mehr richtig
+                            schlafen kann und auf Anraten seines Hausarztes beim örtlichen Sozialdienst um Hilfe ersuchte.
+                        </p>
+                    </div>
+                </div>
+                <div class="panel panel-default" data-pp="32">
+                    <div class="panel-heading">Sozialarbeiterin bei psychiatrischer Spitex: Sabine Pitex, 25</div>
+                    <div class="panel-body">
+                        <ul>
+                            <li>Besucht täglich unterschiedliche Patienten/Klienten bei zuhause</li>
+                            <li>Ein mobiles Gerät mit den Grundinformationen und einem Terminplan hat sie immer dabei</li>
+                            <li>Sie hat einen klar definierten Zeitplan</li>
+                            <li>Vor dem Besuch hat sie wenig Zeit das Krankheitsbild zu studieren</li>
+                            <li>Bei Auffälligkeiten beim Patienten hat sie verschiedene Stellen, welche sie kontaktieren kann.
+                            </li>
+                            <li>Der Patient/Klient wird von verschiedenen anderen Spitex Mitarbeitern betreut</li>
+                            <li>Sie informiert die anderen Sozialarbeiter nach jedem Besuch über Änderungen</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="panel panel-default" data-pp="33">
+                    <div class="panel-heading">Sozialarbeiterin bei psychiatrischer Beratungsstelle: Beatrice Eratung, 37</div>
+                    <div class="panel-body">
+                        <ul>
+                            <li>Hat jeden Tag mehrere Gespräche mit Klienten in ihrem Büro</li>
+                            <li>Vor dem Gespräch bleibt nicht viel Zeit um sich in die Dossiers einzulesen</li>
+                            <li>Sie hat im Dossier eine Grobübersicht mit den wichtigsten Infos zum Patienten</li>
+                            <li>Die Dossiers werden in Papierform abgelegt und sie nimmt sie an das Gespräch mit</li>
+                            <li>Nach dem Gespräch aktualisiert sie das Dossier und legt es ab</li>
+                            <li>Wenn andere Behörden eingeschaltet werden müssen, werden diese per Telefon kontaktiert</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-    <div class="panel panel-default" data-pp="40">
-        <div class="panel-heading"><h3>Design</h3></div>
-        <div class="panel-body">
+        <div class="panel panel-default" data-pp="40">
+            <div class="panel-heading">
+                <h3>Design</h3>
+            </div>
+            <div class="panel-body">
 
+            </div>
         </div>
-    </div>
-    <div class="panel panel-default" data-pp="50">
-        <div class="panel-heading"><h3>Prototype</h3></div>
-        <div class="panel-body">
+        <div class="panel panel-default" data-pp="50">
+            <div class="panel-heading">
+                <h3>Prototype</h3>
+            </div>
+            <div class="panel-body">
 
+            </div>
         </div>
-    </div>
-    <div class="panel panel-default" data-pp="60">
-        <div class="panel-heading"><h3>Validate</h3></div>
-        <div class="panel-body">
+        <div class="panel panel-default" data-pp="60">
+            <div class="panel-heading">
+                <h3>Validate</h3>
+            </div>
+            <div class="panel-body">
 
+            </div>
         </div>
-    </div>
-    <!-- Iteration #2 -->
-    <h2>Iteration #2</h2>
-    <div class="panel panel-default" data-pp="110">
-        <div class="panel-heading"><h3>Scoping</h3></div>
-        <div class="panel-body">
+        <!-- Iteration #2 -->
+         <div class="alert alert-info wow rotateInDownLeft">
+            <span class="glyphicon glyphicon-info-sign"></span>
+            <h2>Iteration #2</h2>
+        </div>
+        <div class="panel panel-default" data-pp="110">
+            <div class="panel-heading">
+                <h3>Scoping</h3>
+            </div>
+            <div class="panel-body">
 
+            </div>
         </div>
-    </div>
-    <div class="panel panel-default" data-pp="120">
-        <div class="panel-heading"><h4>Research</h4></div>
-        <div class="panel-body">
-            <h4>Durchgeführte Interviews</h4>
-            <table class="table table-striped">
-                <thead>
-                    <th>Einrichtung</th>
-                    <th>Funktionen/Berufsgruppen</th>
-                    <th>Interviewdatum</th>
-                    <th>Durchgeführt von</th>
-                    <th>Interviewergebnis</th>
-                </thead>
-                <tbody>
-                <tr>
-                    <td>Abteilung Soziales Biel</td>
-                    <td>Sozialarbeiterin</td>
-                    <td>15.03.2017</td>
-                    <td><span class="badge">baiuj1</span></td>
-                    <td>
-                        <a href="http://htmlpreview.github.io/?https://github.com/PremiumBurger/ch.bfh.bti7081.s2017.green/blob/master/teamgreen-pms/src/main/resources/doc/cs01/task03/ressources/InterviewSozialarbeiterin.html">
+        <div class="panel panel-default" data-pp="120">
+            <div class="panel-heading">
+                <h4>Research</h4>
+            </div>
+            <div class="panel-body">
+                <h4>Durchgeführte Interviews</h4>
+                <table class="table table-striped">
+                    <thead>
+                        <th>Einrichtung</th>
+                        <th>Funktionen/Berufsgruppen</th>
+                        <th>Interviewdatum</th>
+                        <th>Durchgeführt von</th>
+                        <th>Interviewergebnis</th>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Abteilung Soziales Biel</td>
+                            <td>Sozialarbeiterin</td>
+                            <td>15.03.2017</td>
+                            <td><span class="badge">baiuj1</span></td>
+                            <td>
+                                <a href="http://htmlpreview.github.io/?https://github.com/PremiumBurger/ch.bfh.bti7081.s2017.green/blob/master/teamgreen-pms/src/main/resources/doc/cs01/task03/ressources/InterviewSozialarbeiterin.html">
                             Interview Sozialarbeiterin
                         </a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Psychiatriezentrum Münsingen</td>
-                    <td>ehem. Assistenzarzt, Controller Buchhaltung</td>
-                    <td>16.03.2017</td>
-                    <td><span class="badge">schms27</span></td>
-                    <td>
-                        <a href="http://htmlpreview.github.io/?https://github.com/PremiumBurger/ch.bfh.bti7081.s2017.green/blob/master/teamgreen-pms/src/main/resources/doc/cs01/task03/ressources/InterviewAssistenzarztControllerPZM.html">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Psychiatriezentrum Münsingen</td>
+                            <td>ehem. Assistenzarzt, Controller Buchhaltung</td>
+                            <td>16.03.2017</td>
+                            <td><span class="badge">schms27</span></td>
+                            <td>
+                                <a href="http://htmlpreview.github.io/?https://github.com/PremiumBurger/ch.bfh.bti7081.s2017.green/blob/master/teamgreen-pms/src/main/resources/doc/cs01/task03/ressources/InterviewAssistenzarztControllerPZM.html">
                             Interview PZM
                         </a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Universitäre Psychiatrische Dienste Bern</td>
-                    <td>Fachärztin</td>
-                    <td>16.03.2017</td>
-                    <td><span class="badge">vonac1</span></td>
-                    <td>
-                        <a href="http://htmlpreview.github.io/?https://github.com/PremiumBurger/ch.bfh.bti7081.s2017.green/blob/master/teamgreen-pms/src/main/resources/doc/cs01/task03/ressources/InterviewAerztinUDP.html">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Universitäre Psychiatrische Dienste Bern</td>
+                            <td>Fachärztin</td>
+                            <td>16.03.2017</td>
+                            <td><span class="badge">vonac1</span></td>
+                            <td>
+                                <a href="http://htmlpreview.github.io/?https://github.com/PremiumBurger/ch.bfh.bti7081.s2017.green/blob/master/teamgreen-pms/src/main/resources/doc/cs01/task03/ressources/InterviewAerztinUDP.html">
                             Interview Ärztin UDP
                         </a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Universitäre Psychiatrische Dienste Bern</td>
-                    <td>Praktikantin</td>
-                    <td>16.03.2017</td>
-                    <td><span class="badge">thekem1</span></td>
-                    <td>
-                        <a href="http://htmlpreview.github.io/?https://github.com/PremiumBurger/ch.bfh.bti7081.s2017.green/blob/master/teamgreen-pms/src/main/resources/doc/cs01/task03/ressources/InterviewPraktikantinUDP.html">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Universitäre Psychiatrische Dienste Bern</td>
+                            <td>Praktikantin</td>
+                            <td>16.03.2017</td>
+                            <td><span class="badge">thekem1</span></td>
+                            <td>
+                                <a href="http://htmlpreview.github.io/?https://github.com/PremiumBurger/ch.bfh.bti7081.s2017.green/blob/master/teamgreen-pms/src/main/resources/doc/cs01/task03/ressources/InterviewPraktikantinUDP.html">
                             Interview Praktikantin UDP
                         </a>
-                    </td>
-                </tr>
-                </tbody>
-            </table>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
 
 
-            <h4>Erkenntnisse aus den Interviews</h4>
-            <table class="table table-striped">
-                <thead>
-                <th>Erkenntnis</th>
-                <th>Massnahme</th>
-                </thead>
-                <tbody>
-                <tr>
-                    <td>Markierung als "gefährlich" darf nicht sein. Das wäre gegenüber dem Patienten diskriminierend
-                        und ist sehr situativ.
-                    </td>
-                    <td>System bietet die Möglichkeit im Journal Einträge als "Wichtig" zu markieren. Der
-                        Gesundheitsexperte muss anhand solcher Einträge selbstständig beurteilen, ob er eine Begleitung
-                        mitnehmen muss oder nicht. Zudem verfügt das System über einen Alarmknopf, wobei
-                        Sicherheitspersonal mit Zeit und Ort informiert wird, wo Hilfe benötigt wird.
-                    </td>
-                </tr>
-                <tr>
-                    <td>Markierung als "obdachlos" nicht hilfreich</td>
-                    <td>Der Gesundheitsexperte ist verantwortlch dafür, dass für einen Patienten der kein Zuhause hat,
-                        eine Anschlusslösung nach der Visite/Behandlung organisiert wird. Dies kann über das PMS
-                        vorgenommen und dokumentiert werden.
-                    </td>
-                </tr>
-                <tr>
-                    <td>Es gibt innerhalb der Institutionen verschieden Systeme, welche keine Schnittstellen untereinander haben. Schnittstellen zu anderen Institutionen gibt es fast nie</td>
-                    <td>Ein Zentrales System welches den Informationsaustausch zwischen Institutionen erleichtert</td>
-                </tr>
-                </tbody>
-            </table>
+                <h4>Erkenntnisse aus den Interviews</h4>
+                <table class="table table-striped">
+                    <thead>
+                        <th>Erkenntnis</th>
+                        <th>Massnahme</th>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Markierung als "gefährlich" darf nicht sein. Das wäre gegenüber dem Patienten diskriminierend
+                                und ist sehr situativ.
+                            </td>
+                            <td>System bietet die Möglichkeit im Journal Einträge als "Wichtig" zu markieren. Der Gesundheitsexperte
+                                muss anhand solcher Einträge selbstständig beurteilen, ob er eine Begleitung mitnehmen muss
+                                oder nicht. Zudem verfügt das System über einen Alarmknopf, wobei Sicherheitspersonal mit
+                                Zeit und Ort informiert wird, wo Hilfe benötigt wird.
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Markierung als "obdachlos" nicht hilfreich</td>
+                            <td>Der Gesundheitsexperte ist verantwortlch dafür, dass für einen Patienten der kein Zuhause hat,
+                                eine Anschlusslösung nach der Visite/Behandlung organisiert wird. Dies kann über das PMS
+                                vorgenommen und dokumentiert werden.
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Es gibt innerhalb der Institutionen verschieden Systeme, welche keine Schnittstellen untereinander
+                                haben. Schnittstellen zu anderen Institutionen gibt es fast nie</td>
+                            <td>Ein Zentrales System welches den Informationsaustausch zwischen Institutionen erleichtert</td>
+                        </tr>
+                    </tbody>
+                </table>
 
+            </div>
         </div>
-    </div>
-    <div class="panel panel-default" data-pp="130">
-        <div class="panel-heading"><h3>Synthesize</h3></div>
-        <div class="panel-body">
+        <div class="panel panel-default" data-pp="130">
+            <div class="panel-heading">
+                <h3>Synthesize</h3>
+            </div>
+            <div class="panel-body">
 
+            </div>
         </div>
-    </div>
-    <div class="panel panel-default" data-pp="140">
-        <div class="panel-heading"><h3>Design</h3></div>
-        <div class="panel-body">
+        <div class="panel panel-default" data-pp="140">
+            <div class="panel-heading">
+                <h3>Design</h3>
+            </div>
+            <div class="panel-body">
 
 
-            <h4>Storyboards</h4>
-            <div class="panel panel-default" data-pp="141">
-                <div class="panel-heading">Spitex Visite</div>
-                <div class="panel-body">
-                    <div class="col-md-3">
-                        <div class="thumbnail">
-                            <a href="./stories/story_visite_01.PNG">
-                                <img src="./stories/story_visite_01.PNG" alt="story visite erfassung"/>
-                                <div class="caption">
-                                    <p>Erfassung Patient</p>
-                                </div>
-                            </a>
+                <h4>Storyboards</h4>
+                <div class="panel panel-default" data-pp="141">
+                    <div class="panel-heading">Spitex Visite</div>
+                    <div class="panel-body">
+                        <div class="col-md-3">
+                            <div class="thumbnail">
+                                <a href="./stories/story_visite_01.PNG">
+                                    <img src="./stories/story_visite_01.PNG" alt="story visite erfassung" />
+                                    <div class="caption">
+                                        <p>Erfassung Patient</p>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="thumbnail">
+                                <a href="./stories/story_visite_02.PNG">
+                                    <img src="./stories/story_visite_02.PNG" alt="story visite weiteres vorgehen" />
+                                    <div class="caption">
+                                        <p>Weiteres Vorgehen nach Visite</p>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="thumbnail">
+                                <a href="./stories/story_visite_03.PNG">
+                                    <img src="./stories/story_visite_03.PNG" alt="story visite patient unaffindbar" />
+                                    <div class="caption">
+                                        <p>Patient unauffindbar</p>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="thumbnail">
+                                <a href="./stories/story_visite_04.PNG">
+                                    <img src="./stories/story_visite_04.PNG" alt="story visite terminplanung" />
+                                    <div class="caption">
+                                        <p>Allgemeine Terminplanung Visite</p>
+                                    </div>
+                                </a>
+                            </div>
                         </div>
                     </div>
-                    <div class="col-md-3">
-                        <div class="thumbnail">
-                            <a href="./stories/story_visite_02.PNG">
-                                <img src="./stories/story_visite_02.PNG" alt="story visite weiteres vorgehen"/>
-                                <div class="caption">
-                                    <p>Weiteres Vorgehen nach Visite</p>
-                                </div>
-                            </a>
+                </div>
+
+
+                <div class="panel panel-default" data-pp="144">
+                    <div class="panel-heading">Notfälle Borderliner</div>
+                    <div class="panel-body">
+
+                        <div class="col-md-3">
+                            <div class="thumbnail">
+                                <a href="./stories/story_notfallkit.png">
+                                    <img src="./stories/story_notfallkit.png" alt="story visite notfallkit" style='height: 100%; width: 100%; object-fit: contain'
+                                    />
+                                    <div class="caption">
+                                        <p>Notfallkit Borderliner</p>
+                                    </div>
+                                </a>
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="thumbnail">
-                            <a href="./stories/story_visite_03.PNG">
-                                <img src="./stories/story_visite_03.PNG" alt="story visite patient unaffindbar"/>
-                                <div class="caption">
-                                    <p>Patient unauffindbar</p>
-                                </div>
-                            </a>
+
+                        <div class="col-md-3">
+                            <div class="thumbnail">
+                                <a href="./stories/story_notfallknopf.png">
+                                    <img src="./stories/story_notfallknopf.png" alt="story visite notfallknopf" />
+                                    <div class="caption">
+                                        <p>Notfallknopf</p>
+                                    </div>
+                                </a>
+                            </div>
                         </div>
+
+                        <div class="col-md-3">
+                            <div class="thumbnail">
+                                <a href="./stories/story_selbstverletzung.png">
+                                    <img src="./stories/story_selbstverletzung.png" alt="story visite selbstverletzung" style='height: 100%; width: 100%; object-fit: contain'
+                                    />
+                                    <div class="caption">
+                                        <p>Selbstverletzung</p>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+
                     </div>
-                    <div class="col-md-3">
-                        <div class="thumbnail">
-                            <a href="./stories/story_visite_04.PNG">
-                                <img src="./stories/story_visite_04.PNG" alt="story visite terminplanung"/>
-                                <div class="caption">
-                                    <p>Allgemeine Terminplanung Visite</p>
-                                </div>
-                            </a>
+                </div>
+
+                <div class="panel panel-default" data-pp="144">
+                    <div class="panel-heading">Medikamentenverordnung</div>
+                    <div class="panel-body">
+                        <div class="col-md-3">
+                            <div class="thumbnail">
+                                <a href="./stories/story_medikamentenverordnung.png">
+                                    <img src="./stories/story_medikamentenverordnung.png" alt="story visite medikamente" />
+                                    <div class="caption">
+                                        <p>Medikamentenverordnung</p>
+                                    </div>
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
+        </div>
 
-
-            <div class="panel panel-default" data-pp="144">
-                <div class="panel-heading">Notfälle Borderliner</div>
-                <div class="panel-body">
-
-                    <div class="col-md-3">
-                        <div class="thumbnail">
-                            <a href="./stories/story_notfallkit.png">
-                                <img src="./stories/story_notfallkit.png" alt="story visite notfallkit"
-                                     style='height: 100%; width: 100%; object-fit: contain'/>
-                                <div class="caption">
-                                    <p>Notfallkit Borderliner</p>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="col-md-3">
-                        <div class="thumbnail">
-                            <a href="./stories/story_notfallknopf.png">
-                                <img src="./stories/story_notfallknopf.png" alt="story visite notfallknopf"/>
-                                <div class="caption">
-                                    <p>Notfallknopf</p>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="col-md-3">
-                        <div class="thumbnail">
-                            <a href="./stories/story_selbstverletzung.png">
-                                <img src="./stories/story_selbstverletzung.png" alt="story visite selbstverletzung"
-                                     style='height: 100%; width: 100%; object-fit: contain'/>
-                                <div class="caption">
-                                    <p>Selbstverletzung</p>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-
-                </div>
+        <div class="panel panel-default" data-pp="160">
+            <div class="panel-heading">
+                <h3>Validate</h3>
             </div>
+            <div class="panel-body">
 
-            <div class="panel panel-default" data-pp="144">
-                <div class="panel-heading">Medikamentenverordnung</div>
-                <div class="panel-body">
-                    <div class="col-md-3">
-                        <div class="thumbnail">
-                            <a href="./stories/story_medikamentenverordnung.png">
-                                <img src="./stories/story_medikamentenverordnung.png" alt="story visite medikamente"/>
-                                <div class="caption">
-                                    <p>Medikamentenverordnung</p>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
-    </div>
+        <!-- Iteration #3 -->
+         <div class="alert alert-info wow rotateInDownLeft">
+            <span class="glyphicon glyphicon-info-sign"></span>
+            <h2>Iteration #3</h2>
+        </div>
+        <div class="panel panel-default" data-pp="210">
+            <div class="panel-heading">
+                <h3>Scoping</h3>
+            </div>
+            <div class="panel-body">
 
-    <div class="panel panel-default" data-pp="160">
-        <div class="panel-heading"><h3>Validate</h3></div>
-        <div class="panel-body">
+            </div>
+        </div>
+        <div class="panel panel-default" data-pp="220">
+            <div class="panel-heading">
+                <h3>Research</h3>
+            </div>
+            <div class="panel-body">
 
+            </div>
+        </div>
+        <div class="panel panel-default" data-pp="230">
+            <div class="panel-heading">
+                <h3>Synthesize</h3>
+            </div>
+            <div class="panel-body">
+
+            </div>
+        </div>
+        <div class="panel panel-default" data-pp="240">
+            <div class="panel-heading">
+                <h3>Design</h3>
+            </div>
+            <div class="panel-body">
+
+            </div>
+        </div>
+        <div class="panel panel-default" data-pp="250">
+            <div class="panel-heading">
+                <h3>Prototype</h3>
+            </div>
+            <div class="panel-body">
+
+            </div>
+        </div>
+        <div class="panel panel-default" data-pp="260">
+            <div class="panel-heading">
+                <h3>Validate</h3>
+            </div>
+            <div class="panel-body">
+
+            </div>
         </div>
     </div>
-    <!-- Iteration #3 -->
-    <h2>Iteration #3</h2>
-    <div class="panel panel-default" data-pp="210">
-        <div class="panel-heading"><h3>Scoping</h3></div>
-        <div class="panel-body">
 
-        </div>
-    </div>
-    <div class="panel panel-default" data-pp="220">
-        <div class="panel-heading"><h3>Research</h3></div>
-        <div class="panel-body">
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 
-        </div>
-    </div>
-    <div class="panel panel-default" data-pp="230">
-        <div class="panel-heading"><h3>Synthesize</h3></div>
-        <div class="panel-body">
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <!-- Include presentation plugin -->
+    <script src="../../presentationLight-0.0.1.js"></script>
+    <script>
+        $(function () {
+            $('.container').presi();
+        });
 
-        </div>
-    </div>
-    <div class="panel panel-default" data-pp="240">
-        <div class="panel-heading"><h3>Design</h3></div>
-        <div class="panel-body">
+    </script>
+    <!-- Include plugin to add external .html files -->
+    <script>
+        //noinspection JSUnresolvedFunction
+        w3IncludeHTML();
 
-        </div>
-    </div>
-    <div class="panel panel-default" data-pp="250">
-        <div class="panel-heading"><h3>Prototype</h3></div>
-        <div class="panel-body">
-
-        </div>
-    </div>
-    <div class="panel panel-default" data-pp="260">
-        <div class="panel-heading"><h3>Validate</h3></div>
-        <div class="panel-body">
-
-        </div>
-    </div>
-</div>
-
-<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-
-<!-- Include all compiled plugins (below), or include individual files as needed -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<!-- Include presentation plugin -->
-<script src="../../presentationLight-0.0.1.js"></script>
-<script>
-    $(function() {
-        $('.container').presi();
-    });
-</script>
-<!-- Include plugin to add external .html files -->
-<script>//noinspection JSUnresolvedFunction
-w3IncludeHTML();
-</script>
+    </script>
 </body>
+
 </html>
