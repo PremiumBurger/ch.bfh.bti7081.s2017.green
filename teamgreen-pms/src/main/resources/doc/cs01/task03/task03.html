@@ -165,7 +165,7 @@
                 </table>
                 <!-- Interviewfragen ausgelagert, da direkt aus Google Doc -> HTML konvertiert -->
                 <b>Interviewfragen als Richtlinie</b>
-                <div w3-include-html="./ressources/interviewfragen.html"></div>
+                <div w3-include-html="./ressources/interviewfragen.html" data-pp="95"></div>
             </div>
         </div>
         <div class="panel panel-default" data-pp="100">
@@ -407,7 +407,7 @@
 
 
                 <h4>Storyboards</h4>
-                <div class="panel panel-default">
+                <div class="panel panel-default" data-pp="201">
                     <div class="panel-heading">Spitex Visite</div>
                     <div class="panel-body">
                         <div class="col-md-3">
@@ -453,7 +453,7 @@
                     </div>
                 </div>
 
-                <div class="panel panel-default">
+                <div class="panel panel-default"  data-pp="202">
                     <div class="panel-heading">Notfälle Borderliner</div>
                     <div class="panel-body">
 
@@ -493,7 +493,7 @@
                     </div>
                 </div>
 
-                <div class="panel panel-default">
+                <div class="panel panel-default"  data-pp="203">
                     <div class="panel-heading">Medikamentenverordnung</div>
                     <div class="panel-body">
                         <div class="col-md-3">
@@ -514,6 +514,7 @@
         <div class="alert alert-info wow rotateInDownLeft" data-pp="210">
             <h3>Iteration #3</h3>
             <ul>
+                <li>Research</li>
                 <li>Synthesize (Requirements)</li>
                 <li>Storyboards</li>
                 <li>Prototypes</li>
@@ -544,152 +545,155 @@
                 <h3>Synthesize</h3>
             </div>
             <div class="panel-body">
-                <table class="table table-striped" data-pp="231">
-                    <h4>Funktionale Anforderungen</h4>
-                    <thead>
-                        <th>#</th>
-                        <th>Requirement</th>
+                <div data-pp="231">
+                    <table class="table table-striped">
+                        <h4>Funktionale Anforderungen</h4>
+                        <thead>
+                            <th>#</th>
+                            <th>Requirement</th>
 
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>Eine Wissensdatenbank mit Informationen über das Krankheitsbild</td>
-                        </tr>
-                         <tr>
-                            <td>2</td>
-                            <td>Spitex MitarbeiterIn hat Einsicht in die Medikamente und kann sie vor Ort verabreichen. Wenn die Medikamente verabreicht wurden, werden sie von der Person vor Ort abgehakt.</td>
-                        </tr>
-                         <tr>
-                            <td>3</td>
-                            <td>Auf der App gibt es einen Alarmknopf, welcher den Ort direkt an die Notfallzentrale übermittelt.</td>
-                        </tr>
-                         <tr>
-                            <td>4</td>
-                            <td>Arzt kann Patient Medikamente inklusive Dosierung verordnen und im System registrieren</td>
-                        </tr>
-                         <tr>
-                            <td>5</td>
-                            <td>Patient muss zu ‘Meine Patienten’ hinzugefügt werden können</td>
-                        </tr>
-                         <tr>
-                            <td>6</td>
-                            <td>Sozialarbeiterin muss Patient in System suchen können</td>
-                        </tr>
-                         <tr>
-                            <td>7</td>
-                            <td>Allgemeine Informationen wie Wohnort, Telefonnr. müssen abgerufen werden können</td>
-                        </tr>
-                         <tr>
-                            <td>8</td>
-                            <td>Sozialarbeiterin kann Informationen zu Hilfsmitteln im Notfall für Borderline Patienten im System abrufen.</td>
-                        </tr>
-                         <tr>
-                            <td>9</td>
-                            <td>Sozialarbeiterin muss im Notfall per Knopfdruck Hilfe über die Notrufzentrale anfordern können.</td>
-                        </tr>
-                         <tr>
-                            <td>10</td>
-                            <td>Sozialarbeiterin muss Zugriff auf ausgewählte Gesprächsprotokolle zwischen Arzt und Patient haben.</td>
-                        </tr>
-                        <tr>
-                            <td>11</td>
-                            <td>Sozialarbeiterin muss per Handykamera vor Ort gemachte Fotos zu Patientenakte hinzufügen können.</td>
-                        </tr>
-                        <tr>
-                            <td>12</td>
-                            <td>Die grafischen Dokumente sollen auch auf den mobilen Geräten zoombar sein</td>
-                        </tr>
-                        <tr>
-                            <td>13</td>
-                            <td>Es soll ein systemweiter Chat verfügbar sein, wo sich die Sozialarbeiterin bei Unklarheiten beispielsweise schriftlich beim behandelnden Arzt melden kann.</td>
-                        </tr>
-                        <tr>
-                            <td>14</td>
-                            <td>Sozialarbeiterin kann Gesprächsverlauf und Gesamteindruck über Bewertungsskala im System hinterlegen.</td>
-                        </tr>
-                        <tr>
-                            <td>15</td>
-                            <td>Sozialarbeiterin kann Gefährdungsmeldung über System an zuständige Behörde senden.</td>
-                        </tr>
-                        <tr>
-                            <td>16</td>
-                            <td>Als Gesundheitsexperte will ich, eine Übersicht meiner Patientenbesuche mit Zeit und Ort einsehen können</td>
-                        </tr>
-                        <tr>
-                            <td>17</td>
-                            <td>Als Gesundheitsexperte will ich, zu einer anstehenden Visite die dazugehörigen Verordnungen einsehen können</td>
-                        </tr>
-                        <tr>
-                            <td>18</td>
-                            <td>Als Gesundheitsexperte will ich nach einer Visite meine Notizen im Journal des Patienten dokumentieren</td>
-                        </tr>
-                        <tr>
-                            <td>19</td>
-                            <td>Als Gesundheitsexperte will ich, dass das System vorhandene Notschlafstellen mit Telefonnummern anzeigt. Zur Unterstützung beim Organisieren der Anschlusslösung.</td>
-                        </tr>
-                         <tr>
-                            <td>20</td>
-                            <td>Als Gesundheitsexperte will ich nach einer Visite im System eine Anschlusslösung für den Patienten dokumentieren können</td>
-                        </tr>
-                         <tr>
-                            <td>21</td>
-                            <td>Als Gesundheitsexperte will ich im Journal des Patienten nachvollziehen können welche Anschlusslösung gewählt wurde.</td>
-                        </tr>
-                         <tr>
-                            <td>22</td>
-                            <td>Als Gesundheitsexperte will ich ein Terminversäumnis im Journal dokumentieren nachvollziehen können.</td>
-                        </tr>
-                         <tr>
-                            <td>23</td>
-                            <td>Als Gesundheitsexperte will ich das Datum eines bestehenden Termins verändern können.</td>
-                        </tr>
-                        <tr>
-                            <td>24</td>
-                            <td>Als Gesundheitsexperte will ich den Änderungsverlauf eines Termins einsehen könne.</td>
-                        </tr>
-                        <tr>
-                            <td>25</td>
-                            <td>Als Gesundheitsexperte will ich einen Journaleintrag des Patienten als “wichtig” markieren können.</td>
-                        </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>Eine Wissensdatenbank mit Informationen über das Krankheitsbild</td>
+                            </tr>
+                             <tr>
+                                <td>2</td>
+                                <td>Spitex MitarbeiterIn hat Einsicht in die Medikamente und kann sie vor Ort verabreichen. Wenn die Medikamente verabreicht wurden, werden sie von der Person vor Ort abgehakt.</td>
+                            </tr>
+                             <tr>
+                                <td>3</td>
+                                <td>Auf der App gibt es einen Alarmknopf, welcher den Ort direkt an die Notfallzentrale übermittelt.</td>
+                            </tr>
+                             <tr>
+                                <td>4</td>
+                                <td>Arzt kann Patient Medikamente inklusive Dosierung verordnen und im System registrieren</td>
+                            </tr>
+                             <tr>
+                                <td>5</td>
+                                <td>Patient muss zu ‘Meine Patienten’ hinzugefügt werden können</td>
+                            </tr>
+                             <tr>
+                                <td>6</td>
+                                <td>Sozialarbeiterin muss Patient in System suchen können</td>
+                            </tr>
+                             <tr>
+                                <td>7</td>
+                                <td>Allgemeine Informationen wie Wohnort, Telefonnr. müssen abgerufen werden können</td>
+                            </tr>
+                             <tr>
+                                <td>8</td>
+                                <td>Sozialarbeiterin kann Informationen zu Hilfsmitteln im Notfall für Borderline Patienten im System abrufen.</td>
+                            </tr>
+                             <tr>
+                                <td>9</td>
+                                <td>Sozialarbeiterin muss im Notfall per Knopfdruck Hilfe über die Notrufzentrale anfordern können.</td>
+                            </tr>
+                             <tr>
+                                <td>10</td>
+                                <td>Sozialarbeiterin muss Zugriff auf ausgewählte Gesprächsprotokolle zwischen Arzt und Patient haben.</td>
+                            </tr>
+                            <tr>
+                                <td>11</td>
+                                <td>Sozialarbeiterin muss per Handykamera vor Ort gemachte Fotos zu Patientenakte hinzufügen können.</td>
+                            </tr>
+                            <tr>
+                                <td>12</td>
+                                <td>Die grafischen Dokumente sollen auch auf den mobilen Geräten zoombar sein</td>
+                            </tr>
+                            <tr>
+                                <td>13</td>
+                                <td>Es soll ein systemweiter Chat verfügbar sein, wo sich die Sozialarbeiterin bei Unklarheiten beispielsweise schriftlich beim behandelnden Arzt melden kann.</td>
+                            </tr>
+                            <tr>
+                                <td>14</td>
+                                <td>Sozialarbeiterin kann Gesprächsverlauf und Gesamteindruck über Bewertungsskala im System hinterlegen.</td>
+                            </tr>
+                            <tr>
+                                <td>15</td>
+                                <td>Sozialarbeiterin kann Gefährdungsmeldung über System an zuständige Behörde senden.</td>
+                            </tr>
+                            <tr>
+                                <td>16</td>
+                                <td>Als Gesundheitsexperte will ich, eine Übersicht meiner Patientenbesuche mit Zeit und Ort einsehen können</td>
+                            </tr>
+                            <tr>
+                                <td>17</td>
+                                <td>Als Gesundheitsexperte will ich, zu einer anstehenden Visite die dazugehörigen Verordnungen einsehen können</td>
+                            </tr>
+                            <tr>
+                                <td>18</td>
+                                <td>Als Gesundheitsexperte will ich nach einer Visite meine Notizen im Journal des Patienten dokumentieren</td>
+                            </tr>
+                            <tr>
+                                <td>19</td>
+                                <td>Als Gesundheitsexperte will ich, dass das System vorhandene Notschlafstellen mit Telefonnummern anzeigt. Zur Unterstützung beim Organisieren der Anschlusslösung.</td>
+                            </tr>
+                             <tr>
+                                <td>20</td>
+                                <td>Als Gesundheitsexperte will ich nach einer Visite im System eine Anschlusslösung für den Patienten dokumentieren können</td>
+                            </tr>
+                             <tr>
+                                <td>21</td>
+                                <td>Als Gesundheitsexperte will ich im Journal des Patienten nachvollziehen können welche Anschlusslösung gewählt wurde.</td>
+                            </tr>
+                             <tr>
+                                <td>22</td>
+                                <td>Als Gesundheitsexperte will ich ein Terminversäumnis im Journal dokumentieren nachvollziehen können.</td>
+                            </tr>
+                             <tr>
+                                <td>23</td>
+                                <td>Als Gesundheitsexperte will ich das Datum eines bestehenden Termins verändern können.</td>
+                            </tr>
+                            <tr>
+                                <td>24</td>
+                                <td>Als Gesundheitsexperte will ich den Änderungsverlauf eines Termins einsehen könne.</td>
+                            </tr>
+                            <tr>
+                                <td>25</td>
+                                <td>Als Gesundheitsexperte will ich einen Journaleintrag des Patienten als “wichtig” markieren können.</td>
+                            </tr>
 
-                    </tbody>
-                </table>
+                        </tbody>
+                    </table>
+                </div>
+                <div data-pp="232">
+                    <table class="table table-striped">
+                         <h4>Nicht funktionale Anforderungen</h4>
+                        <thead>
+                            <th>#</th>
+                            <th>Requirement</th>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>Patienteninformationen müssen mit Login geschützt werden.</td>
+                            </tr>
+                             <tr>
+                                <td>2</td>
+                                <td>Schnittstellen zu anderen Systemen (direkt oder Export/Import).</td>
+                            </tr>
+                             <tr>
+                                <td>3</td>
+                                <td>Verbindung zwischen Client und Server ist verschlüsselt.</td>
+                            </tr>
+                             <tr>
+                                <td>4</td>
+                                <td></td>
+                            </tr>
+                             <tr>
+                                <td>5</td>
+                                <td></td>
+                            </tr>
+                             <tr>
+                                <td>6</td>
+                                <td>next...</td>
+                            </tr>
 
-                 <table class="table table-striped" data-pp="232">
-                    <h4>Nicht funktionale Anforderungen</h4>
-                    <thead>
-                        <th>#</th>
-                        <th>Requirement</th>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>Patienteninformationen müssen mit Login geschützt werden.</td>
-                        </tr>
-                         <tr>
-                            <td>2</td>
-                            <td>Schnittstellen zu anderen Systemen (direkt oder Export/Import).</td>
-                        </tr>
-                         <tr>
-                            <td>3</td>
-                            <td>Verbindung zwischen Client und Server ist verschlüsselt.</td>
-                        </tr>
-                         <tr>
-                            <td>4</td>
-                            <td></td>
-                        </tr>
-                         <tr>
-                            <td>5</td>
-                            <td></td>
-                        </tr>
-                         <tr>
-                            <td>6</td>
-                            <td>next...</td>
-                        </tr>
-                        
-                    </tbody>
-                 </table>
+                        </tbody>
+                     </table>
+                </div>
             </div>
         </div>
         <div class="panel panel-default" data-pp="250">
