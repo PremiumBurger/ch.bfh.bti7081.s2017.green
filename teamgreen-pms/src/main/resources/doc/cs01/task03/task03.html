@@ -15,6 +15,25 @@
 </head>
 
 <body>
+    <!-- Creates the bootstrap modal where the image will appear -->
+    <div class="modal fade" id="imagemodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">
+                    <span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+                </button>
+                <h4 class="modal-title" id="myModalLabel">Image preview</h4>
+            </div>
+            <div class="modal-body">
+                <img src="" id="imagepreview" style="width: 800px;" >
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+            </div>
+        </div>
+    </div>
     <div class="container">
         <div class="jumbotron">
             <h1>Task 03 - Design Thinking</h1>
@@ -209,7 +228,7 @@
             <div class="panel-body">
                 <div class="col-md-3">
                     <div class="thumbnail">
-                        <a href="./prototypes/PrototypeIteration1.png" target="_blank">
+                        <a class="modal" href="./prototypes/PrototypeIteration1.png">
                             <img src="./prototypes/PrototypeIteration1.png" alt="Mobile View" />
                             <div class="caption">
                                 <p>Mobile view</p>
@@ -388,7 +407,7 @@
                     <div class="panel-body">
                         <div class="col-md-3">
                             <div class="thumbnail">
-                                <a href="./stories/story_visite_01.PNG" target="_blank">
+                                <a class="modals" href="./stories/story_visite_01.PNG">
                                     <img src="./stories/story_visite_01.PNG" alt="story visite erfassung" />
                                     <div class="caption">
                                         <p>Erfassung Patient</p>
@@ -398,7 +417,7 @@
                         </div>
                         <div class="col-md-3">
                             <div class="thumbnail">
-                                <a href="./stories/story_visite_02.PNG" target="_blank">
+                                <a class="modals" href="./stories/story_visite_02.PNG">
                                     <img src="./stories/story_visite_02.PNG" alt="story visite weiteres vorgehen" />
                                     <div class="caption">
                                         <p>Weiteres Vorgehen nach Visite</p>
@@ -408,7 +427,7 @@
                         </div>
                         <div class="col-md-3">
                             <div class="thumbnail">
-                                <a href="./stories/story_visite_03.PNG" target="_blank">
+                                <a class="modals" href="./stories/story_visite_03.PNG">
                                     <img src="./stories/story_visite_03.PNG" alt="story visite patient unaffindbar" />
                                     <div class="caption">
                                         <p>Patient unauffindbar</p>
@@ -418,7 +437,7 @@
                         </div>
                         <div class="col-md-3">
                             <div class="thumbnail">
-                                <a href="./stories/story_visite_04.PNG" target="_blank">
+                                <a class="modals" href="./stories/story_visite_04.PNG">
                                     <img src="./stories/story_visite_04.PNG" alt="story visite terminplanung" />
                                     <div class="caption">
                                         <p>Allgemeine Terminplanung Visite</p>
@@ -436,7 +455,7 @@
 
                         <div class="col-md-3">
                             <div class="thumbnail">
-                                <a href="./stories/story_notfallkit.png" target="_blank">
+                                <a class="modals" href="./stories/story_notfallkit.png">
                                     <img src="./stories/story_notfallkit.png" alt="story visite notfallkit" style='height: 100%; width: 100%; object-fit: contain'
                                     />
                                     <div class="caption">
@@ -448,7 +467,7 @@
 
                         <div class="col-md-3">
                             <div class="thumbnail">
-                                <a href="./stories/story_notfallknopf.png" target="_blank">
+                                <a class="modals" href="./stories/story_notfallknopf.png">
                                     <img src="./stories/story_notfallknopf.png" alt="story visite notfallknopf" />
                                     <div class="caption">
                                         <p>Notfallknopf</p>
@@ -459,7 +478,7 @@
 
                         <div class="col-md-3">
                             <div class="thumbnail">
-                                <a href="./stories/story_selbstverletzung.png" target="_blank">
+                                <a class="modals" href="./stories/story_selbstverletzung.png">
                                     <img src="./stories/story_selbstverletzung.png" alt="story visite selbstverletzung" style='height: 100%; width: 100%; object-fit: contain'
                                     />
                                     <div class="caption">
@@ -477,7 +496,7 @@
                     <div class="panel-body">
                         <div class="col-md-3">
                             <div class="thumbnail">
-                                <a href="./stories/story_medikamentenverordnung.png" target="_blank">
+                                <a class="modals" href="./stories/story_medikamentenverordnung.png">
                                     <img src="./stories/story_medikamentenverordnung.png" alt="story visite medikamente" />
                                     <div class="caption">
                                         <p>Medikamentenverordnung</p>
@@ -686,7 +705,7 @@
                     <div class="panel-body">
                         <div class="col-md-3">
                             <div class="thumbnail">
-                                <a href="./stories/story_systemchat.png" target="_blank">
+                                <a class="modals" href="./stories/story_systemchat.png">
                                     <img src="./stories/story_systemchat.png" alt="story systemchat" />
                                     <div class="caption">
                                         <p>Systemchat</p>
@@ -696,7 +715,7 @@
                         </div>
                         <div class="col-md-3">
                             <div class="thumbnail">
-                                <a target="_blank" href="./stories/story_gesamteindruck.png" target="_blank">
+                                <a class="modals" href="./stories/story_gesamteindruck.png">
                                     <img src="./stories/story_gesamteindruck.png" alt="story gesamteindruck" />
                                     <div class="caption">
                                         <p>Gesamteindruck Patient</p>
@@ -706,7 +725,7 @@
                         </div>
                         <div class="col-md-3">
                             <div class="thumbnail">
-                                <a target="_blank" href="./stories/visit-escalation.jpg">
+                                <a class="modals" href="./stories/visit-escalation.jpg">
                                     <img src="./stories/visit-escalation.jpg" alt="story visite medikamente" />
                                     <div class="caption">
                                         <p>Besuch eskaliert</p>
@@ -716,7 +735,7 @@
                         </div>
                         <div class="col-md-3">
                             <div class="thumbnail">
-                                <a target="_blank" href="./stories/arztmeldung.jpg">
+                                <a class="modals" href="./stories/arztmeldung.jpg">
                                     <img src="./stories/arztmeldung.jpg" alt="story visite medikamente" />
                                     <div class="caption">
                                         <p>Arztmeldung</p>
@@ -741,7 +760,7 @@
             <div class="panel-body">
                 <div class="col-md-3">
                     <div class="thumbnail">
-                        <a href="./prototypes/PrototypeIteration3.png">
+                        <a class="modals" href="./prototypes/PrototypeIteration3.png">
                             <img src="./prototypes/PrototypeIteration3.png" alt="Mobile View" />
                             <div class="caption">
                                 <p>Mobile view</p>
@@ -749,6 +768,16 @@
                         </a>
                     </div>
                 </div>
+                <div class="col-md-3">
+                    <div class="thumbnail">
+                        <a class="modals" href="./prototypes/Medikamentenverordung.png">
+                            <img src="./prototypes/Medikamentenverordung.png" alt="story visite medikamente" />
+                            <div class="caption">
+                                <p>Medikament verordnen</p>
+                            </div>
+                        </a>
+                    </div>
+                </div>                    
             </div>
         </div>
         <div class="panel panel-default" data-pp="260">
@@ -807,6 +836,12 @@
     <script>
         $(function () {
             $('.container').presi();
+
+            $(".modals").on("click", function(ev) {
+                ev.preventDefault();
+                $('#imagepreview').attr('src', $(this).find('img').attr('src')); // here asign the image to the modal when the user click the enlarge link
+                $('#imagemodal').modal('show'); // imagemodal is the id attribute assigned to the bootstrap modal, then i use the show function
+            });
         });
     </script>
     <!-- Include plugin to add external .html files -->
