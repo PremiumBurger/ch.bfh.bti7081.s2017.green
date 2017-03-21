@@ -278,7 +278,9 @@
                             <td>Sozialarbeiterin</td>
                             <td>15.03.2017</td>
                             <td><span class="badge">baiuj1</span></td>
-                            <td><a class="interview-link" href="./ressources/InterviewSozialarbeiterin.html">Interview Sozialarbeiterin</a></td>
+                            <td>
+                                <a class="interview-link" href="./ressources/InterviewSozialarbeiterin.html">Interview Sozialarbeiterin</a>
+                            </td>
                         </tr>
                         <tr>
                             <td>Psychiatriezentrum Münsingen</td>
@@ -886,7 +888,7 @@
                 $('#interview-modal')
                     .find('.modal-title').html($link.html())
                     .end()
-                    .find('.modal-body').load($link.attr('href'))
+                    .find('.modal-body').load($link.attr('href').replace('./', 'http://htmlpreview.github.io/?https://github.com/PremiumBurger/ch.bfh.bti7081.s2017.green/blob/master/teamgreen-pms/src/main/resources/doc/cs01/task03/'))
                     .end()
                     .modal('show');
             });
