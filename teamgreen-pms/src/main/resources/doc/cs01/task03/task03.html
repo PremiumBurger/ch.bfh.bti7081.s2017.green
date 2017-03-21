@@ -862,7 +862,12 @@
     <script src="../../presentationLight-0.0.1.js"></script>
     <script>
         $(function () {
-            $('.container').presi();
+            $('.container').presi({
+                allowNext: function() {
+                    var isModalShown = $("#imagemodal").css('display') === 'block';
+                    return !isModalShown;
+                }
+            });
 
             $(".modals").on("click", function(ev) {
                 ev.preventDefault();

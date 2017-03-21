@@ -5,7 +5,10 @@
     // Create the defaults once 
     var pluginName = "presi",
         defaults = {
-            slideSelector: 'pp'
+            slideSelector: 'pp',
+            allowNext: function() {
+                return true;
+            }
         };
 
     // The actual plugin constructor
@@ -46,7 +49,7 @@
             this.$document.on('keydown', $.proxy(this.onKeyNavigation, this));
         },
         onKeyNavigation: function (e) {
-            if (this.presentationActive) {
+            if (this.presentationActive && this.options.allowNext()) {
                 switch (e.which) {
                     case 37:
                         if (this.presentationCnt >= 0) {
@@ -66,7 +69,7 @@
             };
         },
         onMouseNavigation: function () {
-            if (this.presentationActive) {
+            if (this.presentationActive && this.options.allowNext()) {
                 if (this.presentationCnt < this.aNumberslength) {
                     this.presentationCnt++;
                     this.showHide(this.aNumbers);
