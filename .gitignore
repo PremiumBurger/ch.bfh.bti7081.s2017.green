@@ -15,5 +15,6 @@ RemoteSystemsTempFiles/
 target/
 
 .idea/
+.vscode/
 
 hs_err_pid*
