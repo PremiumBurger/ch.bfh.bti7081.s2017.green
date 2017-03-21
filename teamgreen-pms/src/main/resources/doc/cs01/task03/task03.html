@@ -31,7 +31,7 @@
                 <h4 class="modal-title" id="myModalLabel">Image preview</h4>
             </div>
             <div class="modal-body">
-                <img src="" id="imagepreview" style="width: 800px;" >
+                <img src="" id="imagepreview" style="width: 100%;" >
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -544,7 +544,7 @@
                 <h3>Synthesize</h3>
             </div>
             <div class="panel-body">
-                <div data-pp="231">
+                <div data-pp="321">
                     <table class="table table-striped">
                         <h4>Funktionale Anforderungen</h4>
                         <thead>
@@ -648,7 +648,7 @@
                         </tbody>
                     </table>
                 </div>
-                <div data-pp="232">
+                <div data-pp="322">
                     <table class="table table-striped">
                          <h4>Nicht funktionale Anforderungen</h4>
                         <thead>
@@ -866,9 +866,9 @@
 
             $(".modals").on("click", function(ev) {
                 ev.preventDefault();
-                $('#imagepreview').attr('src', $(this).find('img').attr('src')); // here asign the image to the modal when the user click the enlarge link
-                $('#imagemodal').modal('show'); // imagemodal is the id attribute assigned to the bootstrap modal, then i use the show function
                 ev.stopPropagation();
+                $('#imagepreview').attr('src', $(this).find('img').attr('src')); // here asign the image to the modal when the user click the enlarge link
+                $('#imagemodal').modal('show');
             });
         });
 
