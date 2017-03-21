@@ -8,6 +8,7 @@
 .project
 .classpath
 .vscode
+.editorconfig
 
 .metadata
 .recommenders
