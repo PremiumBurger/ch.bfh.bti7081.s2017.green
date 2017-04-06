@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- Include plugin to add external .html files -->
+<script src="https://www.w3schools.com/lib/w3data.js"></script>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>PMS Task03</title>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <style>
+        .thumbnail a>img, .thumbnail>img {
+            height: 100px;           
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="jumbotron">
+            <h1>Task 07 -  Domain Model and Sequence Diagram</h1>
+            <p>For your application, design:
+            <ol>
+                <li><p>a UML domain model covering the main classes
+                    <ul>
+                        <li>
+                            incl. association, inheritance, and aggregation relations
+                        </li>
+                        <li>
+                            observe the general modeling guidelines and make use of Responsibility Driven Design (RDD) and use CRC-Cards as a tool.
+                        </li>
+                    </ul>
+                </li>
+                <li><p>based on your domain model, create two UML sequence diagrams, one each for the following situations
+                    <ul>
+                        <li>
+                            when the user updates some specific information
+                        </li>
+                        <li>
+                            when the system alerts the user about some specific event
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <p>if necessary, refine your UML class model to include the attributes and operations needed for your sequence diagrams.
+                </li>
+            </ol>
+            
+        </div>
+        <!-- Iteration #1 -->
+
+
+    <!-- Creates the bootstrap modal where the image will appear -->
+    <div class="modal fade" id="imagemodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">
+                        <span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+                    </button>
+                    <h4 class="modal-title">Image preview</h4>
+                </div>
+                <div class="modal-body">
+                    <img class="imagepreview" src="" style="width: 100%;" >
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <!-- Include presentation plugin -->
+    <script src="../../presentationLight-0.0.1.js"></script>
+    <script>
+        $(function () {
+            $('.container').presi({
+                allowNext: function() {
+                    var isModalShown = $("#imagemodal").css('display') === 'block';
+                    return !isModalShown;
+                }
+            });
+
+            $(".modals").on("click", function(ev) {
+                ev.preventDefault();
+                ev.stopPropagation();
+                var $image = $(this).find('img');
+                $('#imagemodal')
+                    .find('.imagepreview').attr('src', $image.attr('src'))
+                    .end()
+                    .find('.modal-title').html($image.attr('alt'))
+                    .end()
+                    .modal('show');
+            });
+        });
+
+        // noinspection JSUnresolvedFunction
+        w3IncludeHTML();
+    </script>
+</body>
+
+</html>
