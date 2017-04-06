@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- Include plugin to add external .html files -->
+<script src="https://www.w3schools.com/lib/w3data.js"></script>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>PMS Task03</title>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../reveal.js-master/css/reveal.css">
+	<link rel="stylesheet" href="../../reveal.js-master/css/theme/sky.css">
+    <style>
+        .thumbnail a>img,
+        .thumbnail>img {
+            height: 100px;
+        }
+    </style>
+</head>
+<body>
+       <div class="reveal">
+			<div class="slides">
+				<section>
+                    <h4>Domain Model</h4>
+                     <img src="./images/domainmodel.png" alt="Mobile View">
+                </section>
+				<section>
+                    <h4>Sequence Diagram Update Info</h4>
+                    <img src="./images/sequpdateinfo.png" alt="Mobile View">
+                </section>
+                <section>
+                    <h4>Sequence Diagram Follow up Solution</h4>
+                    <img src="./images/seqfollowupsolution.png" alt="Mobile View">
+                </section>
+                <section>
+                    <h4>Sequence Diagram Event</h4>
+                    <img src="./images/seqevent.png" alt="Mobile View">
+                </section>
+			</div>
+		</div>
+       
+
+        <!-- Creates the bootstrap modal where the image will appear -->
+        <div class="modal fade" id="imagemodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">
+                        <span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+                    </button>
+                        <h4 class="modal-title">Image preview</h4>
+                    </div>
+                    <div class="modal-body">
+                        <img class="imagepreview" src="" style="width: 100%;">
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+        <!-- Include all compiled plugins (below), or include individual files as needed -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <!-- Include presentation plugin -->
+        <script src="../../reveal.js-master/js/reveal.js"></script>
+        <script>
+			Reveal.initialize();
+		</script>
+        <script>
+            $(function () {
+                $('.container').presi({
+                    allowNext: function () {
+                        var isModalShown = $("#imagemodal").css('display') === 'block';
+                        return !isModalShown;
+                    }
+                });
+
+                $(".modals").on("click", function (ev) {
+                    ev.preventDefault();
+                    ev.stopPropagation();
+                    var $image = $(this).find('img');
+                    $('#imagemodal')
+                        .find('.imagepreview').attr('src', $image.attr('src'))
+                        .end()
+                        .find('.modal-title').html($image.attr('alt'))
+                        .end()
+                        .modal('show');
+                });
+            });
+
+            // noinspection JSUnresolvedFunction
+            w3IncludeHTML();
+        </script>
+</body>
+
+</html>
