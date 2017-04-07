@@ -107,17 +107,6 @@
                         </a>
                     </div>
                 </div>
-                <div class="col-md-3">
-                    <div class="thumbnail">
-                        <a class="modals" href="./images/seqevent.png">
-                            <img src="./images/seqevent.png" alt="Mobile View">
-                            <div class="caption">
-                                <p>Event</p>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-
             </div>
         </div>
         <div class="panel panel-default">
@@ -216,7 +205,7 @@
                         </div>
                     </div>
                 </div>
-                 <div class="panel panel-default">
+                <div class="panel panel-default">
                     <div class="panel-heading">
                         <p>Class Name: <b>Follow up Solution</b>
                             <p>Purpose: Kapselt die Eigenschaften und Methoden einer Anschlusslösung
@@ -269,15 +258,9 @@
 
         <!-- Include all compiled plugins (below), or include individual files as needed -->
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+     
         <script>
             $(function () {
-                $('.container').presi({
-                    allowNext: function () {
-                        var isModalShown = $("#imagemodal").css('display') === 'block';
-                        return !isModalShown;
-                    }
-                });
-
                 $(".modals").on("click", function (ev) {
                     ev.preventDefault();
                     ev.stopPropagation();
