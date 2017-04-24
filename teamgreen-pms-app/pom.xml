@@ -2,173 +2,214 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
+
     <parent>
-        <artifactId>teamgreen</artifactId>
         <groupId>ch.bfh.bti7081.s2017.green</groupId>
+        <artifactId>teamgreen</artifactId>
         <version>0.0.1</version>
     </parent>
 
-    <groupId>org.test</groupId>
+    <groupId>ch.bfh.bti7081.s2017.green</groupId>
     <artifactId>teamgreen-pms-app</artifactId>
-    <packaging>war</packaging>
     <version>0.0.1</version>
-    <name>teamgreep-pms-app</name>
+    <packaging>jar</packaging>
 
-    <prerequisites>
-        <maven>3</maven>
-    </prerequisites>
+    <name>teamgreen-pms-app</name>
+    <description>Teamgreen PMS Application</description>
 
     <properties>
-        <vaadin.version>8.0.4</vaadin.version>
-        <vaadin.plugin.version>8.0.4</vaadin.plugin.version>
-        <jetty.plugin.version>9.3.9.v20160517</jetty.plugin.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <maven.compiler.source>1.8</maven.compiler.source>
-        <maven.compiler.target>1.8</maven.compiler.target>
-        <!-- If there are no local customisations, this can also be "fetch" or "cdn" -->
-        <vaadin.widgetset.mode>local</vaadin.widgetset.mode>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <java.version>1.8</java.version>
+
+        <!-- Third Party Versions -->
+        <version.mysql-connector>6.0.6</version.mysql-connector>
+        <version.vaadin-bom>8.0.5</version.vaadin-bom>
+        <version.hsqldb>2.3.4</version.hsqldb>
+        <version.spring-framework>1.5.2.RELEASE</version.spring-framework>
+        <version.spring-data-jpa>1.11.1.RELEASE</version.spring-data-jpa>
+        <version.spring-orm>4.3.7.RELEASE</version.spring-orm>
+        <version.persistence-api>1.0.2</version.persistence-api>
+        <version.validation-api>1.1.0.Final</version.validation-api>
+        <version.hibernate-entitymanager>5.2.9.Final</version.hibernate-entitymanager>
+        <version.commons-collections>3.2.2</version.commons-collections>
+        <version.liquibase-core>3.5.3</version.liquibase-core>
+        <version.commons-lang>2.3</version.commons-lang>
     </properties>
 
-    <repositories>
-        <repository>
-            <id>vaadin-addons</id>
-            <url>http://maven.vaadin.com/vaadin-addons</url>
-        </repository>
-    </repositories>
+    <dependencies>
+
+        <!-- Vaadin & Spring -->
+        <dependency>
+            <groupId>com.vaadin</groupId>
+            <artifactId>vaadin-spring-boot-starter</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-maven-plugin</artifactId>
+            <version>${version.spring-framework}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <version>${version.spring-framework}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.data</groupId>
+            <artifactId>spring-data-jpa</artifactId>
+            <version>${version.spring-data-jpa}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-orm</artifactId>
+            <version>${version.spring-orm}</version>
+        </dependency>
+
+        <!-- Database Dependencies -->
+        <dependency>
+            <groupId>org.liquibase</groupId>
+            <artifactId>liquibase-core</artifactId>
+            <version>${version.liquibase-core}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-entitymanager</artifactId>
+            <version>${version.hibernate-entitymanager}</version>
+        </dependency>
+        <dependency>
+            <groupId>javax.persistence</groupId>
+            <artifactId>persistence-api</artifactId>
+            <version>${version.persistence-api}</version>
+        </dependency>
+        <dependency>
+            <groupId>javax.validation</groupId>
+            <artifactId>validation-api</artifactId>
+            <version>${version.validation-api}</version>
+        </dependency>
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>${version.mysql-connector}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.hsqldb</groupId>
+            <artifactId>hsqldb</artifactId>
+            <version>${version.hsqldb}</version>
+        </dependency>
+
+        <!-- Commons -->
+        <dependency>
+            <groupId>commons-dbcp</groupId>
+            <artifactId>commons-dbcp</artifactId>
+            <version>1.4</version>
+        </dependency>
+        <dependency>
+            <groupId>commons-collections</groupId>
+            <artifactId>commons-collections</artifactId>
+            <version>${version.commons-collections}</version>
+        </dependency>
+        <dependency>
+            <groupId>commons-lang</groupId>
+            <artifactId>commons-lang</artifactId>
+            <version>${version.commons-lang}</version>
+        </dependency>
+    </dependencies>
 
     <dependencyManagement>
         <dependencies>
             <dependency>
                 <groupId>com.vaadin</groupId>
                 <artifactId>vaadin-bom</artifactId>
-                <version>${vaadin.version}</version>
+                <version>${version.vaadin-bom}</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
         </dependencies>
     </dependencyManagement>
 
-    <dependencies>
-        <dependency>
-            <groupId>javax.servlet</groupId>
-            <artifactId>javax.servlet-api</artifactId>
-            <version>3.0.1</version>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.vaadin</groupId>
-            <artifactId>vaadin-server</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.vaadin</groupId>
-            <artifactId>vaadin-push</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.vaadin</groupId>
-            <artifactId>vaadin-client-compiled</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.vaadin</groupId>
-            <artifactId>vaadin-themes</artifactId>
-        </dependency>
-    </dependencies>
-
     <build>
+        <finalName>teamgreen-pms-app-${project.version}</finalName>
+
+        <!-- Filter Application Properties -->
+        <filters>
+            <filter>src/main/filters/filter-${env}-application.properties</filter>
+        </filters>
+
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+            </resource>
+        </resources>
+
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-war-plugin</artifactId>
-                <version>3.0.0</version>
+                <artifactId>maven-compiler-plugin</artifactId>
                 <configuration>
-                    <failOnMissingWebXml>false</failOnMissingWebXml>
-                    <!-- Exclude an unnecessary file generated by the GWT compiler. -->
-                    <packagingExcludes>WEB-INF/classes/VAADIN/widgetsets/WEB-INF/**</packagingExcludes>
-                </configuration>
-            </plugin>
-            <plugin>
-                <groupId>com.vaadin</groupId>
-                <artifactId>vaadin-maven-plugin</artifactId>
-                <version>${vaadin.plugin.version}</version>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>update-theme</goal>
-                            <goal>update-widgetset</goal>
-                            <goal>compile</goal>
-                            <!-- Comment out compile-theme goal to use on-the-fly theme compilation -->
-                            <goal>compile-theme</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-clean-plugin</artifactId>
-                <version>3.0.0</version>
-                <!-- Clean up also any pre-compiled themes -->
-                <configuration>
-                    <filesets>
-                        <fileset>
-                            <directory>src/main/webapp/VAADIN/themes</directory>
-                            <includes>
-                                <include>**/styles.css</include>
-                                <include>**/styles.scss.cache</include>
-                            </includes>
-                        </fileset>
-                    </filesets>
+                    <source>1.8</source>
+                    <target>1.8</target>
                 </configuration>
             </plugin>
 
-            <!-- The Jetty plugin allows us to easily test the development build by
-                running jetty:run on the command line. -->
+            <!-- Spring Boot Plugin -->
             <plugin>
-                <groupId>org.eclipse.jetty</groupId>
-                <artifactId>jetty-maven-plugin</artifactId>
-                <version>${jetty.plugin.version}</version>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+
+            <!-- Liquibase Plugin -->
+            <plugin>
+                <groupId>org.liquibase</groupId>
+                <artifactId>liquibase-maven-plugin</artifactId>
+                <version>3.5.3</version>
+
                 <configuration>
-                    <scanIntervalSeconds>2</scanIntervalSeconds>
+                    <propertyFileWillOverride>true</propertyFileWillOverride>
+                    <promptOnNonLocalDatabase>false</promptOnNonLocalDatabase>
+                    <propertyFile>target/classes/liquibase.properties</propertyFile>
+                    <changeLogFile>src/main/resources/database/all.changelog-master.xml</changeLogFile>
+                    <migrationSqlOutputFile>src/main/resources/database/sql/initScript.sql</migrationSqlOutputFile>
                 </configuration>
+
+                <dependencies>
+                    <dependency>
+                        <groupId>org.hsqldb</groupId>
+                        <artifactId>hsqldb</artifactId>
+                        <version>${version.hsqldb}</version>
+                    </dependency>
+                    <dependency>
+                        <groupId>mysql</groupId>
+                        <artifactId>mysql-connector-java</artifactId>
+                        <version>${version.mysql-connector}</version>
+                    </dependency>
+                </dependencies>
             </plugin>
         </plugins>
     </build>
 
+    <!-- Build Profiles -->
     <profiles>
         <profile>
-            <!-- Vaadin pre-release repositories -->
-            <id>vaadin-prerelease</id>
+            <id>Local</id>
             <activation>
+                <activeByDefault>true</activeByDefault>
             </activation>
-
-            <repositories>
-                <repository>
-                    <id>vaadin-prereleases</id>
-                    <url>http://maven.vaadin.com/vaadin-prereleases</url>
-                </repository>
-                <repository>
-                    <id>vaadin-snapshots</id>
-                    <url>https://oss.sonatype.org/content/repositories/vaadin-snapshots/</url>
-                    <releases>
-                        <enabled>false</enabled>
-                    </releases>
-                    <snapshots>
-                    </snapshots>
-                </repository>
-            </repositories>
-            <pluginRepositories>
-                <pluginRepository>
-                    <id>vaadin-prereleases</id>
-                    <url>http://maven.vaadin.com/vaadin-prereleases</url>
-                </pluginRepository>
-                <pluginRepository>
-                    <id>vaadin-snapshots</id>
-                    <url>https://oss.sonatype.org/content/repositories/vaadin-snapshots/</url>
-                    <releases>
-                        <enabled>false</enabled>
-                    </releases>
-                    <snapshots>
-                    </snapshots>
-                </pluginRepository>
-            </pluginRepositories>
+            <properties>
+                <env>Local</env>
+            </properties>
+            <dependencies>
+                <dependency>
+                    <groupId>org.hsqldb</groupId>
+                    <artifactId>hsqldb</artifactId>
+                    <version>${version.hsqldb}</version>
+                </dependency>
+                <dependency>
+                    <groupId>mysql</groupId>
+                    <artifactId>mysql-connector-java</artifactId>
+                    <version>${version.mysql-connector}</version>
+                </dependency>
+            </dependencies>
         </profile>
     </profiles>
 
