@@ -278,30 +278,28 @@
                             <td>Sozialarbeiterin</td>
                             <td>15.03.2017</td>
                             <td><span class="badge">baiuj1</span></td>
-                            <td>
-                                <a class="interview-link" href="./ressources/InterviewSozialarbeiterin.html">Interview Sozialarbeiterin</a>
-                            </td>
+                            <td><a target="_blank" href="./ressources/InterviewSozialarbeiterin.html">Interview Sozialarbeiterin</a></td>
                         </tr>
                         <tr>
                             <td>Psychiatriezentrum Münsingen</td>
                             <td>ehem. Assistenzarzt, Controller Buchhaltung</td>
                             <td>16.03.2017</td>
                             <td><span class="badge">schms27</span></td>
-                            <td><a class="interview-link" href="./ressources/InterviewAssistenzarztControllerPZM.html">Interview PZM</a></td>
+                            <td><a target="_blank" href="./ressources/InterviewAssistenzarztControllerPZM.html">Interview PZM</a></td>
                         </tr>
                         <tr>
                             <td>Universitäre Psychiatrische Dienste Bern</td>
                             <td>Fachärztin</td>
                             <td>16.03.2017</td>
                             <td><span class="badge">vonac1</span></td>
-                            <td><a class="interview-link" href="./ressources/InterviewAerztinUPD.html">Interview Ärztin UPD</a></td>
+                            <td><a target="_blank" href="./ressources/InterviewAerztinUPD.html">Interview Ärztin UPD</a></td>
                         </tr>
                         <tr>
                             <td>Universitäre Psychiatrische Dienste Bern</td>
                             <td>Praktikantin</td>
                             <td>16.03.2017</td>
                             <td><span class="badge">thekem1</span></td>
-                            <td><a class="interview-link" href="./ressources/InterviewPraktikantinUPD.html">Interview Praktikantin UPD</a></td>
+                            <td><a target="_blank" href="./ressources/InterviewPraktikantinUPD.html">Interview Praktikantin UPD</a></td>
                         </tr>
                     </tbody>
                 </table>
@@ -810,10 +808,6 @@
                             <td>6</td>
                             <td>Werden gewisse Funktionen nicht benötigt?</td>
                         </tr>
-                         <tr>
-                            <td>7</td>
-                            <td>Ist die Applikation selbsterklährend?</td>
-                        </tr>
                     </tbody>
                 </table>
             </div>
@@ -836,20 +830,6 @@
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                 </div>
-            </div>
-        </div>
-    </div>
-    <!-- Creates the bootstrap modal where the image will appear -->
-    <div class="modal fade" id="interview-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal">
-                        <span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
-                    </button>
-                    <h4 class="modal-title">Interview</h4>
-                </div>
-                <div class="modal-body">Loading...</div>
             </div>
         </div>
     </div>
@@ -878,17 +858,6 @@
                     .find('.imagepreview').attr('src', $image.attr('src'))
                     .end()
                     .find('.modal-title').html($image.attr('alt'))
-                    .end()
-                    .modal('show');
-            });
-            $('.interview-link').on('click', function(ev) {
-                ev.preventDefault();
-                ev.stopPropagation();
-                var $link = $(this);
-                $('#interview-modal')
-                    .find('.modal-title').html($link.html())
-                    .end()
-                    .find('.modal-body').load($link.attr('href').replace('./', 'http://htmlpreview.github.io/?https://github.com/PremiumBurger/ch.bfh.bti7081.s2017.green/blob/master/teamgreen-pms/src/main/resources/doc/cs01/task03/'))
                     .end()
                     .modal('show');
             });

@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- Include plugin to add external .html files -->
+<script src="https://www.w3schools.com/lib/w3data.js"></script>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>PMS Task03</title>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <style>
+        .thumbnail a>img,
+        .thumbnail>img {
+            height: 100px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="jumbotron">
+            <h1>Task 07 - Domain Model and Sequence Diagram</h1>
+            <p>For your application, design:
+                <ol>
+                    <li>
+                        <p>a UML domain model covering the main classes
+                            <ul>
+                                <li>
+                                    incl. association, inheritance, and aggregation relations
+                                </li>
+                                <li>
+                                    observe the general modeling guidelines and make use of Responsibility Driven Design (RDD) and use CRC-Cards as a tool.
+                                </li>
+                            </ul>
+                    </li>
+                    <li>
+                        <p>based on your domain model, create two UML sequence diagrams, one each for the following situations
+                            <ul>
+                                <li>
+                                    when the user updates some specific information
+                                </li>
+                                <li>
+                                    when the system alerts the user about some specific event
+                                </li>
+                            </ul>
+                    </li>
+                    <li>
+                        <p>if necessary, refine your UML class model to include the attributes and operations needed for your
+                            sequence diagrams.
+                    </li>
+                </ol>
+
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3>Domain Model & Class Model</h3>
+            </div>
+            <div class="panel-body">
+                <div class="col-md-3">
+                    <div class="thumbnail">
+                        <a class="modals" href="./images/domainmodel.png">
+                            <img src="./images/domainmodel.png" alt="Mobile View">
+                            <div class="caption">
+                                <p>Domain Model</p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="thumbnail">
+                        <a class="modals" href="./images/classmodel.png">
+                            <img src="./images/classmodel.png" alt="Mobile View">
+                            <div class="caption">
+                                <p>Class Model</p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3>Sequence Diagrams</h3>
+            </div>
+            <div class="panel-body">
+                <div class="col-md-3">
+                    <div class="thumbnail">
+                        <a class="modals" href="./images/sequpdateinfo.png">
+                            <img src="./images/sequpdateinfo.png" alt="Mobile View">
+                            <div class="caption">
+                                <p>Update Info</p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="thumbnail">
+                        <a class="modals" href="./images/seqfollowupsolution.png">
+                            <img src="./images/seqfollowupsolution.png" alt="Mobile View">
+                            <div class="caption">
+                                <p>Follow up Solution</p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3>CRC-Cards</h3>
+            </div>
+            <div class="panel-body">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <p>Class Name: <b>Person</b>
+                            <p>Purpose: Kapselt die Eigenschaften und Methoden einer Person
+                    </div>
+                    <div class="panel-body">
+                        <div>
+                            Responsibilities:
+                            <ul>
+                                <li>Hat eine eindeutige Nummer</li>
+                                <li>Kennt seinen Vor- und Nachnamen</li>
+                                <li>Kennt sein Geburtsdatum</li>
+                                <li>Kennt seine Festnetz- und Mobilenummer</li>
+                                <li>Kennt seine Mailadresse</li>
+                                <li>Kennt seine AHV-Nummer</li>
+                                <li>Kennt seine Haupt - und Zusatzadressen</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <p>Class Name: <b>Patient</b>
+                            <p>Purpose: Kapselt die Eigenschaften und Methoden eines Borderline-Patienten
+                    </div>
+                    <div class="panel-body">
+                        <div style="float:left; margin-right:20vh">
+                            Responsibilities:
+                            <ul>
+                                <li>Kennt seine behandelnden Ärzte</li>
+                                <li>Kennt seine Healthvisitors</li>
+                                <li>Kennt sein Journal</li>
+                                <li>Kennt seine Termine</li>
+                                <li>Kennt seine Folgelösung</li>
+                                <li>Kann Folgelösung für sich selbst erstellen</li>
+                            </ul>
+                        </div>
+                        <div style="float:left">
+                            Collaborators:
+                            <ul>
+                                <li>Ist eine Person</li>
+                                <li>Kann von HealthVisitor aufgerufen und angezeigt werden</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <p>Class Name: <b>Health Visitor</b>
+                            <p>Purpose: Kapselt die Eigenschaften und Methoden eines Healthvisitor
+                    </div>
+                    <div class="panel-body">
+                        <div style="float:left; margin-right:20vh">
+                            Responsibilities:
+                            <ul>
+                                <li>Kennt seine Termine</li>
+                                <li>Kennt seine Patienten</li>
+                                <li>Kennt seine ausgelösten Alarme</li>
+                            </ul>
+                        </div>
+                        <div style="float:left">
+                            Collaborators:
+                            <ul>
+                                <li>Ist eine Person</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <p>Class Name: <b>Appointment</b>
+                            <p>Purpose: Kapselt die Eigenschaften und Methoden eines Termins
+                    </div>
+                    <div class="panel-body">
+                        <div style="float:left; margin-right:20vh">
+                            Responsibilities:
+                            <ul>
+                                <li>Kennt seinen Patienten</li>
+                                <li>Kennt seinen HealthVisitor</li>
+                                <li>Kennt seine Verordnungen</li>
+                                <li>Kann prüfen, ob Termin erinnert werden muss</li>
+                            </ul>
+                        </div>
+                        <div style="float:left">
+                            Collaborators:
+                            <ul>
+                                <li>Wird von HealthVisitors verwaltet</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <p>Class Name: <b>Follow up Solution</b>
+                            <p>Purpose: Kapselt die Eigenschaften und Methoden einer Anschlusslösung
+                    </div>
+                    <div class="panel-body">
+                        <div style="float:left; margin-right:20vh">
+                            Responsibilities:
+                            <ul>
+                                <li>Kennt die ID der Externen Notschlafstelle</li>
+                                <li>Kennt seinen Patienten</li>
+                                <li>Kennt seinen Health Visitor</li>
+                            </ul>
+                        </div>
+                        <div style="float:left">
+                            Collaborators:
+                            <ul>
+                                <li>Wird von Health Visitors verwaltet</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+        <!-- Creates the bootstrap modal where the image will appear -->
+        <div class="modal fade" id="imagemodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">
+                        <span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+                    </button>
+                        <h4 class="modal-title">Image preview</h4>
+                    </div>
+                    <div class="modal-body">
+                        <img class="imagepreview" src="" style="width: 100%;">
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+        <!-- Include all compiled plugins (below), or include individual files as needed -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+     
+        <script>
+            $(function () {
+                $(".modals").on("click", function (ev) {
+                    ev.preventDefault();
+                    ev.stopPropagation();
+                    var $image = $(this).find('img');
+                    $('#imagemodal')
+                        .find('.imagepreview').attr('src', $image.attr('src'))
+                        .end()
+                        .find('.modal-title').html($image.attr('alt'))
+                        .end()
+                        .modal('show');
+                });
+            });
+
+            // noinspection JSUnresolvedFunction
+            w3IncludeHTML();
+        </script>
+</body>
+
+</html>

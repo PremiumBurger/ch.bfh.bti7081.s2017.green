@@ -7,6 +7,8 @@
 .settings
 .project
 .classpath
+.vscode
+.editorconfig
 
 .metadata
 .recommenders
@@ -14,5 +16,6 @@ RemoteSystemsTempFiles/
 target/
 
 .idea/
+.vscode/
 
 hs_err_pid*
