@@ -1,7 +1,9 @@
 package ch.bfh.bti7081.s2017.green.ui.healthvisitor;
 
+import ch.bfh.bti7081.s2017.green.bean.HealthVisitorBean;
 import ch.bfh.bti7081.s2017.green.domain.HealthVisitor;
 import ch.bfh.bti7081.s2017.green.service.HealthVisitorService;
+import com.vaadin.data.BeanValidationBinder;
 import com.vaadin.data.Binder;
 import com.vaadin.event.ShortcutAction;
 import com.vaadin.icons.VaadinIcons;
@@ -26,7 +28,7 @@ public class HealthVisitorEdit extends VerticalLayout {
     @Autowired
     private HealthVisitorService healthVisitorService;
 
-    private HealthVisitor healthVisitor;
+    private HealthVisitorBean healthVisitor;
 
     /* Fields to edit properties in HealthVisitor entity */
     TextField firstName = new TextField("First name");
@@ -38,7 +40,7 @@ public class HealthVisitorEdit extends VerticalLayout {
     Button delete = new Button("Delete", VaadinIcons.TRASH);
     CssLayout actions = new CssLayout(save, cancel, delete);
 
-    Binder<HealthVisitor> binder = new Binder<>(HealthVisitor.class);
+    Binder<HealthVisitorBean> binder = new BeanValidationBinder<>(HealthVisitorBean.class);
 
     public HealthVisitorEdit() {
 
@@ -66,7 +68,7 @@ public class HealthVisitorEdit extends VerticalLayout {
         void onChange();
     }
 
-    public final void editHealthVisitor(HealthVisitor h) {
+    public final void editHealthVisitor(HealthVisitorBean h) {
         if (h == null) {
             setVisible(false);
             return;

@@ -1,19 +1,20 @@
 package ch.bfh.bti7081.s2017.green.service;
 
+import ch.bfh.bti7081.s2017.green.bean.HealthVisitorBean;
 import ch.bfh.bti7081.s2017.green.domain.HealthVisitor;
 
 import java.util.Set;
 
 public interface HealthVisitorService {
 
-    Set<HealthVisitor> getAll();
+    Set<HealthVisitorBean> getAll();
 
-    HealthVisitor getOne(long healthVisitorId);
+    HealthVisitorBean getOne(long healthVisitorId);
 
-    Set<HealthVisitor> find(String lastName);
+    Set<HealthVisitorBean> find(String lastName);
 
-    long save(HealthVisitor healthVisitor);
+    long save(HealthVisitorBean healthVisitor);
 
-    void delete(HealthVisitor healthVisitor);
+    void delete(HealthVisitorBean healthVisitor);
 
 }

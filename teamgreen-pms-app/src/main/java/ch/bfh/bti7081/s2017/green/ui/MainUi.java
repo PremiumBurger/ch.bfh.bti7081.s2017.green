@@ -1,5 +1,6 @@
 package ch.bfh.bti7081.s2017.green.ui;
 
+import ch.bfh.bti7081.s2017.green.bean.HealthVisitorBean;
 import ch.bfh.bti7081.s2017.green.domain.HealthVisitor;
 import ch.bfh.bti7081.s2017.green.service.HealthVisitorService;
 import ch.bfh.bti7081.s2017.green.ui.healthvisitor.HealthVisitorEdit;
@@ -25,12 +26,12 @@ public class MainUi extends UI {
 
     final TextField filter;
 
-    Grid<HealthVisitor> healthVisitorGrid;
+    Grid<HealthVisitorBean> healthVisitorGrid;
 
     private final Button addNewBtn;
 
     public MainUi() {
-        healthVisitorGrid = new Grid<>(HealthVisitor.class);
+        healthVisitorGrid = new Grid<>(HealthVisitorBean.class);
         this.filter = new TextField();
         this.addNewBtn = new Button("New Health Visitor", VaadinIcons.PLUS);
     }
@@ -59,7 +60,7 @@ public class MainUi extends UI {
         });
 
         // Instantiate and edit new HealthVisitor the new button is clicked
-        addNewBtn.addClickListener(e -> healthVisitorEdit.editHealthVisitor(new HealthVisitor("", "")));
+        addNewBtn.addClickListener(e -> healthVisitorEdit.editHealthVisitor(new HealthVisitorBean()));
 
         // Listen changes made by the editor, refresh data from backend
         healthVisitorEdit.setChangeHandler(() -> {

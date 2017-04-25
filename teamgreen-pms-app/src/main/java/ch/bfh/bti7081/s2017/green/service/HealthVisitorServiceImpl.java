@@ -1,5 +1,6 @@
 package ch.bfh.bti7081.s2017.green.service;
 
+import ch.bfh.bti7081.s2017.green.bean.HealthVisitorBean;
 import ch.bfh.bti7081.s2017.green.data.HealthVisitorRepository;
 import ch.bfh.bti7081.s2017.green.domain.HealthVisitor;
 import com.google.common.collect.Sets;
@@ -15,28 +16,36 @@ public class HealthVisitorServiceImpl implements HealthVisitorService {
     private HealthVisitorRepository healthVisitorRepository;
 
     @Override
-    public Set<HealthVisitor> getAll() {
-        return Sets.newHashSet(healthVisitorRepository.findAll());
+    public Set<HealthVisitorBean> getAll() {
+        Set<HealthVisitorBean> result = Sets.newHashSet();
+        healthVisitorRepository.findAll().forEach(hv -> result.add(new HealthVisitorBean(hv)));
+        return result;
     }
 
     @Override
-    public long save(HealthVisitor healthVisitor) {
-        HealthVisitor saved = healthVisitorRepository.save(healthVisitor);
+    public long save(HealthVisitorBean healthVisitor) {
+        HealthVisitor saved = healthVisitorRepository.save(healthVisitor.updateEntiy());
         return saved.getHealthVisitorId();
     }
 
     @Override
-    public void delete(HealthVisitor healthVisitor) {
-        healthVisitorRepository.delete(healthVisitor);
+    public void delete(HealthVisitorBean healthVisitor) {
+        healthVisitorRepository.delete(healthVisitor.getHealthVisitorId());
     }
 
     @Override
-    public HealthVisitor getOne(long healthVisitorId) {
-        return healthVisitorRepository.findOne(healthVisitorId);
+    public HealthVisitorBean getOne(long healthVisitorId) {
+        HealthVisitor hv = healthVisitorRepository.findOne(healthVisitorId);
+        if (hv != null) {
+            return new HealthVisitorBean(hv);
+        }
+        return null;
     }
 
     @Override
-    public Set<HealthVisitor> find(String lastName) {
-        return Sets.newHashSet(healthVisitorRepository.findByLastNameStartsWithIgnoreCase(lastName));
+    public Set<HealthVisitorBean> find(String lastName) {
+        Set<HealthVisitorBean> result = Sets.newHashSet();
+        healthVisitorRepository.findByLastNameStartsWithIgnoreCase(lastName).forEach(hv -> result.add(new HealthVisitorBean(hv)));
+        return result;
     }
 }
