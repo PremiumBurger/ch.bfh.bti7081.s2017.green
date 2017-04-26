@@ -8,9 +8,9 @@
 
     <changeSet id="testdata" author="vonac1">
         <insert tableName="HealthVisitor">
-            <column name="healthVisitorId" value="99"/>
-            <column name="firstName" value="Cedric"/>
-            <column name="lastName" value="von Allmen"/>
+            <column name="healthVisitorId" value="1"/>
+            <column name="firstName" value="Sabine"/>
+            <column name="lastName" value="Pitex"/>
         </insert>
     </changeSet>
 

@@ -1,13 +1,13 @@
 # Teamgreen PMS App
 
 ## Tech Stack
-* Maven _v3_ [Doc](http://maven.apache.org/guides/)
-* Vaadin _v8.0.5_ [Doc](https://vaadin.com/docs/)
-* Spring Boot _v1.5.2.RELEASE_ [Doc](https://docs.spring.io/spring-boot/docs/current-SNAPSHOT/reference/htmlsingle/)
-* Spring Data JPA _v1.11.1.RELEASE_ (Repositories) [Doc](http://projects.spring.io/spring-data-jpa/#quick-start)
-* Liquibase _v3.5.3_ [Doc](http://www.liquibase.org/documentation/)
-* MySQL _v5.7.17_ [Doc](https://dev.mysql.com/doc/refman/5.7/en/)
-* HSQLDB _v2.3.4_ [Doc](http://hsqldb.org/web/hsqlDocsFrame.html) (for dev + test)
+* **Maven** `v3` [Doc](http://maven.apache.org/guides/)
+* **Vaadin** `v8.0.5` [Doc](https://vaadin.com/docs/)
+* **Spring** Boot `v1.5.2.RELEASE` [Doc](https://docs.spring.io/spring-boot/docs/current-SNAPSHOT/reference/htmlsingle/)
+* S**pring Data JPA** `v1.11.1.RELEASE` [Doc](http://projects.spring.io/spring-data-jpa/#quick-start)
+* **Liquibase** `v3.5.3` [Doc](http://www.liquibase.org/documentation/)
+* **MySQL** `v5.7.17` [Doc](https://dev.mysql.com/doc/refman/5.7/en/)
+* **HSQLDB** `v2.3.4` [Doc](http://hsqldb.org/web/hsqlDocsFrame.html) (for dev + test)
 
 ## Start Application
 * Commandline: _mvn spring-boot:run_
