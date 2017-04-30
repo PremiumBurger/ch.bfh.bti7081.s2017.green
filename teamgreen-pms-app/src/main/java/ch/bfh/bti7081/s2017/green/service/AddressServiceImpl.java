@@ -7,12 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 public class AddressServiceImpl extends BaseService<Address, AddressBean, AddressRepository> implements AddressService {
 
-    private AddressRepository repository;
-
     @Autowired
     public AddressServiceImpl(AddressRepository repository) {
         super(repository);
-        this.repository = repository;
     }
 
     @Override

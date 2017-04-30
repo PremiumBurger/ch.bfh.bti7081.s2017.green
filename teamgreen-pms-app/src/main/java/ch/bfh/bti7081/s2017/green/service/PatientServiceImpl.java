@@ -9,12 +9,9 @@ import org.springframework.stereotype.Service;
 @Service
 public class PatientServiceImpl extends BaseService<Patient, PatientBean, PatientRepository> implements PatientService {
 
-    private PatientRepository repository;
-
     @Autowired
     public PatientServiceImpl(PatientRepository repository) {
         super(repository);
-        this.repository = repository;
     }
 
     @Override

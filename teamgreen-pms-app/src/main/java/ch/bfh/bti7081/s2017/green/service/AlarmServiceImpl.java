@@ -9,12 +9,9 @@ import org.springframework.stereotype.Service;
 @Service
 public class AlarmServiceImpl extends BaseService<Alarm, AlarmBean, AlarmRepository> implements AlarmService {
 
-    private AlarmRepository repository;
-
     @Autowired
     public AlarmServiceImpl(AlarmRepository repository) {
         super(repository);
-        this.repository = repository;
     }
 
     @Override

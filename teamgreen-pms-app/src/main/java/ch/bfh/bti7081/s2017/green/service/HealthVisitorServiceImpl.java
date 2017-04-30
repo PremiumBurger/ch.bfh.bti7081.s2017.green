@@ -11,12 +11,10 @@ import java.util.Set;
 @Service
 public class HealthVisitorServiceImpl extends BaseService<HealthVisitor, HealthVisitorBean, HealthVisitorRepository> implements HealthVisitorService {
 
-    private HealthVisitorRepository repository;
 
     @Autowired
     public HealthVisitorServiceImpl(HealthVisitorRepository repository) {
         super(repository);
-        this.repository = repository;
     }
 
     @Override

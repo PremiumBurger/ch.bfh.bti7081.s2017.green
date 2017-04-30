@@ -9,12 +9,9 @@ import org.springframework.stereotype.Service;
 @Service
 public class AppointmentServiceImpl extends BaseService<Appointment, AppointmentBean, AppointmentRepository> implements AppointmentService {
 
-    private AppointmentRepository repository;
-
     @Autowired
     public AppointmentServiceImpl(AppointmentRepository repository) {
         super(repository);
-        this.repository = repository;
     }
 
     @Override
