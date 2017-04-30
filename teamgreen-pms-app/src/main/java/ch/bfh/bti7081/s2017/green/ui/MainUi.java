@@ -2,7 +2,7 @@ package ch.bfh.bti7081.s2017.green.ui;
 
 import ch.bfh.bti7081.s2017.green.bean.HealthVisitorBean;
 import ch.bfh.bti7081.s2017.green.demo.healthvisitor.HealthVisitorEdit;
-import ch.bfh.bti7081.s2017.green.ui.model.service.HealthVisitorService;
+import ch.bfh.bti7081.s2017.green.service.HealthVisitorService;
 import com.vaadin.annotations.Theme;
 import com.vaadin.icons.VaadinIcons;
 import com.vaadin.server.VaadinRequest;

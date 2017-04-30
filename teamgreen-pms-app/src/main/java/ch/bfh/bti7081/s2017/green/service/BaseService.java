@@ -1,4 +1,4 @@
-package ch.bfh.bti7081.s2017.green.ui.model.service;
+package ch.bfh.bti7081.s2017.green.service;
 
 import ch.bfh.bti7081.s2017.green.bean.EntityBean;
 import ch.bfh.bti7081.s2017.green.data.BaseRepository;

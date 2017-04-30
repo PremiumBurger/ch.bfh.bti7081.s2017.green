@@ -1,4 +1,4 @@
-package ch.bfh.bti7081.s2017.green.ui.model.service;
+package ch.bfh.bti7081.s2017.green.service;
 
 import ch.bfh.bti7081.s2017.green.bean.AlarmBean;
 import ch.bfh.bti7081.s2017.green.data.AlarmRepository;
@@ -9,9 +9,12 @@ import org.springframework.stereotype.Service;
 @Service
 public class AlarmServiceImpl extends BaseService<Alarm, AlarmBean, AlarmRepository> implements AlarmService {
 
+    private AlarmRepository repository;
+
     @Autowired
     public AlarmServiceImpl(AlarmRepository repository) {
         super(repository);
+        this.repository = repository;
     }
 
     @Override

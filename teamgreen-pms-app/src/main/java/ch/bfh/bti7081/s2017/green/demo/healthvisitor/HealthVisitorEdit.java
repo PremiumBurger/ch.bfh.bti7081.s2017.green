@@ -1,7 +1,7 @@
 package ch.bfh.bti7081.s2017.green.demo.healthvisitor;
 
 import ch.bfh.bti7081.s2017.green.bean.HealthVisitorBean;
-import ch.bfh.bti7081.s2017.green.ui.model.service.HealthVisitorService;
+import ch.bfh.bti7081.s2017.green.service.HealthVisitorService;
 import com.vaadin.data.BeanValidationBinder;
 import com.vaadin.data.Binder;
 import com.vaadin.event.ShortcutAction;

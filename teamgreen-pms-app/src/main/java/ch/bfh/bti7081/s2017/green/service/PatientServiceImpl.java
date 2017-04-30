@@ -1,4 +1,4 @@
-package ch.bfh.bti7081.s2017.green.ui.model.service;
+package ch.bfh.bti7081.s2017.green.service;
 
 import ch.bfh.bti7081.s2017.green.bean.PatientBean;
 import ch.bfh.bti7081.s2017.green.data.PatientRepository;
@@ -9,9 +9,12 @@ import org.springframework.stereotype.Service;
 @Service
 public class PatientServiceImpl extends BaseService<Patient, PatientBean, PatientRepository> implements PatientService {
 
+    private PatientRepository repository;
+
     @Autowired
     public PatientServiceImpl(PatientRepository repository) {
         super(repository);
+        this.repository = repository;
     }
 
     @Override

@@ -2,7 +2,6 @@ package ch.bfh.bti7081.s2017.green.bean;
 
 import ch.bfh.bti7081.s2017.green.domain.Alarm;
 
-import javax.persistence.Entity;
 import java.time.LocalDateTime;
 
 public class AlarmBean extends EntityBean<Alarm> {

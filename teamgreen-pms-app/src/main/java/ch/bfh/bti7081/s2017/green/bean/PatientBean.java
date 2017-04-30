@@ -1,6 +1,5 @@
 package ch.bfh.bti7081.s2017.green.bean;
 
-import javax.persistence.Entity;
 import java.util.ArrayList;
 import java.util.List;
 

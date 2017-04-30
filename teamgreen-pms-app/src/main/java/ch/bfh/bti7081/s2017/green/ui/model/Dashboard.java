@@ -1,9 +1,6 @@
 package ch.bfh.bti7081.s2017.green.ui.model;
 
-import ch.bfh.bti7081.s2017.green.ui.model.service.AlarmService;
-import ch.bfh.bti7081.s2017.green.ui.model.service.AppointmentService;
-import ch.bfh.bti7081.s2017.green.ui.model.service.HealthVisitorService;
-import ch.bfh.bti7081.s2017.green.ui.model.service.PatientService;
+import ch.bfh.bti7081.s2017.green.service.*;
 
 public class Dashboard {
 
@@ -11,11 +8,13 @@ public class Dashboard {
     private AlarmService alarmService;
     private PatientService patientService;
     private AppointmentService appointmentService;
+    private AddressService addressService;
 
-    public Dashboard(HealthVisitorService healthVisitorService, AlarmService alarmService, PatientService patientService, AppointmentService appointmentService) {
+    public Dashboard(HealthVisitorService healthVisitorService, AlarmService alarmService, PatientService patientService, AppointmentService appointmentService, AddressService addressService) {
         this.healthVisitorService = healthVisitorService;
         this.alarmService = alarmService;
         this.patientService = patientService;
         this.appointmentService = appointmentService;
+        this.addressService = addressService;
     }
 }

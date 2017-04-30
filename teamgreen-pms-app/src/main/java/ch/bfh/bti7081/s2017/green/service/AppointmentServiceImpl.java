@@ -1,4 +1,4 @@
-package ch.bfh.bti7081.s2017.green.ui.model.service;
+package ch.bfh.bti7081.s2017.green.service;
 
 import ch.bfh.bti7081.s2017.green.bean.AppointmentBean;
 import ch.bfh.bti7081.s2017.green.data.AppointmentRepository;
@@ -9,9 +9,12 @@ import org.springframework.stereotype.Service;
 @Service
 public class AppointmentServiceImpl extends BaseService<Appointment, AppointmentBean, AppointmentRepository> implements AppointmentService {
 
+    private AppointmentRepository repository;
+
     @Autowired
     public AppointmentServiceImpl(AppointmentRepository repository) {
         super(repository);
+        this.repository = repository;
     }
 
     @Override

@@ -9,5 +9,19 @@ public class Appointment extends BaseEntity {
 
     private Patient patient;
 
+    public HealthVisitor getHealthVisitor() {
+        return healthVisitor;
+    }
 
+    public void setHealthVisitor(HealthVisitor healthVisitor) {
+        this.healthVisitor = healthVisitor;
+    }
+
+    public Patient getPatient() {
+        return patient;
+    }
+
+    public void setPatient(Patient patient) {
+        this.patient = patient;
+    }
 }
