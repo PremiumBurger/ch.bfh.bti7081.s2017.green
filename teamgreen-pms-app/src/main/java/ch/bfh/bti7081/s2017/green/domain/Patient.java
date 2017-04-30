@@ -5,23 +5,23 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-public class HealthVisitor extends Person {
+public class Patient extends Person {
 
-    private List<Patient> patients;
+    private List<HealthVisitor> healthVisitors;
 
     private List<Appointment> appointments;
 
     private List<Alarm> alarms;
 
-    public HealthVisitor() {
-        patients = new ArrayList<>();
+
+    public Patient() {
+        healthVisitors = new ArrayList<>();
         appointments = new ArrayList<>();
         alarms = new ArrayList<>();
     }
 
-
-    public List<Patient> getPatients() {
-        return patients;
+    public List<HealthVisitor> getHealthVisitors() {
+        return healthVisitors;
     }
 
     public List<Appointment> getAppointments() {

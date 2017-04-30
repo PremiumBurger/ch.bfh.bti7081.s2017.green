@@ -1,13 +1,11 @@
-package ch.bfh.bti7081.s2017.green.ui.healthvisitor;
+package ch.bfh.bti7081.s2017.green.demo.healthvisitor;
 
 import ch.bfh.bti7081.s2017.green.bean.HealthVisitorBean;
-import ch.bfh.bti7081.s2017.green.domain.HealthVisitor;
-import ch.bfh.bti7081.s2017.green.service.HealthVisitorService;
+import ch.bfh.bti7081.s2017.green.ui.model.service.HealthVisitorService;
 import com.vaadin.data.BeanValidationBinder;
 import com.vaadin.data.Binder;
 import com.vaadin.event.ShortcutAction;
 import com.vaadin.icons.VaadinIcons;
-import com.vaadin.server.FontAwesome;
 import com.vaadin.spring.annotation.SpringComponent;
 import com.vaadin.spring.annotation.UIScope;
 import com.vaadin.ui.Button;
@@ -25,22 +23,18 @@ import org.springframework.beans.factory.annotation.Autowired;
 @UIScope
 public class HealthVisitorEdit extends VerticalLayout {
 
-    @Autowired
-    private HealthVisitorService healthVisitorService;
-
-    private HealthVisitorBean healthVisitor;
-
     /* Fields to edit properties in HealthVisitor entity */
     TextField firstName = new TextField("First name");
     TextField lastName = new TextField("Last name");
-
     /* Action buttons */
     Button save = new Button("Save", VaadinIcons.DISC);
     Button cancel = new Button("Cancel");
     Button delete = new Button("Delete", VaadinIcons.TRASH);
     CssLayout actions = new CssLayout(save, cancel, delete);
-
     Binder<HealthVisitorBean> binder = new BeanValidationBinder<>(HealthVisitorBean.class);
+    @Autowired
+    private HealthVisitorService healthVisitorService;
+    private HealthVisitorBean healthVisitor;
 
     public HealthVisitorEdit() {
 
@@ -64,19 +58,15 @@ public class HealthVisitorEdit extends VerticalLayout {
 
     }
 
-    public interface ChangeHandler {
-        void onChange();
-    }
-
     public final void editHealthVisitor(HealthVisitorBean h) {
         if (h == null) {
             setVisible(false);
             return;
         }
-        final boolean persisted = h.getHealthVisitorId() != null;
+        final boolean persisted = h.getId() != 0;
         if (persisted) {
             // Find fresh entity for editing
-            this.healthVisitor = healthVisitorService.getOne(h.getHealthVisitorId());
+            this.healthVisitor = healthVisitorService.getOne(h.getId());
         } else {
             this.healthVisitor = h;
         }
@@ -105,5 +95,9 @@ public class HealthVisitorEdit extends VerticalLayout {
         // is clicked
         save.addClickListener(e -> h.onChange());
         delete.addClickListener(e -> h.onChange());
+    }
+
+    public interface ChangeHandler {
+        void onChange();
     }
 }

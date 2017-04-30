@@ -1,8 +1,11 @@
 package ch.bfh.bti7081.s2017.green.bean;
 
+import ch.bfh.bti7081.s2017.green.domain.BaseEntity;
 import org.springframework.beans.BeanUtils;
 
-public abstract class EntityBean<T> {
+import java.io.Serializable;
+
+public abstract class EntityBean<T extends BaseEntity> implements Serializable {
 
     private T entity;
 
@@ -34,5 +37,14 @@ public abstract class EntityBean<T> {
     public void setEntity(final T entity) {
         this.entity = entity;
         BeanUtils.copyProperties(entity, this);
+    }
+
+    /**
+     * Gets the id of the underlying entity
+     *
+     * @return the entity id
+     */
+    public long getId() {
+        return entity.getId();
     }
 }

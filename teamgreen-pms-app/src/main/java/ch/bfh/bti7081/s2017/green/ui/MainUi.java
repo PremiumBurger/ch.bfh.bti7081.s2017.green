@@ -1,12 +1,10 @@
 package ch.bfh.bti7081.s2017.green.ui;
 
 import ch.bfh.bti7081.s2017.green.bean.HealthVisitorBean;
-import ch.bfh.bti7081.s2017.green.domain.HealthVisitor;
-import ch.bfh.bti7081.s2017.green.service.HealthVisitorService;
-import ch.bfh.bti7081.s2017.green.ui.healthvisitor.HealthVisitorEdit;
+import ch.bfh.bti7081.s2017.green.demo.healthvisitor.HealthVisitorEdit;
+import ch.bfh.bti7081.s2017.green.ui.model.service.HealthVisitorService;
 import com.vaadin.annotations.Theme;
 import com.vaadin.icons.VaadinIcons;
-import com.vaadin.server.FontAwesome;
 import com.vaadin.server.VaadinRequest;
 import com.vaadin.shared.ui.ValueChangeMode;
 import com.vaadin.spring.annotation.SpringUI;
@@ -18,17 +16,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 @SpringUI
 public class MainUi extends UI {
 
+    final TextField filter;
+    private final Button addNewBtn;
     @Autowired
     HealthVisitorService healthVisitorService;
-
     @Autowired
     HealthVisitorEdit healthVisitorEdit;
-
-    final TextField filter;
-
     Grid<HealthVisitorBean> healthVisitorGrid;
-
-    private final Button addNewBtn;
 
     public MainUi() {
         healthVisitorGrid = new Grid<>(HealthVisitorBean.class);
@@ -44,7 +38,7 @@ public class MainUi extends UI {
         setContent(mainLayout);
 
         healthVisitorGrid.setHeight(300, Unit.PIXELS);
-        healthVisitorGrid.setColumns("healthVisitorId", "firstName", "lastName");
+        healthVisitorGrid.setColumns("id", "firstName", "lastName");
 
         filter.setPlaceholder("Filter by last name");
 

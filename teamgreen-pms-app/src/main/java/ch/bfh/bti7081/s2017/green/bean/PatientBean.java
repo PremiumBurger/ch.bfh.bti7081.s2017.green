@@ -1,25 +1,26 @@
 package ch.bfh.bti7081.s2017.green.bean;
 
+import javax.persistence.Entity;
 import java.util.ArrayList;
 import java.util.List;
 
-public class HealthVisitorBean extends PersonBean {
+public class PatientBean extends PersonBean {
 
-    private List<PatientBean> patients;
+    private List<HealthVisitorBean> healthVisitors;
 
     private List<AppointmentBean> appointments;
 
     private List<AlarmBean> alarms;
 
-    public HealthVisitorBean() {
-        patients = new ArrayList<>();
+
+    public PatientBean() {
+        healthVisitors = new ArrayList<>();
         appointments = new ArrayList<>();
         alarms = new ArrayList<>();
     }
 
-
-    public List<PatientBean> getPatients() {
-        return patients;
+    public List<HealthVisitorBean> getHealthVisitors() {
+        return healthVisitors;
     }
 
     public List<AppointmentBean> getAppointments() {

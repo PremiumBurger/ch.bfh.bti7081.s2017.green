@@ -1,7 +1,6 @@
-package ch.bfh.bti7081.s2017.green.service;
+package ch.bfh.bti7081.s2017.green.ui.model.service;
 
 import ch.bfh.bti7081.s2017.green.bean.HealthVisitorBean;
-import ch.bfh.bti7081.s2017.green.domain.HealthVisitor;
 
 import java.util.Set;
 
