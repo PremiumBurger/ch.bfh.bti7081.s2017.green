@@ -6,9 +6,9 @@ import java.util.List;
  * Created by joris on 05.05.17.
  */
 public class MenuViewImpl implements MenuView {
-    private List<MenuView> listeners;
+    private List<MenuViewListener> listeners;
 
-    public MenuViewImpl(List<MenuView> listeners) {
+    public MenuViewImpl(List<MenuViewListener> listeners) {
         this.listeners = listeners;
     }
 }
