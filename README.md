@@ -18,7 +18,7 @@
 * [CS1 - Task05](https://github.com/PremiumBurger/ch.bfh.bti7081.s2017.green/blob/master/teamgreen-pms/src/main/resources/doc/cs01/task05/cs01%20task05.pdf)
 * [CS1 - Task07](http://htmlpreview.github.io/?https://github.com/PremiumBurger/ch.bfh.bti7081.s2017.green/blob/master/teamgreen-pms/src/main/resources/doc/cs01/task07/task07.html)
 * [CS1 - Task09](https://github.com/PremiumBurger/ch.bfh.bti7081.s2017.green/blob/master/teamgreen-pms/src/main/resources/doc/cs01/task09)
-
+* [CS1 - Task10](https://github.com/PremiumBurger/ch.bfh.bti7081.s2017.green/blob/master/teamgreen-pms/src/main/resources/doc/cs01/task10)
 
 ## CS02
 * [CS2 - Task01](http://htmlpreview.github.io/?https://github.com/PremiumBurger/ch.bfh.bti7081.s2017.green/blob/master/teamgreen-pms/src/main/resources/doc/cs02/task01/task01.html)
