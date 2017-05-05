@@ -15,4 +15,8 @@ public class MainViewImpl extends HorizontalLayout implements MainView{
         this.listeners = new ArrayList<>();
     }
 
+    @Override
+    public void addListener(MainViewListener viewListener) {
+        listeners.add(viewListener);
+    }
 }

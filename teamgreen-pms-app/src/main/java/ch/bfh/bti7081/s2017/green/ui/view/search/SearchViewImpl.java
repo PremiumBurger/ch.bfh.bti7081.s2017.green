@@ -11,4 +11,9 @@ public class SearchViewImpl implements SearchView {
     public SearchViewImpl(List<SearchViewListener> listeners) {
         this.listeners = listeners;
     }
+
+    @Override
+    public void addListener(SearchViewListener viewListener) {
+        listeners.add(viewListener);
+    }
 }
