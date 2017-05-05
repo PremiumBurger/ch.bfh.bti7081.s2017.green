@@ -1,8 +1,8 @@
 package ch.bfh.bti7081.s2017.green.ui.presenter;
 
 import ch.bfh.bti7081.s2017.green.ui.model.Dashboard;
-import ch.bfh.bti7081.s2017.green.ui.view.DashboardView;
-import ch.bfh.bti7081.s2017.green.ui.view.DashboardViewListener;
+import ch.bfh.bti7081.s2017.green.ui.view.dashBoard.DashboardView;
+import ch.bfh.bti7081.s2017.green.ui.view.dashBoard.DashboardViewListener;
 import org.springframework.beans.factory.annotation.Autowired;
 
 public class DashboardPresenter implements DashboardViewListener {
