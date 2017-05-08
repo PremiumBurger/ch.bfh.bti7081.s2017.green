@@ -1,6 +1,6 @@
-package ch.bfh.bti7081.s2017.green.ui.view.dashBoard;
+package ch.bfh.bti7081.s2017.green.ui.view.component.myDay;
 
-public interface DashboardViewListener {
+public interface MyDayViewListener {
 
     void doSearch();
 

@@ -1,4 +1,4 @@
-package ch.bfh.bti7081.s2017.green.ui.view.search;
+package ch.bfh.bti7081.s2017.green.ui.view.component.search;
 
 import com.vaadin.ui.CustomComponent;
 
