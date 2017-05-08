@@ -1,5 +1,6 @@
 package ch.bfh.bti7081.s2017.green.ui.view.component.search;
 
+import com.vaadin.icons.VaadinIcons;
 import com.vaadin.ui.*;
 
 import java.util.ArrayList;
@@ -10,29 +11,25 @@ import java.util.List;
  */
 public class SearchViewImpl extends FormLayout implements SearchView {
     private List<SearchViewListener> listeners;
-    private TextField tf;
-    private NativeSelect fieldToSearch;
-    private CheckBox saveSearch;
-    private TextField searchName;
 
 
     public SearchViewImpl() {
         //this.listeners = listeners;
-        final VerticalLayout header = new VerticalLayout(new Label("Header"));
-
+        final HorizontalLayout header = new HorizontalLayout();
+        final TextField searchName;
+        final Button search;
         /* Create UI components */
-        tf = new TextField("Search term");
-        fieldToSearch = new NativeSelect("Field to search");
-        saveSearch = new CheckBox("Save search");
-        searchName = new TextField("Search name");
-        Button search = new Button("Search");
+        searchName = new TextField();
+        searchName.setValue("Search");
+        //searchName.setInputPrompt(“Search by keywords”);
+        search = new Button("Search");
+        search.setIcon(VaadinIcons.SEARCH);
 
         /* Add all the created components to the form */
-        header.addComponent(tf);
-        addComponent(fieldToSearch);
-        addComponent(saveSearch);
-        addComponent(searchName);
-        addComponent(search);
+        addComponent(header);
+        header.addComponentsAndExpand(searchName,search);
+
+        setResponsive(true);
     }
 
 
