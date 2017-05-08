@@ -13,7 +13,7 @@ import java.util.List;
  */
 @SpringUI
 @Theme("valo")
-public class MainViewImpl implements MainView{
+public class MainViewImpl extends MainViewDesign implements MainView {
     private List<MainViewListener> listeners;
 
 
