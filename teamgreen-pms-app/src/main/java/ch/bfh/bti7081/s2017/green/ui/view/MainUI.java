@@ -16,5 +16,6 @@ public class MainUI extends UI {
     protected void init(VaadinRequest request) {
         setContent(new MainViewImpl());
 
+
     }
 }

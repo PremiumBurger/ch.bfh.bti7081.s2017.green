@@ -1,6 +1,8 @@
 package ch.bfh.bti7081.s2017.green.ui.view.main;
 
 import com.vaadin.annotations.Theme;
+import com.vaadin.icons.VaadinIcons;
+import com.vaadin.server.FontIcon;
 import com.vaadin.spring.annotation.SpringUI;
 import com.vaadin.ui.Button;
 import com.vaadin.ui.CustomComponent;
@@ -23,7 +25,9 @@ public class MenuViewImpl extends HorizontalLayout implements MenuView {
         this.listeners = new ArrayList<>();
         Button alarm = new Button("Alarm");
         Button home = new Button("Home");
-        //alarm.addClickListener(event -> new)
+        home.setIcon(VaadinIcons.HOME);
+        alarm.setIcon(VaadinIcons.AMBULANCE);
+        alarm.setStyleName("primary");
         alarm.setWidth("100%");
         home.setWidth("100%");
         addComponents(alarm,home);
