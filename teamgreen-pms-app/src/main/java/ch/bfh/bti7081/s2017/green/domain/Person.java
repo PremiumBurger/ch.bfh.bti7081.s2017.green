@@ -4,8 +4,8 @@ import javax.persistence.Entity;
 import javax.persistence.Inheritance;
 import java.time.LocalDate;
 
-@Entity
-@Inheritance
+// @Entity
+// @Inheritance
 public class Person extends BaseEntity {
 
     private String firstName;

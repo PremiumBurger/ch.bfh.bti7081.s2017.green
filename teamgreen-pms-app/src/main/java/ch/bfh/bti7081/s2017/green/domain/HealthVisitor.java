@@ -4,7 +4,7 @@ import javax.persistence.Entity;
 import java.util.ArrayList;
 import java.util.List;
 
-@Entity
+// @Entity
 public class HealthVisitor extends Person {
 
     private List<Patient> patients;

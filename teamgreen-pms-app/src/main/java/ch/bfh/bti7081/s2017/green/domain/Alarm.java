@@ -3,7 +3,7 @@ package ch.bfh.bti7081.s2017.green.domain;
 import javax.persistence.Entity;
 import java.time.LocalDateTime;
 
-@Entity
+// @Entity
 public class Alarm extends BaseEntity {
 
     private String coordinates;

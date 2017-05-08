@@ -2,7 +2,7 @@ package ch.bfh.bti7081.s2017.green.domain;
 
 import javax.persistence.Entity;
 
-@Entity
+// @Entity
 public class Address extends BaseEntity {
 
     private String strasse;

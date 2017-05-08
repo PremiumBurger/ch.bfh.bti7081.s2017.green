@@ -6,8 +6,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 
-@Entity
-@Inheritance
+// @Entity
+// @Inheritance
 public abstract class BaseEntity {
 
     @Id

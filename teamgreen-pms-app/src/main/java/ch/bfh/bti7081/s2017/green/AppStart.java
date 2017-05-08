@@ -12,8 +12,8 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @Configuration
 @SpringBootApplication
 @EnableAutoConfiguration
-@EnableJpaRepositories
-@EnableTransactionManagement
+// @EnableJpaRepositories
+// @EnableTransactionManagement
 public class AppStart {
     private static final Logger log = LoggerFactory.getLogger(AppStart.class);
 
