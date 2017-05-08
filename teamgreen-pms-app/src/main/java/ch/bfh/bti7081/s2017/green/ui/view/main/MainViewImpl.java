@@ -1,7 +1,8 @@
 package ch.bfh.bti7081.s2017.green.ui.view.main;
 
+import ch.bfh.bti7081.s2017.green.ui.presenter.SearchPresenter;
+import ch.bfh.bti7081.s2017.green.ui.view.component.search.SearchViewImpl;
 import com.vaadin.annotations.Theme;
-import com.vaadin.server.VaadinRequest;
 import com.vaadin.spring.annotation.SpringUI;
 import com.vaadin.ui.*;
 
@@ -21,6 +22,7 @@ public class MainViewImpl extends VerticalLayout implements MainView{
         this.listeners = new ArrayList<>();
         final VerticalLayout header = new VerticalLayout(new Label("Header"));
         final VerticalLayout content = new VerticalLayout();
+        header.addComponent(new SearchViewImpl());
 
 
     }
