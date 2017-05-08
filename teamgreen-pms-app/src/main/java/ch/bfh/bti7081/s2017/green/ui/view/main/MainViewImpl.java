@@ -21,7 +21,15 @@ public class MainViewImpl extends VerticalLayout implements MainView{
         this.listeners = new ArrayList<>();
         final VerticalLayout header = new VerticalLayout(new Label("Header"));
         final VerticalLayout content = new VerticalLayout();
+        final Panel contentPanel = new Panel(content);
+        contentPanel.setSizeFull();
 
+        final VerticalLayout footer = new VerticalLayout(new Label("Footer"));
+        final MenuViewImpl menu = new MenuViewImpl();
+        addComponents(header,contentPanel,menu);
+
+        setSizeFull();
+        setExpandRatio(contentPanel,1);
 
     }
 
