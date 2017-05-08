@@ -13,12 +13,21 @@ import java.util.List;
  */
 @SpringUI
 @Theme("valo")
-public class MainViewImpl implements MainView{
+public class MainViewImpl extends VerticalLayout implements MainView{
     private List<MainViewListener> listeners;
 
 
     public MainViewImpl() {
         this.listeners = new ArrayList<>();
+        Panel contentPanel = new Panel();
+        MenuViewImpl menu = new MenuViewImpl();
+
+        this.setSizeFull();
+        this.addComponent(contentPanel);
+        this.addComponent(menu);
+
+        setResponsive(true);
+
     }
 
 
