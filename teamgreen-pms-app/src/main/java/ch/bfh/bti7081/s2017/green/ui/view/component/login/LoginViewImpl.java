@@ -9,7 +9,7 @@ import java.util.List;
 /**
  * Created by joris on 08.05.17.
  */
-public class LoginViewImpl extends VerticalLayout implements LoginView {
+public class LoginViewImpl extends VerticalLayout implements LoginView, LoginViewListener {
     private List<LoginViewListener> listeners;
 
     public LoginViewImpl() {
