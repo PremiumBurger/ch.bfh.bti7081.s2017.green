@@ -1,5 +1,6 @@
 package ch.bfh.bti7081.s2017.green.ui.view.component.login;
 
+import ch.bfh.bti7081.s2017.green.ui.presenter.LoginViewPresenter;
 import com.vaadin.icons.VaadinIcons;
 import com.vaadin.ui.*;
 
@@ -27,6 +28,7 @@ public class LoginViewImpl extends VerticalLayout implements LoginView, LoginVie
 
         Button loginButton = new Button("Login");
         loginButton.setIcon(VaadinIcons.SIGN_IN);
+        //loginButton.addClickListener(event -> );
         setResponsive(true);
         addComponents(user,password,loginButton);
     }
