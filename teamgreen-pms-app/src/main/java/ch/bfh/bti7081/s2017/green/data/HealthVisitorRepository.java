@@ -5,7 +5,7 @@ import org.springframework.stereotype.Repository;
 
 import java.util.Set;
 
-// @Repository
-public interface HealthVisitorRepository {
+@Repository
+public interface HealthVisitorRepository extends BaseRepository<HealthVisitor> {
     Set<HealthVisitor> findByLastNameStartsWithIgnoreCase(String lastName);
 }

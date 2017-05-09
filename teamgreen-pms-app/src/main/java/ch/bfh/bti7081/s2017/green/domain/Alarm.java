@@ -1,17 +1,21 @@
 package ch.bfh.bti7081.s2017.green.domain;
 
 import javax.persistence.Entity;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import java.time.LocalDateTime;
 
-// @Entity
+@Entity
 public class Alarm extends BaseEntity {
 
     private String coordinates;
 
     private LocalDateTime timestamp;
 
+    @ManyToOne
     private HealthVisitor healthVisitor;
 
+    @ManyToOne
     private Patient patient;
 
     public String getCoordinates() {

@@ -1,12 +1,14 @@
 package ch.bfh.bti7081.s2017.green.domain;
 
+import org.hibernate.annotations.*;
+import org.hibernate.annotations.CascadeType;
+
+import javax.persistence.*;
 import javax.persistence.Entity;
-import javax.persistence.Inheritance;
 import java.time.LocalDate;
 
-// @Entity
-// @Inheritance
-public class Person extends BaseEntity {
+@MappedSuperclass
+public abstract class Person extends BaseEntity {
 
     private String firstName;
 
@@ -24,6 +26,9 @@ public class Person extends BaseEntity {
 
     private String gender;
 
+    @OneToOne
+    @JoinColumn(name = "addressId")
+    @Cascade(CascadeType.ALL)
     private Address address;
 
     public Address getAddress() {
