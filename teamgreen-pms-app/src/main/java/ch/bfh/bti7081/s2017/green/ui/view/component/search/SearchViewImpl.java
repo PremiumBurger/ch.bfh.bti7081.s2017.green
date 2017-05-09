@@ -28,7 +28,7 @@ public class SearchViewImpl extends FormLayout implements SearchView {
 
         //TODO: Set Width of Textfield and Button
         searchName.setWidth(10, Unit.PIXELS);
-        searchName.setWidth(80,Unit.PERCENTAGE);
+        searchName.setWidth(80, Unit.PERCENTAGE);
         //searchName.setInputPrompt(“Search by keywords”);
         search = new Button("Search");
         search.setWidth(20,Unit.PERCENTAGE);
@@ -41,8 +41,8 @@ public class SearchViewImpl extends FormLayout implements SearchView {
 
         /* Add all the created components to the form */
         titleBox.addComponentsAndExpand(title);
-        controlBox.addComponentsAndExpand(searchName,search);
-        controlBox.setWidth(100,Unit.PERCENTAGE);
+        controlBox.addComponentsAndExpand(searchName, search);
+        controlBox.setWidth(100, Unit.PERCENTAGE);
         main.addComponentsAndExpand(titleBox, controlBox);
         addComponent(main);
 

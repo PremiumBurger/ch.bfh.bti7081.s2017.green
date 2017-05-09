@@ -15,7 +15,7 @@ import java.util.List;
  */
 @SpringUI
 @Theme("valo")
-public abstract class MainViewImpl extends VerticalLayout implements MainView{
+public abstract class MainViewImpl extends VerticalLayout implements MainView {
     private List<MainViewListener> listeners;
     private Component header;
 

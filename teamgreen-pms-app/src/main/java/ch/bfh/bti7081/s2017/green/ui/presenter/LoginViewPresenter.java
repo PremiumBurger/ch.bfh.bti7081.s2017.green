@@ -18,7 +18,8 @@ public class LoginViewPresenter implements LoginViewListener {
         this.login = login;
         loginView.addListener(this);
     }
-    public void login(){
+
+    public void login() {
         System.out.println("Login");
     }
 }

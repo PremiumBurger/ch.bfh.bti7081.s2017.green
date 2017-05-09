@@ -14,6 +14,7 @@ public class SearchPresenter implements SearchViewListener {
     private SearchView searchview;
     //Model
     private Search search;
+
     @Autowired
     public SearchPresenter(SearchView searchview, Search search) {
         this.searchview = searchview;
