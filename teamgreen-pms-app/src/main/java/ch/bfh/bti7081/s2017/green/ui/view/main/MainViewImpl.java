@@ -15,29 +15,45 @@ import java.util.List;
  */
 @SpringUI
 @Theme("valo")
-public class MainViewImpl extends VerticalLayout implements MainView{
+public abstract class MainViewImpl extends VerticalLayout implements MainView{
     private List<MainViewListener> listeners;
+    private Component header;
+
+    private Panel contentPanel;
 
 
     public MainViewImpl() {
 
         this.listeners = new ArrayList<>();
-        final SearchViewImpl search = new SearchViewImpl();
+
         final VerticalLayout content = new VerticalLayout();
-        final Panel contentPanel = new Panel(content);
+        header = new VerticalLayout();
+        contentPanel = new Panel(content);
         contentPanel.setSizeFull();
-        content.addComponent(new LoginViewImpl());
+
+        addComponent(header);
+        addComponent(contentPanel);
 
         final VerticalLayout footer = new VerticalLayout(new Label("Footer"));
         final MenuViewImpl menu = new MenuViewImpl();
-        addComponents(search,contentPanel,menu);
-
+        addComponent(menu);
         setSizeFull();
         setExpandRatio(contentPanel,1);
         setResponsive(true);
 
     }
 
+    public Component getHeader() {
+        return header;
+    }
+
+    public void setHeader(Component header) {
+        this.header = header;
+    }
+
+    public void setViewContent(Component content) {
+        this.contentPanel.setContent(content);
+    }
 
     @Override
     public void addListener(MainViewListener viewListener) {
