@@ -4,17 +4,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 public class MyDayPresenter implements MyDayViewListener {
 
-    MyDay dashboard;
-
-    MyDayView dashboardView;
+    MyDay myDay;
+    MyDayView myDayView;
 
     @Autowired
-    public MyDayPresenter(MyDay dashboard, MyDayView dashboardView) {
-        this.dashboard = dashboard;
-        this.dashboardView = dashboardView;
+    public MyDayPresenter(MyDay myDay, MyDayView myDayView) {
+        this.myDay = myDay;
+        this.myDayView = myDayView;
 
-        dashboardView.addListener(this);
-
+        myDayView.addListener(this);
     }
 
     @Override

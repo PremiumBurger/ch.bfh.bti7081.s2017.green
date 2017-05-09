@@ -5,58 +5,47 @@ import com.vaadin.annotations.Theme;
 import com.vaadin.spring.annotation.SpringUI;
 import com.vaadin.ui.*;
 
-import java.util.ArrayList;
-import java.util.List;
-
 /**
  * Created by joris on 05.05.17.
  */
 @SpringUI
 @Theme("valo")
-public abstract class MasterPageImpl extends VerticalLayout implements MasterPage {
-    private List<MasterPageListener> listeners;
+public abstract class MasterPageImpl extends AbsoluteLayout implements MasterPage {
+    private MasterPageListener listener;
     private Component header;
-
+    private VerticalLayout layout;
     private Panel contentPanel;
 
 
     public MasterPageImpl() {
-
-        this.listeners = new ArrayList<>();
+        layout = new VerticalLayout();
 
         final VerticalLayout content = new VerticalLayout();
         header = new VerticalLayout();
         contentPanel = new Panel(content);
         contentPanel.setSizeFull();
 
-        addComponent(header);
-        addComponent(contentPanel);
+        layout.addComponent(header);
+        layout.addComponent(contentPanel);
 
-        final VerticalLayout footer = new VerticalLayout(new Label("Footer"));
         final MenuViewImpl menu = new MenuViewImpl();
-        addComponent(menu);
-        setSizeFull();
-        setExpandRatio(contentPanel,1);
-        setResponsive(true);
+        layout.addComponent(menu);
+        layout.setSizeFull();
+        layout.setExpandRatio(contentPanel,1);
+        layout.setResponsive(true);
 
+        addComponent(layout);
     }
 
     public Component getHeader() {
         return header;
     }
 
-    public void setHeader(Component header) {
+    protected void setHeader(Component header) {
         this.header = header;
     }
 
-    public void setViewContent(Component content) {
+    protected void setViewContent(Component content) {
         this.contentPanel.setContent(content);
     }
-
-    @Override
-    public void addListener(MasterPageListener viewListener) {
-        listeners.add(viewListener);
-    }
-
-
 }
