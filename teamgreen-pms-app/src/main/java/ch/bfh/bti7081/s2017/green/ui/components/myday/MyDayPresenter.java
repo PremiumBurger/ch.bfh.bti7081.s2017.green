@@ -2,14 +2,14 @@ package ch.bfh.bti7081.s2017.green.ui.components.myday;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-public class DashboardPresenter implements MyDayViewListener {
+public class MyDayPresenter implements MyDayViewListener {
 
-    Dashboard dashboard;
+    MyDay dashboard;
 
     MyDayView dashboardView;
 
     @Autowired
-    public DashboardPresenter(Dashboard dashboard, MyDayView dashboardView) {
+    public MyDayPresenter(MyDay dashboard, MyDayView dashboardView) {
         this.dashboard = dashboard;
         this.dashboardView = dashboardView;
 

@@ -2,7 +2,7 @@ package ch.bfh.bti7081.s2017.green.ui.components.myday;
 
 import ch.bfh.bti7081.s2017.green.service.*;
 
-public class Dashboard {
+public class MyDay {
 
     private HealthVisitorService healthVisitorService;
     private AlarmService alarmService;
@@ -10,7 +10,7 @@ public class Dashboard {
     private AppointmentService appointmentService;
     private AddressService addressService;
 
-    public Dashboard(HealthVisitorService healthVisitorService, AlarmService alarmService, PatientService patientService, AppointmentService appointmentService, AddressService addressService) {
+    public MyDay(HealthVisitorService healthVisitorService, AlarmService alarmService, PatientService patientService, AppointmentService appointmentService, AddressService addressService) {
         this.healthVisitorService = healthVisitorService;
         this.alarmService = alarmService;
         this.patientService = patientService;
