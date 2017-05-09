@@ -1,39 +1,45 @@
 package ch.bfh.bti7081.s2017.green.ui.components.login;
 
+import ch.bfh.bti7081.s2017.green.bean.HealthVisitorBean;
+import ch.bfh.bti7081.s2017.green.ui.MasterPageImpl;
 import com.vaadin.icons.VaadinIcons;
 import com.vaadin.ui.*;
-
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by joris on 08.05.17.
  */
-public class LoginViewImpl extends VerticalLayout implements LoginView, LoginViewListener {
-    private List<LoginViewListener> listeners;
+public class LoginViewImpl extends MasterPageImpl implements LoginView {
+
+    private LoginViewListener listener;
 
     public LoginViewImpl() {
-        this.listeners = new ArrayList<>();
-        HorizontalLayout user = new HorizontalLayout();
+        HorizontalLayout layout = new HorizontalLayout();
+        layout.setResponsive(true);
+
         Label username = new Label("Username");
         TextField usernameField = new TextField();
-        user.addComponents(username,usernameField);
+        layout.addComponents(username, usernameField);
 
-        HorizontalLayout password = new HorizontalLayout();
         Label passwordLabel = new Label("Password");
         PasswordField passwordField = new PasswordField();
 
-        user.addComponents(passwordLabel,passwordField);
+        layout.addComponents(passwordLabel, passwordField);
 
         Button loginButton = new Button("Login");
         loginButton.setIcon(VaadinIcons.SIGN_IN);
-        //loginButton.addClickListener(event -> );
-        setResponsive(true);
-        addComponents(user,password,loginButton);
+        loginButton.addClickListener(b -> listener.onButtonClick());
+        layout.addComponent(loginButton);
+
+        setViewContent(layout);
     }
 
     @Override
-    public void addListener(LoginViewListener viewListener) {
-        listeners.add(viewListener);
+    public void addListener(LoginViewListener listener) {
+        this.listener = listener;
+    }
+
+    @Override
+    public void doSomething(HealthVisitorBean firstVisitor) {
+        setViewContent(new Label(firstVisitor.toString()));
     }
 }

@@ -10,6 +10,5 @@ public class MasterPagePresenter implements MasterPageListener {
     public MasterPagePresenter(MasterPage mainView, MasterPage main) {
         this.mainView = mainView;
         this.main = main;
-        mainView.addListener(this);
     }
 }

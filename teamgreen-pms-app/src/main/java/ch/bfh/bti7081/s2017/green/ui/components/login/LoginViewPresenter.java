@@ -19,4 +19,9 @@ public class LoginViewPresenter implements LoginViewListener {
     public void login() {
         System.out.println("Login");
     }
+
+    @Override
+    public void onButtonClick() {
+        loginView.doSomething(login.getFirstVisitor());
+    }
 }
