@@ -1,12 +1,9 @@
 package ch.bfh.bti7081.s2017.green.ui.view.component.search;
 
-import com.sun.xml.internal.bind.v2.TODO;
 import com.vaadin.icons.VaadinIcons;
-import com.vaadin.server.Sizeable;
 import com.vaadin.ui.*;
 import com.vaadin.ui.themes.ValoTheme;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
