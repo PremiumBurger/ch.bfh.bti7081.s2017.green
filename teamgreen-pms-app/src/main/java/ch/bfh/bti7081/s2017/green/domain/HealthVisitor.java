@@ -1,8 +1,6 @@
 package ch.bfh.bti7081.s2017.green.domain;
 
-import javax.persistence.Entity;
-import javax.persistence.ManyToMany;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,6 +8,10 @@ import java.util.List;
 public class HealthVisitor extends Person {
 
     @ManyToMany
+    @JoinTable(
+            name = "PatientHealthVisitor",
+            joinColumns = @JoinColumn(name = "healthVisitorId", referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(name = "patientId", referencedColumnName = "id"))
     private List<Patient> patients;
 
     @OneToMany(mappedBy = "healthVisitor")
@@ -35,5 +37,19 @@ public class HealthVisitor extends Person {
 
     public List<Alarm> getAlarms() {
         return alarms;
+    }
+
+    public void addAppointment(Appointment appointment) {
+        this.appointments.add(appointment);
+        if (appointment.getHealthVisitor() != this) {
+            appointment.setHealthVisitor(this);
+        }
+    }
+
+    public void addAlarm(Alarm alarm) {
+        this.alarms.add(alarm);
+        if (alarm.getHealthVisitor() != this) {
+            alarm.setHealthVisitor(this);
+        }
     }
 }

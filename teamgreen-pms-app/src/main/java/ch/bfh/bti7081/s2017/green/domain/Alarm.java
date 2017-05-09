@@ -1,6 +1,7 @@
 package ch.bfh.bti7081.s2017.green.domain;
 
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import java.time.LocalDateTime;
@@ -13,9 +14,11 @@ public class Alarm extends BaseEntity {
     private LocalDateTime timestamp;
 
     @ManyToOne
+    @JoinColumn(name = "healthVisitorId")
     private HealthVisitor healthVisitor;
 
     @ManyToOne
+    @JoinColumn(name = "patientId")
     private Patient patient;
 
     public String getCoordinates() {
@@ -38,15 +41,21 @@ public class Alarm extends BaseEntity {
         return healthVisitor;
     }
 
-    public void setHealthVisitor(HealthVisitor healthVisitor) {
-        this.healthVisitor = healthVisitor;
-    }
-
     public Patient getPatient() {
         return patient;
     }
 
+    public void setHealthVisitor(HealthVisitor healthVisitor) {
+        this.healthVisitor = healthVisitor;
+        if (!healthVisitor.getAlarms().contains(this)) {
+            healthVisitor.getAlarms().add(this);
+        }
+    }
+
     public void setPatient(Patient patient) {
         this.patient = patient;
+        if (!patient.getAlarms().contains(this)) {
+            patient.getAlarms().add(this);
+        }
     }
 }

@@ -14,12 +14,20 @@
             <column name="id" type="BIGINT" autoIncrement="true">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
+            <column name="healthVisitorId" type="BIGINT"/>
+            <column name="patientId" type="BIGINT"/>
+
+            <column name="coordinates" type="VARCHAR(50)"/>
+            <column name="timestamp" type="VARCHAR(50)"/>
         </createTable>
 
         <createTable tableName="Appointment">
             <column name="id" type="BIGINT" autoIncrement="true">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
+            <column name="healthVisitorId" type="BIGINT"/>
+            <column name="patientId" type="BIGINT"/>
+
         </createTable>
 
         <createTable tableName="Patient">
