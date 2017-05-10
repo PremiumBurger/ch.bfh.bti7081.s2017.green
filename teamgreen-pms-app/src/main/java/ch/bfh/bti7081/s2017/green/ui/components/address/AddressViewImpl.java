@@ -2,7 +2,10 @@ package ch.bfh.bti7081.s2017.green.ui.components.address;
 
 import ch.bfh.bti7081.s2017.green.bean.AddressBean;
 import ch.bfh.bti7081.s2017.green.ui.MasterPageImpl;
-import com.vaadin.ui.*;
+import ch.bfh.bti7081.s2017.green.ui.components.search.SearchViewImpl;
+import com.vaadin.ui.Button;
+import com.vaadin.ui.Grid;
+import com.vaadin.ui.HorizontalLayout;
 
 import java.util.Set;
 
@@ -12,28 +15,27 @@ import java.util.Set;
 public class AddressViewImpl extends MasterPageImpl implements AddressView {
     private AddressViewListener listener;
     private Grid<AddressBean> grid;
+    private SearchViewImpl header;
     private Button btnTest;
 
     public AddressViewImpl() {
         HorizontalLayout layout = new HorizontalLayout();
-        layout.setResponsive(true);
+
+        header = new SearchViewImpl();
+        header.setTitle("MyDay");
 
         grid = new Grid<>(AddressBean.class);
-
         grid.setColumnOrder(grid.getColumn("strasse"),grid.getColumn("plz"),grid.getColumn("city"),grid.getColumn("country"));
         grid.getColumn("id").setHidden(true);
 
         btnTest = new Button("Test (load Address)");
+        btnTest.setWidth(100, Unit.PIXELS);
         btnTest.addClickListener(b->listener.onButtonClick());
-
 
         layout.addComponents(grid, btnTest);
         layout.setSizeFull();
-        setViewContent(layout);
-
-        VerticalLayout header = new VerticalLayout();
-        header.addComponent(new Label("Pissssseeerrr"));
         setHeader(header);
+        setViewContent(layout);
     }
 
     @Override

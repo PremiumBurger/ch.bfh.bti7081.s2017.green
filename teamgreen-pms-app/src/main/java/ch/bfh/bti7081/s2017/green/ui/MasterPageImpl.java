@@ -15,17 +15,20 @@ public abstract class MasterPageImpl extends AbsoluteLayout implements MasterPag
     private Component header;
     private VerticalLayout layout;
     private Panel contentPanel;
+    private Panel headerPanel;
 
 
     public MasterPageImpl() {
         layout = new VerticalLayout();
 
+        final VerticalLayout header = new VerticalLayout();
+        headerPanel = new Panel(header);
+
         final VerticalLayout content = new VerticalLayout();
-        header = new VerticalLayout();
         contentPanel = new Panel(content);
         contentPanel.setSizeFull();
 
-        layout.addComponent(header);
+        layout.addComponent(headerPanel);
         layout.addComponent(contentPanel);
 
         final MenuViewImpl menu = new MenuViewImpl();
@@ -42,7 +45,7 @@ public abstract class MasterPageImpl extends AbsoluteLayout implements MasterPag
     }
 
     protected void setHeader(Component header) {
-        this.header = header;
+        this.headerPanel.setContent(header);
     }
 
     protected void setViewContent(Component content) {

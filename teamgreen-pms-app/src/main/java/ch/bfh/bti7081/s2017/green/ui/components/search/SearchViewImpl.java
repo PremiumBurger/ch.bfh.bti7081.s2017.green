@@ -11,20 +11,19 @@ import java.util.List;
  */
 public class SearchViewImpl extends FormLayout implements SearchView {
     private List<SearchViewListener> listeners;
-
+    private Label title;
 
     public SearchViewImpl() {
         //this.listeners = listeners;
         final VerticalLayout main = new VerticalLayout();
         final HorizontalLayout titleBox = new HorizontalLayout();
         final HorizontalLayout controlBox = new HorizontalLayout();
-        final Label title;
         final TextField searchName;
         final Button search;
         /* Create UI components */
         searchName = new TextField();
         searchName.setValue("Search");
-        title = new Label("MyDay");
+        title = new Label("Title");
 
         //TODO: Set Width of Textfield and Button
         searchName.setWidth(10, Unit.PIXELS);
@@ -53,5 +52,9 @@ public class SearchViewImpl extends FormLayout implements SearchView {
     @Override
     public void addListener(SearchViewListener viewListener) {
         listeners.add(viewListener);
+    }
+
+    public void setTitle(String title){
+        this.title.setValue(title);
     }
 }
