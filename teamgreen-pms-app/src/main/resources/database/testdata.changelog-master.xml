@@ -14,5 +14,29 @@
         </insert>
     </changeSet>
 
+    <changeSet id="testdata_address" author="schms27">
+        <insert tableName="Address">
+            <column name="id" value="1"/>
+            <column name="strasse" value="Wankdorffeldstrasse 5"/>
+            <column name="plz" value="3000"/>
+            <column name="city" value="Bern"/>
+            <column name="country" value="CH"/>
+        </insert>
+        <insert tableName="Address">
+            <column name="id" value="2"/>
+            <column name="strasse" value="Ortsweg 3"/>
+            <column name="plz" value="3600"/>
+            <column name="city" value="Thun"/>
+            <column name="country" value="CH"/>
+        </insert>
+        <insert tableName="Address">
+            <column name="id" value="3"/>
+            <column name="strasse" value="Postweg 17"/>
+            <column name="plz" value="3110"/>
+            <column name="city" value="Münsingen"/>
+            <column name="country" value="CH"/>
+        </insert>
+    </changeSet>
+
 
 </databaseChangeLog>

@@ -1,11 +1,9 @@
 package ch.bfh.bti7081.s2017.green.ui;
 
-import ch.bfh.bti7081.s2017.green.service.HealthVisitorService;
-import ch.bfh.bti7081.s2017.green.service.HealthVisitorServiceImpl;
-import ch.bfh.bti7081.s2017.green.ui.components.login.Login;
-import ch.bfh.bti7081.s2017.green.ui.components.login.LoginViewImpl;
-import ch.bfh.bti7081.s2017.green.ui.components.login.LoginViewPresenter;
-import ch.bfh.bti7081.s2017.green.ui.components.myday.MyDayViewImpl;
+import ch.bfh.bti7081.s2017.green.service.AddressService;
+import ch.bfh.bti7081.s2017.green.ui.components.address.Address;
+import ch.bfh.bti7081.s2017.green.ui.components.address.AddressViewImpl;
+import ch.bfh.bti7081.s2017.green.ui.components.address.AddressViewPresenter;
 import com.vaadin.annotations.Theme;
 import com.vaadin.server.VaadinRequest;
 import com.vaadin.spring.annotation.SpringUI;
@@ -18,18 +16,24 @@ import org.springframework.beans.factory.annotation.Autowired;
 @SpringUI
 @Theme("valo")
 public class MainUI extends UI {
-    private HealthVisitorService service;
-
     @Autowired
+    private AddressService service;
+
+    /*@Autowired
     public MainUI(HealthVisitorService service) {
         this.service = service;
-    }
+    }*/
 
     @Override
     protected void init(VaadinRequest request) {
-        LoginViewImpl loginView = new LoginViewImpl();
+        AddressViewImpl addressView = new AddressViewImpl();
+
+        new AddressViewPresenter(addressView, new Address(service));
+        setContent(addressView);
+
+        /*LoginViewImpl loginView = new LoginViewImpl();
 
         new LoginViewPresenter(loginView, new Login(service));
-        setContent(loginView);
+        setContent(loginView);*/
     }
 }
