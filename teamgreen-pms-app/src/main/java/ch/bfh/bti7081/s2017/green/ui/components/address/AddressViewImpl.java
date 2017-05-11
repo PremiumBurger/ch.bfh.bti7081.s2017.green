@@ -10,28 +10,32 @@ import com.vaadin.ui.HorizontalLayout;
 import java.util.Set;
 
 /**
+ * Implementation of the AddressView to show a List of Addresses aquired from the database
  * Created by joris on 09.05.17.
+ * @author schms27
  */
 public class AddressViewImpl extends MasterPageImpl implements AddressView {
-    private AddressViewListener listener;
-    private Grid<AddressBean> grid;
-    private SearchViewImpl header;
-    private Button btnTest;
+    //Variable Declaration
+    private AddressViewListener listener;   //Listener to forward events to AddressViewPresenter
+    private Grid<AddressBean> grid;         //Vaadin Grid to show the Addresses
 
     public AddressViewImpl() {
         HorizontalLayout layout = new HorizontalLayout();
 
-        header = new SearchViewImpl();
+        SearchViewImpl header = new SearchViewImpl(); //Searchbar to set on top of the Page
         header.setTitle("MyDay");
 
+        //Initialize Grid and set the Columnorder
         grid = new Grid<>(AddressBean.class);
         grid.setColumnOrder(grid.getColumn("strasse"), grid.getColumn("plz"), grid.getColumn("city"), grid.getColumn("country"));
         grid.getColumn("id").setHidden(true);
 
-        btnTest = new Button("Test (load Address)");
+        //Declare & Initialize Vaadin Button for easy Testing of the Address-Loading, can be removed later
+        Button btnTest = new Button("Test (load Address)");
         btnTest.setWidth(100, Unit.PIXELS);
         btnTest.addClickListener(b -> listener.onButtonClick());
 
+        //Assemble UI Components
         layout.addComponents(grid, btnTest);
         layout.setSizeFull();
         setHeader(header);

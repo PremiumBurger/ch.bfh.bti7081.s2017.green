@@ -3,20 +3,23 @@ package ch.bfh.bti7081.s2017.green.ui.components.search;
 import org.springframework.beans.factory.annotation.Autowired;
 
 /**
- * Created by S.Schmid on 08.05.2017.
+ * Handles the interaction between View and Model
+ * @author schms27
  */
 public class SearchPresenter implements SearchViewListener {
-
-    //View
-    private SearchView searchview;
-    //Model
-    private Search search;
+    private SearchView searchview;          //View
+    private Search search;                  //Model
 
     @Autowired
     public SearchPresenter(SearchView searchview, Search search) {
         this.searchview = searchview;
         this.search = search;
         searchview.addListener(this);
+    }
+
+    @Override
+    public void onButtonClick() {
+        //TODO: Implement Search function
     }
 }
 
