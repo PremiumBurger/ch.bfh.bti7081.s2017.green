@@ -47,4 +47,28 @@
             <column name="email" value="sabi@yeah.ch"/>
         </insert>
     </changeSet>
+    <changeSet id="testdata_2" author="schms27">
+        <!-- Person (Patient) -->
+        <insert tableName="Person">
+            <column name="id" value="2"/>
+            <column name="personType" value="patient"/>
+            <column name="addressId" value="3"/>
+            <column name="genderTypeId" value="1"/>
+
+            <column name="firstName" value="Beat"/>
+            <column name="lastName" value="Orderline"/>
+            <column name="birthDate" value="1980-08-15"/>
+            <column name="phone" value="077 555 55 25"/>
+            <column name="mobile" value="088 544 54 25"/>
+            <column name="ahvNr" value="756.2821.3225.39"/>
+            <column name="email" value="beat@mail.ch"/>
+        </insert>
+        <!-- Appointment -->
+        <insert tableName="appointment">
+            <column name="id" value="1"/>
+            <column name="healthVisitorId" value="1"/>
+            <column name="patientId" value="2"/>
+            <column name="intendedDateTime" value="2017-10-30 08:00:00"/>
+        </insert>
+    </changeSet>
 </databaseChangeLog>
