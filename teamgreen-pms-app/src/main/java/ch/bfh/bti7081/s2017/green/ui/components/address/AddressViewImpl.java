@@ -6,6 +6,7 @@ import ch.bfh.bti7081.s2017.green.ui.components.search.SearchViewImpl;
 import com.vaadin.ui.Button;
 import com.vaadin.ui.Grid;
 import com.vaadin.ui.HorizontalLayout;
+import org.springframework.stereotype.Component;
 
 import java.util.Set;
 
@@ -14,6 +15,7 @@ import java.util.Set;
  * Created by joris on 09.05.17.
  * @author schms27
  */
+@Component
 public class AddressViewImpl extends MasterPageImpl implements AddressView {
     //Variable Declaration
     private AddressViewListener listener;   //Listener to forward events to AddressViewPresenter

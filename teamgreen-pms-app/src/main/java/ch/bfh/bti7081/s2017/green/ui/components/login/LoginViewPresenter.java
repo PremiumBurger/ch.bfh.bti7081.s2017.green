@@ -1,11 +1,11 @@
 package ch.bfh.bti7081.s2017.green.ui.components.login;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
-/**
- * Created by joris on 08.05.17.
- */
+@Component
 public class LoginViewPresenter implements LoginViewListener {
+
     private LoginView loginView;
     private Login login;
 
@@ -16,12 +16,8 @@ public class LoginViewPresenter implements LoginViewListener {
         loginView.addListener(this);
     }
 
-    public void login() {
-        System.out.println("Login");
-    }
-
     @Override
-    public void onButtonClick() {
-        loginView.doSomething(login.getFirstVisitor());
+    public void onLoginClick() {
+        loginView.login();
     }
 }
