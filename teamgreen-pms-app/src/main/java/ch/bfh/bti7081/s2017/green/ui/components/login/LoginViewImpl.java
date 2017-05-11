@@ -1,35 +1,35 @@
 package ch.bfh.bti7081.s2017.green.ui.components.login;
 
-import ch.bfh.bti7081.s2017.green.bean.HealthVisitorBean;
 import ch.bfh.bti7081.s2017.green.ui.MasterPageImpl;
 import com.vaadin.icons.VaadinIcons;
-import com.vaadin.ui.*;
+import com.vaadin.ui.Button;
+import com.vaadin.ui.Label;
+import com.vaadin.ui.TextField;
+import com.vaadin.ui.VerticalLayout;
 
-/**
- * Created by joris on 08.05.17.
- */
+@org.springframework.stereotype.Component
 public class LoginViewImpl extends MasterPageImpl implements LoginView {
 
     private LoginViewListener listener;
 
+    private Label userNameLabel;
+    private TextField userName;
+    private Label passwordLabel;
+    private TextField password;
+    private Button loginButton;
+
     public LoginViewImpl() {
-        HorizontalLayout layout = new HorizontalLayout();
-        layout.setResponsive(true);
+        VerticalLayout layout = new VerticalLayout();
 
-        Label username = new Label("Username");
-        TextField usernameField = new TextField();
-        layout.addComponents(username, usernameField);
-
-        Label passwordLabel = new Label("Password");
-        PasswordField passwordField = new PasswordField();
-
-        layout.addComponents(passwordLabel, passwordField);
-
-        Button loginButton = new Button("Login");
+        userNameLabel = new Label("User Name");
+        userName = new TextField();
+        passwordLabel = new Label("Password");
+        password = new TextField();
+        loginButton = new Button("Login");
         loginButton.setIcon(VaadinIcons.SIGN_IN);
-        loginButton.addClickListener(b -> listener.onButtonClick());
-        layout.addComponent(loginButton);
+        loginButton.addClickListener(b -> listener.onLoginClick());
 
+        layout.addComponents(userNameLabel, userName, passwordLabel, password, loginButton);
         setViewContent(layout);
     }
 
@@ -39,7 +39,7 @@ public class LoginViewImpl extends MasterPageImpl implements LoginView {
     }
 
     @Override
-    public void doSomething(HealthVisitorBean firstVisitor) {
-        setViewContent(new Label(firstVisitor.toString()));
+    public void login() {
+        System.out.println("Login Test");
     }
 }

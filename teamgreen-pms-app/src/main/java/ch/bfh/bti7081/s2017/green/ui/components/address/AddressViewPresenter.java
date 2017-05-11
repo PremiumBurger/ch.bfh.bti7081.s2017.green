@@ -1,14 +1,16 @@
 package ch.bfh.bti7081.s2017.green.ui.components.address;
 
-/**
- * Created by Simu on 10.05.2017 for Project ch.bfh.bti7081.s2017.green.
- * TEstbeschreibung
- */
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
+@Component
 public class AddressViewPresenter implements AddressViewListener {
+
     private Address address;
+
     private AddressView addressView;
 
+    @Autowired
     public AddressViewPresenter(AddressView addressView, Address address) {
         this.addressView = addressView;
         this.address = address;

@@ -8,18 +8,15 @@ import com.vaadin.ui.Component;
 import com.vaadin.ui.Panel;
 import com.vaadin.ui.VerticalLayout;
 
-/**
- * Created by joris on 05.05.17.
- */
 @SpringUI
 @Theme("valo")
 public abstract class MasterPageImpl extends AbsoluteLayout implements MasterPage {
+
     private MasterPageListener listener;
     private Component header;
     private VerticalLayout layout;
     private Panel contentPanel;
     private Panel headerPanel;
-
 
     public MasterPageImpl() {
         layout = new VerticalLayout();
