@@ -26,7 +26,7 @@ public class MenuViewImpl extends HorizontalLayout implements MenuView {
         alarm.setStyleName("primary");
         alarm.setWidth("100%");
         home.setWidth("100%");
-        addComponents(alarm,home);
+        addComponents(alarm, home);
         setWidth("100%");
         setResponsive(true);
 

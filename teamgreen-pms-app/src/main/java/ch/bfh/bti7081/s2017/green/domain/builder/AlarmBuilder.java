@@ -4,7 +4,6 @@ import ch.bfh.bti7081.s2017.green.domain.Alarm;
 import ch.bfh.bti7081.s2017.green.domain.HealthVisitor;
 import ch.bfh.bti7081.s2017.green.domain.Patient;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 public final class AlarmBuilder implements RundumSorglosBuilder {

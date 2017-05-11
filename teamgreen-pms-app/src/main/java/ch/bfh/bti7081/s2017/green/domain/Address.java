@@ -1,7 +1,6 @@
 package ch.bfh.bti7081.s2017.green.domain;
 
 import javax.persistence.Entity;
-import javax.persistence.OneToOne;
 
 @Entity
 public class Address extends BaseEntity {

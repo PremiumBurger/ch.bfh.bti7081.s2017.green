@@ -7,10 +7,19 @@
          http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
 
     <changeSet id="testdata" author="vonac1">
-        <insert tableName="HealthVisitor">
+        <insert tableName="Person">
             <column name="id" value="1"/>
+            <column name="personType" value="healthvisitor"/>
+            <column name="addressId" value="1"/>
+
             <column name="firstName" value="Sabine"/>
             <column name="lastName" value="Pitex"/>
+            <column name="birthDate" value="2017-08-15"/>
+            <column name="phone" value="077 777 77 77"/>
+            <column name="mobile" value="088 888 88 88"/>
+            <column name="ahvNr" value="geili ahv nr"/>
+            <column name="email" value="sabi@yeah.ch"/>
+            <column name="gender" value="F"/>
         </insert>
     </changeSet>
 
@@ -37,6 +46,4 @@
             <column name="country" value="CH"/>
         </insert>
     </changeSet>
-
-
 </databaseChangeLog>

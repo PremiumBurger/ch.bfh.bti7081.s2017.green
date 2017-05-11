@@ -30,7 +30,7 @@ public class SearchViewImpl extends FormLayout implements SearchView {
         searchName.setWidth(80, Unit.PERCENTAGE);
         //searchName.setInputPrompt(“Search by keywords”);
         search = new Button("Search");
-        search.setWidth(20,Unit.PERCENTAGE);
+        search.setWidth(20, Unit.PERCENTAGE);
         search.setIcon(VaadinIcons.SEARCH);
 
         //TODO: Find out how to set a custom style/css/theme
@@ -54,7 +54,7 @@ public class SearchViewImpl extends FormLayout implements SearchView {
         listeners.add(viewListener);
     }
 
-    public void setTitle(String title){
+    public void setTitle(String title) {
         this.title.setValue(title);
     }
 }

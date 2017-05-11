@@ -1,10 +1,13 @@
 package ch.bfh.bti7081.s2017.green.domain;
 
 
-import javax.persistence.*;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.MappedSuperclass;
 
 @MappedSuperclass
-@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
+@Inheritance
 public abstract class BaseEntity {
 
     @Id

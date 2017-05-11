@@ -3,7 +3,10 @@ package ch.bfh.bti7081.s2017.green.ui;
 import ch.bfh.bti7081.s2017.green.ui.components.menu.MenuViewImpl;
 import com.vaadin.annotations.Theme;
 import com.vaadin.spring.annotation.SpringUI;
-import com.vaadin.ui.*;
+import com.vaadin.ui.AbsoluteLayout;
+import com.vaadin.ui.Component;
+import com.vaadin.ui.Panel;
+import com.vaadin.ui.VerticalLayout;
 
 /**
  * Created by joris on 05.05.17.
@@ -34,7 +37,7 @@ public abstract class MasterPageImpl extends AbsoluteLayout implements MasterPag
         final MenuViewImpl menu = new MenuViewImpl();
         layout.addComponent(menu);
         layout.setSizeFull();
-        layout.setExpandRatio(contentPanel,1);
+        layout.setExpandRatio(contentPanel, 1);
         layout.setResponsive(true);
 
         addComponent(layout);

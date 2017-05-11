@@ -1,13 +1,14 @@
 package ch.bfh.bti7081.s2017.green.domain;
 
-import org.hibernate.annotations.*;
+import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.CascadeType;
 
 import javax.persistence.*;
-import javax.persistence.Entity;
 import java.time.LocalDate;
 
-@MappedSuperclass
+@Entity
+@Inheritance
+@DiscriminatorColumn(name = "personType")
 public abstract class Person extends BaseEntity {
 
     private String firstName;

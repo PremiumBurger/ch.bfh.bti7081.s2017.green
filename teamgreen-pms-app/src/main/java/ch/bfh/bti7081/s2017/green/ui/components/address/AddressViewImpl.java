@@ -25,12 +25,12 @@ public class AddressViewImpl extends MasterPageImpl implements AddressView {
         header.setTitle("MyDay");
 
         grid = new Grid<>(AddressBean.class);
-        grid.setColumnOrder(grid.getColumn("strasse"),grid.getColumn("plz"),grid.getColumn("city"),grid.getColumn("country"));
+        grid.setColumnOrder(grid.getColumn("strasse"), grid.getColumn("plz"), grid.getColumn("city"), grid.getColumn("country"));
         grid.getColumn("id").setHidden(true);
 
         btnTest = new Button("Test (load Address)");
         btnTest.setWidth(100, Unit.PIXELS);
-        btnTest.addClickListener(b->listener.onButtonClick());
+        btnTest.addClickListener(b -> listener.onButtonClick());
 
         layout.addComponents(grid, btnTest);
         layout.setSizeFull();

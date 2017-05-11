@@ -31,15 +31,15 @@ public class Appointment extends BaseEntity {
         return healthVisitor;
     }
 
-    public Patient getPatient() {
-        return patient;
-    }
-
     public void setHealthVisitor(HealthVisitor healthVisitor) {
         this.healthVisitor = healthVisitor;
         if (!healthVisitor.getAppointments().contains(this)) {
             healthVisitor.getAppointments().add(this);
         }
+    }
+
+    public Patient getPatient() {
+        return patient;
     }
 
     public void setPatient(Patient patient) {

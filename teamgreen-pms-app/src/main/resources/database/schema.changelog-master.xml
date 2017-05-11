@@ -30,10 +30,11 @@
 
         </createTable>
 
-        <createTable tableName="Patient">
+        <createTable tableName="Person">
             <column name="id" type="BIGINT" autoIncrement="true">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
+            <column name="personType" type="VARCHAR(50)"/>
             <column name="addressId" type="BIGINT"/>
 
             <column name="firstName" type="VARCHAR(50)"/>
@@ -46,21 +47,40 @@
             <column name="gender" type="VARCHAR(50)"/>
         </createTable>
 
-        <createTable tableName="HealthVisitor">
-            <column name="id" type="BIGINT" autoIncrement="true">
-                <constraints primaryKey="true" nullable="false"/>
-            </column>
-            <column name="addressId" type="BIGINT"/>
 
-            <column name="firstName" type="VARCHAR(50)"/>
-            <column name="lastName" type="VARCHAR(50)"/>
-            <column name="birthDate" type="VARCHAR(50)"/>
-            <column name="phone" type="VARCHAR(50)"/>
-            <column name="mobile" type="VARCHAR(50)"/>
-            <column name="ahvNr" type="VARCHAR(50)"/>
-            <column name="email" type="VARCHAR(50)"/>
-            <column name="gender" type="VARCHAR(50)"/>
-        </createTable>
+        <!--
+    <createTable tableName="Patient">
+        <column name="id" type="BIGINT" autoIncrement="true">
+            <constraints primaryKey="true" nullable="false"/>
+        </column>
+        <column name="addressId" type="BIGINT"/>
+
+        <column name="firstName" type="VARCHAR(50)"/>
+        <column name="lastName" type="VARCHAR(50)"/>
+        <column name="birthDate" type="VARCHAR(50)"/>
+        <column name="phone" type="VARCHAR(50)"/>
+        <column name="mobile" type="VARCHAR(50)"/>
+        <column name="ahvNr" type="VARCHAR(50)"/>
+        <column name="email" type="VARCHAR(50)"/>
+        <column name="gender" type="VARCHAR(50)"/>
+    </createTable>
+
+    <createTable tableName="HealthVisitor">
+        <column name="id" type="BIGINT" autoIncrement="true">
+            <constraints primaryKey="true" nullable="false"/>
+        </column>
+        <column name="addressId" type="BIGINT"/>
+
+        <column name="firstName" type="VARCHAR(50)"/>
+        <column name="lastName" type="VARCHAR(50)"/>
+        <column name="birthDate" type="VARCHAR(50)"/>
+        <column name="phone" type="VARCHAR(50)"/>
+        <column name="mobile" type="VARCHAR(50)"/>
+        <column name="ahvNr" type="VARCHAR(50)"/>
+        <column name="email" type="VARCHAR(50)"/>
+        <column name="gender" type="VARCHAR(50)"/>
+    </createTable>
+    -->
 
         <createTable tableName="Address">
             <column name="id" type="BIGINT" autoIncrement="true">

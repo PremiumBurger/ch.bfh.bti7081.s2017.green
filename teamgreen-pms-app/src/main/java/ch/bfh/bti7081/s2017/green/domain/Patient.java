@@ -1,5 +1,6 @@
 package ch.bfh.bti7081.s2017.green.domain;
 
+import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
@@ -7,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
+@DiscriminatorValue("patient")
 public class Patient extends Person {
 
     @ManyToMany(mappedBy = "patients")

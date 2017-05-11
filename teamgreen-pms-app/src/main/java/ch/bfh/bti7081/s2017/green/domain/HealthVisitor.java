@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
+@DiscriminatorValue("healthvisitor")
 public class HealthVisitor extends Person {
 
     @ManyToMany
