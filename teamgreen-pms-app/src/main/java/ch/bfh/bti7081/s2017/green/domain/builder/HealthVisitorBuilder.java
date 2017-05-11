@@ -13,7 +13,6 @@ public final class HealthVisitorBuilder implements RundumSorglosBuilder {
     private String mobile;
     private String ahvNr;
     private String email;
-    private String gender;
     private Address address;
 
     private HealthVisitorBuilder() {
@@ -58,11 +57,6 @@ public final class HealthVisitorBuilder implements RundumSorglosBuilder {
         return this;
     }
 
-    public HealthVisitorBuilder withGender(String gender) {
-        this.gender = gender;
-        return this;
-    }
-
     public HealthVisitorBuilder withAddress(Address address) {
         this.address = address;
         return this;
@@ -77,7 +71,6 @@ public final class HealthVisitorBuilder implements RundumSorglosBuilder {
         healthVisitor.setMobile(mobile);
         healthVisitor.setAhvNr(ahvNr);
         healthVisitor.setEmail(email);
-        healthVisitor.setGender(gender);
         healthVisitor.setAddress(address);
         return healthVisitor;
     }
@@ -91,7 +84,6 @@ public final class HealthVisitorBuilder implements RundumSorglosBuilder {
         mobile = "066 666 66 66";
         ahvNr = "super geili ahv nr";
         email = "sabi@pitex.ch";
-        gender = "F";
         address = AddressBuilder.anAddress().rundumSorglos().build();
         return this;
     }

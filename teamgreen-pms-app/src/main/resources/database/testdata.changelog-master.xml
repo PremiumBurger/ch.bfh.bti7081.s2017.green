@@ -7,23 +7,8 @@
          http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
 
     <changeSet id="testdata" author="vonac1">
-        <insert tableName="Person">
-            <column name="id" value="1"/>
-            <column name="personType" value="healthvisitor"/>
-            <column name="addressId" value="1"/>
 
-            <column name="firstName" value="Sabine"/>
-            <column name="lastName" value="Pitex"/>
-            <column name="birthDate" value="2017-08-15"/>
-            <column name="phone" value="077 777 77 77"/>
-            <column name="mobile" value="088 888 88 88"/>
-            <column name="ahvNr" value="geili ahv nr"/>
-            <column name="email" value="sabi@yeah.ch"/>
-            <column name="gender" value="F"/>
-        </insert>
-    </changeSet>
-
-    <changeSet id="testdata_address" author="schms27">
+        <!-- Addresses -->
         <insert tableName="Address">
             <column name="id" value="1"/>
             <column name="strasse" value="Wankdorffeldstrasse 5"/>
@@ -44,6 +29,22 @@
             <column name="plz" value="3110"/>
             <column name="city" value="Münsingen"/>
             <column name="country" value="CH"/>
+        </insert>
+
+        <!-- Health Visitors -->
+        <insert tableName="Person">
+            <column name="id" value="1"/>
+            <column name="personType" value="healthvisitor"/>
+            <column name="addressId" value="1"/>
+            <column name="genderTypeId" value="2"/>
+
+            <column name="firstName" value="Sabine"/>
+            <column name="lastName" value="Pitex"/>
+            <column name="birthDate" value="2017-08-15"/>
+            <column name="phone" value="077 777 77 77"/>
+            <column name="mobile" value="088 888 88 88"/>
+            <column name="ahvNr" value="756.2831.3945.39"/>
+            <column name="email" value="sabi@yeah.ch"/>
         </insert>
     </changeSet>
 </databaseChangeLog>

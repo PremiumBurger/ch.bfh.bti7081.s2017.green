@@ -8,100 +8,91 @@
 
 
     <changeSet id="1" author="vonac1">
-
         <!-- Tables -->
-        <createTable tableName="Alarm">
+        <createTable tableName="GenderType">
             <column name="id" type="BIGINT" autoIncrement="true">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
-            <column name="healthVisitorId" type="BIGINT"/>
-            <column name="patientId" type="BIGINT"/>
-
-            <column name="coordinates" type="VARCHAR(50)"/>
-            <column name="timestamp" type="VARCHAR(50)"/>
+            <column name="description" type="VARCHAR(50)"/>
         </createTable>
 
-        <createTable tableName="Appointment">
+        <createTable tableName="Address">
             <column name="id" type="BIGINT" autoIncrement="true">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
-            <column name="healthVisitorId" type="BIGINT"/>
-            <column name="patientId" type="BIGINT"/>
-
+            <column name="strasse" type="VARCHAR(255)"/>
+            <column name="plz" type="VARCHAR(6)"/>
+            <column name="city" type="VARCHAR(255)"/>
+            <column name="country" type="VARCHAR(50)"/>
         </createTable>
 
         <createTable tableName="Person">
             <column name="id" type="BIGINT" autoIncrement="true">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
-            <column name="personType" type="VARCHAR(50)"/>
-            <column name="addressId" type="BIGINT"/>
+            <column name="personType" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="addressId" type="BIGINT">
+                <constraints nullable="true" foreignKeyName="fk_person_address" references="Address(id)"/>
+            </column>
+            <column name="genderTypeId" type="BIGINT">
+                <constraints nullable="false" foreignKeyName="fk_person_gender" references="GenderType(id)"/>
+            </column>
 
-            <column name="firstName" type="VARCHAR(50)"/>
-            <column name="lastName" type="VARCHAR(50)"/>
-            <column name="birthDate" type="VARCHAR(50)"/>
+            <column name="firstName" type="VARCHAR(255)"/>
+            <column name="lastName" type="VARCHAR(255)"/>
+            <column name="birthDate" type="DATE"/>
             <column name="phone" type="VARCHAR(50)"/>
             <column name="mobile" type="VARCHAR(50)"/>
-            <column name="ahvNr" type="VARCHAR(50)"/>
-            <column name="email" type="VARCHAR(50)"/>
-            <column name="gender" type="VARCHAR(50)"/>
+            <column name="ahvNr" type="VARCHAR(16)"/>
+            <column name="email" type="VARCHAR(255)"/>
         </createTable>
 
-
-        <!--
-    <createTable tableName="Patient">
-        <column name="id" type="BIGINT" autoIncrement="true">
-            <constraints primaryKey="true" nullable="false"/>
-        </column>
-        <column name="addressId" type="BIGINT"/>
-
-        <column name="firstName" type="VARCHAR(50)"/>
-        <column name="lastName" type="VARCHAR(50)"/>
-        <column name="birthDate" type="VARCHAR(50)"/>
-        <column name="phone" type="VARCHAR(50)"/>
-        <column name="mobile" type="VARCHAR(50)"/>
-        <column name="ahvNr" type="VARCHAR(50)"/>
-        <column name="email" type="VARCHAR(50)"/>
-        <column name="gender" type="VARCHAR(50)"/>
-    </createTable>
-
-    <createTable tableName="HealthVisitor">
-        <column name="id" type="BIGINT" autoIncrement="true">
-            <constraints primaryKey="true" nullable="false"/>
-        </column>
-        <column name="addressId" type="BIGINT"/>
-
-        <column name="firstName" type="VARCHAR(50)"/>
-        <column name="lastName" type="VARCHAR(50)"/>
-        <column name="birthDate" type="VARCHAR(50)"/>
-        <column name="phone" type="VARCHAR(50)"/>
-        <column name="mobile" type="VARCHAR(50)"/>
-        <column name="ahvNr" type="VARCHAR(50)"/>
-        <column name="email" type="VARCHAR(50)"/>
-        <column name="gender" type="VARCHAR(50)"/>
-    </createTable>
-    -->
-
-        <createTable tableName="Address">
+        <createTable tableName="Alarm">
             <column name="id" type="BIGINT" autoIncrement="true">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
-            <column name="strasse" type="VARCHAR(50)"/>
-            <column name="plz" type="VARCHAR(50)"/>
-            <column name="city" type="VARCHAR(50)"/>
-            <column name="country" type="VARCHAR(50)"/>
+            <column name="healthVisitorId" type="BIGINT">
+                <constraints nullable="false" foreignKeyName="fk_alarm_healthvisitor" references="Person(id)"/>
+            </column>
+            <column name="patientId" type="BIGINT">
+                <constraints nullable="true" foreignKeyName="fk_alarm_patient" references="Person(id)"/>
+            </column>
+            <column name="coordinates" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="timestamp" type="TIMESTAMP">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <createTable tableName="Appointment">
+            <column name="id" type="BIGINT" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="healthVisitorId" type="BIGINT">
+                <constraints nullable="false" foreignKeyName="fk_appointment_healthvisitor" references="Person(id)"/>
+            </column>
+            <column name="patientId" type="BIGINT">
+                <constraints nullable="true" foreignKeyName="fk_appointment_patient" references="Person(id)"/>
+            </column>
+            <column name="intendedDateTime" type="TIMESTAMP">
+                <constraints nullable="false"/>
+            </column>
         </createTable>
 
         <!-- Zwischentabellen -->
         <createTable tableName="PatientHealthVisitor">
             <column name="patientId" type="BIGINT">
-                <constraints primaryKey="true" nullable="false"/>
+                <constraints primaryKey="true" nullable="false" foreignKeyName="fk_pat_heal_patient"
+                             references="Person(id)"/>
             </column>
             <column name="healthVisitorId" type="BIGINT">
-                <constraints primaryKey="true" nullable="false"/>
+                <constraints primaryKey="true" nullable="false" foreignKeyName="fk_pat_heal_healthvisitor"
+                             references="Person(id)"/>
             </column>
         </createTable>
-
     </changeSet>
 
 </databaseChangeLog>

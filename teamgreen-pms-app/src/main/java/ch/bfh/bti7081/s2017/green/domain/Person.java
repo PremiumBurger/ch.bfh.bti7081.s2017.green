@@ -25,12 +25,14 @@ public abstract class Person extends BaseEntity {
 
     private String email;
 
-    private String gender;
-
     @OneToOne
     @JoinColumn(name = "addressId")
     @Cascade(CascadeType.ALL)
     private Address address;
+
+    @ManyToOne
+    @JoinColumn(name = "genderTypeId")
+    private GenderType genderType;
 
     public Address getAddress() {
         return address;
@@ -96,13 +98,12 @@ public abstract class Person extends BaseEntity {
         this.email = email;
     }
 
-    public String getGender() {
-        return gender;
+    public GenderType getGenderType() {
+        return genderType;
     }
 
-    public void setGender(String gender) {
-        this.gender = gender;
+    public void setGenderType(GenderType genderType) {
+        this.genderType = genderType;
     }
-
 
 }

@@ -5,4 +5,15 @@
          http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
 
 
+    <changeSet id="basedata" author="vonac1">
+        <!-- Gender Types -->
+        <insert tableName="GenderType">
+            <column name="id" value="1"/>
+            <column name="description" value="Male"/>
+        </insert>
+        <insert tableName="GenderType">
+            <column name="id" value="2"/>
+            <column name="description" value="Female"/>
+        </insert>
+    </changeSet>
 </databaseChangeLog>
