@@ -5,8 +5,14 @@ package ch.bfh.bti7081.s2017.green.domain;
  */
 public class AppointmentStateIdle extends AppointmentState {
 
-    @Override
-    public void handleEvent1() {
 
+    @Override
+    public void handleStateAction(Appointment appointment) {
+        System.out.println("Appointment is in idle state");
+        appointment.setState(this);
+    }
+
+    public String toString(){
+        return "Appointment Idle State";
     }
 }
