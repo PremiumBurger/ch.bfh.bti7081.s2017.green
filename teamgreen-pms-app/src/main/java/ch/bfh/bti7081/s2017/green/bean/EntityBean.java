@@ -1,13 +1,21 @@
 package ch.bfh.bti7081.s2017.green.bean;
 
 import ch.bfh.bti7081.s2017.green.domain.BaseEntity;
+import ch.bfh.bti7081.s2017.green.util.PmsModelMapper;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.BeanUtils;
 
 import java.io.Serializable;
 
 public abstract class EntityBean<T extends BaseEntity> implements Serializable {
 
+    private PmsModelMapper modelMapper;
+
     private T entity;
+
+    public EntityBean() {
+        modelMapper = new PmsModelMapper();
+    }
 
     /**
      * Stores the properties of this Bean to the underlaying entity.
@@ -15,7 +23,7 @@ public abstract class EntityBean<T extends BaseEntity> implements Serializable {
      * @return the updated entity
      */
     public T updateEntiy() {
-        BeanUtils.copyProperties(this, entity);
+        modelMapper.map(this, entity);
         return entity;
     }
 
@@ -25,7 +33,7 @@ public abstract class EntityBean<T extends BaseEntity> implements Serializable {
      * @return the entity of type <T>
      */
     public T reset() {
-        BeanUtils.copyProperties(entity, this);
+        modelMapper.map(entity, this);
         return entity;
     }
 
@@ -36,7 +44,7 @@ public abstract class EntityBean<T extends BaseEntity> implements Serializable {
      */
     public void setEntity(final T entity) {
         this.entity = entity;
-        BeanUtils.copyProperties(entity, this);
+        modelMapper.map(entity, this);
     }
 
     /**

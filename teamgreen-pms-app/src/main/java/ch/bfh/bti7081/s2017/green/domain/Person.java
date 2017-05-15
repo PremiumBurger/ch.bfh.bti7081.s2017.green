@@ -6,10 +6,15 @@ import org.hibernate.annotations.CascadeType;
 import javax.persistence.*;
 import java.time.LocalDate;
 
+/**
+ * Holds all properties of a Person.
+ * <p>
+ * Must not be abstract because of ModelMapper.
+ */
 @Entity
 @Inheritance
 @DiscriminatorColumn(name = "personType")
-public abstract class Person extends BaseEntity {
+public class Person extends BaseEntity {
 
     private String firstName;
 
@@ -24,6 +29,10 @@ public abstract class Person extends BaseEntity {
     private String ahvNr;
 
     private String email;
+
+    public Person() {
+        // empty constructor
+    }
 
     @OneToOne
     @JoinColumn(name = "addressId")
