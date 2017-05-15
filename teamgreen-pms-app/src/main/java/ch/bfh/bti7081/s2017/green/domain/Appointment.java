@@ -6,8 +6,9 @@ import javax.persistence.ManyToOne;
 import java.time.LocalDateTime;
 
 @Entity
-public class Appointment extends BaseEntity {
+public class Appointment extends BaseEntity implements AppointmentEventHandler{
 
+    private AppointmentState appointmentState;
     private LocalDateTime time;
 
     @ManyToOne
@@ -47,5 +48,14 @@ public class Appointment extends BaseEntity {
         if (!patient.getAppointments().contains(this)) {
             patient.getAppointments().add(this);
         }
+    }
+
+    public void setState(AppointmentState state){
+        this.appointmentState = state;
+    }
+
+    @Override
+    public void handleStateAction(Appointment appointment) {
+
     }
 }
