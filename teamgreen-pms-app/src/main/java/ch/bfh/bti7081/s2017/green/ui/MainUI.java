@@ -4,6 +4,7 @@ import ch.bfh.bti7081.s2017.green.ui.components.Alarm.AlarmView;
 import ch.bfh.bti7081.s2017.green.ui.components.address.AddressView;
 import ch.bfh.bti7081.s2017.green.ui.components.address.AddressViewImpl;
 import ch.bfh.bti7081.s2017.green.ui.components.login.LoginView;
+import ch.bfh.bti7081.s2017.green.ui.components.myday.MyDayView;
 import com.vaadin.annotations.Theme;
 import com.vaadin.navigator.Navigator;
 import com.vaadin.server.VaadinRequest;
@@ -24,6 +25,9 @@ public class MainUI extends UI {
     @Autowired
     private AlarmView alarmView;
 
+    @Autowired
+    private MyDayView myDayView;
+
     public static Navigator navigator;
 
     @Override
@@ -32,6 +36,7 @@ public class MainUI extends UI {
         navigator.addView("", loginView);
         navigator.addView("addressView", addressView);
         navigator.addView("alarmView", alarmView);
+        navigator.addView("myDayView", myDayView);
 
     }
 }
