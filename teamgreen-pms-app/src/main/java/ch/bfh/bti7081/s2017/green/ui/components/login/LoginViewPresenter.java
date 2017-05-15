@@ -20,6 +20,6 @@ public class LoginViewPresenter implements LoginViewListener {
     @Override
     public void onLoginClick() {
         loginView.login();
-        MainUI.navigator.navigateTo("addressView");
+
     }
 }

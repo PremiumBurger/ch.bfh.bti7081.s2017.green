@@ -5,10 +5,13 @@ import ch.bfh.bti7081.s2017.green.ui.MasterPageImpl;
 import com.vaadin.navigator.ViewChangeListener;
 import com.vaadin.ui.Label;
 import com.vaadin.ui.VerticalLayout;
+import org.springframework.stereotype.Component;
+import org.springframework.test.annotation.Commit;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@Component
 public class MyDayViewImpl extends MasterPageImpl implements MyDayView {
 
     private List<MyDayViewListener> listeners;
