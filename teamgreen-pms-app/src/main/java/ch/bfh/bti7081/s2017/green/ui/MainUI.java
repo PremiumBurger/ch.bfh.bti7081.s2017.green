@@ -1,5 +1,6 @@
 package ch.bfh.bti7081.s2017.green.ui;
 
+import ch.bfh.bti7081.s2017.green.ui.components.Alarm.AlarmView;
 import ch.bfh.bti7081.s2017.green.ui.components.address.AddressView;
 import ch.bfh.bti7081.s2017.green.ui.components.address.AddressViewImpl;
 import ch.bfh.bti7081.s2017.green.ui.components.login.LoginView;
@@ -20,6 +21,9 @@ public class MainUI extends UI {
     @Autowired
     private AddressView addressView;
 
+    @Autowired
+    private AlarmView alarmView;
+
     public static Navigator navigator;
 
     @Override
@@ -27,6 +31,7 @@ public class MainUI extends UI {
         navigator = new Navigator(this,this);
         navigator.addView("", loginView);
         navigator.addView("addressView", addressView);
+        navigator.addView("alarmView", alarmView);
 
     }
 }
