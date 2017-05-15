@@ -2,6 +2,7 @@ package ch.bfh.bti7081.s2017.green.ui.components.menu;
 
 import com.vaadin.annotations.Theme;
 import com.vaadin.icons.VaadinIcons;
+import com.vaadin.navigator.ViewChangeListener;
 import com.vaadin.spring.annotation.SpringUI;
 import com.vaadin.ui.Button;
 import com.vaadin.ui.HorizontalLayout;
@@ -36,5 +37,10 @@ public class MenuViewImpl extends HorizontalLayout implements MenuView {
     @Override
     public void addListener(MenuViewListener viewListener) {
         listeners.add(viewListener);
+    }
+
+    @Override
+    public void enter(ViewChangeListener.ViewChangeEvent event) {
+
     }
 }

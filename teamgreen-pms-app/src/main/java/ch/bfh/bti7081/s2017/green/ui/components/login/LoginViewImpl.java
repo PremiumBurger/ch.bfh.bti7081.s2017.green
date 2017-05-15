@@ -2,6 +2,7 @@ package ch.bfh.bti7081.s2017.green.ui.components.login;
 
 import ch.bfh.bti7081.s2017.green.ui.MasterPageImpl;
 import com.vaadin.icons.VaadinIcons;
+import com.vaadin.navigator.ViewChangeListener;
 import com.vaadin.ui.Button;
 import com.vaadin.ui.Label;
 import com.vaadin.ui.TextField;
@@ -41,5 +42,10 @@ public class LoginViewImpl extends MasterPageImpl implements LoginView {
     @Override
     public void login() {
         System.out.println("Login Test");
+    }
+
+    @Override
+    public void enter(ViewChangeListener.ViewChangeEvent event) {
+
     }
 }

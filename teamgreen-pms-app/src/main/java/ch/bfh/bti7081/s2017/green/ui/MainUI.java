@@ -4,6 +4,7 @@ import ch.bfh.bti7081.s2017.green.ui.components.address.AddressView;
 import ch.bfh.bti7081.s2017.green.ui.components.address.AddressViewImpl;
 import ch.bfh.bti7081.s2017.green.ui.components.login.LoginView;
 import com.vaadin.annotations.Theme;
+import com.vaadin.navigator.Navigator;
 import com.vaadin.server.VaadinRequest;
 import com.vaadin.spring.annotation.SpringUI;
 import com.vaadin.ui.UI;
@@ -19,9 +20,13 @@ public class MainUI extends UI {
     @Autowired
     private AddressView addressView;
 
+    public static Navigator navigator;
+
     @Override
     protected void init(VaadinRequest request) {
-        // TODO: find a solution for this cast...
-        setContent((AddressViewImpl) addressView);
+        navigator = new Navigator(this,this);
+        navigator.addView("", loginView);
+        navigator.addView("addressView", addressView);
+
     }
 }

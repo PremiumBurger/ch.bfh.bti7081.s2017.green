@@ -3,6 +3,7 @@ package ch.bfh.bti7081.s2017.green.ui.components.address;
 import ch.bfh.bti7081.s2017.green.bean.AddressBean;
 import ch.bfh.bti7081.s2017.green.ui.MasterPageImpl;
 import ch.bfh.bti7081.s2017.green.ui.components.search.SearchViewImpl;
+import com.vaadin.navigator.ViewChangeListener;
 import com.vaadin.ui.Button;
 import com.vaadin.ui.Grid;
 import com.vaadin.ui.HorizontalLayout;
@@ -52,5 +53,10 @@ public class AddressViewImpl extends MasterPageImpl implements AddressView {
     @Override
     public void doSomething(Set<AddressBean> addressBeanSet) {
         grid.setItems(addressBeanSet);
+    }
+
+    @Override
+    public void enter(ViewChangeListener.ViewChangeEvent event) {
+
     }
 }
