@@ -35,8 +35,8 @@
         <version.commons-collections>3.2.2</version.commons-collections>
         <version.liquibase-core>3.5.3</version.liquibase-core>
         <version.commons-lang>2.3</version.commons-lang>
-        <version.modelmapper>0.7.8</version.modelmapper>
         <version.junit>4.12</version.junit>
+        <version.orika-core>1.5.1</version.orika-core>
     </properties>
 
     <dependencies>
@@ -118,9 +118,9 @@
 
         <!-- Third Party -->
         <dependency>
-            <groupId>org.modelmapper</groupId>
-            <artifactId>modelmapper</artifactId>
-            <version>${version.modelmapper}</version>
+            <groupId>ma.glasnost.orika</groupId>
+            <artifactId>orika-core</artifactId>
+            <version>${version.orika-core}</version>
         </dependency>
         <dependency>
             <groupId>junit</groupId>
