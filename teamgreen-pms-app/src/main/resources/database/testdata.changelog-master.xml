@@ -70,7 +70,8 @@
             <column name="id" value="1"/>
             <column name="healthVisitorId" value="1"/>
             <column name="patientId" value="2"/>
-            <column name="intendedDateTime" value="2017-10-30 08:00:00"/>
+            <column name="from" value="2017-10-30 08:00:00"/>
+            <column name="to" value="2017-10-30 10:00:00"/>
         </insert>
     </changeSet>
 </databaseChangeLog>
