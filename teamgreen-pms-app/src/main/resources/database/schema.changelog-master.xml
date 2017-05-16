@@ -77,8 +77,53 @@
             <column name="patientId" type="BIGINT">
                 <constraints nullable="true" foreignKeyName="fk_appointment_patient" references="Person(id)"/>
             </column>
-            <column name="intendedDateTime" type="TIMESTAMP">
+            <column name="from" type="TIMESTAMP">
                 <constraints nullable="false"/>
+            </column>
+            <column name="to" type="TIMESTAMP">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <createTable tableName="Journal">
+            <column name="id" type="BIGINT" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="patientId" type="BIGINT">
+                <constraints nullable="true" foreignKeyName="fk_journal_patient" references="Person(id)"/>
+            </column>
+            <column name="createdOn" type="TIMESTAMP">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <createTable tableName="JournalEntry">
+            <column name="id" type="BIGINT" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="journalEntryType" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="journalId" type="BIGINT">
+                <constraints nullable="false" foreignKeyName="fk_journalentry_journal" references="Journal(id)"/>
+            </column>
+            <column name="text" type="VARCHAR(2000)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="isImportant" type="BOOLEAN">
+                <constraints nullable="false" />
+            </column>
+            <column name="appointmentId" type="BIGINT">
+                <constraints nullable="true" foreignKeyName="fk_journalentry_appointment" references="Appointment(id)"/>
+            </column>
+            <column name="createdBy" type="VARCHAR(200)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="createdOn" type="TIMESTAMP">
+                <constraints nullable="false"/>
+            </column>
+            <column name="modifiedOn" type="TIMESTAMP">
+                <constraints nullable="true"/>
             </column>
         </createTable>
 
