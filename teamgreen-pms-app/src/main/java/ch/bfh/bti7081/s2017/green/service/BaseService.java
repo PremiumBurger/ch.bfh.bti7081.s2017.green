@@ -34,7 +34,7 @@ public abstract class BaseService<T extends BaseEntity, U extends EntityBean, R 
     }
 
     public long save(U bean) {
-        T entity = (T) bean.updateEntiy();
+        T entity = (T) bean.updateEntity();
         T saved = repository.save(entity);
         return saved.getId();
     }
@@ -61,7 +61,7 @@ public abstract class BaseService<T extends BaseEntity, U extends EntityBean, R 
         U bean = null;
         try {
             bean = getType().newInstance();
-            bean.setEntity(hv);
+            bean.setEntity(hv, true);
         } catch (InstantiationException | IllegalAccessException e) {
             e.printStackTrace();
         }

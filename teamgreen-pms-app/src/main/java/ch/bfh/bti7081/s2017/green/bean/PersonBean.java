@@ -4,7 +4,7 @@ import ch.bfh.bti7081.s2017.green.domain.Person;
 
 import java.time.LocalDate;
 
-public class PersonBean extends EntityBean<Person> {
+public abstract class PersonBean extends EntityBean<Person> {
 
     private String firstName;
 
@@ -22,14 +22,14 @@ public class PersonBean extends EntityBean<Person> {
 
     private String gender;
 
-    private AddressBean AddressBean;
+    private AddressBean address;
 
-    public AddressBean getAddressBean() {
-        return AddressBean;
+    public AddressBean getAddress() {
+        return address;
     }
 
-    public void setAddressBean(AddressBean AddressBean) {
-        this.AddressBean = AddressBean;
+    public void setAddress(AddressBean AddressBean) {
+        this.address = AddressBean;
     }
 
     public String getFirstName() {

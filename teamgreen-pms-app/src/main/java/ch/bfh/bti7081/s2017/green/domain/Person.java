@@ -6,15 +6,10 @@ import org.hibernate.annotations.CascadeType;
 import javax.persistence.*;
 import java.time.LocalDate;
 
-/**
- * Holds all properties of a Person.
- * <p>
- * Must not be abstract because of ModelMapper.
- */
 @Entity
 @Inheritance
 @DiscriminatorColumn(name = "personType")
-public class Person extends BaseEntity {
+public abstract class Person extends BaseEntity {
 
     private String firstName;
 
