@@ -25,6 +25,10 @@ public abstract class Person extends BaseEntity {
 
     private String email;
 
+    public Person() {
+        // empty constructor
+    }
+
     @OneToOne
     @JoinColumn(name = "addressId")
     @Cascade(CascadeType.ALL)

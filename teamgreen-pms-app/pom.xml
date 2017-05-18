@@ -35,6 +35,8 @@
         <version.commons-collections>3.2.2</version.commons-collections>
         <version.liquibase-core>3.5.3</version.liquibase-core>
         <version.commons-lang>2.3</version.commons-lang>
+        <version.junit>4.12</version.junit>
+        <version.orika-core>1.5.1</version.orika-core>
     </properties>
 
     <dependencies>
@@ -113,6 +115,20 @@
             <artifactId>commons-lang</artifactId>
             <version>${version.commons-lang}</version>
         </dependency>
+
+        <!-- Third Party -->
+        <dependency>
+            <groupId>ma.glasnost.orika</groupId>
+            <artifactId>orika-core</artifactId>
+            <version>${version.orika-core}</version>
+        </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>${version.junit}</version>
+            <scope>test</scope>
+        </dependency>
+
     </dependencies>
 
     <dependencyManagement>
