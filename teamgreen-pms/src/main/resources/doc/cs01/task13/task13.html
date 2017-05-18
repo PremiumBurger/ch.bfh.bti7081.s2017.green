@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>PMS Task13</title>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container">
+    <div class="jumbotron">
+        <h1>Task 13 - State Pattern</h1>
+        <p>Implement a concrete feature of your application via the State Pattern
+        <ul>
+            <li>analyse all features where your application has state-dependent
+                behavior and select the most complex / likely to change one</li>
+            <li>discuss the advantages and disadvantages of the state pattern for
+                your selected feature</li>
+            <li>design and implement the state pattern</li>
+        </ul>
+        </p>
+    </div>
+    <div class="alert alert-info" data-pp="100">
+        <h3>Analysis of Features with state-dependent behaviour</h3>
+    </div>
+    <div class="panel panel-default" data-pp="110">
+        <div class="panel-heading">
+            <h3>Features of PMS Healthvisitor with state-dependent behaviour</h3>
+        </div>
+        <div class="panel-body">
+            <b>State of Patient</b>
+            <p>Every Patient can be assigned certain States, dependent of where in the process of his illness he is at.
+                Here is just a small set of possible states:</p>
+            <table class="table">
+                <thead>
+                <th>State</th>
+                <th>Description</th>
+                <th>Possible Actions</th>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>Freshly admitted</td>
+                    <td>The patient just arrived at the clinic. He has not yet been examined.</td>
+                    <td>Make Phonecalls, Eat everything, Sleep as long as he likes</td>
+                </tr>
+                <tr>
+                    <td>Diagnosed with ...</td>
+                    <td>A detailed diagnosis has been found by a qualified doctor.</td>
+                    <td>Different forms of treatment dependent on the actual illness</td>
+                </tr>
+                <tr>
+                    <td>Positive</td>
+                    <td>The patient has a positive prognosis to overcome his illness.</td>
+                    <td>May change his daily structure, therapeutic assistance if needed, may take medicine</td>
+                </tr>
+                <tr>
+                    <td>Neutral</td>
+                    <td>The patient is making no progress at all nor is he degenerating.</td>
+                    <td>Should stick to recommended structure of the day, therapeutic assistance, might have to take medicine</td>
+                </tr>
+                <tr>
+                    <td>Negative</td>
+                    <td>The patient's condition is detoriating.</td>
+                    <td>Has a fixed structure of the day, therapeutic assistance, has to take medicine</td>
+                </tr>
+                <tr>
+                    <td>Transferred</td>
+                    <td>The patient has moved to another institution.</td>
+                    <td>Return to the clinic, get his patient record for further use</td>
+                </tr>
+                <tr>
+                    <td>Dismissed</td>
+                    <td>The patient is healed and has left the institution.</td>
+                    <td>Return to the clinic</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="panel-body">
+            <b>State of Appointment</b>
+            <p>An Appointment between a Healthvisitor and a Patient can have certain possible actions, dependent on the state of it:</p>
+            <table class="table">
+                <thead>
+                <th>State</th>
+                <th>Description</th>
+                <th>Possible Actions</th>
+                </thead>
+                <tbody>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="alert alert-info" data-pp="100">
+        <h3>Advantages/Disadvantages of State Pattern for Appointment-Feature</h3>
+    </div>
+    <table class="table">
+        <thead>
+            <th class="info text-center">Advantages</th>
+            <th class="success text-center">Disadvantages</th>
+        </thead>
+        <tbody>
+            <tr>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td class="info">keine Erfahrungen in diesem Bereich (Domänenwissen Medizin)</td>
+                <td class="success"></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+</body>
+</html>
+<!--<h3>Decide whether your SE Process for implementing the MHC-PMS during this semester should be rather plan-driven or agile by collecting pros and cons, considering</h3>-->
+
+<!--your findings from the first analysis:-->
+<!-- - Wir haben keine Erfahrungen in diesem Bereich (Domänenwissen Medizin)  &ndash;&gt; Agil-->
+<!-- - Zuwenig Grundlagedaten für eine genaue Spezifizierung &ndash;&gt; Agil-->
+<!-- - Fixe Timeline, fixe Ressourcen &ndash;&gt; Plan-->
+
+<!--your customer and your users:-->
+<!-- - Kunde kann Änderungen einbringen z.B. Reports sind noch nicht klar &ndash;&gt; Agil-->
+<!-- - Es sind noch nicht alle Details klar &ndash;&gt; Agil-->
+
+<!--your team and available time (resources):-->
+<!-- - Weniger erfahrene Programmierer führen dazu, dass die Planung erschwert ist &ndash;&gt; Agil-->
+<!-- - Projektgrösse und Teamgrösse erfordern noch keine grosse Planung &ndash;&gt; Agil-->
+
+
+<!--any other aspects that you think relevant for this decision-->
+<!-- - Team hat erfahrungen mit der Agilen Entwicklung &ndash;&gt; Agil-->
