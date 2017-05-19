@@ -27,6 +27,8 @@ public class Appointment extends BaseEntity {
     @JoinColumn(name = "patientId")
     private Patient patient;
 
+    private LocalDateTime from;
+    private LocalDateTime to;
     public HealthVisitor getHealthVisitor() {
         return healthVisitor;
     }
