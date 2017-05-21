@@ -1,7 +1,9 @@
 package ch.bfh.bti7081.s2017.green.ui.components.myday;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
+@Component
 public class MyDayPresenter implements MyDayViewListener {
 
     MyDay myDay;

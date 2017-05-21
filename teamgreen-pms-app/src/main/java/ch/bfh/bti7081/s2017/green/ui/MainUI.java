@@ -5,6 +5,7 @@ import ch.bfh.bti7081.s2017.green.ui.components.address.AddressView;
 import ch.bfh.bti7081.s2017.green.ui.components.address.AddressViewImpl;
 import ch.bfh.bti7081.s2017.green.ui.components.login.LoginView;
 import ch.bfh.bti7081.s2017.green.ui.components.myday.MyDayView;
+import ch.bfh.bti7081.s2017.green.ui.components.patient.patientshort.PatientShortViewImpl;
 import com.vaadin.annotations.Theme;
 import com.vaadin.navigator.Navigator;
 import com.vaadin.server.VaadinRequest;
@@ -15,6 +16,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 @SpringUI
 @Theme("valo")
 public class MainUI extends UI {
+
+
 
     @Autowired
     private LoginView loginView;
@@ -33,10 +36,11 @@ public class MainUI extends UI {
     @Override
     protected void init(VaadinRequest request) {
         navigator = new Navigator(this,this);
-        navigator.addView("", loginView);
+        navigator.addView("asdf", loginView);
         navigator.addView("addressView", addressView);
         navigator.addView("alarmView", alarmView);
-        navigator.addView("myDayView", myDayView);
+        navigator.addView("", myDayView);
+
 
     }
 }
