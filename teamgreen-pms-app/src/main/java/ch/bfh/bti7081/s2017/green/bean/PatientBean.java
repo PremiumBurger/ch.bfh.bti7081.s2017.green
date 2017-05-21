@@ -29,4 +29,8 @@ public class PatientBean extends PersonBean {
     public List<AlarmBean> getAlarms() {
         return alarms;
     }
+
+    public String getSearchString() {
+        return getFirstName() +" "+ getLastName() ;
+    }
 }

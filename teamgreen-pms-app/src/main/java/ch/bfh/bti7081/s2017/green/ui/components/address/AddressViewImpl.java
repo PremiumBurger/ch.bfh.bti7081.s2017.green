@@ -2,7 +2,6 @@ package ch.bfh.bti7081.s2017.green.ui.components.address;
 
 import ch.bfh.bti7081.s2017.green.bean.AddressBean;
 import ch.bfh.bti7081.s2017.green.ui.MasterPageImpl;
-import ch.bfh.bti7081.s2017.green.ui.components.search.SearchViewImpl;
 import com.vaadin.navigator.ViewChangeListener;
 import com.vaadin.ui.Button;
 import com.vaadin.ui.Grid;
@@ -25,10 +24,7 @@ public class AddressViewImpl extends MasterPageImpl implements AddressView {
     public AddressViewImpl() {
         HorizontalLayout layout = new HorizontalLayout();
 
-        SearchViewImpl header = new SearchViewImpl(); //Searchbar to set on top of the Page
-        header.setTitle("MyDay");
-
-        //Initialize Grid and set the Columnorder
+        //Initialize Grid and set the Columnorde;
         grid = new Grid<>(AddressBean.class);
         grid.setColumnOrder(grid.getColumn("strasse"), grid.getColumn("plz"), grid.getColumn("city"), grid.getColumn("country"));
         grid.getColumn("id").setHidden(true);
@@ -41,7 +37,6 @@ public class AddressViewImpl extends MasterPageImpl implements AddressView {
         //Assemble UI Components
         layout.addComponents(grid, btnTest);
         layout.setSizeFull();
-        setHeader(header);
         setViewContent(layout);
     }
 
