@@ -77,6 +77,52 @@
                     <td>The patient is healed and has left the institution.</td>
                     <td>Return to the clinic</td>
                 </tr>
+                <tr>
+                    <td class="info">Conclusion</td>
+                    <td class="info" colspan="2">This could be a really interesting feature to implement the state pattern due to
+                        its many different potential states and possible actions. Unfortunately we can't take this feature
+                        because our application has the main focus on the work of the Health Visitor. This takes away most of the
+                        possible actions, because the Health Visitor plays the active role.</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="panel-body">
+            <b>State of Medication</b>
+            <p>The Medication a patient may need to take can have different states:</p>
+            <table class="table">
+                <thead>
+                <th>State</th>
+                <th>Description</th>
+                <th>Possible Actions</th>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>New recipe</td>
+                    <td>Its the first time this medication has been given to the patient</td>
+                    <td>Confirm taking</td>
+                </tr>
+                <tr>
+                    <td>Successfully applied</td>
+                    <td>The medication has the desired effect on the patient</td>
+                    <td>change dose, cancel</td>
+                </tr>
+                <tr>
+                    <td>Not Successfully applied</td>
+                    <td>The medication doesn't has the desired effect on the patient, too many side effects</td>
+                    <td>change dose, monitor side effects, cancel</td>
+                </tr>
+                <tr>
+                    <td>Cancelled</td>
+                    <td>The medication for this patient has been cancelled</td>
+                    <td>reapply</td>
+                </tr>
+                <tr>
+                    <td class="info">Conclusion</td>
+                    <td class="info" colspan="2">There seems to be not enough different states and connected actions
+                    to justify the selection of this feature</td>
+                </tr>
                 </tbody>
             </table>
         </div>
@@ -92,9 +138,35 @@
                 </thead>
                 <tbody>
                 <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                    <td>New</td>
+                    <td>The Appointment has just been registered, it is yet to be confirmed by the Health Visitor </td>
+                    <td>Confirm the appointment, Remove the appointment, Add to a different Health Visitor, Change patient</td>
+                </tr>
+                <tr>
+                    <td>Confirmed</td>
+                    <td>The appointment has been confirmed by the Health Visitor to be carried out at the set date and time</td>
+                    <td>Cancel the appointment (needs a reason), Change where the appointment will take place, Confirm that the appointment was successful, Postpone</td>
+                </tr>
+                <tr>
+                    <td>Completed</td>
+                    <td>The appointment has been successfully carried out</td>
+                    <td>Set ready for billing, add additional info</td>
+                </tr>
+                <tr>
+                    <td>Cancelled</td>
+                    <td>The appointment has been cancelled with a valid reason</td>
+                    <td>Copy from</td>
+                </tr>
+                <tr>
+                    <td>Postponed</td>
+                    <td>The Appointments Date and/or time has been changed</td>
+                    <td>Confirm the appointment, Cancel, Add to a different Health Visitor, Change patient</td>
+                </tr>
+                <tr>
+                    <td class="info">Conclusion</td>
+                    <td class="info" colspan="2">This feature is the most complex one we could find, which is also
+                        relevant to our application- target group of the Health Visitor. We decided to implement this feature
+                        with the state pattern.</td>
                 </tr>
                 </tbody>
             </table>
@@ -110,17 +182,68 @@
             <th class="success text-center">Disadvantages</th>
         </thead>
         <tbody>
+        <col width="130">
+        <col width="80">
             <tr>
-                <td></td>
-                <td></td>
+                <td class="info">There are a lot of States 'out of the box' to implement for this feature already.
+                    Chances are, there will be more at some point.</td>
+                <td class="success"></td>
             </tr>
             <tr>
-                <td class="info">keine Erfahrungen in diesem Bereich (Domänenwissen Medizin)</td>
+                <td class="info"></td>
+                <td class="success">Some of the mentioned Actions are not on our priority list for implementation,
+                    there might be a shortage of meaningful possible Actions for the mentioned states. This could render
+                    the implementation of a state machine useless at he moment</td>
+            </tr>
+            <tr>
+                <td class="info">The appointment is one of our central features, even more important is it, to set up
+                    a good structure right at the beginning</td>
                 <td class="success"></td>
+            </tr>
+            <tr>
+                <td class="info"></td>
+                <td class="success">The appointment will likely be heavily connected with other entities(address, patient, healt visitor...)
+                    which could make the implementation of the state pattern much more complicated than with a different feature</td>
             </tr>
         </tbody>
     </table>
+
+    <div class="alert alert-info" data-pp="100">
+        <h3>State Pattern Class Diagram</h3>
+    </div>
 </div>
+
+
+
+
+
+
+<script src="../../presentationLight-0.0.1.js"></script>
+<script>
+    $(function () {
+        $('.container').presi({
+            allowNext: function() {
+                var isModalShown = $("#imagemodal").css('display') === 'block';
+                return !isModalShown;
+            }
+        });
+
+        $(".modals").on("click", function(ev) {
+            ev.preventDefault();
+            ev.stopPropagation();
+            var $image = $(this).find('img');
+            $('#imagemodal')
+                    .find('.imagepreview').attr('src', $image.attr('src'))
+                    .end()
+                    .find('.modal-title').html($image.attr('alt'))
+                    .end()
+                    .modal('show');
+        });
+    });
+
+    // noinspection JSUnresolvedFunction
+    w3IncludeHTML();
+</script>
 
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
