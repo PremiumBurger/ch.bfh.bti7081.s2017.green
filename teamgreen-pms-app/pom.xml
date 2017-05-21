@@ -38,6 +38,7 @@
         <version.junit>4.12</version.junit>
         <version.orika-core>1.5.1</version.orika-core>
         <version.aspectjweaver>1.8.10</version.aspectjweaver>
+        
     </properties>
 
     <dependencies>
