@@ -43,6 +43,6 @@ public class MyDayEventViewImpl extends VerticalLayout implements MyDayEventView
     @Override
     public void init(AppointmentBean appointment) {
         appointmentModel = appointment;
-        appointment.g
+
     }
 }

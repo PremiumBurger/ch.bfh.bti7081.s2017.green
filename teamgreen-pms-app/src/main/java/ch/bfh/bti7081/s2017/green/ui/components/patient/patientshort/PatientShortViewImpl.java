@@ -54,8 +54,8 @@ public class PatientShortViewImpl extends VerticalLayout implements PatientShort
     public void init(PatientBean patient) {
         patientModel = patient;
         name.setValue(patient.getLastName() + " " + patient.getLastName());
-        street.setValue(patient.getAddressBean().getStrasse());
-        cityPlz.setValue(patient.getAddressBean().getPlz() + " " + patient.getAddressBean().getCity());
+        street.setValue(patient.getAddress().getStrasse());
+        cityPlz.setValue(patient.getAddress().getPlz() + " " + patient.getAddress().getCity());
 
     }
 
