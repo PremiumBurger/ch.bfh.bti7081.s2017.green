@@ -10,5 +10,5 @@ import java.util.Set;
  */
 public interface SearchViewListener {
 
-    void onClick(long id);
+    void onClick(PatientBean patientBean);
 }

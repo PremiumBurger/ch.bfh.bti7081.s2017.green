@@ -25,8 +25,8 @@ public class SearchViewPresenter implements SearchViewListener {
     }
 
     @Override
-    public void onClick(long id) {
-        searchview.setSelection(search.getSelection(id));
+    public void onClick(PatientBean patientBean) {
+        searchview.setSelection(patientBean);
     }
 }
 

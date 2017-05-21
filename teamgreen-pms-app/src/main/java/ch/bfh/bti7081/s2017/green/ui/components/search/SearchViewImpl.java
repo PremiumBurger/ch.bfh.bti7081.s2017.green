@@ -58,7 +58,7 @@ public class SearchViewImpl extends MasterPageImpl implements SearchView {
         search.setItemCaptionGenerator(PatientBean::getSearchString);
         search.setPopupWidth("100%");
         search.setWidth("100%");
-        search.addValueChangeListener(event -> listener.onClick(event.getValue().getId()));
+        search.addValueChangeListener(event -> listener.onClick(event.getValue()));
     }
 
     @Override
