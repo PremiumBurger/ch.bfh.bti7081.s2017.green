@@ -1,6 +1,7 @@
 package ch.bfh.bti7081.s2017.green.ui.components.patient.patientshort;
 
 import ch.bfh.bti7081.s2017.green.bean.PatientBean;
+import ch.bfh.bti7081.s2017.green.ui.components.myday.MyDayViewImpl;
 import com.vaadin.icons.VaadinIcons;
 import com.vaadin.navigator.ViewChangeListener;
 import com.vaadin.server.Page;
@@ -30,11 +31,11 @@ public class PatientShortViewImpl extends VerticalLayout implements PatientShort
 
         name = new Label("");
         name.setIcon(VaadinIcons.USER);
-        street = new Label("Melchtalstrasse");
+        street = new Label("");
         street.setIcon(VaadinIcons.HOME);
-        cityPlz = new Label("3014 Bern");
-        test = new TextField();
-        addComponents(name,street,cityPlz,test);
+        cityPlz = new Label("");
+
+        addComponents(name,street,cityPlz);
     }
 
 
@@ -52,6 +53,9 @@ public class PatientShortViewImpl extends VerticalLayout implements PatientShort
     @Override
     public void init(PatientBean patient) {
         patientModel = patient;
+        name.setValue(patient.getLastName() + " " + patient.getLastName());
+        street.setValue(patient.getAddressBean().getStrasse());
+        cityPlz.setValue(patient.getAddressBean().getPlz() + " " + patient.getAddressBean().getCity());
 
     }
 
