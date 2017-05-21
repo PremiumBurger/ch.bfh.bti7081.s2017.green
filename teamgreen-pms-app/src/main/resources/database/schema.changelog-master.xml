@@ -63,7 +63,7 @@
                 <constraints nullable="false"/>
             </column>
             <column name="timestamp" type="TIMESTAMP">
-                <constraints nullable="false"/>
+                <constraints nullable="true"/>
             </column>
         </createTable>
 
@@ -78,10 +78,10 @@
                 <constraints nullable="true" foreignKeyName="fk_appointment_patient" references="Person(id)"/>
             </column>
             <column name="from" type="TIMESTAMP">
-                <constraints nullable="false"/>
+                <constraints nullable="true"/>
             </column>
             <column name="to" type="TIMESTAMP">
-                <constraints nullable="false"/>
+                <constraints nullable="true"/>
             </column>
         </createTable>
 

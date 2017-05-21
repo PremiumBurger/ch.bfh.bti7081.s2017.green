@@ -8,7 +8,9 @@ import java.time.LocalDateTime;
 @Entity
 public class Appointment extends BaseEntity {
 
-    private LocalDateTime time;
+    private LocalDateTime from;
+
+    private LocalDateTime to;
 
     @ManyToOne
     @JoinColumn(name = "healthVisitorId")
@@ -17,15 +19,6 @@ public class Appointment extends BaseEntity {
     @ManyToOne
     @JoinColumn(name = "patientId")
     private Patient patient;
-
-
-    public LocalDateTime getTime() {
-        return time;
-    }
-
-    public void setTime(LocalDateTime time) {
-        this.time = time;
-    }
 
     public HealthVisitor getHealthVisitor() {
         return healthVisitor;
@@ -47,5 +40,21 @@ public class Appointment extends BaseEntity {
         if (!patient.getAppointments().contains(this)) {
             patient.getAppointments().add(this);
         }
+    }
+
+    public LocalDateTime getFrom() {
+        return from;
+    }
+
+    public void setFrom(LocalDateTime from) {
+        this.from = from;
+    }
+
+    public LocalDateTime getTo() {
+        return to;
+    }
+
+    public void setTo(LocalDateTime to) {
+        this.to = to;
     }
 }
