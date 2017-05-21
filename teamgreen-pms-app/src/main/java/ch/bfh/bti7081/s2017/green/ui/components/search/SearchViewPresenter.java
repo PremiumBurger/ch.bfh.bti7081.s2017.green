@@ -30,7 +30,7 @@ public class SearchViewPresenter implements SearchViewListener {
 
     @Override
     public void onClick() {
-
+        search.
     }
 }
 

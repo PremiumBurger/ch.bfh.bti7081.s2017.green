@@ -56,12 +56,15 @@ public class SearchViewImpl extends MasterPageImpl implements SearchView {
         search.setPlaceholder("start typing to find your Boardi");
         search.setItems(dummyPatients());
         search.setItemCaptionGenerator(PatientBean::getSearchString);
+        search.
     }
 
     @Override
-    public void chooseOption(PatientBean pb) {
-
+    public void setSelection(PatientBean patientBean) {
+        Notification.show("The selected Patient is"+patientBean.getId()+" With name: "+patientBean.getFirstName(),
+                Notification.Type.HUMANIZED_MESSAGE);
     }
+
 
     private List<PatientBean> dummyPatients(){
         Address address1 = new Address();

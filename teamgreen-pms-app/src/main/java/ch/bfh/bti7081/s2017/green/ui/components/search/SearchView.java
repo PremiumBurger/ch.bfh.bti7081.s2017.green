@@ -14,5 +14,5 @@ public interface SearchView extends View{
 
     void init(Set<PatientBean> patients);
 
-    void chooseOption(PatientBean pb);
+    void setSelection(PatientBean patientBean);
 }
