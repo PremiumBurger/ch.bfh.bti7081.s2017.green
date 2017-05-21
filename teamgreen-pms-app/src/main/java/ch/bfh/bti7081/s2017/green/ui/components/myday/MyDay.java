@@ -1,7 +1,9 @@
 package ch.bfh.bti7081.s2017.green.ui.components.myday;
 
 import ch.bfh.bti7081.s2017.green.service.*;
+import org.springframework.transaction.annotation.Transactional;
 
+@Transactional
 public class MyDay {
 
     private HealthVisitorService healthVisitorService;

@@ -37,6 +37,7 @@
         <version.commons-lang>2.3</version.commons-lang>
         <version.junit>4.12</version.junit>
         <version.orika-core>1.5.1</version.orika-core>
+        <version.aspectjweaver>1.8.10</version.aspectjweaver>
     </properties>
 
     <dependencies>
@@ -121,6 +122,11 @@
             <groupId>ma.glasnost.orika</groupId>
             <artifactId>orika-core</artifactId>
             <version>${version.orika-core}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.aspectj</groupId>
+            <artifactId>aspectjweaver</artifactId>
+            <version>${version.aspectjweaver}</version>
         </dependency>
         <dependency>
             <groupId>junit</groupId>
