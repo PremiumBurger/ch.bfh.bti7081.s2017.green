@@ -38,10 +38,9 @@ public class SearchViewImpl extends MasterPageImpl implements SearchView {
 
         //get all data and prepare combobox
         search = new ComboBox<>();
-        search.setPlaceholder("No Boardi searched");
-        search.setItemCaptionGenerator(PatientBean::getFirstName);
-
         layout.addComponent(search);
+        layout.setWidth(100,Unit.PERCENTAGE);
+        layout.setId("testID");
         setHeader(layout);
     }
 
@@ -56,8 +55,12 @@ public class SearchViewImpl extends MasterPageImpl implements SearchView {
         search.setCaption("Search your Boardi");
         search.setPlaceholder("start typing to find your Boardi");
         search.setItems(dummyPatients());
-        //search.setItemCaptionGenerator(PatientBean::getFirstName);
         search.setItemCaptionGenerator(PatientBean::getSearchString);
+    }
+
+    @Override
+    public void chooseOption(PatientBean pb) {
+
     }
 
     private List<PatientBean> dummyPatients(){
@@ -71,16 +74,20 @@ public class SearchViewImpl extends MasterPageImpl implements SearchView {
         Patient pat3  = PatientBuilder.aPatient().withFirstName("Tobias").withLastName("Joder").build();
         Patient pat4  = PatientBuilder.aPatient().withFirstName("Tobias").withLastName("Joder").build();
         Patient pat5  = PatientBuilder.aPatient().withFirstName("Mathew").withLastName("Thekkekara").withAddress(address1).build();
+        Patient pat6  = PatientBuilder.aPatient().rundumSorglos().build();
+        pat6.setAhvNr("1234567890");
         PatientBean patBean1 = new PatientBean();
         PatientBean patBean2 = new PatientBean();
         PatientBean patBean3 = new PatientBean();
         PatientBean patBean4 = new PatientBean();
         PatientBean patBean5 = new PatientBean();
-        patBean1.setEntity(pat1);
-        patBean2.setEntity(pat2);
-        patBean3.setEntity(pat3);
-        patBean4.setEntity(pat4);
-        patBean5.setEntity(pat5);
+        PatientBean patBean6 = new PatientBean();
+        patBean1.setEntity(pat1,true);
+        patBean2.setEntity(pat2,true);
+        patBean3.setEntity(pat3,true);
+        patBean4.setEntity(pat4,true);
+        patBean5.setEntity(pat5,true);
+        patBean6.setEntity(pat6,true);
 
         List<PatientBean> patients = new ArrayList<PatientBean>();
         patients.add(patBean1);
@@ -88,6 +95,7 @@ public class SearchViewImpl extends MasterPageImpl implements SearchView {
         patients.add(patBean3);
         patients.add(patBean4);
         patients.add(patBean5);
+        patients.add(patBean6);
         return patients;
     }
 

@@ -10,4 +10,6 @@ import java.util.Set;
 public interface SearchViewListener {
 
     void onButtonClick();
+
+    void onClick();
 }

@@ -31,6 +31,32 @@ public class PatientBean extends PersonBean {
     }
 
     public String getSearchString() {
-        return getFirstName() +" "+ getLastName() ;
+        StringBuilder searchString = new StringBuilder();
+
+        searchString.append(getValue(getFirstName()));
+        searchString.append(" ");
+        searchString.append(getValue(getLastName()));
+        searchString.append(" ");
+        if (getAddress() != null){
+            searchString.append(getValue(getAddress().getStrasse()));
+            searchString.append(" ");
+            searchString.append(getValue(getAddress().getCity()));
+            searchString.append(" ");
+            searchString.append(getValue(getAddress().getPlz()));
+            searchString.append(" ");
+            searchString.append(getValue(getAddress().getCountry()));
+            searchString.append(" ");
+            searchString.append(getValue(getAhvNr()));
+        }
+
+            return searchString.toString();
+    }
+
+    private String getValue(String str){
+        if (str != null)
+            return str;
+        else
+            return "--";
+
     }
 }

@@ -19,7 +19,7 @@ public class Search {
 
 
     public Set<PatientBean> getAll() {
-        return patientService.getAll();
+        return null;
     }
 
 

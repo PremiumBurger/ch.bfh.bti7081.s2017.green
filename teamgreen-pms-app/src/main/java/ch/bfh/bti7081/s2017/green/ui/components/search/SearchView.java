@@ -13,4 +13,6 @@ public interface SearchView extends View{
     void addListener(SearchViewListener viewListener);
 
     void init(Set<PatientBean> patients);
+
+    void chooseOption(PatientBean pb);
 }

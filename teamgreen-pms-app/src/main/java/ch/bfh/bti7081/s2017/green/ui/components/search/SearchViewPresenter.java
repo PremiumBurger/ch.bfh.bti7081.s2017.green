@@ -27,5 +27,10 @@ public class SearchViewPresenter implements SearchViewListener {
     public void onButtonClick() {
         //TODO: Implement Search function
     }
+
+    @Override
+    public void onClick() {
+
+    }
 }
 
