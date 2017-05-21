@@ -1,6 +1,7 @@
 package ch.bfh.bti7081.s2017.green.ui.components.search;
 
 import ch.bfh.bti7081.s2017.green.bean.PatientBean;
+import com.vaadin.data.HasValue;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -24,13 +25,8 @@ public class SearchViewPresenter implements SearchViewListener {
     }
 
     @Override
-    public void onButtonClick() {
-        //TODO: Implement Search function
-    }
-
-    @Override
-    public void onClick() {
-        search.
+    public void onClick(long id) {
+        searchview.setSelection(search.getSelection(id));
     }
 }
 

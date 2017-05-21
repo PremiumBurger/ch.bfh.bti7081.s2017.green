@@ -1,6 +1,7 @@
 package ch.bfh.bti7081.s2017.green.ui.components.search;
 
 import ch.bfh.bti7081.s2017.green.bean.PatientBean;
+import com.vaadin.data.HasValue;
 
 import java.util.Set;
 
@@ -9,7 +10,5 @@ import java.util.Set;
  */
 public interface SearchViewListener {
 
-    void onButtonClick();
-
-    void onClick();
+    void onClick(long id);
 }

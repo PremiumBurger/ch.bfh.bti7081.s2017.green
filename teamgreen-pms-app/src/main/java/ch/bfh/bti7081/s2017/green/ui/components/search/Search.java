@@ -12,6 +12,7 @@ import java.util.Set;
 /**
  * Created by S.Schmid on 08.05.2017.
  */
+@Transactional
 @Component
 public class Search {
 
@@ -20,7 +21,7 @@ public class Search {
 
 
     public Set<PatientBean> getAll() {
-        return null;
+        return patientService.getAll();
     }
 
     public PatientBean getSelection(long id){ return patientService.getOne(id);}
