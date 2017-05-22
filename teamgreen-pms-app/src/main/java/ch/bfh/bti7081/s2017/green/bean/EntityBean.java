@@ -36,9 +36,11 @@ public abstract class EntityBean<T extends BaseEntity> implements Serializable {
      *
      * @param entity the entity
      */
-    public void setEntity(final T entity) {
+    public void setEntity(final T entity, boolean mapFields) {
         this.entity = entity;
-        BeanUtils.copyProperties(entity, this);
+        if (mapFields) {
+            PmsModelMapperFactory.getMapper().map(entity, this);
+        }
     }
 
     /**
