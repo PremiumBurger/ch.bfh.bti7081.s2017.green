@@ -21,18 +21,6 @@ public class AppointmentBean extends EntityBean<Appointment> implements Autocomp
         setEntity(new Appointment(), false);
     }
 
-    private LocalDateTime from;
-
-    private LocalDateTime to;
-
-    public LocalDateTime getFrom() {
-        return from;
-    }
-
-    public void setTo(LocalDateTime to) {
-        this.to = to;
-    }
-
     public HealthVisitorBean getHealthVisitor() {
         return healthVisitor;
     }
