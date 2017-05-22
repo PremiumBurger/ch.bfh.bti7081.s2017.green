@@ -2,8 +2,12 @@ package ch.bfh.bti7081.s2017.green.domain;
 
 import ch.bfh.bti7081.s2017.green.domain.Patient;
 import com.fasterxml.jackson.databind.ser.Serializers;
+import org.assertj.core.util.Sets;
 
 import java.time.LocalDateTime;
+import java.util.Collection;
+import java.util.HashSet;
+import java.util.Iterator;
 import java.util.Set;
 
 /**
@@ -13,13 +17,12 @@ public class Journal extends BaseEntity{
 
     //Todo: Annotationen!
 
-
     private Patient patient;
     private Set<JournalEntry> journalList;
     private LocalDateTime createdOn;
 
-    public Journal(Patient patient) {
-        this.patient = patient;
+    public Journal() {
+        this.journalList = new HashSet<>();
     }
 
     public Patient getPatient() {
@@ -30,12 +33,8 @@ public class Journal extends BaseEntity{
         this.patient = patient;
     }
 
-    public Set<JournalEntry> getJournalList() {
-        return journalList;
-    }
-
-    public void setJournalList(Set<JournalEntry> journalList) {
-        this.journalList = journalList;
+    public void addJournalEntry(JournalEntry je) {
+        this.journalList.add(je);
     }
 
     public LocalDateTime getCreatedOn() {
