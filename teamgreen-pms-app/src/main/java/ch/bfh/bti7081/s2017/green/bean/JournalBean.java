@@ -1,10 +1,12 @@
 package ch.bfh.bti7081.s2017.green.bean;
 
 import ch.bfh.bti7081.s2017.green.domain.BaseEntity;
+import ch.bfh.bti7081.s2017.green.domain.Journal;
+
 import java.time.LocalDateTime;
 import java.util.Set;
 
-public class JournalBean extends BaseEntity{
+public class JournalBean extends EntityBean<Journal>{
     private PatientBean patient;
     private Set<JournalEntryBean> journalList;
     private LocalDateTime createdOn;

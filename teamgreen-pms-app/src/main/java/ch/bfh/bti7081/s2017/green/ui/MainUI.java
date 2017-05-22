@@ -5,6 +5,7 @@ import ch.bfh.bti7081.s2017.green.ui.components.address.AddressView;
 import ch.bfh.bti7081.s2017.green.ui.components.appointment.AppointmentView;
 import ch.bfh.bti7081.s2017.green.ui.components.login.LoginView;
 import ch.bfh.bti7081.s2017.green.ui.components.myday.MyDayView;
+import ch.bfh.bti7081.s2017.green.ui.components.journal.JournalView;
 import ch.bfh.bti7081.s2017.green.ui.components.login.LoginView;
 import ch.bfh.bti7081.s2017.green.ui.components.search.SearchView;
 import com.vaadin.annotations.Theme;
@@ -36,11 +37,15 @@ public class MainUI extends UI {
     @Autowired
     private AlarmView alarmView;
 
+    @Autowired
+    private JournalView journalView;
+
     public static Navigator navigator;
 
     @Override
     protected void init(VaadinRequest request) {
         navigator = new Navigator(this,this);
+        navigator.addView("", journalView);
         navigator.addView("asdf", loginView);
         navigator.addView("addressView", addressView);
         navigator.addView("alarmView", alarmView);

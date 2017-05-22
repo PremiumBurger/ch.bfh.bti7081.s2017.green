@@ -27,6 +27,9 @@ public class JournalEntry extends BaseEntity {
     private Person modifiedBy;  // In BaseEntity verschieben
     private LocalDateTime modifiedOn;  // In BaseEntity verschieben
 
+    public JournalEntry() {
+    }
+
     public JournalEntry(Patient patient, HealthVisitor healthVisitor, int journalEntryType, String text, boolean isImportant, Person createdBy, LocalDateTime createdOn, Person modifiedBy, LocalDateTime modifiedOn) {
         this.patient = patient;
         this.healthVisitor = healthVisitor;
