@@ -11,7 +11,6 @@ public class Appointment extends BaseEntity {
 
     @Column(name="[from]")
     private LocalDateTime from;
-
     @Column(name="[to]")
     private LocalDateTime to;
 
@@ -27,8 +26,7 @@ public class Appointment extends BaseEntity {
     @JoinColumn(name = "patientId")
     private Patient patient;
 
-    private LocalDateTime from;
-    private LocalDateTime to;
+
     public HealthVisitor getHealthVisitor() {
         return healthVisitor;
     }
