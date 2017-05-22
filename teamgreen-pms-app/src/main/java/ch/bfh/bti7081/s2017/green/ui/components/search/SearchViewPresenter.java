@@ -1,11 +1,10 @@
 package ch.bfh.bti7081.s2017.green.ui.components.search;
 
 import ch.bfh.bti7081.s2017.green.bean.PatientBean;
+import com.vaadin.data.HasValue;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import java.util.Arrays;
-import java.util.List;
 import java.util.Set;
 
 /**
@@ -22,20 +21,12 @@ public class SearchViewPresenter implements SearchViewListener {
         this.searchview = searchview;
         this.search = search;
         searchview.addListener(this);
-        searchview.init(this.search.getAll());
+        searchview.init(search.getAll());
     }
 
     @Override
-    public void onCombobox(PatientBean patientBean) {
-        searchview.setComboboxSelection(patientBean);
-    }
-
-    @Override
-    public void onTextfield(String str) {
-        String[] searchStrings= str.split("\\s");
-        List<String> al = Arrays.asList(searchStrings);
-        Set test = search.getTyping(al);
-        searchview.setTextfieldSelection(test);
+    public void onClick(PatientBean patientBean) {
+        searchview.setSelection(patientBean);
     }
 }
 

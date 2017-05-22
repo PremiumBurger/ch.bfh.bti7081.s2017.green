@@ -14,7 +14,5 @@ public interface SearchView extends View{
 
     void init(Set<PatientBean> patients);
 
-    void setComboboxSelection(PatientBean patientBean);
-
-    void setTextfieldSelection(Set<PatientBean> patientBean);
+    void setSelection(PatientBean patientBean);
 }

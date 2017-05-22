@@ -7,10 +7,7 @@ import ch.bfh.bti7081.s2017.green.service.PatientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Set;
-import java.util.TreeSet;
 
 /**
  * Created by S.Schmid on 08.05.2017.
@@ -27,10 +24,6 @@ public class Search {
         return patientService.getAll();
     }
 
-    public Set<PatientBean> getTyping(List strs){
-        TreeSet<PatientBean> set = new TreeSet<>();
-        strs.forEach(elm -> set.addAll(patientService.find(elm.toString())));
-        return set;
-    }
+    public PatientBean getSelection(long id){ return patientService.getOne(id);}
 
 }

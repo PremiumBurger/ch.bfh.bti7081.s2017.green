@@ -11,6 +11,7 @@ public class PatientBean extends PersonBean {
 
     private List<AlarmBean> alarms;
 
+
     public PatientBean() {
         healthVisitors = new ArrayList<>();
         appointments = new ArrayList<>();
