@@ -24,12 +24,11 @@ public class PmsModelMapperFactory {
     }
 
     protected static <A extends BaseEntity, B extends EntityBean> void addClassMap(Class<A> a, Class<B> b, MapperFactory mapperFactory) {
-        mapperFactory.classMap(a, b).customize(new EntityBeanCustomMapper()).register();
+        mapperFactory.classMap(a, b).byDefault().customize(new EntityBeanCustomMapper()).register();
     }
 
-
     /**
-     * Gets an instance of MappceFacace.
+     * Gets an instance of MapperFacade.
      *
      * @return the mapper facade
      */

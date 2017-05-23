@@ -16,17 +16,11 @@ public class EntityBeanCustomMapper<S extends BaseEntity, D extends EntityBean> 
 
     @Override
     public void mapAtoB(S a, D b, MappingContext context) {
-        DefaultMapperFactory defaultMapper = new DefaultMapperFactory.Builder().build();
-        defaultMapper.classMap(a.getClass(), b.getClass()).byDefault();
-        defaultMapper.getMapperFacade().map(a, b);
         b.setEntity(a, false);
     }
 
     @Override
     public void mapBtoA(D b, S a, MappingContext context) {
-        DefaultMapperFactory defaultMapper = new DefaultMapperFactory.Builder().build();
-        defaultMapper.classMap(b.getClass(), a.getClass()).byDefault();
-        defaultMapper.getMapperFacade().map(b, a);
+        // nothing special to do here
     }
-
 }

@@ -2,8 +2,10 @@ package ch.bfh.bti7081.s2017.green;
 
 
 import ch.bfh.bti7081.s2017.green.bean.HealthVisitorBean;
+import ch.bfh.bti7081.s2017.green.domain.Address;
 import ch.bfh.bti7081.s2017.green.domain.HealthVisitor;
 import ch.bfh.bti7081.s2017.green.domain.Person;
+import ch.bfh.bti7081.s2017.green.domain.builder.AddressBuilder;
 import ch.bfh.bti7081.s2017.green.domain.builder.HealthVisitorBuilder;
 import org.junit.Assert;
 import org.junit.Before;
@@ -32,6 +34,7 @@ public class PmsModelMapperTest {
         // Assert
         Assert.assertEquals(hv.getAhvNr(), hvBean.getAhvNr());
         Assert.assertNotNull(hvBean.getAddress());
+        Assert.assertNotNull(hvBean.getAddress().getId());
     }
 
     @Test
@@ -50,6 +53,7 @@ public class PmsModelMapperTest {
         // Assert
         Assert.assertNotEquals(newAvhNr, hvBean.getAhvNr());
         Assert.assertNotNull(hvBean.getAddress());
+        Assert.assertNotNull(hvBean.getAddress().getId());
     }
 
     @Test
