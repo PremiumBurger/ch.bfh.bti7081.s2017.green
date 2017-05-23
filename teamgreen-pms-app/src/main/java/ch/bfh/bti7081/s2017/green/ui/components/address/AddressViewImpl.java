@@ -9,6 +9,7 @@ import com.vaadin.ui.Grid;
 import com.vaadin.ui.HorizontalLayout;
 import com.vaadin.ui.Label;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Set;
 
@@ -18,6 +19,7 @@ import java.util.Set;
  * @author schms27
  */
 @Component
+@Transactional
 public class AddressViewImpl extends MasterPageImpl implements AddressView {
     //Variable Declaration
     private AddressViewListener listener;   //Listener to forward events to AddressViewPresenter

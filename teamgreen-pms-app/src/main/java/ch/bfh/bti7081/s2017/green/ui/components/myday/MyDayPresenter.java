@@ -13,7 +13,7 @@ public class MyDayPresenter implements MyDayViewListener {
     public MyDayPresenter(MyDay myDay, MyDayView myDayView) {
         this.myDay = myDay;
         this.myDayView = myDayView;
-
+        myDayView.init(myDay.getSelectedEvents());
         myDayView.addListener(this);
     }
 

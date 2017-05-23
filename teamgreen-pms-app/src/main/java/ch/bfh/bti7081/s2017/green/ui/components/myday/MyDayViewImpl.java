@@ -1,7 +1,10 @@
 package ch.bfh.bti7081.s2017.green.ui.components.myday;
 
 
+import ch.bfh.bti7081.s2017.green.bean.AppointmentBean;
 import ch.bfh.bti7081.s2017.green.ui.MasterPageImpl;
+import ch.bfh.bti7081.s2017.green.ui.components.myday.mydayevent.MyDayEventView;
+import ch.bfh.bti7081.s2017.green.ui.components.myday.mydayevent.MyDayEventViewImpl;
 import ch.bfh.bti7081.s2017.green.ui.components.patient.patientshort.PatientShortView;
 import ch.bfh.bti7081.s2017.green.ui.components.patient.patientshort.PatientShortViewImpl;
 import com.vaadin.navigator.ViewChangeListener;
@@ -16,12 +19,14 @@ public class MyDayViewImpl extends MasterPageImpl implements MyDayView {
 
     MyDayViewListener listener;
 
-    private PatientShortView patientShortView;
+    private MyDayEventView myDayEventView;
 
     @Autowired
-    public MyDayViewImpl(PatientShortView patientShortView) {
-        this.patientShortView = patientShortView;
-        setViewContent((PatientShortViewImpl)patientShortView);
+    public MyDayViewImpl(MyDayEventView myDayEventView) {
+        this.myDayEventView = myDayEventView;
+
+        setViewContent((MyDayEventViewImpl)myDayEventView);
+
     }
 
     @Override
@@ -33,5 +38,11 @@ public class MyDayViewImpl extends MasterPageImpl implements MyDayView {
     public void enter(ViewChangeListener.ViewChangeEvent event) {
 
     }
+
+    public void init(List<AppointmentBean> appointments){
+
+
+    }
+
 
 }

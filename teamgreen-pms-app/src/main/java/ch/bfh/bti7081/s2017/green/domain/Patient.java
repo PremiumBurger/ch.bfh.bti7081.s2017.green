@@ -14,7 +14,7 @@ public class Patient extends Person {
     @ManyToMany(mappedBy = "patients")
     private List<HealthVisitor> healthVisitors;
 
-   // @OneToMany(mappedBy = "patient")
+    @OneToMany(mappedBy = "patient")
     private List<Appointment> appointments;
 
     @OneToMany(mappedBy = "patient")

@@ -1,9 +1,15 @@
 package ch.bfh.bti7081.s2017.green.ui.components.myday;
 
+import ch.bfh.bti7081.s2017.green.bean.AppointmentBean;
 import ch.bfh.bti7081.s2017.green.service.*;
+import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 @Transactional
+@Component
 public class MyDay {
 
     private HealthVisitorService healthVisitorService;
@@ -18,5 +24,9 @@ public class MyDay {
         this.patientService = patientService;
         this.appointmentService = appointmentService;
         this.addressService = addressService;
+    }
+
+    public List<AppointmentBean> getSelectedEvents(){
+        return appointmentService.getAll().stream().collect(Collectors.toList());
     }
 }

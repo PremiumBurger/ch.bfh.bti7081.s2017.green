@@ -3,6 +3,7 @@ package ch.bfh.bti7081.s2017.green.ui.components.myday.mydayevent;
 import ch.bfh.bti7081.s2017.green.bean.AppointmentBean;
 import ch.bfh.bti7081.s2017.green.ui.components.patient.patientshort.PatientShortView;
 import ch.bfh.bti7081.s2017.green.ui.components.patient.patientshort.PatientShortViewImpl;
+import com.vaadin.icons.VaadinIcons;
 import com.vaadin.navigator.ViewChangeListener;
 import com.vaadin.ui.Label;
 import com.vaadin.ui.Layout;
@@ -27,6 +28,7 @@ public class MyDayEventViewImpl extends VerticalLayout implements MyDayEventView
         this.patientShortView = patientShortView;
         appointmentTitle = new Label("");
         appointmentTime = new Label("");
+        appointmentTime.setIcon(VaadinIcons.CLOCK);
         addComponents(appointmentTitle,appointmentTime,(PatientShortViewImpl)patientShortView);
     }
 
@@ -43,6 +45,7 @@ public class MyDayEventViewImpl extends VerticalLayout implements MyDayEventView
     @Override
     public void init(AppointmentBean appointment) {
         appointmentModel = appointment;
+        appointmentTime.setValue(appointment.getFrom().toString());
 
     }
 }

@@ -15,7 +15,7 @@ public class HealthVisitor extends Person {
             inverseJoinColumns = @JoinColumn(name = "patientId", referencedColumnName = "id"))
     private List<Patient> patients;
     @Transient
-    //@OneToMany(mappedBy = "healthVisitor")
+    @OneToMany(mappedBy = "healthVisitor")
     private List<Appointment> appointments;
 
     @OneToMany(mappedBy = "healthVisitor")
