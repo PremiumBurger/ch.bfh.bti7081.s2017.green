@@ -38,7 +38,7 @@ public class SearchViewImpl extends MasterPageImpl implements SearchView {
         final HorizontalLayout layout = new HorizontalLayout();
 
         //get all data and prepare combobox
-        search = new ComboBox<>();
+        search = new CustomComboBox<>();
         layout.addComponent(search);
         layout.setWidth(100,Unit.PERCENTAGE);
         setHeader(layout);
