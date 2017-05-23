@@ -14,9 +14,14 @@ import com.vaadin.navigator.ViewChangeListener;
 import com.vaadin.shared.Registration;
 import com.vaadin.ui.*;
 import com.vaadin.ui.themes.ValoTheme;
+import eu.maxschuster.vaadin.autocompletetextfield.AutocompleteQuery;
+import eu.maxschuster.vaadin.autocompletetextfield.AutocompleteSuggestion;
+import eu.maxschuster.vaadin.autocompletetextfield.AutocompleteSuggestionProvider;
+import eu.maxschuster.vaadin.autocompletetextfield.AutocompleteTextField;
 import org.springframework.stereotype.*;
 
 import java.util.*;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 /**
@@ -28,23 +33,12 @@ import java.util.stream.Stream;
 public class SearchViewImpl extends MasterPageImpl implements SearchView {
     private SearchViewListener listener;   //Listener to forward events to AddressViewPresenter
 
-    ComboBox<PatientBean> search;
-
-    TextField textField;
-    Label searchLabel;
-
+    AutocompleteTextField search ;
     public SearchViewImpl() {
         final HorizontalLayout layout = new HorizontalLayout();
         final VerticalLayout verticalLayout = new VerticalLayout();
         //get all data and prepare combobox
-        search = new ComboBox<>();
-
-        //set all data for the TextField Search
-        textField = new TextField();
-        searchLabel = new Label();
-        verticalLayout.addComponent(searchLabel);
-        verticalLayout.addComponent(textField);
-        verticalLayout.setWidth(100,Unit.PERCENTAGE);
+        search = new AutocompleteTextField();
 
         //set as header
         layout.addComponent(search);
@@ -63,29 +57,31 @@ public class SearchViewImpl extends MasterPageImpl implements SearchView {
     public void init(Set<PatientBean> patients) {
         //combobox search
         search.setCaption("Combobox search");
-        search.setPlaceholder("start typing to find your Boardi");
-        search.setItems(patients);
-        search.setItemCaptionGenerator(PatientBean::getSearchString);
-        search.setPopupWidth("100%");
+        search.setSuggestionProvider(new AutocompleteSuggestionProvider() {
+            @Override
+            public Collection<AutocompleteSuggestion> querySuggestions(AutocompleteQuery autocompleteQuery) {
+                return null;
+            }
+        });
+        //search.setPlaceholder("start typing to find your Boardi");
+        //search.setItems(patients);
+        //search.setItemCaptionGenerator(PatientBean::getSearchString);
+        //search.setPopupWidth("100%");
         search.setWidth("100%");
-        search.addValueChangeListener(event -> listener.onCombobox(event.getValue()));
+        search.addValueChangeListener(event-> listener.onAutoComplete(event.toString()));
 
-        //textField Search
-        searchLabel.setValue("Textfield Search");
-        textField.setPlaceholder("Start typing to search directly in database");
-        textField.addValueChangeListener(event -> listener.onTextfield(event.getValue()));
     }
 
     @Override
-    public void setComboboxSelection(PatientBean patientBean) {
-        Notification.show("The selected Patient is"+patientBean.getId()+" With name: "+patientBean.getFirstName(),
-                Notification.Type.HUMANIZED_MESSAGE);
-    }
-
-    @Override
-    public void setTextfieldSelection(Set<PatientBean> patientBeans) {
-        Notification.show("The search result is: "+patientBeans.toString(),
-                Notification.Type.HUMANIZED_MESSAGE);
+    public void setAutoCompleteSuggestion(Set<PatientBean> patientBeans) {
+        Set<AutocompleteSuggestion> set = patientBeans.stream().map(
+                pb -> new AutocompleteSuggestion(String.valueOf(pb.getId()),pb.getSearchString())).collect(Collectors.toSet());
+        search.setSuggestionProvider(new AutocompleteSuggestionProvider() {
+            @Override
+            public Collection<AutocompleteSuggestion> querySuggestions(AutocompleteQuery autocompleteQuery) {
+                return set;
+            }
+        });
     }
 
 

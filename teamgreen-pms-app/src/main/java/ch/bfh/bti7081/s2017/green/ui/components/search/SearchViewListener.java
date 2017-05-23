@@ -7,7 +7,5 @@ import ch.bfh.bti7081.s2017.green.bean.PatientBean;
  */
 public interface SearchViewListener {
 
-    void onCombobox(PatientBean patientBean);
-
-    void onTextfield(String str);
+    void onAutoComplete(String str);
 }

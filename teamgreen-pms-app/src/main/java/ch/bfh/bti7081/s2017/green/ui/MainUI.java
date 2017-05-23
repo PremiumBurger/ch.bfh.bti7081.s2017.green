@@ -4,6 +4,7 @@ import ch.bfh.bti7081.s2017.green.ui.components.address.AddressView;
 import ch.bfh.bti7081.s2017.green.ui.components.login.LoginView;
 import ch.bfh.bti7081.s2017.green.ui.components.search.SearchView;
 import com.vaadin.annotations.Theme;
+import com.vaadin.annotations.Widgetset;
 import com.vaadin.navigator.Navigator;
 import com.vaadin.server.VaadinRequest;
 import com.vaadin.spring.annotation.SpringUI;

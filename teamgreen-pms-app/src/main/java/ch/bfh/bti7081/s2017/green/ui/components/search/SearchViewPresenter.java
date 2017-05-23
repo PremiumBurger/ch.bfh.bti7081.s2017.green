@@ -26,16 +26,9 @@ public class SearchViewPresenter implements SearchViewListener {
     }
 
     @Override
-    public void onCombobox(PatientBean patientBean) {
-        searchview.setComboboxSelection(patientBean);
+    public void onAutoComplete(String str) {
+        searchview.setAutoCompleteSuggestion(search.getAll());
     }
 
-    @Override
-    public void onTextfield(String str) {
-        String[] searchStrings= str.split("\\s");
-        List<String> al = Arrays.asList(searchStrings);
-        Set test = search.getTyping(al);
-        searchview.setTextfieldSelection(test);
-    }
 }
 
