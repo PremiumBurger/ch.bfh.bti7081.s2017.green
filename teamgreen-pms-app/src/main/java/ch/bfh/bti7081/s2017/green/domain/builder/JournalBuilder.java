@@ -1,5 +1,6 @@
 package ch.bfh.bti7081.s2017.green.domain.builder;
 
+import ch.bfh.bti7081.s2017.green.domain.AppointmentJournalEntry;
 import ch.bfh.bti7081.s2017.green.domain.Journal;
 import ch.bfh.bti7081.s2017.green.domain.Patient;
 
@@ -41,7 +42,7 @@ public final class JournalBuilder implements RundumSorglosBuilder {
         Journal j = new Journal();
         j.setPatient(PatientBuilder.aPatient().rundumSorglos().build());
         j.setCreatedOn(LocalDateTime.now());
-        j.addJournalEntry(JournalEntryBuilder.aJournalEntry().build());
+        j.addJournalEntry(AppointmentJournalEntryBuilder.anAppointmentJournalEntry().build());
         return this;
     }
 }

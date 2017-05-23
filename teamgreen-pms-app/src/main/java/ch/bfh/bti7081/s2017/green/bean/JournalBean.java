@@ -3,6 +3,7 @@ package ch.bfh.bti7081.s2017.green.bean;
 import ch.bfh.bti7081.s2017.green.domain.BaseEntity;
 import ch.bfh.bti7081.s2017.green.domain.Journal;
 
+import javax.persistence.Entity;
 import java.time.LocalDateTime;
 import java.util.Set;
 

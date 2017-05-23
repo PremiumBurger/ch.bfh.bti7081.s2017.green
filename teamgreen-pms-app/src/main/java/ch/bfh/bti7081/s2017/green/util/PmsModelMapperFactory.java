@@ -2,6 +2,7 @@ package ch.bfh.bti7081.s2017.green.util;
 
 import ch.bfh.bti7081.s2017.green.bean.*;
 import ch.bfh.bti7081.s2017.green.domain.*;
+import ch.bfh.bti7081.s2017.green.domain.builder.JournalBuilder;
 import ma.glasnost.orika.MapperFacade;
 import ma.glasnost.orika.MapperFactory;
 import ma.glasnost.orika.impl.DefaultMapperFactory;
@@ -21,6 +22,8 @@ public class PmsModelMapperFactory {
         addClassMap(Alarm.class, AlarmBean.class, mapperFactory);
         addClassMap(Appointment.class, AppointmentBean.class, mapperFactory);
         addClassMap(Patient.class, PatientBean.class, mapperFactory);
+        addClassMap(Journal.class, JournalBean.class, mapperFactory);
+        addClassMap(AppointmentJournalEntry.class, AppointmentJournalEntryBean.class, mapperFactory);
         addClassMap(AppointmentStateType.class, AppointmentStateTypeBean.class, mapperFactory);
     }
 

@@ -7,55 +7,26 @@ import java.time.LocalDateTime;
 @Entity
 @Inheritance
 @DiscriminatorColumn(name = "journalEntryType", discriminatorType = DiscriminatorType.INTEGER)
-public class JournalEntry extends BaseEntity {
-
-    //Todo: Annotationen!
+public abstract class JournalEntry extends BaseEntity {
 
     @ManyToOne
-    @JoinColumn(name = "patientId")
-    private Patient patient;
+    @JoinColumn(name = "journalId")
+    private Journal journal;
 
-    @ManyToMany
-    @JoinColumn(name = "healthVisitorId")
-    private HealthVisitor healthVisitor;
-
+    @Column(nullable = false, updatable = false, insertable = false)
     private int journalEntryType;
     private String text;
     private boolean isImportant;
-    private Person createdBy;  // In BaseEntity verschieben
-    private LocalDateTime createdOn;  // In BaseEntity verschieben
-    private Person modifiedBy;  // In BaseEntity verschieben
-    private LocalDateTime modifiedOn;  // In BaseEntity verschieben
 
     public JournalEntry() {
     }
 
-    public JournalEntry(Patient patient, HealthVisitor healthVisitor, int journalEntryType, String text, boolean isImportant, Person createdBy, LocalDateTime createdOn, Person modifiedBy, LocalDateTime modifiedOn) {
-        this.patient = patient;
-        this.healthVisitor = healthVisitor;
-        this.journalEntryType = journalEntryType;
-        this.text = text;
-        this.isImportant = isImportant;
-        this.createdBy = createdBy;
-        this.createdOn = createdOn;
-        this.modifiedBy = modifiedBy;
-        this.modifiedOn = modifiedOn;
+    public Journal getJournal() {
+        return journal;
     }
 
-    public Patient getPatient() {
-        return patient;
-    }
-
-    public void setPatient(Patient patient) {
-        this.patient = patient;
-    }
-
-    public HealthVisitor getHealthVisitor() {
-        return healthVisitor;
-    }
-
-    public void setHealthVisitor(HealthVisitor healthVisitor) {
-        this.healthVisitor = healthVisitor;
+    public void setJournal(Journal journal) {
+        this.journal = journal;
     }
 
     public int getJournalEntryType() {
@@ -82,35 +53,4 @@ public class JournalEntry extends BaseEntity {
         isImportant = important;
     }
 
-    public Person getCreatedBy() {
-        return createdBy;
-    }
-
-    public void setCreatedBy(Person createdBy) {
-        this.createdBy = createdBy;
-    }
-
-    public LocalDateTime getCreatedOn() {
-        return createdOn;
-    }
-
-    public void setCreatedOn(LocalDateTime createdOn) {
-        this.createdOn = createdOn;
-    }
-
-    public Person getModifiedBy() {
-        return modifiedBy;
-    }
-
-    public void setModifiedBy(Person modifiedBy) {
-        this.modifiedBy = modifiedBy;
-    }
-
-    public LocalDateTime getModifiedOn() {
-        return modifiedOn;
-    }
-
-    public void setModifiedOn(LocalDateTime modifiedOn) {
-        this.modifiedOn = modifiedOn;
-    }
 }
