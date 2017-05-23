@@ -1,28 +1,24 @@
 package ch.bfh.bti7081.s2017.green.domain;
 
-import ch.bfh.bti7081.s2017.green.domain.Patient;
-import com.fasterxml.jackson.databind.ser.Serializers;
-import org.assertj.core.util.Sets;
-
+import javax.persistence.Entity;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import java.time.LocalDateTime;
-import java.util.Collection;
 import java.util.HashSet;
-import java.util.Iterator;
 import java.util.Set;
 
-/**
- * Created by Tobias Joder on 16.05.2017.
- */
+@Entity
 public class Journal extends BaseEntity{
 
-    //Todo: Annotationen!
-
+    @OneToOne
     private Patient patient;
-    private Set<JournalEntry> journalList;
+
+    @OneToMany(mappedBy = "journal")
+    private Set<JournalEntry> journals;
     private LocalDateTime createdOn;
 
     public Journal() {
-        this.journalList = new HashSet<>();
+        this.journals = new HashSet<>();
     }
 
     public Patient getPatient() {
@@ -34,7 +30,7 @@ public class Journal extends BaseEntity{
     }
 
     public void addJournalEntry(JournalEntry je) {
-        this.journalList.add(je);
+        this.journals.add(je);
     }
 
     public LocalDateTime getCreatedOn() {

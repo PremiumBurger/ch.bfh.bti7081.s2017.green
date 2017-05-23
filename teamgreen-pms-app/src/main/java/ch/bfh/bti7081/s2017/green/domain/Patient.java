@@ -17,6 +17,9 @@ public class Patient extends Person {
     @OneToMany(mappedBy = "patient")
     private List<Alarm> alarms;
 
+    @OneToOne(mappedBy = "patient")
+    private Journal journal;
+
 
     public Patient() {
         healthVisitors = new ArrayList<>();

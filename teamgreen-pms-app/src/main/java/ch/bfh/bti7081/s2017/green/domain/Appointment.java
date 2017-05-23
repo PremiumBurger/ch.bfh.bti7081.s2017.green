@@ -4,7 +4,9 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import java.time.LocalDateTime;
+import java.util.Set;
 
 @Entity
 public class Appointment extends BaseEntity {
@@ -25,6 +27,9 @@ public class Appointment extends BaseEntity {
     @ManyToOne
     @JoinColumn(name = "patientId")
     private Patient patient;
+
+    @OneToMany(mappedBy = "appointment")
+    private Set<AppointmentJournalEntry> journalEntries;
 
 
     public HealthVisitor getHealthVisitor() {
