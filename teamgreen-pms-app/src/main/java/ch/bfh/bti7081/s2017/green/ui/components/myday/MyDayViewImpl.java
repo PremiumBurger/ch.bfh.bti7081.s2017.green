@@ -8,11 +8,13 @@ import com.vaadin.icons.VaadinIcons;
 import com.vaadin.navigator.ViewChangeListener;
 import com.vaadin.ui.*;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 @Component
+@Transactional
 public class MyDayViewImpl extends MasterPageImpl implements MyDayView {
 
     MyDayViewListener listener;

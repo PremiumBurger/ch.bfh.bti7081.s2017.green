@@ -5,7 +5,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import java.time.LocalDateTime;
 
-//@Entity
+@Entity
 public class Appointment extends BaseEntity {
 
     private LocalDateTime from;
