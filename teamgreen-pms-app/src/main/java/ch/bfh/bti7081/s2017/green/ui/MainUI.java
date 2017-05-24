@@ -2,10 +2,8 @@ package ch.bfh.bti7081.s2017.green.ui;
 
 import ch.bfh.bti7081.s2017.green.ui.components.Alarm.AlarmView;
 import ch.bfh.bti7081.s2017.green.ui.components.address.AddressView;
-import ch.bfh.bti7081.s2017.green.ui.components.address.AddressViewImpl;
 import ch.bfh.bti7081.s2017.green.ui.components.login.LoginView;
 import ch.bfh.bti7081.s2017.green.ui.components.myday.MyDayView;
-import ch.bfh.bti7081.s2017.green.ui.components.patient.patientshort.PatientShortViewImpl;
 import com.vaadin.annotations.Theme;
 import com.vaadin.navigator.Navigator;
 import com.vaadin.server.VaadinRequest;
