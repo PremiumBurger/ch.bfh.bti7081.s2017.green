@@ -24,8 +24,7 @@ public class PatientServiceImpl extends BaseService<Patient, PatientBean, Patien
     @Override
     public Set<PatientBean> find(String str){
         TreeSet set = new TreeSet();
-        set.addAll(find((r) -> r.findByFirstNameStartsWithIgnoreCase(str)));
-        set.addAll(find((r) -> r.findByLastNameStartsWithIgnoreCase(str)));
+        Arrays.asList(str.split("\\s")).stream().parallel().allMatch("get something that have all search attributes concated from database");
         return set;
     }
 

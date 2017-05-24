@@ -22,8 +22,6 @@ import org.springframework.stereotype.*;
 
 import java.util.*;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
-
 /**
  * Component to Display a Searchbar
  * Created by joris on 05.05.17.
@@ -57,16 +55,6 @@ public class SearchViewImpl extends MasterPageImpl implements SearchView {
     public void init(Set<PatientBean> patients) {
         //combobox search
         search.setCaption("Combobox search");
-        search.setSuggestionProvider(new AutocompleteSuggestionProvider() {
-            @Override
-            public Collection<AutocompleteSuggestion> querySuggestions(AutocompleteQuery autocompleteQuery) {
-                return null;
-            }
-        });
-        //search.setPlaceholder("start typing to find your Boardi");
-        //search.setItems(patients);
-        //search.setItemCaptionGenerator(PatientBean::getSearchString);
-        //search.setPopupWidth("100%");
         search.setWidth("100%");
         search.addValueChangeListener(event-> listener.onAutoComplete(event.toString()));
 

@@ -27,7 +27,8 @@ public class SearchViewPresenter implements SearchViewListener {
 
     @Override
     public void onAutoComplete(String str) {
-        searchview.setAutoCompleteSuggestion(search.getAll());
+
+        searchview.setAutoCompleteSuggestion(search.getSearchResult(str));//getAll());
     }
 
 }

@@ -9,4 +9,5 @@ import java.util.Set;
 public interface PatientRepository extends BaseRepository<Patient> {
     Set<Patient> findByFirstNameStartsWithIgnoreCase(String lastName);
     Set<Patient> findByLastNameStartsWithIgnoreCase(String firstName);
+    //return anyway a table with all attributes concatinated
 }
