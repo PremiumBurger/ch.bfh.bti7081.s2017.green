@@ -4,6 +4,7 @@ import ch.bfh.bti7081.s2017.green.ui.components.address.AddressView;
 import ch.bfh.bti7081.s2017.green.ui.components.login.LoginView;
 import ch.bfh.bti7081.s2017.green.ui.components.search.SearchView;
 import com.vaadin.annotations.Theme;
+import com.vaadin.annotations.VaadinServletConfiguration;
 import com.vaadin.annotations.Widgetset;
 import com.vaadin.navigator.Navigator;
 import com.vaadin.server.VaadinRequest;
@@ -13,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 @SpringUI
 @Theme("valo")
+@Widgetset("eu.maxschuster.vaadin.autocompletetextfield.demo.DemoWidgetSet")
 public class MainUI extends UI {
 
     @Autowired

@@ -38,6 +38,7 @@ public class SearchViewImpl extends MasterPageImpl implements SearchView {
         //get all data and prepare combobox
         search = new AutocompleteTextField();
 
+
         //set as header
         layout.addComponent(search);
         layout.addComponent(verticalLayout);
