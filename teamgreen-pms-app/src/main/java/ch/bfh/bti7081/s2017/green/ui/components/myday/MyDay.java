@@ -5,6 +5,7 @@ import ch.bfh.bti7081.s2017.green.service.*;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -26,7 +27,7 @@ public class MyDay {
         this.addressService = addressService;
     }
 
-    public List<AppointmentBean> getSelectedEvents(){
-        return appointmentService.getAll().stream().collect(Collectors.toList());
+    public List<AppointmentBean> getAll(){
+        return new ArrayList<AppointmentBean>(appointmentService.getAll());
     }
 }

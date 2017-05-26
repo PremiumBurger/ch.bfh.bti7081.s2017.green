@@ -24,7 +24,7 @@ public class AddressViewImpl extends MasterPageImpl implements AddressView {
     //Variable Declaration
     private AddressViewListener listener;   //Listener to forward events to AddressViewPresenter
     private Grid<AddressBean> grid;         //Vaadin Grid to show the Addresses
-    private Label testlabel;
+
 
     public AddressViewImpl() {
         HorizontalLayout layout = new HorizontalLayout();
@@ -46,8 +46,6 @@ public class AddressViewImpl extends MasterPageImpl implements AddressView {
         layout.addComponents(grid, btnTest);
         layout.setSizeFull();
         setHeader(header);
-        testlabel = new Label("test");
-        layout.addComponent(testlabel);
         setViewContent(layout);
     }
 
@@ -59,7 +57,6 @@ public class AddressViewImpl extends MasterPageImpl implements AddressView {
     @Override
     public void doSomething(Set<AddressBean> addressBeanSet) {
         grid.setItems(addressBeanSet);
-        testlabel.setValue(addressBeanSet.stream().findFirst().get().getCountry());
     }
 
     @Override

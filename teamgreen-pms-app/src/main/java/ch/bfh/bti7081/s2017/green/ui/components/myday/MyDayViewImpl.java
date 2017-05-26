@@ -14,7 +14,6 @@ import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 @Component
-@Transactional
 public class MyDayViewImpl extends MasterPageImpl implements MyDayView {
 
     MyDayViewListener listener;
