@@ -25,8 +25,6 @@ public abstract class BaseService<T extends BaseEntity, U extends EntityBean, R 
     public Set<U> getAll() {
         Set<U> result = Sets.newHashSet();
 
-        Iterable<T> yeah = repository.findAll();
-
         repository.findAll().forEach(hv -> {
             result.add(initBean(hv));
         });

@@ -14,6 +14,7 @@ public class PatientBean extends PersonBean implements Autocompletable {
 
     private List<AlarmBean> alarms;
 
+    private JournalBean journal;
 
     public PatientBean() {
         setEntity(new Patient(), false);
@@ -62,5 +63,13 @@ public class PatientBean extends PersonBean implements Autocompletable {
         else
             return "--";
 
+    }
+
+    public JournalBean getJournal() {
+        return journal;
+    }
+
+    public void setJournal(JournalBean journal) {
+        this.journal = journal;
     }
 }

@@ -17,9 +17,9 @@ public class Patient extends Person {
     @OneToMany(mappedBy = "patient")
     private List<Alarm> alarms;
 
-    @OneToOne(mappedBy = "patient")
+    @OneToOne
+    @JoinColumn(name = "journalId")
     private Journal journal;
-
 
     public Patient() {
         healthVisitors = new ArrayList<>();
@@ -37,6 +37,14 @@ public class Patient extends Person {
 
     public List<Alarm> getAlarms() {
         return alarms;
+    }
+
+    public Journal getJournal() {
+        return journal;
+    }
+
+    public void setJournal(Journal journal) {
+        this.journal = journal;
     }
 
     public void addAppointment(Appointment appointment) {

@@ -40,7 +40,6 @@ public final class JournalBuilder implements RundumSorglosBuilder {
     @Override
     public JournalBuilder rundumSorglos() {
         Journal j = new Journal();
-        j.setPatient(PatientBuilder.aPatient().rundumSorglos().build());
         j.setCreatedOn(LocalDateTime.now());
         j.addJournalEntry(AppointmentJournalEntryBuilder.anAppointmentJournalEntry().build());
         return this;

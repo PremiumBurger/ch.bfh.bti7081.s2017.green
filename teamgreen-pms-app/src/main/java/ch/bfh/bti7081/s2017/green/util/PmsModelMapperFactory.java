@@ -23,6 +23,7 @@ public class PmsModelMapperFactory {
         addClassMap(Appointment.class, AppointmentBean.class, mapperFactory);
         addClassMap(Patient.class, PatientBean.class, mapperFactory);
         addClassMap(Journal.class, JournalBean.class, mapperFactory);
+        addClassMap(JournalEntry.class, JournalEntryBean.class, mapperFactory);
         addClassMap(AppointmentJournalEntry.class, AppointmentJournalEntryBean.class, mapperFactory);
         addClassMap(AppointmentStateType.class, AppointmentStateTypeBean.class, mapperFactory);
     }
