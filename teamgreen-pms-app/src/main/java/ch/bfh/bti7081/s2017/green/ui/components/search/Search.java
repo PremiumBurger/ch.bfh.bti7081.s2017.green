@@ -24,6 +24,4 @@ public class Search {
         return patientService.getAll();
     }
 
-    public PatientBean getSelection(long id){ return patientService.getOne(id);}
-
 }

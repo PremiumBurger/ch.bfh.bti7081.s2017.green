@@ -1,9 +1,11 @@
 package ch.bfh.bti7081.s2017.green.bean;
 
+import ch.bfh.bti7081.s2017.green.ui.components.autcomplete.Autocompletable;
+
 import java.util.ArrayList;
 import java.util.List;
 
-public class PatientBean extends PersonBean {
+public class PatientBean extends PersonBean implements Autocompletable {
 
     private List<HealthVisitorBean> healthVisitors;
 
