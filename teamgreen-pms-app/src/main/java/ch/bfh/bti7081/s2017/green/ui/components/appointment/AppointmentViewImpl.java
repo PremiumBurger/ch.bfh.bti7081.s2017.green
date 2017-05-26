@@ -9,7 +9,6 @@ import com.vaadin.navigator.ViewChangeListener;
 import com.vaadin.ui.*;
 import org.springframework.stereotype.Component;
 
-import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 /**
@@ -17,11 +16,20 @@ import java.util.List;
  */
 @Component
 public class AppointmentViewImpl extends MasterPageImpl implements AppointmentView {
+
+    private long appointmentId;
+
     private DateTimeField from;
     private DateTimeField to;
     private ComboBox<PatientBean> comboBox;
     private Button save;
-    public AppointmentViewImpl() {;
+
+    private Label firstname;
+    private Label lastname;
+    private Label street;
+    private Label adr;
+
+    public AppointmentViewImpl() {
         FormLayout layout = new FormLayout();
 
         from = new DateTimeField();
@@ -29,8 +37,23 @@ public class AppointmentViewImpl extends MasterPageImpl implements AppointmentVi
         comboBox = new ComboBox<>();
         save = new Button("Save");
         save.setIcon(VaadinIcons.SAFE);
-        layout.addComponents(from,to,comboBox,save);
+
+        FormLayout patientForm = new FormLayout();
+
+        firstname = new Label();
+        firstname.setCaption("Vorname");
+        lastname = new Label();
+        lastname.setCaption("Nachname");
+        street = new Label();
+        street.setCaption("Strasse");
+        adr = new Label();
+        adr.setCaption("PLZ/Ort");
+
+        patientForm.addComponents(firstname,lastname,street,adr);
+        layout.addComponents(from,to,comboBox,patientForm,save);
         setViewContent(layout);
+
+
 
 
     }
@@ -46,8 +69,16 @@ public class AppointmentViewImpl extends MasterPageImpl implements AppointmentVi
         from.setValue(appointment.getFrom());
         to.setCaption("Bis");
         to.setValue(appointment.getTo());
-
-
+        comboBox.setCaption("Patient");
+        comboBox.setItems(patients);
+        comboBox.setItemCaptionGenerator(PatientBean::getLastName);
+        comboBox.addValueChangeListener(event -> {
+            PatientBean patient = patients.stream().filter(p -> p.getId() == event.getValue().getId()).findFirst().get();
+            firstname.setValue(patient.getFirstName());
+            lastname.setValue(patient.getLastName());
+            street.setValue(patient.getAddress().getStrasse());
+            adr.setValue(patient.getAddress().getPlz() + " " + patient.getAddress().getCity());
+        });
 
 
     }
@@ -61,5 +92,13 @@ public class AppointmentViewImpl extends MasterPageImpl implements AppointmentVi
     public void enter(ViewChangeListener.ViewChangeEvent event) {
 
 
+    }
+
+    public long getAppointmentId() {
+        return appointmentId;
+    }
+
+    public void setAppointmentId(long appointmentId) {
+        this.appointmentId = appointmentId;
     }
 }

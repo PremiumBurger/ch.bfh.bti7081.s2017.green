@@ -2,6 +2,7 @@ package ch.bfh.bti7081.s2017.green.ui.components.myday;
 
 
 import ch.bfh.bti7081.s2017.green.bean.AppointmentBean;
+import ch.bfh.bti7081.s2017.green.ui.MainUI;
 import ch.bfh.bti7081.s2017.green.ui.MasterPageImpl;
 
 import com.vaadin.icons.VaadinIcons;
@@ -48,6 +49,8 @@ public class MyDayViewImpl extends MasterPageImpl implements MyDayView {
             Label adr = new Label(appointment.getPatient().getAddress().getPlz() + " " + appointment.getPatient().getAddress().getCity());
 
             layout.addComponents(time,patientname,street,adr);
+
+            layout.addLayoutClickListener(l -> MainUI.navigator.navigateTo("appointmentview"));
 
             accordion.addTab(layout, "Appointment " + counter);
             counter++;
