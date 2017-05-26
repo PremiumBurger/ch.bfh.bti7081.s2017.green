@@ -5,18 +5,13 @@ import ch.bfh.bti7081.s2017.green.domain.Journal;
 
 import javax.persistence.Entity;
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Set;
 
 public class JournalBean extends EntityBean<Journal>{
     private PatientBean patient;
-    private Set<JournalEntryBean> journalList;
+    private List<JournalEntryBean> journalEntries;
     private LocalDateTime createdOn;
-
-    public JournalBean(PatientBean patient, Set<JournalEntryBean> journalList, LocalDateTime createdOn) {
-        this.patient = patient;
-        this.journalList = journalList;
-        this.createdOn = createdOn;
-    }
 
     public PatientBean getPatient() {
         return patient;
@@ -26,19 +21,19 @@ public class JournalBean extends EntityBean<Journal>{
         this.patient = patient;
     }
 
-    public Set<JournalEntryBean> getJournalList() {
-        return journalList;
-    }
-
-    public void setJournalList(Set<JournalEntryBean> journalList) {
-        this.journalList = journalList;
-    }
-
     public LocalDateTime getCreatedOn() {
         return createdOn;
     }
 
     public void setCreatedOn(LocalDateTime createdOn) {
         this.createdOn = createdOn;
+    }
+
+    public List<JournalEntryBean> getJournalEntries() {
+        return journalEntries;
+    }
+
+    public void setJournalEntries(List<JournalEntryBean> journalEntries) {
+        this.journalEntries = journalEntries;
     }
 }

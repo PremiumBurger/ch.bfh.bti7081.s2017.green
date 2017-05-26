@@ -1,6 +1,7 @@
 package ch.bfh.bti7081.s2017.green.domain.builder;
 
 import ch.bfh.bti7081.s2017.green.domain.Address;
+import ch.bfh.bti7081.s2017.green.domain.Journal;
 import ch.bfh.bti7081.s2017.green.domain.Patient;
 
 import java.time.LocalDate;
@@ -14,6 +15,7 @@ public final class PatientBuilder implements RundumSorglosBuilder<PatientBuilder
     private String ahvNr;
     private String email;
     private Address address;
+    private Journal journal;
 
     private PatientBuilder() {
     }
@@ -62,6 +64,11 @@ public final class PatientBuilder implements RundumSorglosBuilder<PatientBuilder
         return this;
     }
 
+    public PatientBuilder withJournal(Journal journal) {
+        this.journal = journal;
+        return this;
+    }
+
     public Patient build() {
         Patient patient = new Patient();
         patient.setFirstName(firstName);
@@ -72,6 +79,7 @@ public final class PatientBuilder implements RundumSorglosBuilder<PatientBuilder
         patient.setAhvNr(ahvNr);
         patient.setEmail(email);
         patient.setAddress(address);
+        patient.setJournal(journal);
         return patient;
     }
 
@@ -85,6 +93,7 @@ public final class PatientBuilder implements RundumSorglosBuilder<PatientBuilder
         ahvNr = "super geili ahv nr";
         email = "pidu@orderline.ch";
         address = AddressBuilder.anAddress().rundumSorglos().build();
+        journal = JournalBuilder.aJournal().rundumSorglos().build();
         return this;
     }
 }

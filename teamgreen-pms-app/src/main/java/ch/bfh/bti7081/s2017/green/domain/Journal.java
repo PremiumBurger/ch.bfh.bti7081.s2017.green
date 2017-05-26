@@ -4,21 +4,24 @@ import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Entity
 public class Journal extends BaseEntity{
 
-    @OneToOne
+    @OneToOne(mappedBy = "journal")
     private Patient patient;
 
     @OneToMany(mappedBy = "journal")
-    private Set<JournalEntry> journals;
+    private List<JournalEntry> journalEntries;
+
     private LocalDateTime createdOn;
 
     public Journal() {
-        this.journals = new HashSet<>();
+        this.journalEntries = new ArrayList<>();
     }
 
     public Patient getPatient() {
@@ -30,7 +33,7 @@ public class Journal extends BaseEntity{
     }
 
     public void addJournalEntry(JournalEntry je) {
-        this.journals.add(je);
+        this.journalEntries.add(je);
     }
 
     public LocalDateTime getCreatedOn() {
