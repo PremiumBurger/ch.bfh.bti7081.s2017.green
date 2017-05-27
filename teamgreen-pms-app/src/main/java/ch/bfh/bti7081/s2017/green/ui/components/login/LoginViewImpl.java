@@ -1,5 +1,6 @@
 package ch.bfh.bti7081.s2017.green.ui.components.login;
 
+import ch.bfh.bti7081.s2017.green.ui.MainUI;
 import ch.bfh.bti7081.s2017.green.ui.MasterPageImpl;
 import com.vaadin.icons.VaadinIcons;
 import com.vaadin.navigator.ViewChangeListener;
@@ -41,7 +42,7 @@ public class LoginViewImpl extends MasterPageImpl implements LoginView {
 
     @Override
     public void login() {
-        System.out.println("Login Test");
+        MainUI.navigator.navigateTo("myDayView");
     }
 
     @Override

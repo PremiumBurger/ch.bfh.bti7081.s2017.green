@@ -1,6 +1,9 @@
 package ch.bfh.bti7081.s2017.green.ui;
 
 import ch.bfh.bti7081.s2017.green.ui.components.address.AddressView;
+import ch.bfh.bti7081.s2017.green.ui.components.appointment.AppointmentView;
+import ch.bfh.bti7081.s2017.green.ui.components.login.LoginView;
+import ch.bfh.bti7081.s2017.green.ui.components.myday.MyDayView;
 import ch.bfh.bti7081.s2017.green.ui.components.login.LoginView;
 import ch.bfh.bti7081.s2017.green.ui.components.search.SearchView;
 import com.vaadin.annotations.Theme;
@@ -14,6 +17,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 @Theme("valo")
 public class MainUI extends UI {
 
+
+
     @Autowired
     private LoginView loginView;
 
@@ -24,13 +29,22 @@ public class MainUI extends UI {
 
     private SearchView searchView;
 
+    @Autowired
+    private MyDayView myDayView;
+
+    @Autowired
+    private AppointmentView appointmentView;
+
     public static Navigator navigator;
 
     @Override
     protected void init(VaadinRequest request) {
         navigator = new Navigator(this,this);
-        navigator.addView("", searchView);
+        navigator.addView("asdf", loginView);
         navigator.addView("addressView", addressView);
-
+        navigator.addView("alarmView", alarmView);
+        navigator.addView("aaaa", myDayView);
+        navigator.addView("appointmentview", appointmentView);
+        navigator.addView("", searchView);
     }
 }
