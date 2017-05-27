@@ -7,7 +7,7 @@ import java.time.LocalDateTime;
 @Entity
 @Inheritance
 @DiscriminatorColumn(name = "journalEntryType", discriminatorType = DiscriminatorType.INTEGER)
-public abstract class JournalEntry extends BaseEntity {
+public class JournalEntry extends BaseEntity {
 
     @ManyToOne
     @JoinColumn(name = "journalId")
@@ -15,10 +15,13 @@ public abstract class JournalEntry extends BaseEntity {
 
     @Column(nullable = false, updatable = false, insertable = false)
     private int journalEntryType;
+
     private String text;
+
     private boolean isImportant;
 
     public JournalEntry() {
+        // empty constructor
     }
 
     public Journal getJournal() {
