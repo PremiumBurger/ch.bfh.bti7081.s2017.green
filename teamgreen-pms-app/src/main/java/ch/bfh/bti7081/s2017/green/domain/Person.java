@@ -31,7 +31,6 @@ public abstract class Person extends BaseEntity {
 
     @OneToOne
     @JoinColumn(name = "addressId")
-    @Cascade(CascadeType.ALL)
     private Address address;
 
     @ManyToOne

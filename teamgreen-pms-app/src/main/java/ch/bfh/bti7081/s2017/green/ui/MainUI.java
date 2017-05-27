@@ -1,10 +1,11 @@
 package ch.bfh.bti7081.s2017.green.ui;
 
-import ch.bfh.bti7081.s2017.green.ui.components.Alarm.AlarmView;
 import ch.bfh.bti7081.s2017.green.ui.components.address.AddressView;
 import ch.bfh.bti7081.s2017.green.ui.components.appointment.AppointmentView;
 import ch.bfh.bti7081.s2017.green.ui.components.login.LoginView;
 import ch.bfh.bti7081.s2017.green.ui.components.myday.MyDayView;
+import ch.bfh.bti7081.s2017.green.ui.components.login.LoginView;
+import ch.bfh.bti7081.s2017.green.ui.components.search.SearchView;
 import com.vaadin.annotations.Theme;
 import com.vaadin.navigator.Navigator;
 import com.vaadin.server.VaadinRequest;
@@ -25,7 +26,8 @@ public class MainUI extends UI {
     private AddressView addressView;
 
     @Autowired
-    private AlarmView alarmView;
+
+    private SearchView searchView;
 
     @Autowired
     private MyDayView myDayView;
@@ -41,9 +43,8 @@ public class MainUI extends UI {
         navigator.addView("asdf", loginView);
         navigator.addView("addressView", addressView);
         navigator.addView("alarmView", alarmView);
-        navigator.addView("", myDayView);
+        navigator.addView("aaaa", myDayView);
         navigator.addView("appointmentview", appointmentView);
-
-
+        navigator.addView("", searchView);
     }
 }
