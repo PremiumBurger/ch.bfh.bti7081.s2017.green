@@ -33,4 +33,8 @@ public class Appointment {
     public List<PatientBean> getAllPatients(){
         return new ArrayList<PatientBean>(patientService.getAll());
     }
+
+    public void save(AppointmentBean appointmentBean){
+        appointmentService.save(appointmentBean);
+    }
 }

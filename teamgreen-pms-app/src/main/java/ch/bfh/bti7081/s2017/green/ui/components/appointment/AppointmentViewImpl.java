@@ -17,6 +17,9 @@ import java.util.List;
 @Component
 public class AppointmentViewImpl extends MasterPageImpl implements AppointmentView {
 
+    private AppointmentViewListener listener;
+    private AppointmentBean appointmentModel;
+
     private long appointmentId;
 
     private DateTimeField from;
@@ -37,6 +40,7 @@ public class AppointmentViewImpl extends MasterPageImpl implements AppointmentVi
         comboBox = new ComboBox<>();
         save = new Button("Save");
         save.setIcon(VaadinIcons.SAFE);
+        save.addClickListener(l -> listener.save(appointmentModel));
 
         FormLayout patientForm = new FormLayout();
 
@@ -52,41 +56,54 @@ public class AppointmentViewImpl extends MasterPageImpl implements AppointmentVi
         patientForm.addComponents(firstname,lastname,street,adr);
         layout.addComponents(from,to,comboBox,patientForm,save);
         setViewContent(layout);
-
-
-
-
     }
 
     @Override
     public void addListener(AppointmentViewListener appointmentViewListener) {
-
+        this.listener = appointmentViewListener;
     }
 
     @Override
     public void init(AppointmentBean appointment, List<PatientBean> patients) {
+        appointmentModel = appointment;
+
         from.setCaption("Von");
         from.setValue(appointment.getFrom());
         to.setCaption("Bis");
         to.setValue(appointment.getTo());
         comboBox.setCaption("Patient");
         comboBox.setItems(patients);
+        comboBox.setValue(appointment.getPatient());
+        firstname.setValue(appointment.getPatient().getFirstName());
+        setPatientData(appointment.getPatient());
         comboBox.setItemCaptionGenerator(PatientBean::getLastName);
         comboBox.addValueChangeListener(event -> {
             PatientBean patient = patients.stream().filter(p -> p.getId() == event.getValue().getId()).findFirst().get();
-            firstname.setValue(patient.getFirstName());
-            lastname.setValue(patient.getLastName());
-            street.setValue(patient.getAddress().getStrasse());
-            adr.setValue(patient.getAddress().getPlz() + " " + patient.getAddress().getCity());
+            setPatientData(patient);
+            appointmentModel.setPatient(event.getValue());
         });
 
+        from.addValueChangeListener(l -> appointmentModel.setFrom(l.getValue()));
+        to.addValueChangeListener(l -> appointmentModel.setTo(l.getValue()));
+
+
+
+    }
+
+    public void setPatientData(PatientBean patient){
+        firstname.setValue(patient.getFirstName());
+        lastname.setValue(patient.getLastName());
+        street.setValue(patient.getAddress().getStrasse());
+        adr.setValue(patient.getAddress().getPlz() + " " + patient.getAddress().getCity());
 
     }
 
     @Override
-    public void saveChanges() {
+    public void saveChanges(AppointmentBean appointmentBean) {
+
 
     }
+
 
     @Override
     public void enter(ViewChangeListener.ViewChangeEvent event) {

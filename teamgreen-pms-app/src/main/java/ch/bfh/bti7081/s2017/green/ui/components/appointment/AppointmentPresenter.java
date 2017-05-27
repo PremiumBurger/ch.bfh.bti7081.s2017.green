@@ -1,5 +1,6 @@
 package ch.bfh.bti7081.s2017.green.ui.components.appointment;
 
+import ch.bfh.bti7081.s2017.green.bean.AppointmentBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -21,4 +22,9 @@ public class AppointmentPresenter implements AppointmentViewListener {
     }
 
 
+
+    @Override
+    public void save(AppointmentBean appointmentBean) {
+        appointment.save(appointmentBean);
+    }
 }

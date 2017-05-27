@@ -15,5 +15,5 @@ public interface AppointmentView extends View{
 
     void init(AppointmentBean appointment, List<PatientBean> patients);
 
-    void saveChanges();
+    void saveChanges(AppointmentBean appointmentBean);
 }
