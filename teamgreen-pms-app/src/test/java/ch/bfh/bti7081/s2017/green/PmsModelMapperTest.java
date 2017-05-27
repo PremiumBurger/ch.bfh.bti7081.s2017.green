@@ -6,9 +6,7 @@ import ch.bfh.bti7081.s2017.green.bean.HealthVisitorBean;
 import ch.bfh.bti7081.s2017.green.domain.Appointment;
 import ch.bfh.bti7081.s2017.green.bean.PatientBean;
 import ch.bfh.bti7081.s2017.green.domain.*;
-import ch.bfh.bti7081.s2017.green.domain.builder.AddressBuilder;
 import ch.bfh.bti7081.s2017.green.domain.builder.HealthVisitorBuilder;
-import ch.bfh.bti7081.s2017.green.domain.builder.PatientBuilder;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -46,6 +44,8 @@ public class PmsModelMapperTest {
         // Arrange
         AppointmentJournalEntry journalEntry = new AppointmentJournalEntry();
         journalEntry.setText("Test Journal Entry");
+        journalEntry.setImportant(true);
+        journalEntry.setJournalEntryType(0);
 
         Journal journal = new Journal();
         journal.addJournalEntry(journalEntry);
@@ -61,6 +61,7 @@ public class PmsModelMapperTest {
 
         // Assert
         Assert.assertNotNull(pb.getJournal());
+        Assert.assertNotNull(pb.getJournal().getJournalEntries());
     }
 
     @Test

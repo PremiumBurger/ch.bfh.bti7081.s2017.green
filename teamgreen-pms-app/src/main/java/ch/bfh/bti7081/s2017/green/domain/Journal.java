@@ -21,7 +21,28 @@ public class Journal extends BaseEntity{
     private LocalDateTime createdOn;
 
     public Journal() {
-        this.journalEntries = new ArrayList<>();
+        journalEntries = new ArrayList<>();
+    }
+
+
+    public LocalDateTime getCreatedOn() {
+        return createdOn;
+    }
+
+    public void setCreatedOn(LocalDateTime createdOn) {
+        this.createdOn = createdOn;
+    }
+
+    public List<JournalEntry> getJournalEntries() {
+        return journalEntries;
+    }
+
+    //public void setJournalEntries(List<JournalEntry> journalEntries) {
+      //  this.journalEntries = journalEntries;
+    //}
+
+    public void addJournalEntry(JournalEntry journalEntry) {
+        this.journalEntries.add(journalEntry);
     }
 
     public Patient getPatient() {
@@ -30,17 +51,5 @@ public class Journal extends BaseEntity{
 
     public void setPatient(Patient patient) {
         this.patient = patient;
-    }
-
-    public void addJournalEntry(JournalEntry je) {
-        this.journalEntries.add(je);
-    }
-
-    public LocalDateTime getCreatedOn() {
-        return createdOn;
-    }
-
-    public void setCreatedOn(LocalDateTime createdOn) {
-        this.createdOn = createdOn;
     }
 }
