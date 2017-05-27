@@ -1,9 +1,8 @@
 package ch.bfh.bti7081.s2017.green.ui;
 
-import ch.bfh.bti7081.s2017.green.ui.components.Alarm.AlarmView;
 import ch.bfh.bti7081.s2017.green.ui.components.address.AddressView;
-import ch.bfh.bti7081.s2017.green.ui.components.address.AddressViewImpl;
 import ch.bfh.bti7081.s2017.green.ui.components.login.LoginView;
+import ch.bfh.bti7081.s2017.green.ui.components.search.SearchView;
 import com.vaadin.annotations.Theme;
 import com.vaadin.navigator.Navigator;
 import com.vaadin.server.VaadinRequest;
@@ -22,16 +21,16 @@ public class MainUI extends UI {
     private AddressView addressView;
 
     @Autowired
-    private AlarmView alarmView;
+
+    private SearchView searchView;
 
     public static Navigator navigator;
 
     @Override
     protected void init(VaadinRequest request) {
         navigator = new Navigator(this,this);
-        navigator.addView("", loginView);
+        navigator.addView("", searchView);
         navigator.addView("addressView", addressView);
-        navigator.addView("alarmView", alarmView);
 
     }
 }
