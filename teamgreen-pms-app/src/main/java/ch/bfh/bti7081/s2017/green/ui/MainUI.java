@@ -1,5 +1,6 @@
 package ch.bfh.bti7081.s2017.green.ui;
 
+import ch.bfh.bti7081.s2017.green.ui.components.Alarm.AlarmView;
 import ch.bfh.bti7081.s2017.green.ui.components.address.AddressView;
 import ch.bfh.bti7081.s2017.green.ui.components.appointment.AppointmentView;
 import ch.bfh.bti7081.s2017.green.ui.components.login.LoginView;
@@ -17,8 +18,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 @Theme("valo")
 public class MainUI extends UI {
 
-
-
     @Autowired
     private LoginView loginView;
 
@@ -26,7 +25,6 @@ public class MainUI extends UI {
     private AddressView addressView;
 
     @Autowired
-
     private SearchView searchView;
 
     @Autowired
@@ -34,6 +32,9 @@ public class MainUI extends UI {
 
     @Autowired
     private AppointmentView appointmentView;
+
+    @Autowired
+    private AlarmView alarmView;
 
     public static Navigator navigator;
 
