@@ -24,7 +24,7 @@
 
         <!-- Third Party Versions -->
         <version.mysql-connector>6.0.6</version.mysql-connector>
-        <version.vaadin-bom>8.0.5</version.vaadin-bom>
+        <version.vaadin>8.0.5</version.vaadin>
         <version.hsqldb>2.3.4</version.hsqldb>
         <version.spring-framework>1.5.2.RELEASE</version.spring-framework>
         <version.spring-data-jpa>1.11.1.RELEASE</version.spring-data-jpa>
@@ -38,7 +38,7 @@
         <version.junit>4.12</version.junit>
         <version.orika-core>1.5.1</version.orika-core>
         <version.aspectjweaver>1.8.10</version.aspectjweaver>
-        
+
     </properties>
 
     <dependencies>
@@ -47,6 +47,15 @@
         <dependency>
             <groupId>com.vaadin</groupId>
             <artifactId>vaadin-spring-boot-starter</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.vaadin</groupId>
+            <artifactId>vaadin-client-compiled</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.vaadin</groupId>
+            <artifactId>vaadin-themes</artifactId>
+            <version>${version.vaadin}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -135,7 +144,6 @@
             <version>${version.junit}</version>
             <scope>test</scope>
         </dependency>
-
     </dependencies>
 
     <dependencyManagement>
@@ -143,7 +151,7 @@
             <dependency>
                 <groupId>com.vaadin</groupId>
                 <artifactId>vaadin-bom</artifactId>
-                <version>${version.vaadin-bom}</version>
+                <version>${version.vaadin}</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
@@ -167,7 +175,7 @@
 
         <plugins>
             <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
+                    <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <configuration>
                     <source>1.8</source>
@@ -179,6 +187,40 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+
+            <plugin>
+                <groupId>com.vaadin</groupId>
+                <artifactId>vaadin-maven-plugin</artifactId>
+                <version>${version.vaadin}</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>update-theme</goal>
+                            <goal>update-widgetset</goal>
+                            <goal>compile</goal>
+                            <!-- Comment out compile-theme goal to use on-the-fly theme compilation -->
+                            <goal>compile-theme</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-clean-plugin</artifactId>
+                <version>3.0.0</version>
+                <!-- Clean up also any pre-compiled themes -->
+                <configuration>
+                    <filesets>
+                        <fileset>
+                            <directory>src/main/webapp/VAADIN/themes</directory>
+                            <includes>
+                                <include>**/styles.css</include>
+                                <include>**/styles.scss.cache</include>
+                            </includes>
+                        </fileset>
+                    </filesets>
+                </configuration>
             </plugin>
 
             <!-- Liquibase Plugin -->

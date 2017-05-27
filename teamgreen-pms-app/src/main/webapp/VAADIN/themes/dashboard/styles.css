@@ -981,7 +981,7 @@
  */
 
 .v-vaadin-version:after {
-	content: "8.0.1";
+	content: "8.0.5";
 }
 
 .v-widget {
@@ -3846,7 +3846,16 @@ div.v-layout.v-horizontal.v-widget {
 	border-radius: 0;
 }
 
+.dashboard .v-csslayout-v-component-group .v-widget ~ .v-widget.v-upload:not(:last-child) .v-button {
+	border-radius: 0;
+}
+
 .dashboard .v-csslayout-v-component-group .v-widget:last-child {
+	border-top-left-radius: 0;
+	border-bottom-left-radius: 0;
+}
+
+.dashboard .v-csslayout-v-component-group .v-widget.v-upload:last-child .v-button {
 	border-top-left-radius: 0;
 	border-bottom-left-radius: 0;
 }
@@ -3856,11 +3865,24 @@ div.v-layout.v-horizontal.v-widget {
 	border-bottom-right-radius: 0;
 }
 
+.dashboard .v-csslayout-v-component-group .v-widget.v-upload:first-child .v-button, .dashboard .v-csslayout-v-component-group .v-caption:first-child + .v-widget.v-upload .v-button {
+	border-top-right-radius: 0;
+	border-bottom-right-radius: 0;
+}
+
 .dashboard .v-csslayout-v-component-group .v-widget ~ .v-widget.first.first {
 	border-radius: 4px 0 0 4px;
 }
 
+.dashboard .v-csslayout-v-component-group .v-widget ~ .v-widget.first.first.v-upload .v-button {
+	border-radius: 4px 0 0 4px;
+}
+
 .dashboard .v-csslayout-v-component-group .v-widget ~ .v-widget.last.last {
+	border-radius: 0 4px 4px 0;
+}
+
+.dashboard .v-csslayout-v-component-group .v-widget ~ .v-widget.last.last.v-upload .v-button {
 	border-radius: 0 4px 4px 0;
 }
 
@@ -9996,6 +10018,9 @@ div.v-layout.v-horizontal.v-widget {
 	font-weight: 400;
 	-webkit-box-shadow: 0px 5px 15px 0px rgba(0, 0, 0, 0.25);
 	box-shadow: 0px 5px 15px 0px rgba(0, 0, 0, 0.25);
+	padding-right: 59px;
+	overflow: hidden !important;
+	cursor: pointer;
 }
 
 .dashboard .v-Notification.error .v-Notification-caption {
@@ -10004,6 +10029,55 @@ div.v-layout.v-horizontal.v-widget {
 
 .dashboard .v-Notification.error .v-Notification-description {
 	color: #f4e0df;
+}
+
+.dashboard .v-Notification.error:after {
+	content: "\00d7";
+	font-size: 1.5em;
+	position: absolute;
+	top: 50%;
+	margin-top: -12px;
+	right: 12px;
+	width: 25px;
+	height: 25px;
+	line-height: 24px;
+	cursor: pointer;
+	color: #000;
+	opacity: 0.5;
+	filter: alpha(opacity=50) ;
+	text-align: center;
+	border: 1px solid #000;
+	border-color: rgba(0, 0, 0, 0.3);
+	border-radius: 50%;
+	-webkit-transition: opacity 200ms;
+	-moz-transition: opacity 200ms;
+	transition: opacity 200ms;
+}
+
+.dashboard .v-Notification.error:hover:after {
+	opacity: 1;
+	filter: none ;
+}
+
+.dashboard .v-Notification.error:active:after {
+	background-color: #000;
+	color: #fff;
+	opacity: 0.3;
+	filter: alpha(opacity=30.0) ;
+	-webkit-transition: none 200ms;
+	-moz-transition: none 200ms;
+	transition: none 200ms;
+}
+
+.dashboard .v-Notification.error:after {
+	color: #fff;
+	border-color: #fff;
+	border-color: rgba(255, 255, 255, 0.3);
+}
+
+.dashboard .v-Notification.error:active:after {
+	background-color: #fff;
+	color: #000;
 }
 
 .dashboard .v-Notification.dark {
@@ -10081,6 +10155,21 @@ div.v-layout.v-horizontal.v-widget {
 	font-size: 14px;
 }
 
+.dashboard .v-Notification.critical-error {
+	background: #ed473b;
+	font-weight: 400;
+	-webkit-box-shadow: 0px 5px 15px 0px rgba(0, 0, 0, 0.25);
+	box-shadow: 0px 5px 15px 0px rgba(0, 0, 0, 0.25);
+}
+
+.dashboard .v-Notification.critical-error .v-Notification-caption {
+	color: white;
+}
+
+.dashboard .v-Notification.critical-error .v-Notification-description {
+	color: #f4e0df;
+}
+
 .dashboard .v-Notification.closable {
 	padding-right: 59px;
 	overflow: hidden !important;
@@ -10125,13 +10214,13 @@ div.v-layout.v-horizontal.v-widget {
 	transition: none 200ms;
 }
 
-.dashboard .v-Notification.closable.dark:after, .dashboard .v-Notification.closable.error:after, .dashboard .v-Notification.closable.system:after {
+.dashboard .v-Notification.closable.dark:after, .dashboard .v-Notification.closable.critical-error:after, .dashboard .v-Notification.closable.system:after {
 	color: #fff;
 	border-color: #fff;
 	border-color: rgba(255, 255, 255, 0.3);
 }
 
-.dashboard .v-Notification.closable.dark:active:after, .dashboard .v-Notification.closable.error:active:after, .dashboard .v-Notification.closable.system:active:after {
+.dashboard .v-Notification.closable.dark:active:after, .dashboard .v-Notification.closable.critical-error:active:after, .dashboard .v-Notification.closable.system:active:after {
 	background-color: #fff;
 	color: #000;
 }
