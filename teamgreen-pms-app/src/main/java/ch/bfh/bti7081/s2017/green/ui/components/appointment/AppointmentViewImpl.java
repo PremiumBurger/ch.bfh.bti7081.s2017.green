@@ -3,7 +3,6 @@ package ch.bfh.bti7081.s2017.green.ui.components.appointment;
 import ch.bfh.bti7081.s2017.green.bean.AppointmentBean;
 import ch.bfh.bti7081.s2017.green.bean.AppointmentStateTypeBean;
 import ch.bfh.bti7081.s2017.green.bean.PatientBean;
-import ch.bfh.bti7081.s2017.green.ui.MasterPageImpl;
 import com.vaadin.data.BeanValidationBinder;
 import com.vaadin.icons.VaadinIcons;
 import com.vaadin.navigator.ViewChangeListener;
@@ -16,7 +15,7 @@ import java.util.List;
  * Created by joris on 26.05.17.
  */
 @Component
-public class AppointmentViewImpl extends MasterPageImpl implements AppointmentView {
+public class AppointmentViewImpl extends AbsoluteLayout implements AppointmentView {
 
     private AppointmentViewListener listener;
     private AppointmentBean appointmentModel;
@@ -78,7 +77,7 @@ public class AppointmentViewImpl extends MasterPageImpl implements AppointmentVi
 
         patientForm.addComponents(firstname,lastname,street,adr);
         layout.addComponents(from,to, comboBoxPatient,comboBoxState,patientForm,save);
-        setViewContent(layout);
+        addComponent(layout);
     }
 
     @Override

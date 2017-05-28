@@ -5,7 +5,7 @@ import com.vaadin.navigator.View;
 
 import java.util.List;
 
-public interface MyDayView extends View{
+public interface MyDayView extends View {
     void addListener(MyDayViewListener viewListener);
 
     void init(List<AppointmentBean> appointments);

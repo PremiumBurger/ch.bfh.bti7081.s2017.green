@@ -3,19 +3,17 @@ package ch.bfh.bti7081.s2017.green.ui.components.myday;
 
 import ch.bfh.bti7081.s2017.green.bean.AppointmentBean;
 
-import ch.bfh.bti7081.s2017.green.ui.components.autcomplete.Autocomplete;
+import ch.bfh.bti7081.s2017.green.ui.MasterPageImpl;
 import com.vaadin.icons.VaadinIcons;
 import com.vaadin.navigator.ViewChangeListener;
-import com.vaadin.ui.Accordion;
-import com.vaadin.ui.FormLayout;
-import com.vaadin.ui.Label;
+import com.vaadin.ui.*;
 import org.springframework.stereotype.Component;
 
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 @Component
-public class MyDayViewImpl extends MasterPageImpl implements MyDayView {
+public class MyDayViewImpl extends AbsoluteLayout implements MyDayView {
 
     MyDayViewListener listener;
     List<AppointmentBean> appointments;
@@ -32,7 +30,7 @@ public class MyDayViewImpl extends MasterPageImpl implements MyDayView {
             }
         });
         setHeader(appointmentSearch);
-        setViewContent(accordion);
+        addComponent(accordion);
     }
 
     @Override
