@@ -1,18 +1,12 @@
 package ch.bfh.bti7081.s2017.green.ui.components.journal;
 
-import ch.bfh.bti7081.s2017.green.bean.JournalBean;
-import ch.bfh.bti7081.s2017.green.bean.JournalEntryBean;
-import ch.bfh.bti7081.s2017.green.bean.PatientBean;
-import ch.bfh.bti7081.s2017.green.domain.JournalEntry;
+import ch.bfh.bti7081.s2017.green.bean.*;
 import ch.bfh.bti7081.s2017.green.ui.MasterPageImpl;
-import com.vaadin.data.Binder;
+import com.vaadin.icons.VaadinIcons;
 import com.vaadin.navigator.ViewChangeListener;
 import com.vaadin.shared.ui.ContentMode;
 import com.vaadin.ui.*;
 import org.springframework.stereotype.Component;
-
-import java.util.List;
-import java.util.Set;
 
 @Component
 public class JournalViewImpl extends MasterPageImpl implements JournalView {
@@ -47,12 +41,16 @@ public class JournalViewImpl extends MasterPageImpl implements JournalView {
         for(JournalEntryBean entry : journal.getJournalEntries()){
             Label label = new Label(entry.getText(), ContentMode.HTML);
             label.setWidth(100.0f, Unit.PERCENTAGE);
-            label.setStyleName("xxx");
 
-            VerticalLayout layout = new VerticalLayout();
+            VerticalLayout layout = new VerticalLayout(label);
             layout.setMargin(true);
 
-            accordion.addTab(label, "Titel + Datum   " + entry.isImportant());
+            //Todo: Set Style if Important
+            //Todo: Add different Types
+
+            if (entry instanceof AppointmentJournalEntryBean){
+                accordion.addTab(layout, "Titel + Datum   " + entry.isImportant(), VaadinIcons.CALENDAR);
+            }
         }
     }
 
