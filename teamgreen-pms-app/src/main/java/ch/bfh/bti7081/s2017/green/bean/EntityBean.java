@@ -8,6 +8,7 @@ import java.io.Serializable;
 public abstract class EntityBean<T extends BaseEntity> implements Serializable {
 
     private T entity;
+    private long id;
 
     /**
      * Stores the properties of this Bean to the underlaying entity.
@@ -46,7 +47,13 @@ public abstract class EntityBean<T extends BaseEntity> implements Serializable {
      *
      * @return the entity id
      */
-    public long getId() {
-        return entity.getId();
+
+
+    public long getId(){
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
     }
 }
