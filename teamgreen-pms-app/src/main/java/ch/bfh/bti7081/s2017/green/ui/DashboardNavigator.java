@@ -17,13 +17,12 @@ public class DashboardNavigator extends Navigator {
     private static final DashboardViewType ERROR_VIEW = DashboardViewType.DASHBOARD;
     private ViewProvider errorViewProvider;
 
-    public DashboardNavigator (final ComponentContainer container) {
-        super(UI.getCurrent(), container);
+    public DashboardNavigator (UI current, final ComponentContainer container) {
+        super();
 
-        String host = getUI().getPage().getLocation().getHost();
+        // String host = getUI().getPage().getLocation().getHost();
         initViewChangeListener();
         initViewProviders();
-
     }
 
     private void initViewChangeListener () {

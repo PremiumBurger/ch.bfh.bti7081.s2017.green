@@ -3,17 +3,24 @@ package ch.bfh.bti7081.s2017.green.ui;
 import ch.bfh.bti7081.s2017.green.event.UserLoginRequestedEvent;
 import com.vaadin.event.ShortcutAction.KeyCode;
 import com.vaadin.server.FontAwesome;
-import com.vaadin.server.Page;
 import com.vaadin.server.Responsive;
 import com.vaadin.shared.Position;
 import com.vaadin.ui.*;
 import com.vaadin.ui.Button.ClickListener;
+import com.vaadin.ui.Component;
 import com.vaadin.ui.themes.ValoTheme;
+import green.mvp.event.EventBus;
+import org.springframework.beans.factory.annotation.Autowired;
 
 @SuppressWarnings("serial")
+@org.springframework.stereotype.Component
 public class LoginView extends VerticalLayout {
 
-    public LoginView () {
+    private EventBus eventBus;
+
+    @Autowired
+    public LoginView (EventBus eventBus) {
+        this.eventBus = eventBus;
         setSizeFull();
         setMargin(false);
         setSpacing(false);
@@ -28,7 +35,7 @@ public class LoginView extends VerticalLayout {
         notification.setStyleName("tray dark small closable login-help");
         notification.setPosition(Position.BOTTOM_CENTER);
         notification.setDelayMsec(20000);
-        notification.show(Page.getCurrent());
+        //notification.show(Page.getCurrent());
     }
 
     private Component buildLoginForm() {
@@ -64,7 +71,7 @@ public class LoginView extends VerticalLayout {
         fields.addComponents(username, password, signin);
         fields.setComponentAlignment(signin, Alignment.BOTTOM_LEFT);
 
-        //signin.addClickListener((ClickListener) event -> DashboardEventBus.post(new UserLoginRequestedEvent(username.getValue(), password.getValue())));
+        signin.addClickListener((ClickListener) event -> eventBus.fireEvent(new UserLoginRequestedEvent(username.getValue(), password.getValue())));
         return fields;
     }
 

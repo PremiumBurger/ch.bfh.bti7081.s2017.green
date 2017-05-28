@@ -1,14 +1,17 @@
 package ch.bfh.bti7081.s2017.green.ui;
 
 import ch.bfh.bti7081.s2017.green.event.UserLoginRequestedEvent;
-import com.google.common.eventbus.Subscribe;
 import com.vaadin.annotations.Theme;
 import com.vaadin.annotations.Title;
+import com.vaadin.navigator.Navigator;
 import com.vaadin.server.Responsive;
 import com.vaadin.server.VaadinRequest;
 import com.vaadin.spring.annotation.SpringUI;
 import com.vaadin.ui.UI;
 import com.vaadin.ui.themes.ValoTheme;
+import green.mvp.event.EventBus;
+import green.mvp.event.EventHandler;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.Locale;
 
@@ -17,23 +20,34 @@ import java.util.Locale;
 @Title("QuickTickets Dashboard")
 @SuppressWarnings("serial")
 public class DashboardUI extends UI {
+    private LoginView loginView;
+    private MainView mainView;
+    private EventBus eventBus;
+
     /*
-       * This field stores an access to the dummy backend layer. In real
-       * applications you most likely gain access to your beans trough lookup or
-       * injection; and not in the UI but somewhere closer to where they're
-       * actually accessed.
-       */
+           * This field stores an access to the dummy backend layer. In real
+           * applications you most likely gain access to your beans trough lookup or
+           * injection; and not in the UI but somewhere closer to where they're
+           * actually accessed.
+           */
     private boolean isLoggedIn = false;
 
     public DashboardUI () {
         this.isLoggedIn = false;
     }
 
+    @Autowired
+    public DashboardUI (LoginView loginView, MainView mainView, EventBus eventBus) {
+        this.loginView = loginView;
+        this.mainView = mainView;
+        this.eventBus = eventBus;
+    }
+
     @Override
     protected void init (final VaadinRequest request) {
         setLocale(Locale.US);
+        eventBus.addHandler(this);
 
-        //DashboardEventBus.register(this);
         Responsive.makeResponsive(this);
         addStyleName(ValoTheme.UI_WITH_MENU);
 
@@ -54,16 +68,17 @@ public class DashboardUI extends UI {
         //if (user != null && "admin".equals(user.getRole())) {
         if (isLoggedIn) {
             // Authenticated user
-            setContent(new MainView());
+            setContent(mainView);
             removeStyleName("loginview");
-            getNavigator().navigateTo(getNavigator().getState());
+            Navigator navigator = getNavigator();
+            navigator.navigateTo(navigator.getState());
         } else {
-            setContent(new LoginView());
+            setContent(loginView);
             addStyleName("loginview");
         }
     }
 
-    @Subscribe
+    @EventHandler
     public void userLoginRequested (UserLoginRequestedEvent userLoginRequest) {
         /*User user = getDataProvider().authenticate(event.getUserName(), event.getPassword());
         VaadinSession.getCurrent().setAttribute(User.class.getName(), user);*/

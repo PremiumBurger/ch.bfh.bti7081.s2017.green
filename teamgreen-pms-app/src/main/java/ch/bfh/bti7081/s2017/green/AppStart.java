@@ -18,7 +18,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @EnableAutoConfiguration
 @EnableJpaRepositories
 @EnableTransactionManagement
-@ComponentScan
+@ComponentScan({"ch.bfh.bti7081.s2017.green.*", "green.mvp.*"})
 public class AppStart {
     private static final Logger log = LoggerFactory.getLogger(AppStart.class);
 

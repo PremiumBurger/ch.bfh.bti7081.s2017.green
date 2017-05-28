@@ -3,6 +3,8 @@ package ch.bfh.bti7081.s2017.green.ui;
 import com.vaadin.ui.ComponentContainer;
 import com.vaadin.ui.CssLayout;
 import com.vaadin.ui.HorizontalLayout;
+import com.vaadin.ui.UI;
+import org.springframework.stereotype.Component;
 
 /**
  * Created by Lukas on 26.05.2017.
@@ -11,6 +13,7 @@ import com.vaadin.ui.HorizontalLayout;
  * left and creates a simple container for the navigator on the right.
  */
 @SuppressWarnings("serial")
+@Component
 public class MainView extends HorizontalLayout {
 
     public MainView() {
@@ -26,6 +29,7 @@ public class MainView extends HorizontalLayout {
         addComponent(content);
         setExpandRatio(content, 1.0f);
 
-        new DashboardNavigator(content);
+        UI current = UI.getCurrent();
+        new DashboardNavigator(current, content);
     }
 }
