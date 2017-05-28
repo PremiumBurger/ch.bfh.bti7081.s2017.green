@@ -144,6 +144,11 @@
             <version>${version.junit}</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>green.mvp</groupId>
+            <artifactId>greenmvp</artifactId>
+            <version>0.0.1</version>
+        </dependency>
     </dependencies>
 
     <dependencyManagement>

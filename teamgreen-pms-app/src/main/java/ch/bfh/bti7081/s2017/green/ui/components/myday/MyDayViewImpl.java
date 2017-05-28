@@ -2,15 +2,14 @@ package ch.bfh.bti7081.s2017.green.ui.components.myday;
 
 
 import ch.bfh.bti7081.s2017.green.bean.AppointmentBean;
-import ch.bfh.bti7081.s2017.green.ui.MainUI;
-import ch.bfh.bti7081.s2017.green.ui.MasterPageImpl;
 
 import ch.bfh.bti7081.s2017.green.ui.components.autcomplete.Autocomplete;
 import com.vaadin.icons.VaadinIcons;
 import com.vaadin.navigator.ViewChangeListener;
-import com.vaadin.ui.*;
+import com.vaadin.ui.Accordion;
+import com.vaadin.ui.FormLayout;
+import com.vaadin.ui.Label;
 import org.springframework.stereotype.Component;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.time.format.DateTimeFormatter;
 import java.util.List;
@@ -37,21 +36,21 @@ public class MyDayViewImpl extends MasterPageImpl implements MyDayView {
     }
 
     @Override
-    public void addListener(MyDayViewListener viewListener) {
+    public void addListener (MyDayViewListener viewListener) {
         this.listener = viewListener;
     }
 
     @Override
-    public void enter(ViewChangeListener.ViewChangeEvent event) {
+    public void enter (ViewChangeListener.ViewChangeEvent event) {
 
 
     }
 
-    public void init(List<AppointmentBean> appointments){
+    public void init (List<AppointmentBean> appointments) {
         appointmentSearch.setItems(appointments);
         int counter = 1;
 
-        for (AppointmentBean appointment : appointments){
+        for (AppointmentBean appointment : appointments) {
             FormLayout layout = new FormLayout();
             layout.setId(String.valueOf(appointment.getId()));
             Label time = new Label(appointment.getFrom().format(DateTimeFormatter.ofPattern("d/MM/yyyy")));
