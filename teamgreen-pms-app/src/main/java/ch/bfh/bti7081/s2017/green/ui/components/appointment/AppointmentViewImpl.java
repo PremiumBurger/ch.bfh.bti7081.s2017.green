@@ -3,6 +3,8 @@ package ch.bfh.bti7081.s2017.green.ui.components.appointment;
 import ch.bfh.bti7081.s2017.green.bean.AppointmentBean;
 import ch.bfh.bti7081.s2017.green.bean.PatientBean;
 import ch.bfh.bti7081.s2017.green.ui.MasterPageImpl;
+import com.vaadin.data.BeanValidationBinder;
+import com.vaadin.data.Binder;
 import com.vaadin.data.provider.ListDataProvider;
 import com.vaadin.icons.VaadinIcons;
 import com.vaadin.navigator.ViewChangeListener;
@@ -19,6 +21,7 @@ public class AppointmentViewImpl extends MasterPageImpl implements AppointmentVi
 
     private AppointmentViewListener listener;
     private AppointmentBean appointmentModel;
+    private BeanValidationBinder<AppointmentBean> myDayBinder;
 
     private long appointmentId;
 
@@ -35,12 +38,14 @@ public class AppointmentViewImpl extends MasterPageImpl implements AppointmentVi
     public AppointmentViewImpl() {
         FormLayout layout = new FormLayout();
 
+        myDayBinder = new BeanValidationBinder<>(AppointmentBean.class);
+
         from = new DateTimeField();
         to = new DateTimeField();
         comboBox = new ComboBox<>();
         save = new Button("Save");
         save.setIcon(VaadinIcons.SAFE);
-        save.addClickListener(l -> listener.save(appointmentModel));
+        save.addClickListener(l -> listener.save(myDayBinder.getBean()));
 
         FormLayout patientForm = new FormLayout();
 
@@ -52,6 +57,19 @@ public class AppointmentViewImpl extends MasterPageImpl implements AppointmentVi
         street.setCaption("Strasse");
         adr = new Label();
         adr.setCaption("PLZ/Ort");
+
+
+
+        myDayBinder.forField(from)
+                .bind(AppointmentBean::getFrom, AppointmentBean::setFrom);
+
+        myDayBinder.forField(to)
+                .bind(AppointmentBean::getTo, AppointmentBean::setTo);
+
+        myDayBinder.forField(comboBox)
+                .bind(AppointmentBean::getPatient, AppointmentBean::setPatient);
+
+
 
         patientForm.addComponents(firstname,lastname,street,adr);
         layout.addComponents(from,to,comboBox,patientForm,save);
@@ -66,6 +84,7 @@ public class AppointmentViewImpl extends MasterPageImpl implements AppointmentVi
     @Override
     public void init(AppointmentBean appointment, List<PatientBean> patients) {
         appointmentModel = appointment;
+        myDayBinder.setBean(appointmentModel);
 
         from.setCaption("Von");
         from.setValue(appointment.getFrom());
@@ -80,11 +99,10 @@ public class AppointmentViewImpl extends MasterPageImpl implements AppointmentVi
         comboBox.addValueChangeListener(event -> {
             PatientBean patient = patients.stream().filter(p -> p.getId() == event.getValue().getId()).findFirst().get();
             setPatientData(patient);
-            appointmentModel.setPatient(event.getValue());
+
         });
 
-        from.addValueChangeListener(l -> appointmentModel.setFrom(l.getValue()));
-        to.addValueChangeListener(l -> appointmentModel.setTo(l.getValue()));
+
 
 
 
