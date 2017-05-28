@@ -3,13 +3,15 @@ package ch.bfh.bti7081.s2017.green.ui.components.journal;
 import ch.bfh.bti7081.s2017.green.bean.JournalBean;
 import ch.bfh.bti7081.s2017.green.bean.JournalEntryBean;
 import ch.bfh.bti7081.s2017.green.bean.PatientBean;
+import ch.bfh.bti7081.s2017.green.domain.JournalEntry;
 import ch.bfh.bti7081.s2017.green.ui.MasterPageImpl;
+import com.vaadin.data.Binder;
 import com.vaadin.navigator.ViewChangeListener;
-import com.vaadin.ui.Grid;
-import com.vaadin.ui.Panel;
-import com.vaadin.ui.VerticalLayout;
+import com.vaadin.shared.ui.ContentMode;
+import com.vaadin.ui.*;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
 import java.util.Set;
 
 @Component
@@ -19,18 +21,17 @@ public class JournalViewImpl extends MasterPageImpl implements JournalView {
 
     private VerticalLayout layout;
     private Panel panel;
-    private Grid<JournalEntryBean> grid;
-
+    Accordion accordion = new Accordion();
+    JournalBean journal;
 
     public JournalViewImpl() {
         this.layout = new VerticalLayout();
         this.panel = new Panel("Journal");
 
-        this.grid = new Grid<>(JournalEntryBean.class);
-        //grid.setColumnOrder(grid.getColumn("appointmentId"), grid.getColumn("journalId"), grid.getColumn("journalEntryType"), grid.getColumn("journalEntryType"), grid.getColumn("isImportant"));
-        grid.getColumn("id").setHidden(true);
+        accordion.setHeight(100.0f, Unit.PERCENTAGE);
 
-        this.layout.addComponents(this.panel, this.grid);
+        this.panel.setContent(accordion);
+        this.layout.addComponents(this.panel);
         setViewContent(layout);
     }
 
@@ -41,9 +42,17 @@ public class JournalViewImpl extends MasterPageImpl implements JournalView {
 
     @Override
     public void init(PatientBean patient) {
-        JournalBean journal = patient.getJournal();
-        if (journal.getJournalEntries() != null) {
-            this.grid.setItems(journal.getJournalEntries());
+        this.journal = patient.getJournal();
+
+        for(JournalEntryBean entry : journal.getJournalEntries()){
+            Label label = new Label(entry.getText(), ContentMode.HTML);
+            label.setWidth(100.0f, Unit.PERCENTAGE);
+            label.setStyleName("xxx");
+
+            VerticalLayout layout = new VerticalLayout();
+            layout.setMargin(true);
+
+            accordion.addTab(label, "Titel + Datum   " + entry.isImportant());
         }
     }
 
