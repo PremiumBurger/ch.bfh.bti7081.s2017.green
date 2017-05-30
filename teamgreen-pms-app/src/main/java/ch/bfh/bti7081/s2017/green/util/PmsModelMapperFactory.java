@@ -21,6 +21,7 @@ public class PmsModelMapperFactory {
         addClassMap(Alarm.class, AlarmBean.class, mapperFactory);
         addClassMap(Appointment.class, AppointmentBean.class, mapperFactory);
         addClassMap(Patient.class, PatientBean.class, mapperFactory);
+        addClassMap(AppointmentStateType.class, AppointmentStateTypeBean.class, mapperFactory);
     }
 
     protected static <A extends BaseEntity, B extends EntityBean> void addClassMap(Class<A> a, Class<B> b, MapperFactory mapperFactory) {
