@@ -140,4 +140,21 @@
         </createTable>
     </changeSet>
 
+    <changeSet id="2" author="schms27">
+        <!-- AppointmentState -->
+        <createTable tableName="AppointmentStateType">
+            <column name="id" type="BIGINT">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="description" type="VARCHAR(30)"/>
+        </createTable>
+
+        <!-- Column on Appointment for appointmentState -->
+        <addColumn tableName="Appointment">
+            <column name="appointmentStateTypeId" type="BIGINT">
+                <constraints nullable="false" foreignKeyName="fk_appointment_state" references="AppointmentStateType(id)"/>
+            </column>
+        </addColumn>
+    </changeSet>
+
 </databaseChangeLog>
