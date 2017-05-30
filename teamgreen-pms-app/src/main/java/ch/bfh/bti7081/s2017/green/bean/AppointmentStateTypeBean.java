@@ -10,7 +10,6 @@ import ch.bfh.bti7081.s2017.green.ui.components.appointment.appointmentState.App
  * TEstbeschreibung
  */
 public class AppointmentStateTypeBean extends EntityBean<AppointmentStateType> implements AppointmentStateEventHandler{
-    private String id;
 
     private AppointmentState appointmentState;
 
@@ -20,10 +19,6 @@ public class AppointmentStateTypeBean extends EntityBean<AppointmentStateType> i
 
     public AppointmentStateTypeBean(AppointmentState appointmentState){
         this.appointmentState = appointmentState;
-    }
-
-    public void setId(String id) {
-        this.id = id;
     }
 
     public void setAppointmentState(AppointmentState appointmentState) {
