@@ -3,7 +3,7 @@ package ch.bfh.bti7081.s2017.green.ui.components.myday;
 
 import ch.bfh.bti7081.s2017.green.bean.AppointmentBean;
 
-import ch.bfh.bti7081.s2017.green.ui.MasterPageImpl;
+import ch.bfh.bti7081.s2017.green.ui.components.autcomplete.Autocomplete;
 import com.vaadin.icons.VaadinIcons;
 import com.vaadin.navigator.ViewChangeListener;
 import com.vaadin.ui.*;
@@ -13,7 +13,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 @Component
-public class MyDayViewImpl extends AbsoluteLayout implements MyDayView {
+public class MyDayViewImpl extends VerticalLayout implements MyDayView {
 
     MyDayViewListener listener;
     List<AppointmentBean> appointments;
@@ -26,11 +26,10 @@ public class MyDayViewImpl extends AbsoluteLayout implements MyDayView {
         appointmentSearch.addValueChangeListener(e -> {
             if(e.getValue() != null) {
             appointmentSearch.setValue(null);
-            getUI().getNavigator().navigateTo("appointmentview" + "/" + e.getValue().getId());
+            getUI().getNavigator().navigateTo("Appointment" + "/" + e.getValue().getId());
             }
         });
-        setHeader(appointmentSearch);
-        addComponent(accordion);
+        addComponents(appointmentSearch, accordion);
     }
 
     @Override
@@ -60,7 +59,7 @@ public class MyDayViewImpl extends AbsoluteLayout implements MyDayView {
             Label adr = new Label(appointment.getPatient().getAddress().getPlz() + " " + appointment.getPatient().getAddress().getCity());
             Button details = new Button("Show Details");
             details.setIcon(VaadinIcons.SELECT);
-            details.addClickListener(e -> getUI().getNavigator().navigateTo("appointmentview" + "/" + appointment.getId()));
+            details.addClickListener(e -> getUI().getNavigator().navigateTo("Appointment" + "/" + appointment.getId()));
             layout.addComponents(time,patientname,street,adr, details);
 
 

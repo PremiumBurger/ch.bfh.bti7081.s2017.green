@@ -24,12 +24,6 @@ public class DashboardUI extends UI {
     private MainView mainView;
     private EventBus eventBus;
 
-    /*
-           * This field stores an access to the dummy backend layer. In real
-           * applications you most likely gain access to your beans trough lookup or
-           * injection; and not in the UI but somewhere closer to where they're
-           * actually accessed.
-           */
     private boolean isLoggedIn = false;
 
     public DashboardUI () {

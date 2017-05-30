@@ -15,7 +15,8 @@ import java.util.List;
  * Created by joris on 26.05.17.
  */
 @Component
-public class AppointmentViewImpl extends AbsoluteLayout implements AppointmentView {
+public class AppointmentViewImpl extends FormLayout implements AppointmentView {
+
     private AppointmentViewListener listener;
     private AppointmentBean appointmentModel;
     private BeanValidationBinder<AppointmentBean> myDayBinder;
@@ -34,10 +35,7 @@ public class AppointmentViewImpl extends AbsoluteLayout implements AppointmentVi
     private Label adr;
 
     public AppointmentViewImpl() {
-        FormLayout layout = new FormLayout();
-
         myDayBinder = new BeanValidationBinder<>(AppointmentBean.class);
-
         from = new DateTimeField();
         to = new DateTimeField();
         comboBoxPatient = new ComboBox<>();
@@ -57,21 +55,24 @@ public class AppointmentViewImpl extends AbsoluteLayout implements AppointmentVi
         adr = new Label();
         adr.setCaption("PLZ/Ort");
 
+        myDayBinder.forField(from)
+                .bind(AppointmentBean::getFrom, AppointmentBean::setFrom);
 
-        myDayBinder.forField(from).bind(AppointmentBean::getFrom, AppointmentBean::setFrom);
+        myDayBinder.forField(to)
+                .bind(AppointmentBean::getTo, AppointmentBean::setTo);
 
-        myDayBinder.forField(to).bind(AppointmentBean::getTo, AppointmentBean::setTo);
+        myDayBinder.forField(comboBoxPatient)
+                .bind(AppointmentBean::getPatient, AppointmentBean::setPatient);
 
-        myDayBinder.forField(comboBox).bind(AppointmentBean::getPatient, AppointmentBean::setPatient);
+        myDayBinder.forField(comboBoxState).bind(AppointmentBean::getAppointmentStateType,
+                AppointmentBean::setAppointmentStateType);
 
-
-        patientForm.addComponents(firstname, lastname, street, adr);
-        layout.addComponents(from, to, comboBox, patientForm, save);
-        addComponent(layout);
+        patientForm.addComponents(firstname,lastname,street,adr);
+        addComponents(from,to, comboBoxPatient,comboBoxState,patientForm,save);
     }
 
     @Override
-    public void addListener (AppointmentViewListener appointmentViewListener) {
+    public void addListener(AppointmentViewListener appointmentViewListener) {
         this.listener = appointmentViewListener;
     }
 
@@ -101,9 +102,12 @@ public class AppointmentViewImpl extends AbsoluteLayout implements AppointmentVi
         comboBoxState.setItemCaptionGenerator(
                 p -> p.getAppointmentState().getDescription()
         );
+
+
+
     }
 
-    public void setPatientData(PatientBean patient) {
+    public void setPatientData(PatientBean patient){
         firstname.setValue(patient.getFirstName());
         lastname.setValue(patient.getLastName());
         street.setValue(patient.getAddress().getStrasse());
@@ -123,13 +127,14 @@ public class AppointmentViewImpl extends AbsoluteLayout implements AppointmentVi
         String param = event.getParameters();
         listener.getData(Long.valueOf(param).longValue());
 
+
     }
 
-    public long getAppointmentId () {
+    public long getAppointmentId() {
         return appointmentId;
     }
 
-    public void setAppointmentId (long appointmentId) {
+    public void setAppointmentId(long appointmentId) {
         this.appointmentId = appointmentId;
     }
 }

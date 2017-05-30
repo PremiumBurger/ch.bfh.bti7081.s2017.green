@@ -1,14 +1,15 @@
 package ch.bfh.bti7081.s2017.green.ui;
 
 import ch.bfh.bti7081.s2017.green.ui.components.appointment.AppointmentView;
+import ch.bfh.bti7081.s2017.green.ui.components.myday.MyDayView;
 import ch.bfh.bti7081.s2017.green.ui.view.dashboard.DashboardView;
 import com.vaadin.icons.VaadinIcons;
 import com.vaadin.navigator.View;
 import com.vaadin.server.Resource;
 
 public enum DashboardViewType {
-    MYDAY("MyDay", DashboardView.class, VaadinIcons.HOME, true),
-    APPOINTMETN("Appointment", AppointmentView.class, VaadinIcons.CALENDAR, false);
+    MYDAY("MyDay", MyDayView.class, VaadinIcons.HOME, true),
+    APPOINTMENT("Appointment", AppointmentView.class, VaadinIcons.CALENDAR, false);
 
     private final String viewName;
     private final Class<? extends View> viewClass;
