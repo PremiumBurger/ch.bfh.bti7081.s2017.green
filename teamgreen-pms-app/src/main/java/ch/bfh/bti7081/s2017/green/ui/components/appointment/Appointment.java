@@ -27,8 +27,8 @@ public class Appointment {
         this.patientService = patientService;
     }
 
-    public AppointmentBean getSelectedAppointment(){
-        return appointmentService.getOne(1);
+    public AppointmentBean getSelectedAppointment(long id){
+        return appointmentService.getOne(id);
     }
     public List<PatientBean> getAllPatients(){
         return new ArrayList<PatientBean>(patientService.getAll());

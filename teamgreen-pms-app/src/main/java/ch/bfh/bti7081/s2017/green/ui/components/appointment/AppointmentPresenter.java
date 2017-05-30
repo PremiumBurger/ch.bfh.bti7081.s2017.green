@@ -17,7 +17,7 @@ public class AppointmentPresenter implements AppointmentViewListener {
     public AppointmentPresenter(AppointmentView appointmentView, Appointment appointment) {
         this.appointmentView = appointmentView;
         this.appointment = appointment;
-        appointmentView.init(appointment.getSelectedAppointment(), appointment.getAllPatients());
+
         appointmentView.addListener(this);
     }
 
@@ -26,5 +26,8 @@ public class AppointmentPresenter implements AppointmentViewListener {
     @Override
     public void save(AppointmentBean appointmentBean) {
         appointment.save(appointmentBean);
+    }
+    public void getData(long id){
+        appointmentView.init(appointment.getSelectedAppointment(id), appointment.getAllPatients());
     }
 }
