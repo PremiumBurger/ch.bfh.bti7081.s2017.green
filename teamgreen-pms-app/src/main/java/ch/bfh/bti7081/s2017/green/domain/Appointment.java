@@ -29,9 +29,6 @@ public class Appointment extends BaseEntity {
 
     public void setHealthVisitor(HealthVisitor healthVisitor) {
         this.healthVisitor = healthVisitor;
-        if (!healthVisitor.getAppointments().contains(this)) {
-            healthVisitor.getAppointments().add(this);
-        }
     }
 
     public Patient getPatient() {
@@ -40,9 +37,6 @@ public class Appointment extends BaseEntity {
 
     public void setPatient(Patient patient) {
         this.patient = patient;
-        if (!patient.getAppointments().contains(this)) {
-            patient.getAppointments().add(this);
-        }
     }
 
     public LocalDateTime getFrom() {

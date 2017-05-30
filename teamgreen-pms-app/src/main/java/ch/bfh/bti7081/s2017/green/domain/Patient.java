@@ -38,15 +38,9 @@ public class Patient extends Person {
 
     public void addAppointment(Appointment appointment) {
         this.appointments.add(appointment);
-        if (appointment.getPatient() != this) {
-            appointment.setPatient(this);
-        }
     }
 
     public void addAlarm(Alarm alarm) {
         this.alarms.add(alarm);
-        if (alarm.getPatient() != this) {
-            alarm.setPatient(this);
-        }
     }
 }

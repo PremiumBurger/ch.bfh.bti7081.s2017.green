@@ -12,6 +12,10 @@ public class AddressBean extends EntityBean<Address> {
 
     private String country;
 
+    public AddressBean() {
+        setEntity(new Address(), false);
+    }
+
     public String getStrasse() {
         return strasse;
     }

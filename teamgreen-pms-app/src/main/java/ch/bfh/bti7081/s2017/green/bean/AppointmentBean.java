@@ -2,11 +2,9 @@ package ch.bfh.bti7081.s2017.green.bean;
 
 import ch.bfh.bti7081.s2017.green.domain.Appointment;
 
-import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
 
 public class AppointmentBean extends EntityBean<Appointment> {
-
 
     private LocalDateTime from;
 
@@ -15,6 +13,10 @@ public class AppointmentBean extends EntityBean<Appointment> {
     private HealthVisitorBean healthVisitor;
 
     private PatientBean patient;
+
+    public AppointmentBean() {
+        setEntity(new Appointment(), false);
+    }
 
     public HealthVisitorBean getHealthVisitor() {
         return healthVisitor;
