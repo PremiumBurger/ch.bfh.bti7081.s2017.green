@@ -21,7 +21,7 @@ public class JournalViewImpl extends MasterPageImpl implements JournalView {
 
         //Todo: Add Button to Component
         //Todo: Add JournalEntryType: Freie Notiz
-        
+
         this.layout = new VerticalLayout();
 
         Button newEntry = new Button("");
