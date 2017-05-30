@@ -1,8 +1,10 @@
 package ch.bfh.bti7081.s2017.green;
 
 
+import ch.bfh.bti7081.s2017.green.bean.AppointmentBean;
 import ch.bfh.bti7081.s2017.green.bean.HealthVisitorBean;
 import ch.bfh.bti7081.s2017.green.domain.Address;
+import ch.bfh.bti7081.s2017.green.domain.Appointment;
 import ch.bfh.bti7081.s2017.green.domain.HealthVisitor;
 import ch.bfh.bti7081.s2017.green.domain.Person;
 import ch.bfh.bti7081.s2017.green.domain.builder.AddressBuilder;
@@ -10,6 +12,8 @@ import ch.bfh.bti7081.s2017.green.domain.builder.HealthVisitorBuilder;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+
+import java.time.LocalDateTime;
 
 /**
  * Tests the Entity <-> Bean Mappings
@@ -74,4 +78,21 @@ public class PmsModelMapperTest {
         Assert.assertEquals(newAvhNr, updatedPerson.getAhvNr());
         Assert.assertEquals(newAddressCity, updatedPerson.getAddress().getCity());
     }
+
+    @Test
+    public void TestNewBean() {
+        // Arrange
+        AppointmentBean appBean = new AppointmentBean();
+        appBean.setFrom(LocalDateTime.now());
+        appBean.setTo(LocalDateTime.now().plusHours(2));
+
+        // Act
+        Appointment appEntity = appBean.updateEntity();
+
+        // Assert
+        Assert.assertNotNull(appEntity);
+        Assert.assertNotNull(appEntity.getFrom());
+        Assert.assertNotNull(appEntity.getTo());
+    }
+
 }

@@ -14,6 +14,10 @@ public class AlarmBean extends EntityBean<Alarm> {
 
     private PatientBean patient;
 
+    public AlarmBean() {
+        setEntity(new Alarm(), false);
+    }
+
     public String getCoordinates() {
         return coordinates;
     }

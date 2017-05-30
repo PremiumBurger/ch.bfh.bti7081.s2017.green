@@ -43,9 +43,6 @@ public class Alarm extends BaseEntity {
 
     public void setHealthVisitor(HealthVisitor healthVisitor) {
         this.healthVisitor = healthVisitor;
-        if (!healthVisitor.getAlarms().contains(this)) {
-            healthVisitor.getAlarms().add(this);
-        }
     }
 
     public Patient getPatient() {
@@ -54,8 +51,5 @@ public class Alarm extends BaseEntity {
 
     public void setPatient(Patient patient) {
         this.patient = patient;
-        if (!patient.getAlarms().contains(this)) {
-            patient.getAlarms().add(this);
-        }
     }
 }

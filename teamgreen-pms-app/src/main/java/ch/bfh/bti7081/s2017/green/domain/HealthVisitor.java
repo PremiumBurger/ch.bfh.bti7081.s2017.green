@@ -27,30 +27,27 @@ public class HealthVisitor extends Person {
         alarms = new ArrayList<>();
     }
 
-
     public List<Patient> getPatients() {
         return patients;
+    }
+
+    public void setPatients(List<Patient> patients) {
+        this.patients = patients;
     }
 
     public List<Appointment> getAppointments() {
         return appointments;
     }
 
+    public void setAppointments(List<Appointment> appointments) {
+        this.appointments = appointments;
+    }
+
     public List<Alarm> getAlarms() {
         return alarms;
     }
 
-    public void addAppointment(Appointment appointment) {
-        this.appointments.add(appointment);
-        if (appointment.getHealthVisitor() != this) {
-            appointment.setHealthVisitor(this);
-        }
-    }
-
-    public void addAlarm(Alarm alarm) {
-        this.alarms.add(alarm);
-        if (alarm.getHealthVisitor() != this) {
-            alarm.setHealthVisitor(this);
-        }
+    public void setAlarms(List<Alarm> alarms) {
+        this.alarms = alarms;
     }
 }

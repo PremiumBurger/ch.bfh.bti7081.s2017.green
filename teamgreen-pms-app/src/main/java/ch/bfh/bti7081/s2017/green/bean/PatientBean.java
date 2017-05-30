@@ -1,5 +1,6 @@
 package ch.bfh.bti7081.s2017.green.bean;
 
+import ch.bfh.bti7081.s2017.green.domain.Patient;
 import ch.bfh.bti7081.s2017.green.ui.components.autcomplete.Autocompletable;
 
 import java.util.ArrayList;
@@ -15,6 +16,7 @@ public class PatientBean extends PersonBean implements Autocompletable {
 
 
     public PatientBean() {
+        setEntity(new Patient(), false);
         healthVisitors = new ArrayList<>();
         appointments = new ArrayList<>();
         alarms = new ArrayList<>();

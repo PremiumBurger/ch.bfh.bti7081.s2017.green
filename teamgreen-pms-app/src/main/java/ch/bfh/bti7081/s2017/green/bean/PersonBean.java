@@ -6,7 +6,6 @@ import java.time.LocalDate;
 
 public abstract class PersonBean extends EntityBean<Person> {
 
-
     private String firstName;
 
     private String lastName;
