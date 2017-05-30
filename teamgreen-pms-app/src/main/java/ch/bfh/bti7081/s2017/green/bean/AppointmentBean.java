@@ -14,6 +14,8 @@ public class AppointmentBean extends EntityBean<Appointment> {
 
     private PatientBean patient;
 
+    private AppointmentStateTypeBean appointmentStateType;
+
     public AppointmentBean() {
         setEntity(new Appointment(), false);
     }
@@ -48,5 +50,13 @@ public class AppointmentBean extends EntityBean<Appointment> {
 
     public void setTo(LocalDateTime to) {
         this.to = to;
+    }
+
+    public AppointmentStateTypeBean getAppointmentStateType() {
+        return appointmentStateType;
+    }
+
+    public void setAppointmentStateType(AppointmentStateTypeBean appointmentStateType) {
+        this.appointmentStateType = appointmentStateType;
     }
 }

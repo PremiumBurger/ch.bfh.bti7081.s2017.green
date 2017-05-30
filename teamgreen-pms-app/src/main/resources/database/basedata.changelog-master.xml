@@ -16,4 +16,20 @@
             <column name="description" value="Female"/>
         </insert>
     </changeSet>
+
+    <changeSet id="basedata_2" author="schms27">
+        <!-- Appointment States -->
+        <insert tableName="AppointmentStateType">
+            <column name="id" value="1"/>
+            <column name="description" value="NEW"/>
+        </insert>
+        <insert tableName="AppointmentStateType">
+            <column name="id" value="2"/>
+            <column name="description" value="POSTPONED"/>
+        </insert>
+        <insert tableName="AppointmentStateType">
+            <column name="id" value="3"/>
+            <column name="description" value="CANCELLED"/>
+        </insert>
+    </changeSet>
 </databaseChangeLog>

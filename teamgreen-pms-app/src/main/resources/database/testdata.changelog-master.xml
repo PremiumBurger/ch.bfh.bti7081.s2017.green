@@ -114,6 +114,7 @@
             <column name="patientId" value="2"/>
             <column name="from" value="2017-10-30 08:00:00"/>
             <column name="to" value="2017-10-30 10:00:00"/>
+            <column name="appointmentStateTypeId" value="1"/>
         </insert>
 
         <insert tableName="Appointment">
@@ -122,6 +123,7 @@
             <column name="patientId" value="3"/>
             <column name="from" value="2017-10-30 08:00:00"/>
             <column name="to" value="2017-10-30 10:00:00"/>
+            <column name="appointmentStateTypeId" value="1"/>
         </insert>
     </changeSet>
 </databaseChangeLog>

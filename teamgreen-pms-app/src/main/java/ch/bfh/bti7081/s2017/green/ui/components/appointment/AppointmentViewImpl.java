@@ -1,11 +1,10 @@
 package ch.bfh.bti7081.s2017.green.ui.components.appointment;
 
 import ch.bfh.bti7081.s2017.green.bean.AppointmentBean;
+import ch.bfh.bti7081.s2017.green.bean.AppointmentStateTypeBean;
 import ch.bfh.bti7081.s2017.green.bean.PatientBean;
 import ch.bfh.bti7081.s2017.green.ui.MasterPageImpl;
 import com.vaadin.data.BeanValidationBinder;
-import com.vaadin.data.Binder;
-import com.vaadin.data.provider.ListDataProvider;
 import com.vaadin.icons.VaadinIcons;
 import com.vaadin.navigator.ViewChangeListener;
 import com.vaadin.ui.*;
@@ -27,7 +26,8 @@ public class AppointmentViewImpl extends MasterPageImpl implements AppointmentVi
 
     private DateTimeField from;
     private DateTimeField to;
-    private ComboBox<PatientBean> comboBox;
+    private ComboBox<PatientBean> comboBoxPatient;
+    private ComboBox<AppointmentStateTypeBean> comboBoxState;
     private Button save;
 
     private Label firstname;
@@ -42,7 +42,8 @@ public class AppointmentViewImpl extends MasterPageImpl implements AppointmentVi
 
         from = new DateTimeField();
         to = new DateTimeField();
-        comboBox = new ComboBox<>();
+        comboBoxPatient = new ComboBox<>();
+        comboBoxState = new ComboBox<>();
         save = new Button("Save");
         save.setIcon(VaadinIcons.SAFE);
         save.addClickListener(l -> listener.save(myDayBinder.getBean()));
@@ -66,13 +67,17 @@ public class AppointmentViewImpl extends MasterPageImpl implements AppointmentVi
         myDayBinder.forField(to)
                 .bind(AppointmentBean::getTo, AppointmentBean::setTo);
 
-        myDayBinder.forField(comboBox)
+        myDayBinder.forField(comboBoxPatient)
                 .bind(AppointmentBean::getPatient, AppointmentBean::setPatient);
+
+        myDayBinder.forField(comboBoxState).bind(AppointmentBean::getAppointmentStateType,
+                AppointmentBean::setAppointmentStateType);
+
 
 
 
         patientForm.addComponents(firstname,lastname,street,adr);
-        layout.addComponents(from,to,comboBox,patientForm,save);
+        layout.addComponents(from,to, comboBoxPatient,comboBoxState,patientForm,save);
         setViewContent(layout);
     }
 
@@ -90,19 +95,23 @@ public class AppointmentViewImpl extends MasterPageImpl implements AppointmentVi
         from.setValue(appointment.getFrom());
         to.setCaption("Bis");
         to.setValue(appointment.getTo());
-        comboBox.setCaption("Patient");
-        comboBox.setItems(patients);
-        comboBox.setValue(appointment.getPatient());
+        comboBoxPatient.setCaption("Patient");
+        comboBoxPatient.setItems(patients);
+        comboBoxPatient.setValue(appointment.getPatient());
         firstname.setValue(appointment.getPatient().getFirstName());
         setPatientData(appointment.getPatient());
-        comboBox.setItemCaptionGenerator(PatientBean::getLastName);
-        comboBox.addValueChangeListener(event -> {
+        comboBoxPatient.setItemCaptionGenerator(PatientBean::getLastName);
+        comboBoxPatient.addValueChangeListener(event -> {
             PatientBean patient = patients.stream().filter(p -> p.getId() == event.getValue().getId()).findFirst().get();
             setPatientData(patient);
 
         });
 
-
+        comboBoxState.setCaption("Appointment State");
+        comboBoxState.setValue(appointment.getAppointmentStateType());
+        comboBoxState.setItemCaptionGenerator(
+                p -> p.getAppointmentState().getDescription()
+        );
 
 
 

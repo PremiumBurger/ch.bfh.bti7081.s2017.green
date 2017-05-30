@@ -1,6 +1,7 @@
 package ch.bfh.bti7081.s2017.green.domain.builder;
 
 import ch.bfh.bti7081.s2017.green.domain.Appointment;
+import ch.bfh.bti7081.s2017.green.domain.AppointmentStateType;
 import ch.bfh.bti7081.s2017.green.domain.HealthVisitor;
 import ch.bfh.bti7081.s2017.green.domain.Patient;
 
@@ -45,6 +46,8 @@ public final class AppointmentBuilder implements RundumSorglosBuilder<Appointmen
         appointment.setTo(to);
         appointment.setHealthVisitor(healthVisitor);
         appointment.setPatient(patient);
+        appointment.setAppointmentStateType(new AppointmentStateType() {
+        });
         return appointment;
     }
 
