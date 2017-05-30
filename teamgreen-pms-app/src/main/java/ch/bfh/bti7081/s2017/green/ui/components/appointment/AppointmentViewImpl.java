@@ -16,7 +16,6 @@ import java.util.List;
  */
 @Component
 public class AppointmentViewImpl extends AbsoluteLayout implements AppointmentView {
-
     private AppointmentViewListener listener;
     private AppointmentBean appointmentModel;
     private BeanValidationBinder<AppointmentBean> myDayBinder;
@@ -59,29 +58,20 @@ public class AppointmentViewImpl extends AbsoluteLayout implements AppointmentVi
         adr.setCaption("PLZ/Ort");
 
 
+        myDayBinder.forField(from).bind(AppointmentBean::getFrom, AppointmentBean::setFrom);
 
-        myDayBinder.forField(from)
-                .bind(AppointmentBean::getFrom, AppointmentBean::setFrom);
+        myDayBinder.forField(to).bind(AppointmentBean::getTo, AppointmentBean::setTo);
 
-        myDayBinder.forField(to)
-                .bind(AppointmentBean::getTo, AppointmentBean::setTo);
-
-        myDayBinder.forField(comboBoxPatient)
-                .bind(AppointmentBean::getPatient, AppointmentBean::setPatient);
-
-        myDayBinder.forField(comboBoxState).bind(AppointmentBean::getAppointmentStateType,
-                AppointmentBean::setAppointmentStateType);
+        myDayBinder.forField(comboBox).bind(AppointmentBean::getPatient, AppointmentBean::setPatient);
 
 
-
-
-        patientForm.addComponents(firstname,lastname,street,adr);
-        layout.addComponents(from,to, comboBoxPatient,comboBoxState,patientForm,save);
+        patientForm.addComponents(firstname, lastname, street, adr);
+        layout.addComponents(from, to, comboBox, patientForm, save);
         addComponent(layout);
     }
 
     @Override
-    public void addListener(AppointmentViewListener appointmentViewListener) {
+    public void addListener (AppointmentViewListener appointmentViewListener) {
         this.listener = appointmentViewListener;
     }
 
@@ -111,12 +101,9 @@ public class AppointmentViewImpl extends AbsoluteLayout implements AppointmentVi
         comboBoxState.setItemCaptionGenerator(
                 p -> p.getAppointmentState().getDescription()
         );
-
-
-
     }
 
-    public void setPatientData(PatientBean patient){
+    public void setPatientData(PatientBean patient) {
         firstname.setValue(patient.getFirstName());
         lastname.setValue(patient.getLastName());
         street.setValue(patient.getAddress().getStrasse());
@@ -136,14 +123,13 @@ public class AppointmentViewImpl extends AbsoluteLayout implements AppointmentVi
         String param = event.getParameters();
         listener.getData(Long.valueOf(param).longValue());
 
-
     }
 
-    public long getAppointmentId() {
+    public long getAppointmentId () {
         return appointmentId;
     }
 
-    public void setAppointmentId(long appointmentId) {
+    public void setAppointmentId (long appointmentId) {
         this.appointmentId = appointmentId;
     }
 }

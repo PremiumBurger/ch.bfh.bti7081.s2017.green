@@ -1,8 +1,8 @@
 package ch.bfh.bti7081.s2017.green.ui.view.dashboard;
 
+import com.vaadin.icons.VaadinIcons;
 import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewChangeListener.ViewChangeEvent;
-import com.vaadin.server.FontAwesome;
 import com.vaadin.server.Responsive;
 import com.vaadin.ui.*;
 import com.vaadin.ui.MenuBar.Command;
@@ -12,6 +12,7 @@ import com.vaadin.ui.themes.ValoTheme;
 import java.util.Iterator;
 
 @SuppressWarnings("serial")
+@org.springframework.stereotype.Component
 public final class DashboardView extends Panel implements View {
 
     public static final String TITLE_ID = "dashboard-title";
@@ -19,7 +20,7 @@ public final class DashboardView extends Panel implements View {
     private Label titleLabel;
     private CssLayout dashboardPanels;
 
-    public DashboardView () {
+    public DashboardView() {
         addStyleName(ValoTheme.PANEL_BORDERLESS);
         setSizeFull();
         //DashboardEventBus.register(this);
@@ -98,18 +99,18 @@ public final class DashboardView extends Panel implements View {
 
         MenuBar tools = new MenuBar();
         tools.addStyleName(ValoTheme.MENUBAR_BORDERLESS);
-        MenuItem max = tools.addItem("", FontAwesome.EXPAND, (Command) selectedItem -> {
+        MenuItem max = tools.addItem("", VaadinIcons.EXPAND, (Command) selectedItem -> {
             if (!slot.getStyleName().contains("max")) {
-                selectedItem.setIcon(FontAwesome.COMPRESS);
+                selectedItem.setIcon(VaadinIcons.COMPRESS);
                 toggleMaximized(slot, true);
             } else {
                 slot.removeStyleName("max");
-                selectedItem.setIcon(FontAwesome.EXPAND);
+                selectedItem.setIcon(VaadinIcons.EXPAND);
                 toggleMaximized(slot, false);
             }
         });
         max.setStyleName("icon-only");
-        MenuItem root = tools.addItem("", FontAwesome.COG, null);
+        MenuItem root = tools.addItem("", VaadinIcons.COG, null);
         root.addItem("Configure", new Command() {
             @Override
             public void menuSelected (final MenuItem selectedItem) {
