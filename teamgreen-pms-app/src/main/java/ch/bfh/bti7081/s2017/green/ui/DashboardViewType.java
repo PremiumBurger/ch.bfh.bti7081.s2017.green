@@ -1,14 +1,15 @@
 package ch.bfh.bti7081.s2017.green.ui;
 
+import ch.bfh.bti7081.s2017.green.ui.components.appointment.AppointmentViewImpl;
 import ch.bfh.bti7081.s2017.green.ui.view.dashboard.DashboardView;
 import com.vaadin.navigator.View;
 import com.vaadin.server.FontAwesome;
 import com.vaadin.server.Resource;
 
 public enum DashboardViewType {
-    DASHBOARD("dashboard", DashboardView.class, FontAwesome.HOME, true);
-    /*SALES("sales", SalesView.class, FontAwesome.BAR_CHART_O, false),
-    TRANSACTIONS("transactions", TransactionsView.class, FontAwesome.TABLE, false),
+    MYDAY("myday", DashboardView.class, FontAwesome.HOME, true),
+    APPOINTMETN("APPOINTMENT", AppointmentViewImpl.class, FontAwesome.CALENDAR, false);
+    /*TRANSACTIONS("transactions", TransactionsView.class, FontAwesome.TABLE, false),
     REPORTS("reports", ReportsView.class, FontAwesome.FILE_TEXT_O, true),
     SCHEDULE("schedule", ScheduleView.class, FontAwesome.CALENDAR_O, false);*/
 

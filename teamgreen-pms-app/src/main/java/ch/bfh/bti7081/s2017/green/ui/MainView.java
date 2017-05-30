@@ -1,5 +1,6 @@
 package ch.bfh.bti7081.s2017.green.ui;
 
+import ch.bfh.bti7081.s2017.green.ui.components.myday.MyDayViewImpl;
 import com.vaadin.ui.ComponentContainer;
 import com.vaadin.ui.CssLayout;
 import com.vaadin.ui.HorizontalLayout;
@@ -16,6 +17,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class MainView extends HorizontalLayout {
 
+    private ComponentContainer content;
     public MainView() {
         setSizeFull();
         addStyleName("mainview");
@@ -23,13 +25,15 @@ public class MainView extends HorizontalLayout {
 
         addComponent(new DashboardMenu());
 
-        ComponentContainer content = new CssLayout();
+        content = new CssLayout();
         content.addStyleName("view-content");
         content.setSizeFull();
         addComponent(content);
         setExpandRatio(content, 1.0f);
-
-        UI current = UI.getCurrent();
-        new DashboardNavigator(current, content);
     }
+
+    public void onAfterBeanInitializaiton(){
+        new DashboardNavigator(content);
+    }
+
 }

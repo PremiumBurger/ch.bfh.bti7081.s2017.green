@@ -57,7 +57,7 @@ public final class DashboardMenu extends CustomComponent {
     }
 
     private Component buildTitle () {
-        Label logo = new Label("QuickTickets <strong>Dashboard</strong>", ContentMode.HTML);
+        Label logo = new Label("PMS <strong>B.O.O.B.S</strong>", ContentMode.HTML);
         logo.setSizeUndefined();
         HorizontalLayout logoWrapper = new HorizontalLayout(logo);
         logoWrapper.setComponentAlignment(logo, Alignment.MIDDLE_CENTER);
@@ -122,11 +122,10 @@ public final class DashboardMenu extends CustomComponent {
         for (final DashboardViewType view : DashboardViewType.values()) {
             Component menuItemComponent = new ValoMenuItemButton(view);
 
-            if (view == DashboardViewType.DASHBOARD) {
+            if (view == DashboardViewType.MYDAY) {
                 notificationsBadge = new Label();
                 notificationsBadge.setId(NOTIFICATIONS_BADGE_ID);
-                menuItemComponent = buildBadgeWrapper(menuItemComponent,
-                        notificationsBadge);
+                menuItemComponent = buildBadgeWrapper(menuItemComponent, notificationsBadge);
             }
 
             menuItemsLayout.addComponent(menuItemComponent);

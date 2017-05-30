@@ -14,11 +14,11 @@ import com.vaadin.ui.UI;
 @SuppressWarnings("serial")
 public class DashboardNavigator extends Navigator {
 
-    private static final DashboardViewType ERROR_VIEW = DashboardViewType.DASHBOARD;
+    private static final DashboardViewType ERROR_VIEW = DashboardViewType.MYDAY;
     private ViewProvider errorViewProvider;
 
-    public DashboardNavigator (UI current, final ComponentContainer container) {
-        super();
+    public DashboardNavigator (ComponentContainer container) {
+        super(UI.getCurrent(), container);
 
         // String host = getUI().getPage().getLocation().getHost();
         initViewChangeListener();

@@ -10,7 +10,7 @@ import java.util.List;
 /**
  * Created by joris on 26.05.17.
  */
-public interface AppointmentView extends View{
+public interface AppointmentView extends View {
     void addListener(AppointmentViewListener appointmentViewListener);
 
     void init(AppointmentBean appointment, List<PatientBean> patients);
