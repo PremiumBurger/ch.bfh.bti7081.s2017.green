@@ -1,33 +1,28 @@
 package ch.bfh.bti7081.s2017.green.ui;
 
-import ch.bfh.bti7081.s2017.green.ui.components.appointment.AppointmentViewImpl;
+import ch.bfh.bti7081.s2017.green.ui.components.appointment.AppointmentView;
 import ch.bfh.bti7081.s2017.green.ui.view.dashboard.DashboardView;
+import com.vaadin.icons.VaadinIcons;
 import com.vaadin.navigator.View;
-import com.vaadin.server.FontAwesome;
 import com.vaadin.server.Resource;
 
 public enum DashboardViewType {
-    MYDAY("myday", DashboardView.class, FontAwesome.HOME, true),
-    APPOINTMETN("APPOINTMENT", AppointmentViewImpl.class, FontAwesome.CALENDAR, false);
-    /*TRANSACTIONS("transactions", TransactionsView.class, FontAwesome.TABLE, false),
-    REPORTS("reports", ReportsView.class, FontAwesome.FILE_TEXT_O, true),
-    SCHEDULE("schedule", ScheduleView.class, FontAwesome.CALENDAR_O, false);*/
+    MYDAY("MyDay", DashboardView.class, VaadinIcons.HOME, true),
+    APPOINTMETN("Appointment", AppointmentView.class, VaadinIcons.CALENDAR, false);
 
     private final String viewName;
     private final Class<? extends View> viewClass;
     private final Resource icon;
     private final boolean stateful;
 
-    private DashboardViewType (final String viewName,
-                               final Class<? extends View> viewClass, final Resource icon,
-                               final boolean stateful) {
+    DashboardViewType(final String viewName, final Class<? extends View> viewClass, final Resource icon, final boolean stateful) {
         this.viewName = viewName;
         this.viewClass = viewClass;
         this.icon = icon;
         this.stateful = stateful;
     }
 
-    public static DashboardViewType getByViewName (final String viewName) {
+    public static DashboardViewType getByViewName(final String viewName) {
         DashboardViewType result = null;
         for (DashboardViewType viewType : values()) {
             if (viewType.getViewName().equals(viewName)) {
@@ -38,21 +33,20 @@ public enum DashboardViewType {
         return result;
     }
 
-    public boolean isStateful () {
+    public boolean isStateful() {
         return stateful;
     }
 
-    public String getViewName () {
+    public String getViewName() {
         return viewName;
     }
 
-    public Class<? extends View> getViewClass () {
+    public Class<? extends View> getViewClass() {
         return viewClass;
     }
 
-    public Resource getIcon () {
+    public Resource getIcon() {
         return icon;
     }
-
-    }
+}
 
