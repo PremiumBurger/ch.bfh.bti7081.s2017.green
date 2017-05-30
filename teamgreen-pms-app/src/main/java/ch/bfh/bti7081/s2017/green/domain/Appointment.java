@@ -16,6 +16,10 @@ public class Appointment extends BaseEntity {
     private LocalDateTime to;
 
     @ManyToOne
+    @JoinColumn(name = "appointmentStateTypeId")
+    private AppointmentStateType appointmentStateType;
+
+    @ManyToOne
     @JoinColumn(name = "healthVisitorId")
     private HealthVisitor healthVisitor;
 
@@ -59,5 +63,13 @@ public class Appointment extends BaseEntity {
 
     public void setTo(LocalDateTime to) {
         this.to = to;
+    }
+
+    public AppointmentStateType getAppointmentStateType() {
+        return appointmentStateType;
+    }
+
+    public void setAppointmentStateType(AppointmentStateType appointmentStateType) {
+        this.appointmentStateType = appointmentStateType;
     }
 }
