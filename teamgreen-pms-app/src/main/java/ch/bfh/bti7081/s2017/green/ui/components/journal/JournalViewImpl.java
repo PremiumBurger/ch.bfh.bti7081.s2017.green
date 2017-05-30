@@ -1,17 +1,12 @@
 package ch.bfh.bti7081.s2017.green.ui.components.journal;
 
-import ch.bfh.bti7081.s2017.green.bean.AppointmentJournalEntryBean;
-import ch.bfh.bti7081.s2017.green.bean.JournalBean;
-import ch.bfh.bti7081.s2017.green.bean.JournalEntryBean;
 import ch.bfh.bti7081.s2017.green.bean.PatientBean;
-import ch.bfh.bti7081.s2017.green.domain.Journal;
 import ch.bfh.bti7081.s2017.green.ui.MasterPageImpl;
 import com.vaadin.icons.VaadinIcons;
 import com.vaadin.navigator.ViewChangeListener;
-import com.vaadin.shared.ui.MarginInfo;
-import com.vaadin.ui.HorizontalLayout;
-import com.vaadin.ui.Label;
-import com.vaadin.ui.Panel;
+import com.vaadin.ui.Button;
+import com.vaadin.ui.CustomComponent;
+import com.vaadin.ui.PopupView;
 import com.vaadin.ui.VerticalLayout;
 import org.springframework.stereotype.Component;
 
@@ -23,7 +18,19 @@ public class JournalViewImpl extends MasterPageImpl implements JournalView {
     private VerticalLayout layout;
 
     public JournalViewImpl() {
+
+        //Todo: Add Button to Component
+        //Todo: Add JournalEntryType: Freie Notiz
+        
         this.layout = new VerticalLayout();
+
+        Button newEntry = new Button("");
+        newEntry.setIcon(VaadinIcons.PLUS_CIRCLE);
+        //newEntry.addClickListener();
+
+        this.layout.addComponent(newEntry);
+        //this.layout.addComponent(popup);
+
     }
 
     @Override
