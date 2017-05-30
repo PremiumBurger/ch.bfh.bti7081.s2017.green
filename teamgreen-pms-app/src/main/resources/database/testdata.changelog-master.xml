@@ -147,7 +147,9 @@
             <column name="journalId" value="2000"/>
             <column name="journalEntryType" value="0"/>
             <column name="text" value="Test Data Number one"/>
-            <column name="isImportant" valueBoolean="false"/>
+            <column name="isImportant" valueBoolean="true"/>
+            <column name="createdBy" value="1"/>
+            <column name="createdOn" value="2017-05-30 10:00:00"/>
         </insert>
 
         <insert tableName="JournalEntry">
@@ -157,6 +159,8 @@
             <column name="journalEntryType" value="0"/>
             <column name="text" value="Test Data Number two"/>
             <column name="isImportant" valueBoolean="false"/>
+            <column name="createdBy" value="1"/>
+            <column name="createdOn" value="2017-05-30 10:00:00"/>
         </insert>
 
         <insert tableName="JournalEntry">
@@ -166,6 +170,8 @@
             <column name="journalEntryType" value="0"/>
             <column name="text" value="Test Data Number three"/>
             <column name="isImportant" valueBoolean="true"/>
+            <column name="createdBy" value="1"/>
+            <column name="createdOn" value="2017-05-30 10:00:00"/>
         </insert>
     </changeSet>
 </databaseChangeLog>

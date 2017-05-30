@@ -15,10 +15,13 @@ public class JournalEntry extends BaseEntity {
 
     @Column(nullable = false, updatable = false, insertable = false)
     private int journalEntryType;
-
     private String text;
-
     private boolean isImportant;
+    private LocalDateTime createdOn;
+
+    @ManyToOne
+    @JoinColumn(name = "createdBy")
+    private HealthVisitor createdBy;
 
     public JournalEntry() {
         // empty constructor
@@ -56,4 +59,19 @@ public class JournalEntry extends BaseEntity {
         isImportant = important;
     }
 
+    public LocalDateTime getCreatedOn() {
+        return createdOn;
+    }
+
+    public void setCreatedOn(LocalDateTime createdOn) {
+        this.createdOn = createdOn;
+    }
+
+    public HealthVisitor getCreatedBy() {
+        return createdBy;
+    }
+
+    public void setCreatedBy(HealthVisitor healthVisitor) {
+        this.createdBy = healthVisitor;
+    }
 }
