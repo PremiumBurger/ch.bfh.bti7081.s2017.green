@@ -7,3 +7,9 @@
   @include addons;
   @include dashboard;
 }
+
+.v-caption-important{
+  .v-icon {
+    color:red;
+  }
+}
