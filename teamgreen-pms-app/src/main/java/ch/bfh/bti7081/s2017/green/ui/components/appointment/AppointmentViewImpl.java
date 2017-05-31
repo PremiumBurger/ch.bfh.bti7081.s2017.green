@@ -134,6 +134,8 @@ public class AppointmentViewImpl extends MasterPageImpl implements AppointmentVi
 
     @Override
     public void enter(ViewChangeListener.ViewChangeEvent event) {
+        String param = event.getParameters();
+        listener.getData(Long.valueOf(param).longValue());
 
 
     }

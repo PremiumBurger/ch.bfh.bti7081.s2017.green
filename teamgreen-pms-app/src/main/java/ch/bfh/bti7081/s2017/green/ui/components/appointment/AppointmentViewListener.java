@@ -7,4 +7,5 @@ import ch.bfh.bti7081.s2017.green.bean.AppointmentBean;
  */
 public interface AppointmentViewListener {
     void save(AppointmentBean appointmentBean);
+    void getData(long id);
 }
