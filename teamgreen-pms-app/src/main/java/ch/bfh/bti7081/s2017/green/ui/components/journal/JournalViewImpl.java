@@ -5,8 +5,6 @@ import ch.bfh.bti7081.s2017.green.ui.MasterPageImpl;
 import com.vaadin.icons.VaadinIcons;
 import com.vaadin.navigator.ViewChangeListener;
 import com.vaadin.ui.Button;
-import com.vaadin.ui.CustomComponent;
-import com.vaadin.ui.PopupView;
 import com.vaadin.ui.VerticalLayout;
 import org.springframework.stereotype.Component;
 
@@ -14,7 +12,6 @@ import org.springframework.stereotype.Component;
 public class JournalViewImpl extends MasterPageImpl implements JournalView {
 
     private JournalViewListener listener;
-    private JournalComponent journalComponent;
     private VerticalLayout layout;
 
     public JournalViewImpl() {
@@ -40,8 +37,7 @@ public class JournalViewImpl extends MasterPageImpl implements JournalView {
 
     @Override
     public void init(PatientBean patient) {
-        this.journalComponent = new JournalComponent(patient);
-        this.layout.addComponents(this.journalComponent);
+        this.layout.addComponents(new JournalComponent(patient));
         setViewContent(layout);
     }
 
