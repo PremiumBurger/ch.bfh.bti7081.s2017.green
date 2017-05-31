@@ -26,7 +26,12 @@ public class MyDayViewImpl extends MasterPageImpl implements MyDayView {
     public MyDayViewImpl() {
         appointmentSearch = new Autocomplete<AppointmentBean>();
         appointmentSearch.setWidth("100%");
-        appointmentSearch.addValueChangeListener(e -> getUI().getNavigator().navigateTo("appointmentview" + "/" + e.getValue().getId()));
+        appointmentSearch.addValueChangeListener(e -> {
+            if(e.getValue() != null) {
+            appointmentSearch.setValue(null);
+            getUI().getNavigator().navigateTo("appointmentview" + "/" + e.getValue().getId());
+            }
+        });
         setHeader(appointmentSearch);
         setViewContent(accordion);
     }
