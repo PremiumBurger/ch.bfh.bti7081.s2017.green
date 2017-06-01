@@ -3,6 +3,7 @@ package ch.bfh.bti7081.s2017.green.ui;
 import ch.bfh.bti7081.s2017.green.ui.components.appointment.AppointmentView;
 import ch.bfh.bti7081.s2017.green.ui.components.journal.JournalView;
 import ch.bfh.bti7081.s2017.green.ui.components.myday.MyDayView;
+import ch.bfh.bti7081.s2017.green.ui.components.patients.PatientView;
 import ch.bfh.bti7081.s2017.green.ui.view.dashboard.DashboardView;
 import com.vaadin.icons.VaadinIcons;
 import com.vaadin.navigator.View;
@@ -10,7 +11,10 @@ import com.vaadin.server.Resource;
 
 public enum DashboardViewType {
     MYDAY("MyDay", MyDayView.class, VaadinIcons.HOME, true),
-    JOURNAL("Journal", JournalView.class, VaadinIcons.CALENDAR, false);
+    JOURNAL("Journal", JournalView.class, VaadinIcons.CALENDAR, false),
+    APPOINTMENT("Appointment", AppointmentView.class, VaadinIcons.CALENDAR, false),
+    PATIENT("Patients", PatientView.class, VaadinIcons.USER, false);
+
 
     private final String viewName;
     private final Class<? extends View> viewClass;

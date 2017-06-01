@@ -6,8 +6,8 @@ import org.springframework.stereotype.Component;
 @Component
 public class MyDayPresenter implements MyDayViewListener {
 
-    MyDay myDay;
-    MyDayView myDayView;
+    private MyDay myDay;
+    private MyDayView myDayView;
 
     @Autowired
     public MyDayPresenter(MyDay myDay, MyDayView myDayView) {
