@@ -122,13 +122,15 @@ public final class DashboardMenu extends CustomComponent {
         for (final DashboardViewType view : DashboardViewType.values()) {
             Component menuItemComponent = new ValoMenuItemButton(view);
 
-            if (view == DashboardViewType.MYDAY) {
-                notificationsBadge = new Label();
-                notificationsBadge.setId(NOTIFICATIONS_BADGE_ID);
-                menuItemComponent = buildBadgeWrapper(menuItemComponent, notificationsBadge);
-            }
+                if (view == DashboardViewType.MYDAY) {
+                    notificationsBadge = new Label();
+                    notificationsBadge.setId(NOTIFICATIONS_BADGE_ID);
+                    menuItemComponent = buildBadgeWrapper(menuItemComponent, notificationsBadge);
+                }
 
-            menuItemsLayout.addComponent(menuItemComponent);
+            if(view.isVisible()) {
+                menuItemsLayout.addComponent(menuItemComponent);
+            }
         }
         return menuItemsLayout;
 

@@ -15,7 +15,11 @@ public class JournalViewPresenter implements JournalViewListener {
         this.journalModel = journalModel;
         this.journalView = journalView;
         journalView.addListener(this);
-        PatientBean patientBean = journalModel.getPatientById(2);
-        journalView.init(patientBean);
+
+    }
+
+    @Override
+    public void getData(long id) {
+        journalView.init(journalModel.getPatientById(id));
     }
 }
