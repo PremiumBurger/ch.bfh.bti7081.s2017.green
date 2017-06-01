@@ -26,10 +26,10 @@ public class MainView extends HorizontalLayout {
         setSizeFull();
         addStyleName("mainview");
         setSpacing(false);
-
         addComponent(new DashboardMenu());
-
         content = new CssLayout();
+        content.addStyleName("v-scrollable");
+        content.setHeight("100%");
         content.addStyleName("view-content");
         content.setSizeFull();
         addComponent(content);
