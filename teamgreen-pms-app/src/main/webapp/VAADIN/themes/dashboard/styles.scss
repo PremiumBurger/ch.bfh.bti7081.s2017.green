@@ -1,0 +1,15 @@
+// Import all the mixins for this theme
+@import "addons.scss";
+@import "dashboard";
+
+.dashboard {
+  // Output the actual theme selectors
+  @include addons;
+  @include dashboard;
+}
+
+.v-caption-important{
+  .v-icon {
+    color:red;
+  }
+}

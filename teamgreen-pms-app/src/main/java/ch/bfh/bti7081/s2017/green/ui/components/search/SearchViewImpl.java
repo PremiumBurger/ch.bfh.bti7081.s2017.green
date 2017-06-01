@@ -1,7 +1,6 @@
 package ch.bfh.bti7081.s2017.green.ui.components.search;
 
 import ch.bfh.bti7081.s2017.green.bean.PatientBean;
-import ch.bfh.bti7081.s2017.green.ui.MasterPageImpl;
 import ch.bfh.bti7081.s2017.green.ui.components.autcomplete.Autocomplete;
 import com.vaadin.navigator.ViewChangeListener;
 import com.vaadin.ui.*;
@@ -14,7 +13,7 @@ import java.util.*;
  * @author schms27
  */
 @org.springframework.stereotype.Component
-public class SearchViewImpl extends MasterPageImpl implements SearchView {
+public class SearchViewImpl extends AbsoluteLayout implements SearchView {
     private SearchViewListener listener;   //Listener to forward events to AddressViewPresenter
 
     ComboBox<PatientBean> search;
@@ -24,7 +23,7 @@ public class SearchViewImpl extends MasterPageImpl implements SearchView {
         search = new Autocomplete<>();
         layout.addComponent(search);
         layout.setWidth(100,Unit.PERCENTAGE);
-        setHeader(layout);
+        addComponent(layout);
     }
 
     @Override

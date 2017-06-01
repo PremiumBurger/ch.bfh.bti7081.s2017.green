@@ -1,16 +1,11 @@
 package ch.bfh.bti7081.s2017.green.ui.components.login;
 
-import ch.bfh.bti7081.s2017.green.ui.MainUI;
-import ch.bfh.bti7081.s2017.green.ui.MasterPageImpl;
 import com.vaadin.icons.VaadinIcons;
 import com.vaadin.navigator.ViewChangeListener;
-import com.vaadin.ui.Button;
-import com.vaadin.ui.Label;
-import com.vaadin.ui.TextField;
-import com.vaadin.ui.VerticalLayout;
+import com.vaadin.ui.*;
 
 @org.springframework.stereotype.Component
-public class LoginViewImpl extends MasterPageImpl implements LoginView {
+public class LoginViewImpl extends AbsoluteLayout implements LoginView {
 
     private LoginViewListener listener;
 
@@ -32,7 +27,7 @@ public class LoginViewImpl extends MasterPageImpl implements LoginView {
         loginButton.addClickListener(b -> listener.onLoginClick());
 
         layout.addComponents(userNameLabel, userName, passwordLabel, password, loginButton);
-        setViewContent(layout);
+        addComponent(layout);
     }
 
     @Override
@@ -42,7 +37,8 @@ public class LoginViewImpl extends MasterPageImpl implements LoginView {
 
     @Override
     public void login() {
-        MainUI.navigator.navigateTo("myDayView");
+
+        //MainUI.navigator.navigateTo("myDayView");
     }
 
     @Override

@@ -40,8 +40,8 @@ public class JournalComponent extends CustomComponent {
             contentText.setHeight("100%");
 
             if (entry.isImportant()) {
-                mainPanel.setStyleName("important");
                 Label icon = new Label("");
+                icon.setStyleName("important");
                 icon.setIcon(VaadinIcons.EXCLAMATION_CIRCLE);
                 entryPanelLayout.addComponent(icon);
             }

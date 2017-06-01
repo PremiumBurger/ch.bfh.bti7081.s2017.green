@@ -1,12 +1,11 @@
 package ch.bfh.bti7081.s2017.green.ui.components.address;
 
 import ch.bfh.bti7081.s2017.green.bean.AddressBean;
-import ch.bfh.bti7081.s2017.green.ui.MasterPageImpl;
 import com.vaadin.navigator.ViewChangeListener;
+import com.vaadin.ui.AbsoluteLayout;
 import com.vaadin.ui.Button;
 import com.vaadin.ui.Grid;
 import com.vaadin.ui.HorizontalLayout;
-import com.vaadin.ui.Label;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -19,7 +18,7 @@ import java.util.Set;
  */
 @Component
 @Transactional
-public class AddressViewImpl extends MasterPageImpl implements AddressView {
+public class AddressViewImpl extends AbsoluteLayout implements AddressView {
     //Variable Declaration
     private AddressViewListener listener;   //Listener to forward events to AddressViewPresenter
     private Grid<AddressBean> grid;         //Vaadin Grid to show the Addresses
@@ -41,7 +40,7 @@ public class AddressViewImpl extends MasterPageImpl implements AddressView {
         //Assemble UI Components
         layout.addComponents(grid, btnTest);
         layout.setSizeFull();
-        setViewContent(layout);
+        addComponent(layout);
     }
 
     @Override

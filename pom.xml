@@ -15,6 +15,7 @@
     <dependencyManagement/>
     <modules>
         <module>teamgreen-insieme</module>
+        <module>greenmvp</module>
         <module>teamgreen-pms</module>
         <module>teamgreen-pms-app</module>
     </modules>

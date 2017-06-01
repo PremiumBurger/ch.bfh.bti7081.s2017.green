@@ -3,7 +3,6 @@ package ch.bfh.bti7081.s2017.green.ui.components.appointment;
 import ch.bfh.bti7081.s2017.green.bean.AppointmentBean;
 import ch.bfh.bti7081.s2017.green.bean.AppointmentStateTypeBean;
 import ch.bfh.bti7081.s2017.green.bean.PatientBean;
-import ch.bfh.bti7081.s2017.green.ui.MasterPageImpl;
 import com.vaadin.data.BeanValidationBinder;
 import com.vaadin.icons.VaadinIcons;
 import com.vaadin.navigator.ViewChangeListener;
@@ -16,7 +15,7 @@ import java.util.List;
  * Created by joris on 26.05.17.
  */
 @Component
-public class AppointmentViewImpl extends MasterPageImpl implements AppointmentView {
+public class AppointmentViewImpl extends FormLayout implements AppointmentView {
 
     private AppointmentViewListener listener;
     private AppointmentBean appointmentModel;
@@ -36,10 +35,7 @@ public class AppointmentViewImpl extends MasterPageImpl implements AppointmentVi
     private Label adr;
 
     public AppointmentViewImpl() {
-        FormLayout layout = new FormLayout();
-
         myDayBinder = new BeanValidationBinder<>(AppointmentBean.class);
-
         from = new DateTimeField();
         to = new DateTimeField();
         comboBoxPatient = new ComboBox<>();
@@ -59,8 +55,6 @@ public class AppointmentViewImpl extends MasterPageImpl implements AppointmentVi
         adr = new Label();
         adr.setCaption("PLZ/Ort");
 
-
-
         myDayBinder.forField(from)
                 .bind(AppointmentBean::getFrom, AppointmentBean::setFrom);
 
@@ -73,12 +67,8 @@ public class AppointmentViewImpl extends MasterPageImpl implements AppointmentVi
         myDayBinder.forField(comboBoxState).bind(AppointmentBean::getAppointmentStateType,
                 AppointmentBean::setAppointmentStateType);
 
-
-
-
         patientForm.addComponents(firstname,lastname,street,adr);
-        layout.addComponents(from,to, comboBoxPatient,comboBoxState,patientForm,save);
-        setViewContent(layout);
+        addComponents(from,to, comboBoxPatient,comboBoxState,patientForm,save);
     }
 
     @Override

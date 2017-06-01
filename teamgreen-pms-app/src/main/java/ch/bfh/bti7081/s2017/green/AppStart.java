@@ -10,7 +10,6 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
-import org.springframework.orm.hibernate5.support.OpenSessionInViewFilter;
 import org.springframework.orm.jpa.support.OpenEntityManagerInViewFilter;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
@@ -19,11 +18,11 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @EnableAutoConfiguration
 @EnableJpaRepositories
 @EnableTransactionManagement
-@ComponentScan
+@ComponentScan({"ch.bfh.bti7081.s2017.green.*", "green.mvp.*"})
 public class AppStart {
     private static final Logger log = LoggerFactory.getLogger(AppStart.class);
 
-    public static void main(String[] args) {
+    public static void main (String[] args) {
         log.info("Starting Team Green PMS App");
         SpringApplication.run(AppStart.class, args);
     }
@@ -32,7 +31,7 @@ public class AppStart {
      * Create OpenEntityManagerInView to ensure hibernate sessions are view scoped.
      */
     @Bean
-    public FilterRegistrationBean registerOpenSessionInViewFilterBean() {
+    public FilterRegistrationBean registerOpenSessionInViewFilterBean () {
         FilterRegistrationBean registrationBean = new FilterRegistrationBean();
         OpenEntityManagerInViewFilter filter = new OpenEntityManagerInViewFilter();
         registrationBean.setFilter(filter);

@@ -1,6 +1,5 @@
 package ch.bfh.bti7081.s2017.green.ui.components.login;
 
-import ch.bfh.bti7081.s2017.green.ui.MainUI;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
