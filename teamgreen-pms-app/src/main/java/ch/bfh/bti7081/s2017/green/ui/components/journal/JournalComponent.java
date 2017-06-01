@@ -23,6 +23,10 @@ public class JournalComponent extends CustomComponent {
 
         mainPanel.setContent(mainPanelLayout);
 
+        Button newEntry = new Button("");
+        newEntry.setIcon(VaadinIcons.PLUS_CIRCLE);
+        mainPanelLayout.addComponent(newEntry);
+
         setCompositionRoot(mainPanel);
 
         for (JournalEntryBean entry : journal.getJournalEntries()) {

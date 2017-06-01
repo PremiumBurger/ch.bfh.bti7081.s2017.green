@@ -14,16 +14,7 @@ public class JournalViewImpl extends VerticalLayout implements JournalView {
 
     public JournalViewImpl() {
 
-        //Todo: Add Button to Component
         //Todo: Add JournalEntryType: Freie Notiz
-
-        Button newEntry = new Button("");
-        newEntry.setIcon(VaadinIcons.PLUS_CIRCLE);
-        //newEntry.addClickListener();
-
-        addComponent(newEntry);
-        //this.layout.addComponent(popup);
-
     }
 
     @Override
