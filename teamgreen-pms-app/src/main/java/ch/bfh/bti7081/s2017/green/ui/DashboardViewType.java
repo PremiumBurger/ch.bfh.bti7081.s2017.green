@@ -10,22 +10,24 @@ import com.vaadin.navigator.View;
 import com.vaadin.server.Resource;
 
 public enum DashboardViewType {
-    MYDAY("MyDay", MyDayView.class, VaadinIcons.HOME, true),
-    JOURNAL("Journal", JournalView.class, VaadinIcons.CALENDAR, false),
-    APPOINTMENT("Appointment", AppointmentView.class, VaadinIcons.CALENDAR, false),
-    PATIENT("Patients", PatientView.class, VaadinIcons.USER, false);
+    MYDAY("MyDay", MyDayView.class, VaadinIcons.HOME, true, true),
+    JOURNAL("Journal", JournalView.class, VaadinIcons.CALENDAR, false, false),
+    APPOINTMENT("Appointment", AppointmentView.class, VaadinIcons.CALENDAR, false, false),
+    PATIENT("Patients", PatientView.class, VaadinIcons.USER, false, true);
 
 
     private final String viewName;
     private final Class<? extends View> viewClass;
     private final Resource icon;
     private final boolean stateful;
+    private final boolean visible;
 
-    DashboardViewType(final String viewName, final Class<? extends View> viewClass, final Resource icon, final boolean stateful) {
+    DashboardViewType(final String viewName, final Class<? extends View> viewClass, final Resource icon, final boolean stateful, final boolean visible) {
         this.viewName = viewName;
         this.viewClass = viewClass;
         this.icon = icon;
         this.stateful = stateful;
+        this.visible = visible;
     }
 
     public static DashboardViewType getByViewName(final String viewName) {
@@ -53,6 +55,10 @@ public enum DashboardViewType {
 
     public Resource getIcon() {
         return icon;
+    }
+
+    public boolean isVisible() {
+        return visible;
     }
 }
 

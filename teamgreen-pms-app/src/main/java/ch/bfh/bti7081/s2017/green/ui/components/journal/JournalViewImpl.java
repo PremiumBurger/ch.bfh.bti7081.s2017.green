@@ -38,5 +38,7 @@ public class JournalViewImpl extends VerticalLayout implements JournalView {
 
     @Override
     public void enter(ViewChangeListener.ViewChangeEvent viewChangeEvent) {
+        String param = viewChangeEvent.getParameters();
+        listener.getData(Long.valueOf(param).longValue());
     }
 }
