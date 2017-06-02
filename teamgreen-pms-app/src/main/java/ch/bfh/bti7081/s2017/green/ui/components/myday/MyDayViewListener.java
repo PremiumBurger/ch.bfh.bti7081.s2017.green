@@ -10,6 +10,8 @@ public interface MyDayViewListener {
 
     void showMedication();
 
+    void getData();
+
 
 
 }
