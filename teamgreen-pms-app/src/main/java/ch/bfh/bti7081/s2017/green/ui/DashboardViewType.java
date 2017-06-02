@@ -10,7 +10,7 @@ import com.vaadin.navigator.View;
 import com.vaadin.server.Resource;
 
 public enum DashboardViewType {
-    MYDAY("MyDay", MyDayView.class, VaadinIcons.HOME, true, true),
+    MYDAY("MyDay", MyDayView.class, VaadinIcons.HOME, false, true),
     JOURNAL("Journal", JournalView.class, VaadinIcons.CALENDAR, false, false),
     APPOINTMENT("Appointment", AppointmentView.class, VaadinIcons.CALENDAR, false, false),
     PATIENT("Patients", PatientView.class, VaadinIcons.USER, false, true);

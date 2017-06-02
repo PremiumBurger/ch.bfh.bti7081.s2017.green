@@ -13,9 +13,17 @@ public class MyDayPresenter implements MyDayViewListener {
     public MyDayPresenter(MyDay myDay, MyDayView myDayView) {
         this.myDay = myDay;
         this.myDayView = myDayView;
-        myDayView.init(myDay.getAll());
         myDayView.addListener(this);
+
     }
+
+    @Override
+    public void getData() {
+        myDayView.init(myDay.getAll());
+
+
+    }
+
 
     @Override
     public void doSearch() {
@@ -36,4 +44,6 @@ public class MyDayPresenter implements MyDayViewListener {
     public void showMedication() {
 
     }
+
+
 }

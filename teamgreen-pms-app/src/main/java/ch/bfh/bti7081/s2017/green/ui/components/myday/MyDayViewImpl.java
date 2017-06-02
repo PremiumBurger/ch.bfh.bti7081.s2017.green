@@ -17,10 +17,11 @@ public class MyDayViewImpl extends VerticalLayout implements MyDayView {
 
     MyDayViewListener listener;
     List<AppointmentBean> appointments;
-    Accordion accordion = new Accordion();
+    Accordion accordion;
     ComboBox<AppointmentBean> appointmentSearch;
 
     public MyDayViewImpl() {
+        accordion = new Accordion();
         appointmentSearch = new Autocomplete<AppointmentBean>();
         appointmentSearch.setWidth("100%");
         appointmentSearch.addValueChangeListener(e -> {
@@ -39,6 +40,7 @@ public class MyDayViewImpl extends VerticalLayout implements MyDayView {
 
     @Override
     public void enter (ViewChangeListener.ViewChangeEvent event) {
+        listener.getData();
 
 
     }
@@ -47,6 +49,7 @@ public class MyDayViewImpl extends VerticalLayout implements MyDayView {
         appointmentSearch.setItems(appointments);
         int counter = 1;
 
+        accordion.removeAllComponents();
         for (AppointmentBean appointment : appointments) {
             FormLayout layout = new FormLayout();
             layout.setId(String.valueOf(appointment.getId()));
