@@ -94,7 +94,6 @@ public class AppointmentViewImpl extends FormLayout implements AppointmentView {
         comboBoxPatient.addValueChangeListener(event -> {
             PatientBean patient = patients.stream().filter(p -> p.getId() == event.getValue().getId()).findFirst().get();
             setPatientData(patient);
-
         });
 
         comboBoxState.setCaption("Appointment State");
@@ -102,9 +101,6 @@ public class AppointmentViewImpl extends FormLayout implements AppointmentView {
         comboBoxState.setItemCaptionGenerator(
                 p -> p.getAppointmentState().getDescription()
         );
-
-
-
     }
 
     public void setPatientData(PatientBean patient){
