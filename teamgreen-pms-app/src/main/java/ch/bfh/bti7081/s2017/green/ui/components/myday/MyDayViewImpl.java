@@ -27,7 +27,7 @@ public class MyDayViewImpl extends VerticalLayout implements MyDayView {
         appointmentSearch.addValueChangeListener(e -> {
             if(e.getValue() != null) {
             appointmentSearch.setValue(null);
-            getUI().getNavigator().navigateTo("Appointment" + "/" + e.getValue().getId());
+            getUI().getNavigator().navigateTo("AppointmentDetail" + "/" + e.getValue().getId());
             }
         });
         addComponents(appointmentSearch, accordion);
@@ -62,7 +62,7 @@ public class MyDayViewImpl extends VerticalLayout implements MyDayView {
             Label adr = new Label(appointment.getPatient().getAddress().getPlz() + " " + appointment.getPatient().getAddress().getCity());
             Button details = new Button("Show Details");
             details.setIcon(VaadinIcons.SELECT);
-            details.addClickListener(e -> getUI().getNavigator().navigateTo("Appointment" + "/" + appointment.getId()));
+            details.addClickListener(e -> getUI().getNavigator().navigateTo("AppointmentDetail" + "/" + appointment.getId()));
             layout.addComponents(time,patientname,street,adr, details);
 
 

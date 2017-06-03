@@ -8,6 +8,7 @@ import com.vaadin.data.Binder;
 import com.vaadin.icons.VaadinIcons;
 import com.vaadin.navigator.ViewChangeListener;
 import com.vaadin.ui.*;
+import com.vaadin.ui.themes.ValoTheme;
 import org.springframework.stereotype.Component;
 
 import java.util.Set;
@@ -79,6 +80,10 @@ public class AppointmentDetailViewImpl extends VerticalLayout implements Appoint
                 Notification.show("Appointment has bees saved successfully");
             });
 
+            // styles
+            cancelButton.addStyleName(ValoTheme.BUTTON_DANGER);
+            saveButton.addStyleName(ValoTheme.BUTTON_FRIENDLY);
+
         } else {
             Button editButton = new Button("Edit", VaadinIcons.EDIT);
             buttons.addComponent(editButton);
@@ -87,6 +92,9 @@ public class AppointmentDetailViewImpl extends VerticalLayout implements Appoint
                isUpdateMode = true;
                initializeView();
             });
+
+            // styles
+            editButton.addStyleName(ValoTheme.BUTTON_PRIMARY);
         }
 
         return buttonBarLayout;
