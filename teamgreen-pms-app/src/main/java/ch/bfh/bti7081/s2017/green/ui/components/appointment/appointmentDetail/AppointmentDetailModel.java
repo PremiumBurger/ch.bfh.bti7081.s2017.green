@@ -1,8 +1,10 @@
 package ch.bfh.bti7081.s2017.green.ui.components.appointment.appointmentDetail;
 
 import ch.bfh.bti7081.s2017.green.bean.AppointmentBean;
+import ch.bfh.bti7081.s2017.green.bean.AppointmentStateTypeBean;
 import ch.bfh.bti7081.s2017.green.bean.PatientBean;
 import ch.bfh.bti7081.s2017.green.service.AppointmentService;
+import ch.bfh.bti7081.s2017.green.service.AppointmentStateTypeService;
 import ch.bfh.bti7081.s2017.green.service.PatientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -18,10 +20,13 @@ public class AppointmentDetailModel {
 
     private PatientService patientService;
 
+    private AppointmentStateTypeService appointmentStateTypeService;
+
     @Autowired
-    public AppointmentDetailModel(AppointmentService appointmentService, PatientService patientService) {
+    public AppointmentDetailModel(AppointmentService appointmentService, PatientService patientService, AppointmentStateTypeService appointmentStateTypeService) {
         this.appointmentService = appointmentService;
         this.patientService = patientService;
+        this.appointmentStateTypeService = appointmentStateTypeService;
     }
 
     /**
@@ -42,10 +47,19 @@ public class AppointmentDetailModel {
     }
 
     /**
+     * Returns all available appointment state types
+     * @return the set of types
+     */
+    public Set<AppointmentStateTypeBean> getAllAppointmentStateTypes() {
+        return appointmentStateTypeService.getAll();
+    }
+
+    /**
      * Persists the {@link AppointmentBean}
      * @param appointmentBean the {@link AppointmentBean} to persist
      */
     public void saveAppointment(AppointmentBean appointmentBean) {
         appointmentService.save(appointmentBean);
     }
+
 }

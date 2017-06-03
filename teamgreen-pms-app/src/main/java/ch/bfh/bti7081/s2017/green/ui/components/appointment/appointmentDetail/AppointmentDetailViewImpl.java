@@ -2,7 +2,8 @@ package ch.bfh.bti7081.s2017.green.ui.components.appointment.appointmentDetail;
 
 import ch.bfh.bti7081.s2017.green.bean.*;
 import ch.bfh.bti7081.s2017.green.ui.controls.H1Title;
-import ch.bfh.bti7081.s2017.green.ui.controls.PmsDummyImages;
+import ch.bfh.bti7081.s2017.green.ui.stub.PmsDummyImages;
+import ch.bfh.bti7081.s2017.green.util.PmsConstants;
 import com.vaadin.data.BeanValidationBinder;
 import com.vaadin.data.Binder;
 import com.vaadin.icons.VaadinIcons;
@@ -20,14 +21,16 @@ public class AppointmentDetailViewImpl extends VerticalLayout implements Appoint
     private AppointmentDetailViewListener viewListener;
 
     private AppointmentBean model;
+    private Set<AppointmentStateTypeBean> allApppointmentStates;
 
     private Set<PatientBean>  allPatients;
 
     private boolean isUpdateMode;
 
     @Override
-    public void setModel(AppointmentBean appointmentBean, Set<PatientBean> allPatients) {
+    public void setModel(AppointmentBean appointmentBean, Set<PatientBean> allPatients, Set<AppointmentStateTypeBean> allApppointmentStates) {
         this.allPatients = allPatients;
+        this.allApppointmentStates = allApppointmentStates;
         model = appointmentBean;
         initializeView();
     }
@@ -35,9 +38,10 @@ public class AppointmentDetailViewImpl extends VerticalLayout implements Appoint
 
     private void initializeView() {
         removeAllComponents();
+        setResponsive(true);
 
         // set page title
-        addComponent(new H1Title("Appointment Detail (#" + model.getId() + ")"));
+        addComponent(new H1Title("Appointment (#" + model.getId() + ")"));
 
         // set appointment details
         addComponent(buildAppointmentDetail());
@@ -52,7 +56,7 @@ public class AppointmentDetailViewImpl extends VerticalLayout implements Appoint
         addComponent(involvedLayout);
 
         // linked journal entries
-
+        // TODO: aluege mitm Tobi!
     }
 
     private HorizontalLayout buildButtonbar() {
@@ -81,6 +85,7 @@ public class AppointmentDetailViewImpl extends VerticalLayout implements Appoint
             });
 
             // styles
+            buttonBarLayout.setResponsive(true);
             cancelButton.addStyleName(ValoTheme.BUTTON_DANGER);
             saveButton.addStyleName(ValoTheme.BUTTON_FRIENDLY);
 
@@ -128,6 +133,7 @@ public class AppointmentDetailViewImpl extends VerticalLayout implements Appoint
         binder.setBean(hvModel);
 
         // styling
+        healthVisitorDetails.setResponsive(true);
         healthVisitorDetails.setWidth(100, Unit.PERCENTAGE);
         return healthVisitorDetails;
     }
@@ -158,6 +164,7 @@ public class AppointmentDetailViewImpl extends VerticalLayout implements Appoint
         binder.setBean(patModel);
 
         // styling
+        patientDetails.setResponsive(true);
         patientDetails.setWidth(100, Unit.PERCENTAGE);
         return patientDetails;
     }
@@ -166,25 +173,36 @@ public class AppointmentDetailViewImpl extends VerticalLayout implements Appoint
         Panel appointmentDetailPanel = new Panel("Details");
         HorizontalLayout appForm = new HorizontalLayout();
         appForm.setMargin(true);
-        appForm.setSpacing(true);
         appointmentDetailPanel.setContent(appForm);
         BeanValidationBinder binder = new BeanValidationBinder<>(AppointmentBean.class);
+
         DateTimeField from = new DateTimeField("From");
         DateTimeField to = new DateTimeField("To");
+        from.setDateFormat(PmsConstants.SWISS_DATE_FORMAT);
+        to.setDateFormat(PmsConstants.SWISS_DATE_FORMAT);
+
         ComboBox<PatientBean> comboBoxPatient = new ComboBox<>("Patient");
         comboBoxPatient.setItems(allPatients);
         comboBoxPatient.setItemCaptionGenerator(PersonBean::getFullName);
+
+        // TODO: Mitm Simu alugege: Appoitment State no irgendwie komisch implementiert
+        // ComboBox<AppointmentStateTypeBean> comboBoxState = new ComboBox<>("State");
+        // comboBoxState.setItems(allApppointmentStates);
+        // comboBoxState.setItemCaptionGenerator(p -> p.getAppointmentState().getDescription());
+
         appForm.addComponents(from, to, comboBoxPatient);
 
-        // visibility
+        // mode specific
         from.setEnabled(isUpdateMode);
         to.setEnabled(isUpdateMode);
         comboBoxPatient.setEnabled(isUpdateMode);
+        // comboBoxState.setEnabled(isUpdateMode);
 
         // bindings
         binder.forField(from).bind("from");
         binder.forField(to).bind("to");
         binder.forField(comboBoxPatient).bind("patient");
+        // binder.forField(comboBoxState).bind("appointmentStateType");
         binder.setBean(model);
 
         // events
@@ -192,6 +210,9 @@ public class AppointmentDetailViewImpl extends VerticalLayout implements Appoint
             initializeView();
         });
 
+        // styles
+        appointmentDetailPanel.setResponsive(true);
+        appForm.setResponsive(true);
         return appointmentDetailPanel;
     }
 

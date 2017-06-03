@@ -1,4 +1,4 @@
-package ch.bfh.bti7081.s2017.green.ui.controls;
+package ch.bfh.bti7081.s2017.green.ui.stub;
 
 import com.vaadin.server.Sizeable;
 import com.vaadin.server.ThemeResource;
