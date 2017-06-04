@@ -96,5 +96,7 @@ public abstract class PersonBean extends EntityBean<Person> {
         this.gender = gender;
     }
 
-
+    public String getFullName() {
+        return firstName + " " + lastName;
+    }
 }
