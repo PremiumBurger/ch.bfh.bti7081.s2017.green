@@ -46,7 +46,6 @@ public class MyDayViewImpl extends VerticalLayout implements MyDayView {
     public void enter (ViewChangeListener.ViewChangeEvent event) {
         listener.getData();
 
-
     }
 
     public void init (List<AppointmentBean> appointments) {
