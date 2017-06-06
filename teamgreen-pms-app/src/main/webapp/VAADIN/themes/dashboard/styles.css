@@ -11470,20 +11470,6 @@ div.v-layout.v-horizontal.v-widget {
 	color: gray;
 }
 
-.dashboard .v-accordion-item-caption {
-	box-shadow: #276873 0px 11px 29px -9px;
-	background-color: #00ace0;
-	border-radius: 33px;
-	display: inline-block;
-	cursor: pointer;
-	color: white;
-	font-family: Arial;
-	font-size: 20px;
-	padding: 7px 76px;
-	text-decoration: none;
-	text-shadow: #3d768a 0px 1px 0px;
-}
-
 .dashboard .schedule .v-calendar-event-content {
 	background-repeat: repeat-x, no-repeat;
 	background-size: auto, cover;
