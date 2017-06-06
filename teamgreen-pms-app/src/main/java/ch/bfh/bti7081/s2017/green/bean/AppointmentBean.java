@@ -18,7 +18,7 @@ public class AppointmentBean extends EntityBean<Appointment> implements Autocomp
     private AppointmentStateTypeBean appointmentStateType;
 
     public AppointmentBean() {
-        setEntity(new Appointment(), false);
+        setEntity(new Appointment(), true);
     }
 
     public HealthVisitorBean getHealthVisitor() {
