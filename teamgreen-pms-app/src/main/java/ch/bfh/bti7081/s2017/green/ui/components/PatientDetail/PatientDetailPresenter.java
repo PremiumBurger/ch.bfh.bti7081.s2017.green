@@ -1,12 +1,7 @@
 package ch.bfh.bti7081.s2017.green.ui.components.PatientDetail;
 
-import ch.bfh.bti7081.s2017.green.bean.AppointmentBean;
-import ch.bfh.bti7081.s2017.green.bean.PatientBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-
-import java.util.List;
-import java.util.Set;
 
 /**
  * Created by mathewthekkekara on 06.06.17.
@@ -31,8 +26,6 @@ public class PatientDetailPresenter implements PatientDetailViewListener {
 
     @Override
     public void initScreen(long patientId) {
-        PatientBean pb = patientDetail.getPatient(patientId);
-        List<AppointmentBean> set = patientDetail.getAllAppointments(patientId);
-        patientDetailView.setModel(pb,set);
+        patientDetailView.setModel(patientDetail.getPatient(patientId),);
     }
 }
