@@ -13,6 +13,8 @@ public class AppointmentStateTypeBean extends EntityBean<AppointmentStateType> i
 
     private AppointmentState appointmentState;
 
+    private String description;
+
     public AppointmentStateTypeBean(){
         appointmentState = new AppointmentStateNew();
     }
@@ -27,6 +29,14 @@ public class AppointmentStateTypeBean extends EntityBean<AppointmentStateType> i
 
     public AppointmentState getAppointmentState() {
         return appointmentState;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     @Override

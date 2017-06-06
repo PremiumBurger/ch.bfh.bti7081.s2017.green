@@ -3,18 +3,24 @@ package ch.bfh.bti7081.s2017.green.bean;
 import ch.bfh.bti7081.s2017.green.domain.Appointment;
 import ch.bfh.bti7081.s2017.green.ui.components.autcomplete.Autocompletable;
 
+import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
 
 public class AppointmentBean extends EntityBean<Appointment> implements Autocompletable{
 
+    @NotNull
     private LocalDateTime from;
 
+    @NotNull
     private LocalDateTime to;
 
+    @NotNull
     private HealthVisitorBean healthVisitor;
 
+    @NotNull
     private PatientBean patient;
 
+    @NotNull
     private AppointmentStateTypeBean appointmentStateType;
 
     public AppointmentBean() {

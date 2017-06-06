@@ -9,10 +9,6 @@ import com.vaadin.ui.Notification;
  */
 public class AppointmentStateCancelled extends AppointmentState {
 
-    public AppointmentStateCancelled(){
-        this.setDescription("CANCELLED");
-    }
-
     @Override
     public void onStateSet(AppointmentBean appointment) {
         Notification.show("State Cancelled has been set");
