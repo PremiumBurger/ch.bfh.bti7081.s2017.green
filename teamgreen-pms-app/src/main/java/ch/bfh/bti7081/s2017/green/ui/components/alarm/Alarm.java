@@ -1,4 +1,4 @@
-package ch.bfh.bti7081.s2017.green.ui.components.Alarm;
+package ch.bfh.bti7081.s2017.green.ui.components.alarm;
 
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;

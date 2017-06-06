@@ -1,5 +1,6 @@
 package ch.bfh.bti7081.s2017.green.ui;
 
+import ch.bfh.bti7081.s2017.green.ui.components.alarm.AlarmView;
 import ch.bfh.bti7081.s2017.green.ui.components.appointment.AppointmentView;
 import ch.bfh.bti7081.s2017.green.ui.components.appointment.appointmentDetail.AppointmentDetailView;
 import ch.bfh.bti7081.s2017.green.ui.components.journal.JournalView;
@@ -15,7 +16,8 @@ public enum DashboardViewType {
     JOURNAL("Journal", JournalView.class, VaadinIcons.CALENDAR, false, false),
     APPOINTMENT("Appointment", AppointmentView.class, VaadinIcons.CALENDAR, false, false),
     APPOINTMENT_DETAIL("AppointmentDetail", AppointmentDetailView.class, VaadinIcons.CALENDAR, false, false),
-    PATIENT("Patients", PatientView.class, VaadinIcons.USER, false, true);
+    PATIENT("Patients", PatientView.class, VaadinIcons.USER, false, true),
+    ALARM("Alarm",AlarmView.class, VaadinIcons.BELL_O, false, true);
 
 
     private final String viewName;
