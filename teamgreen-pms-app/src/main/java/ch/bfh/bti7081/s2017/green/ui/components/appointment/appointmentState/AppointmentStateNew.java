@@ -9,10 +9,6 @@ import com.vaadin.ui.Notification;
  */
 public class AppointmentStateNew extends AppointmentState {
 
-    public AppointmentStateNew(){
-        this.setDescription("NEW");
-    }
-
     @Override
     public void onStateSet(AppointmentBean appointment) {
         Notification.show("State New has been set");

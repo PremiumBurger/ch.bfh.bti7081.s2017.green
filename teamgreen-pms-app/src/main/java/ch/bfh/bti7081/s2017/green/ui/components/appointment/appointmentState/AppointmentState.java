@@ -5,14 +5,6 @@ package ch.bfh.bti7081.s2017.green.ui.components.appointment.appointmentState;
  * @author schms27
  */
 public abstract class AppointmentState implements AppointmentStateEventHandler {
-    private String description;
 
-    public String getDescription() {
-        return description;
-    }
-
-    protected void setDescription(String description) {
-        this.description = description;
-    }
 
 }

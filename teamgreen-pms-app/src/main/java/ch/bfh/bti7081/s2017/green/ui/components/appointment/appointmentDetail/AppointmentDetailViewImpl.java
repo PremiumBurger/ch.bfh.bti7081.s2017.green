@@ -21,11 +21,17 @@ public class AppointmentDetailViewImpl extends VerticalLayout implements Appoint
     private AppointmentDetailViewListener viewListener;
 
     private AppointmentBean model;
+
     private Set<AppointmentStateTypeBean> allApppointmentStates;
 
     private Set<PatientBean>  allPatients;
 
     private boolean isUpdateMode;
+
+    /**
+     * Needs to be global to update this partially
+     */
+    private HorizontalLayout involvedLayout;
 
     @Override
     public void setModel(AppointmentBean appointmentBean, Set<PatientBean> allPatients, Set<AppointmentStateTypeBean> allApppointmentStates) {
@@ -34,7 +40,6 @@ public class AppointmentDetailViewImpl extends VerticalLayout implements Appoint
         model = appointmentBean;
         initializeView();
     }
-
 
     private void initializeView() {
         removeAllComponents();
@@ -50,13 +55,18 @@ public class AppointmentDetailViewImpl extends VerticalLayout implements Appoint
         addComponent(buildButtonbar());
 
         // set patient and healthvisitor details
-        HorizontalLayout involvedLayout = new HorizontalLayout();
-        involvedLayout.setWidth(100, Unit.PERCENTAGE);
-        involvedLayout.addComponents(buildHealthVisitorDetail(), buildPatientDetail());
+        involvedLayout = buildInvolved();
         addComponent(involvedLayout);
 
         // linked journal entries
         // TODO: aluege mitm Tobi!
+    }
+
+    private HorizontalLayout buildInvolved() {
+        HorizontalLayout involvedLayout = new HorizontalLayout();
+        involvedLayout.setWidth(100, Unit.PERCENTAGE);
+        involvedLayout.addComponents(buildHealthVisitorDetail(), buildPatientDetail());
+        return involvedLayout;
     }
 
     private HorizontalLayout buildButtonbar() {
@@ -185,29 +195,31 @@ public class AppointmentDetailViewImpl extends VerticalLayout implements Appoint
         comboBoxPatient.setItems(allPatients);
         comboBoxPatient.setItemCaptionGenerator(PersonBean::getFullName);
 
-        // TODO: Mitm Simu alugege: Appoitment State no irgendwie komisch implementiert
-        // ComboBox<AppointmentStateTypeBean> comboBoxState = new ComboBox<>("State");
-        // comboBoxState.setItems(allApppointmentStates);
-        // comboBoxState.setItemCaptionGenerator(p -> p.getAppointmentState().getDescription());
-
-        appForm.addComponents(from, to, comboBoxPatient);
+        ComboBox<AppointmentStateTypeBean> comboBoxState = new ComboBox<>("State");
+        comboBoxState.setItems(allApppointmentStates);
+        comboBoxState.setItemCaptionGenerator(p -> p.getDescription());
+        appForm.addComponents(from, to, comboBoxPatient, comboBoxState);
 
         // mode specific
         from.setEnabled(isUpdateMode);
         to.setEnabled(isUpdateMode);
         comboBoxPatient.setEnabled(isUpdateMode);
-        // comboBoxState.setEnabled(isUpdateMode);
+        comboBoxState.setEnabled(isUpdateMode);
 
         // bindings
         binder.forField(from).bind("from");
         binder.forField(to).bind("to");
         binder.forField(comboBoxPatient).bind("patient");
-        // binder.forField(comboBoxState).bind("appointmentStateType");
+        binder.forField(comboBoxState).bind("appointmentStateType");
         binder.setBean(model);
 
         // events
         comboBoxPatient.addValueChangeListener(event -> {
-            initializeView();
+            if (binder.isValid()) {
+                removeComponent(involvedLayout);
+                involvedLayout = buildInvolved();
+                addComponent(involvedLayout);
+            }
         });
 
         // styles
