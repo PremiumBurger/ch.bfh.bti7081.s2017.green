@@ -8,11 +8,6 @@ import com.vaadin.ui.Notification;
  * @author schms27
  */
 public class AppointmentStatePostponed extends AppointmentState {
-
-    public AppointmentStatePostponed(){
-        this.setDescription("POSTPONED");
-    }
-
     @Override
     public void onStateSet(AppointmentBean appointment) {
         Notification.show("State Postponed has been set");
