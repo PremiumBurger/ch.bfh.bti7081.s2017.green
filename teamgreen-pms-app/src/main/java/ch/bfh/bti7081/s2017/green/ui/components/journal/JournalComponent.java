@@ -9,27 +9,38 @@ import com.vaadin.icons.VaadinIcons;
 import com.vaadin.shared.ui.MarginInfo;
 import com.vaadin.ui.*;
 
+import java.util.List;
+
 public class JournalComponent extends CustomComponent {
+
+    private Panel mainPanel;
+    private VerticalLayout mainPanelLayout;
+    private Button newEntry;
 
     public JournalComponent(PatientBean patient) {
 
         JournalBean journal = patient.getJournal();
-        Panel mainPanel = new Panel();
+        this.mainPanel = new Panel();
         mainPanel.setCaption("Journal von " + patient.getFirstName() + " " + patient.getLastName());
 
-        VerticalLayout mainPanelLayout = new VerticalLayout();
+        this.mainPanelLayout = new VerticalLayout();
         mainPanelLayout.setMargin(false);
         mainPanelLayout.setSpacing(false);
 
         mainPanel.setContent(mainPanelLayout);
 
-        Button newEntry = new Button("");
+        this.newEntry = new Button("");
         newEntry.setIcon(VaadinIcons.PLUS_CIRCLE);
         mainPanelLayout.addComponent(newEntry);
 
         setCompositionRoot(mainPanel);
 
-        for (JournalEntryBean entry : journal.getJournalEntries()) {
+        addJournalEntriesToLayout(journal.getJournalEntries());
+
+    }
+
+    private void addJournalEntriesToLayout(List<JournalEntryBean> entries){
+        for (JournalEntryBean entry : entries) {
             //Todo: Add different Types
 
             Panel entryPanel = new Panel();
