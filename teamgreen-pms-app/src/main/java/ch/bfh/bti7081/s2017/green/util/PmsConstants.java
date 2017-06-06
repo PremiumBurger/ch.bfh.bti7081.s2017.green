@@ -8,7 +8,7 @@ public class PmsConstants {
     /**
      * The Swiss Date Time Format Pattern
      */
-    public static final String SWISS_DATE_FORMAT = "dd.MM.yyyy hh:ss";
+    public static final String SWISS_DATE_FORMAT = "dd.MM.yyyy hh:mm";
 
 
 }
