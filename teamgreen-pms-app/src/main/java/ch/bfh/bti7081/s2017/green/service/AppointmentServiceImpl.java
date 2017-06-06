@@ -26,10 +26,12 @@ public class AppointmentServiceImpl extends BaseService<Appointment, Appointment
      * @param appointmentBean
      */
     public long save(AppointmentBean appointmentBean) {
-        AppointmentStateTypeBean oldAppointmentStateTypeBean = this.getOne(appointmentBean.getId()).getAppointmentStateType();
-        AppointmentStateTypeBean newAppointmentStateTypeBean = appointmentBean.getAppointmentStateType();
-        if(newAppointmentStateTypeBean != oldAppointmentStateTypeBean){
-            newAppointmentStateTypeBean.onStateSet(appointmentBean);
+        if(appointmentBean.getId()>0) {
+            AppointmentStateTypeBean oldAppointmentStateTypeBean = this.getOne(appointmentBean.getId()).getAppointmentStateType();
+            AppointmentStateTypeBean newAppointmentStateTypeBean = appointmentBean.getAppointmentStateType();
+            if (newAppointmentStateTypeBean != oldAppointmentStateTypeBean) {
+                newAppointmentStateTypeBean.onStateSet(appointmentBean);
+            }
         }
         return super.save(appointmentBean);
     }
