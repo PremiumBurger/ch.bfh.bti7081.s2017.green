@@ -11,6 +11,7 @@ import org.springframework.stereotype.Component;
 public class JournalViewImpl extends VerticalLayout implements JournalView {
 
     private JournalViewListener listener;
+    private Button newEntry;
 
     public JournalViewImpl() {
 
@@ -20,11 +21,15 @@ public class JournalViewImpl extends VerticalLayout implements JournalView {
     @Override
     public void addListener(JournalViewListener listener) {
         this.listener = listener;
+        this.newEntry = new Button("New Entry");
+        newEntry.setIcon(VaadinIcons.PLUS_CIRCLE);
     }
 
     @Override
     public void init(PatientBean patient) {
-        addComponents(new JournalComponent(patient));
+        removeAllComponents();
+        addComponent(newEntry);
+        addComponent(new JournalEntryListComponent(patient.getJournal().getJournalEntries()));
     }
 
     @Override

@@ -1,27 +1,23 @@
 package ch.bfh.bti7081.s2017.green.ui.components.journal;
 
 import ch.bfh.bti7081.s2017.green.bean.AppointmentJournalEntryBean;
-import ch.bfh.bti7081.s2017.green.bean.JournalBean;
 import ch.bfh.bti7081.s2017.green.bean.JournalEntryBean;
-import ch.bfh.bti7081.s2017.green.bean.PatientBean;
-import ch.bfh.bti7081.s2017.green.domain.Journal;
 import com.vaadin.icons.VaadinIcons;
 import com.vaadin.shared.ui.MarginInfo;
 import com.vaadin.ui.*;
 
 import java.util.List;
 
-public class JournalComponent extends CustomComponent {
+public class JournalEntryListComponent extends CustomComponent {
 
     private Panel mainPanel;
     private VerticalLayout mainPanelLayout;
-    private Button newEntry;
 
-    public JournalComponent(PatientBean patient) {
 
-        JournalBean journal = patient.getJournal();
+    public JournalEntryListComponent(List<JournalEntryBean> journal) {
+
         this.mainPanel = new Panel();
-        mainPanel.setCaption("Journal von " + patient.getFirstName() + " " + patient.getLastName());
+        mainPanel.setCaption("Journal");
 
         this.mainPanelLayout = new VerticalLayout();
         mainPanelLayout.setMargin(false);
@@ -29,14 +25,9 @@ public class JournalComponent extends CustomComponent {
 
         mainPanel.setContent(mainPanelLayout);
 
-        this.newEntry = new Button("");
-        newEntry.setIcon(VaadinIcons.PLUS_CIRCLE);
-        mainPanelLayout.addComponent(newEntry);
-
         setCompositionRoot(mainPanel);
 
-        addJournalEntriesToLayout(journal.getJournalEntries());
-
+        addJournalEntriesToLayout(journal);
     }
 
     private void addJournalEntriesToLayout(List<JournalEntryBean> entries){
