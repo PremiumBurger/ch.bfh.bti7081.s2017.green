@@ -1,8 +1,7 @@
 package ch.bfh.bti7081.s2017.green.ui;
 
+import com.github.scribejava.core.model.OAuth2AccessToken;
 import com.github.scribejava.core.model.Token;
-import com.vaadin.navigator.View;
-import com.vaadin.navigator.ViewChangeListener;
 import com.vaadin.server.Responsive;
 import com.vaadin.ui.*;
 import com.vaadin.ui.themes.ValoTheme;
@@ -48,7 +47,7 @@ public class LoginView extends VerticalLayout {
         fields.addStyleName("fields");
 
         OAuthPopupButton fbButton = createFacebookButton();
-        if (fbButton!=null) {
+        if (fbButton != null) {
             fields.addComponent(fbButton);
             fields.setComponentAlignment(fbButton, Alignment.BOTTOM_LEFT);
         }
@@ -57,36 +56,35 @@ public class LoginView extends VerticalLayout {
         return fields;
     }
 
-    private OAuthPopupButton createFacebookButton() {
+    private OAuthPopupButton createFacebookButton () {
         String key = "1830725237245643";
         String secret = "7292241f5b8cdb2d84024dd6b19d7158";
-        if (key==null || secret==null) {
+        if (key == null || secret == null) {
             return null;
         }
         FacebookButton button = new FacebookButton(key, secret);
-        button.addStyleName("loginBtn loginBtn--google");
-        button.setCaption("Sign in with Google");
+        //button.addStyleName("loginBtn loginBtn--facebook");
+        button.setCaption("Login with Facebook");
         return initButton(button, Service.FACEBOOK, key, secret);
     }
 
-    private OAuthPopupButton initButton(OAuthPopupButton button, final Service service, final String key, final String secret) {
+    private OAuthPopupButton initButton (OAuthPopupButton button, final Service service, final String key, final String secret) {
         button.addOAuthListener(new OAuthListener() {
             @Override
             public void authSuccessful (Token token, boolean b) {
-                Token t = token;
-                UserToken userToken = new UserToken("", "");
+                OAuth2AccessToken oauthToken = (OAuth2AccessToken) token;
+                UserToken userToken = new UserToken(oauthToken.getAccessToken());
                 OAuthService serv = OAuthService.createService(service, key, secret, userToken);
                 UserProfile profile = serv.getUserProfile();
                 if (profile != null) {
                     // login(User.newUser(profile));
-                }
-                else {
+                } else {
                     Notification.show("Not authenticated.");
                 }
             }
 
             @Override
-            public void authDenied(String var1) {
+            public void authDenied (String var1) {
                 Notification.show("Not authenticated.");
             }
         });

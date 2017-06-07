@@ -2,6 +2,7 @@ package green.auth;
 
 import com.restfb.DefaultFacebookClient;
 import com.restfb.FacebookClient;
+import com.restfb.Parameter;
 
 public class FacebookService extends OAuthService {
 
@@ -18,7 +19,7 @@ public class FacebookService extends OAuthService {
 
 	@Override
 	protected UserProfile fetchUserProfile() {
-		com.restfb.types.User me = client.fetchObject("me", com.restfb.types.User.class);
+		com.restfb.types.User me = client.fetchObject("me", com.restfb.types.User.class, Parameter.with("fields", "id,name,email"));
 		String id = me.getId();
 		String name = me.getName();
 		String email = me.getEmail();
