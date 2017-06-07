@@ -1,16 +1,20 @@
 package ch.bfh.bti7081.s2017.green.ui;
 
-import ch.bfh.bti7081.s2017.green.event.UserLoginRequestedEvent;
-import com.vaadin.event.ShortcutAction.KeyCode;
-import com.vaadin.icons.VaadinIcons;
+import com.github.scribejava.core.model.Token;
+import com.vaadin.navigator.View;
+import com.vaadin.navigator.ViewChangeListener;
 import com.vaadin.server.Responsive;
-import com.vaadin.shared.Position;
 import com.vaadin.ui.*;
-import com.vaadin.ui.Button.ClickListener;
-import com.vaadin.ui.Component;
 import com.vaadin.ui.themes.ValoTheme;
+import green.auth.OAuthService;
+import green.auth.OAuthService.Service;
+import green.auth.UserProfile;
+import green.auth.UserToken;
 import green.mvp.event.EventBus;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.vaadin.addon.oauthpopup.OAuthListener;
+import org.vaadin.addon.oauthpopup.OAuthPopupButton;
+import org.vaadin.addon.oauthpopup.buttons.FacebookButton;
 
 @SuppressWarnings("serial")
 @org.springframework.stereotype.Component
@@ -24,21 +28,9 @@ public class LoginView extends VerticalLayout {
         setSizeFull();
         setMargin(false);
         setSpacing(false);
-
-        Component loginForm = buildLoginForm();
-        addComponent(loginForm);
-        setComponentAlignment(loginForm, Alignment.MIDDLE_CENTER);
-
-        Notification notification = new Notification("Welcome to PMS");
-        notification.setDescription("<span>This application is not real, it only demonstrates an application built with the <a href=\"https://vaadin.com\">Vaadin framework</a>.</span> <span>username: admin and password: Sommer.2017 is required.</span>");
-        notification.setHtmlContentAllowed(true);
-        notification.setStyleName("tray dark small closable login-help");
-        notification.setPosition(Position.BOTTOM_CENTER);
-        notification.setDelayMsec(20000);
-        //notification.show(Page.getCurrent());
     }
 
-    private Component buildLoginForm() {
+    private Component buildLoginForm () {
         final VerticalLayout loginPanel = new VerticalLayout();
         loginPanel.setSizeUndefined();
         loginPanel.setMargin(false);
@@ -51,31 +43,57 @@ public class LoginView extends VerticalLayout {
         return loginPanel;
     }
 
-    private Component buildFields() {
+    private Component buildFields () {
         HorizontalLayout fields = new HorizontalLayout();
         fields.addStyleName("fields");
 
-        final TextField username = new TextField("Username");
-        username.setIcon(VaadinIcons.USER);
-        username.addStyleName(ValoTheme.TEXTFIELD_INLINE_ICON);
+        OAuthPopupButton fbButton = createFacebookButton();
+        if (fbButton!=null) {
+            fields.addComponent(fbButton);
+            fields.setComponentAlignment(fbButton, Alignment.BOTTOM_LEFT);
+        }
 
-        final PasswordField password = new PasswordField("Password");
-        password.setIcon(VaadinIcons.LOCK);
-        password.addStyleName(ValoTheme.TEXTFIELD_INLINE_ICON);
-
-        final Button signin = new Button("Sign In");
-        signin.addStyleName(ValoTheme.BUTTON_PRIMARY);
-        signin.setClickShortcut(KeyCode.ENTER);
-        signin.focus();
-
-        fields.addComponents(username, password, signin);
-        fields.setComponentAlignment(signin, Alignment.BOTTOM_LEFT);
-
-        signin.addClickListener((ClickListener) event -> eventBus.fireEvent(new UserLoginRequestedEvent(username.getValue(), password.getValue())));
+        //usignInButton.addClickListener((ClickListener) event -> eventBus.fireEvent(new UserLoginRequestedEvent(username.getValue(), password.getValue())));
         return fields;
     }
 
-    private Component buildLabels() {
+    private OAuthPopupButton createFacebookButton() {
+        String key = "1830725237245643";
+        String secret = "7292241f5b8cdb2d84024dd6b19d7158";
+        if (key==null || secret==null) {
+            return null;
+        }
+        FacebookButton button = new FacebookButton(key, secret);
+        button.addStyleName("loginBtn loginBtn--google");
+        button.setCaption("Sign in with Google");
+        return initButton(button, Service.FACEBOOK, key, secret);
+    }
+
+    private OAuthPopupButton initButton(OAuthPopupButton button, final Service service, final String key, final String secret) {
+        button.addOAuthListener(new OAuthListener() {
+            @Override
+            public void authSuccessful (Token token, boolean b) {
+                Token t = token;
+                UserToken userToken = new UserToken("", "");
+                OAuthService serv = OAuthService.createService(service, key, secret, userToken);
+                UserProfile profile = serv.getUserProfile();
+                if (profile != null) {
+                    // login(User.newUser(profile));
+                }
+                else {
+                    Notification.show("Not authenticated.");
+                }
+            }
+
+            @Override
+            public void authDenied(String var1) {
+                Notification.show("Not authenticated.");
+            }
+        });
+        return button;
+    }
+
+    private Component buildLabels () {
         CssLayout labels = new CssLayout();
         labels.addStyleName("labels");
 
@@ -93,4 +111,9 @@ public class LoginView extends VerticalLayout {
         return labels;
     }
 
+    public void onAfterBeanInitializaiton () {
+        Component loginForm = buildLoginForm();
+        addComponent(loginForm);
+        setComponentAlignment(loginForm, Alignment.MIDDLE_CENTER);
+    }
 }

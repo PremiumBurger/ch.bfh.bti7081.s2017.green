@@ -45,6 +45,7 @@ public class DashboardUI extends UI {
         Responsive.makeResponsive(this);
         addStyleName(ValoTheme.UI_WITH_MENU);
         this.mainView.onAfterBeanInitializaiton();
+        this.loginView.onAfterBeanInitializaiton();
         updateContent();
 
         // Some views need to be aware of browser resize events so a
