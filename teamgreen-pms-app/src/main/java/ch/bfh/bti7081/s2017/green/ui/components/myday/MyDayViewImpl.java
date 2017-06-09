@@ -5,10 +5,12 @@ import ch.bfh.bti7081.s2017.green.bean.AppointmentBean;
 
 import ch.bfh.bti7081.s2017.green.ui.components.autcomplete.Autocomplete;
 
+import ch.bfh.bti7081.s2017.green.ui.controls.H1Title;
 import ch.bfh.bti7081.s2017.green.util.PmsConstants;
 import com.vaadin.icons.VaadinIcons;
 import com.vaadin.navigator.ViewChangeListener;
 import com.vaadin.ui.*;
+import com.vaadin.ui.themes.ValoTheme;
 import org.springframework.stereotype.Component;
 import org.vaadin.addons.stackpanel.StackPanel;
 
@@ -52,9 +54,11 @@ public class MyDayViewImpl extends VerticalLayout implements MyDayView {
     public void init (List<AppointmentBean> appointments) {
         appointmentSearch.setItems(appointments);
         DateTimeFormatter format = DateTimeFormatter.ofPattern(PmsConstants.SWISS_DATE_FORMAT);
-
         this.removeAllComponents();
         addComponent(appointmentSearch);
+        H1Title dashBoardHeader = new H1Title("My Day");
+
+        addComponent(dashBoardHeader);
         for (AppointmentBean appointment : appointments) {
 
             FormLayout layout = new FormLayout();
