@@ -6,18 +6,19 @@ import ch.bfh.bti7081.s2017.green.ui.components.autcomplete.Autocomplete;
 import ch.bfh.bti7081.s2017.green.ui.stub.PmsDummyImages;
 import com.vaadin.data.Binder;
 import com.vaadin.navigator.ViewChangeListener;
+import org.springframework.stereotype.Component;
 import com.vaadin.ui.*;
 
 import java.util.List;
-import java.util.Set;
 
 /**
  * Created by mathewthekkekara on 06.06.17.
  */
+@Component
 public class PatientDetailViewImpl extends VerticalLayout implements PatientDetailView {
     private PatientDetailViewListener listener;
     private PatientBean patientBean;
-    private Set<AppointmentBean> appointments;
+    private List<AppointmentBean> appointments;
     private ComboBox<AppointmentBean> appointmentSearch;
 
     public PatientDetailViewImpl() {
@@ -32,8 +33,11 @@ public class PatientDetailViewImpl extends VerticalLayout implements PatientDeta
     }
 
     public void initializeView(){
+        removeAllComponents();
+
         addComponent(buildPatientDetail());
     }
+
     @Override
     public void addListener(PatientDetailViewListener listener) {
         this.listener = listener;
@@ -43,8 +47,9 @@ public class PatientDetailViewImpl extends VerticalLayout implements PatientDeta
     public void init(PatientBean patient) {
 
     }
+
     @Override
-    public void setModel(PatientBean patientBean, Set<AppointmentBean> appointments) {
+    public void setModel(PatientBean patientBean, List<AppointmentBean> appointments) {
         this.patientBean = patientBean;
         this.appointments = appointments;
         this.initializeView();
@@ -52,7 +57,8 @@ public class PatientDetailViewImpl extends VerticalLayout implements PatientDeta
 
     @Override
     public void enter (ViewChangeListener.ViewChangeEvent event) {
-        listener.getData();
+        String parameters = event.getParameters();
+        listener.initScreen(Long.valueOf(parameters));
     }
 
     private Panel buildPatientDetail() {

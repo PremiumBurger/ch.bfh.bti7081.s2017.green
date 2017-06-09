@@ -27,7 +27,7 @@ public class PatientViewImpl extends VerticalLayout implements PatientView {
         patientSearch.addValueChangeListener(e -> {
             if(e.getValue() != null) {
                 patientSearch.setValue(null);
-                getUI().getNavigator().navigateTo("Journal" + "/" + e.getValue().getId());
+                getUI().getNavigator().navigateTo("patientDetail" + "/" + e.getValue().getId());
             }
         });
 
