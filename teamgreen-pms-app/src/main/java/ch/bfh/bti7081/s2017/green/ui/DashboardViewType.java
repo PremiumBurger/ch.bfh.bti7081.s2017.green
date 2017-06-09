@@ -14,7 +14,7 @@ public enum DashboardViewType {
     JOURNAL("Journal", JournalView.class, VaadinIcons.CALENDAR, false, false),
     APPOINTMENT_DETAIL("AppointmentDetail", AppointmentDetailView.class, VaadinIcons.CALENDAR, false, false),
     PATIENT("Patients", PatientView.class, VaadinIcons.USER, false, true),
-    PATIENTDETAIL("mmmm",PatientDetailView.class, VaadinIcons.USER,false,false);
+    PATIENTDETAIL("patientDetail",PatientDetailView.class, VaadinIcons.USER,false,false);
 
     private final String viewName;
     private final Class<? extends View> viewClass;
