@@ -1,12 +1,10 @@
 package ch.bfh.bti7081.s2017.green.ui;
 
-import ch.bfh.bti7081.s2017.green.ui.components.appointment.AppointmentView;
 import ch.bfh.bti7081.s2017.green.ui.components.appointment.appointmentCreate.AppointmentCreateView;
 import ch.bfh.bti7081.s2017.green.ui.components.appointment.appointmentDetail.AppointmentDetailView;
 import ch.bfh.bti7081.s2017.green.ui.components.journal.JournalView;
 import ch.bfh.bti7081.s2017.green.ui.components.myday.MyDayView;
 import ch.bfh.bti7081.s2017.green.ui.components.patients.PatientView;
-import ch.bfh.bti7081.s2017.green.ui.view.dashboard.DashboardView;
 import com.vaadin.icons.VaadinIcons;
 import com.vaadin.navigator.View;
 import com.vaadin.server.Resource;
@@ -14,7 +12,7 @@ import com.vaadin.server.Resource;
 public enum DashboardViewType {
     MYDAY("MyDay", MyDayView.class, VaadinIcons.HOME, false, true),
     JOURNAL("Journal", JournalView.class, VaadinIcons.CALENDAR, false, false),
-    APPOINTMENT("Appointment", AppointmentView.class, VaadinIcons.CALENDAR, false, false),
+   // APPOINTMENT("Appointment", AppointmentView.class, VaadinIcons.CALENDAR, false, false),
     APPOINTMENT_DETAIL("AppointmentDetail", AppointmentDetailView.class, VaadinIcons.CALENDAR, false, false),
     APPOINTMENT_CREATE("AppointmentCreate", AppointmentCreateView.class, VaadinIcons.BUG, false, false),
     PATIENT("Patients", PatientView.class, VaadinIcons.USER, false, true);

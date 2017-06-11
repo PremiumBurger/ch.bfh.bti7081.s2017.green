@@ -1,8 +1,10 @@
 package ch.bfh.bti7081.s2017.green.ui.components.appointment.appointmentCreate;
 
 
-import ch.bfh.bti7081.s2017.green.bean.*;
-import ch.bfh.bti7081.s2017.green.ui.components.appointment.appointmentDetail.AppointmentDetailViewListener;
+import ch.bfh.bti7081.s2017.green.bean.AppointmentBean;
+import ch.bfh.bti7081.s2017.green.bean.AppointmentStateTypeBean;
+import ch.bfh.bti7081.s2017.green.bean.PatientBean;
+import ch.bfh.bti7081.s2017.green.bean.PersonBean;
 import ch.bfh.bti7081.s2017.green.ui.controls.H1Title;
 import ch.bfh.bti7081.s2017.green.util.PmsConstants;
 import com.vaadin.data.BeanValidationBinder;
@@ -11,7 +13,6 @@ import com.vaadin.navigator.ViewChangeListener;
 import com.vaadin.ui.*;
 import com.vaadin.ui.themes.ValoTheme;
 import org.springframework.stereotype.Component;
-
 
 import java.util.Set;
 
@@ -68,11 +69,11 @@ public class AppointmentCreateViewImpl extends VerticalLayout implements Appoint
 
         //TODO: Make this work!
         TextField textFieldState = new TextField("State");
-        textFieldState.setDescription(model.getAppointmentStateType().getAppointmentState().getDescription());
+        textFieldState.setDescription(model.getAppointmentStateType().getDescription());
 
         ComboBox<AppointmentStateTypeBean> comboBoxState = new ComboBox<>("State");
         comboBoxState.setItems(allApppointmentStates);
-        comboBoxState.setItemCaptionGenerator(p -> p.getAppointmentState().getDescription());
+        comboBoxState.setItemCaptionGenerator(p -> p.getDescription());
 
         appForm.addComponents(from, to, comboBoxPatient, textFieldState);
 
