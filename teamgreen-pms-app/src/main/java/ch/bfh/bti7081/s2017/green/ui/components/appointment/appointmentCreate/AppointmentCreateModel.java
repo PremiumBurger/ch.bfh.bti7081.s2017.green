@@ -19,7 +19,10 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Set;
 
-
+/**
+ * Model Class (MVP) for Creating new Appointments
+ * @author schms27
+ */
 @Transactional
 @Component
 public class AppointmentCreateModel {
@@ -38,17 +41,6 @@ public class AppointmentCreateModel {
         this.patientService = patientService;
         this.appointmentStateTypeService = appointmentStateTypeService;
         this.healthVisitorService = healthVisitorService;
-    }
-
-
-    /**
-     * Returns the Appointment which will be displayed
-     *
-     * @param appId the appointment id
-     * @return the found {@link AppointmentBean} or <code>null</code> if appointment could not be found
-     */
-    public AppointmentBean getAppointment(long appId) {
-        return appointmentService.getOne(appId);
     }
 
     /**
@@ -74,7 +66,7 @@ public class AppointmentCreateModel {
      *
      * @param appointmentBean the {@link AppointmentBean} to persist
      */
-    public void saveAppointment(AppointmentBean appointmentBean) {
+    public long saveAppointment(AppointmentBean appointmentBean) {
         if(validateAppointment(appointmentBean)) {
             long savedAppointmentId = appointmentService.save(appointmentBean);
             if (savedAppointmentId > 0) {
@@ -85,13 +77,15 @@ public class AppointmentCreateModel {
                 notif.setPosition(Position.BOTTOM_CENTER);
                 notif.show(Page.getCurrent());
             }
+            return savedAppointmentId;
         }
+        return -1;
     }
 
     /**
      * Returns the HealthVisitor for the given Id
      *
-     * @param healthVisitorId
+     * @param healthVisitorId the Id of the HealthVisitor to get
      * @return the found {@link HealthVisitorBean} or <code>null</code> if healthVisitorBean could not be found
      */
     public HealthVisitorBean getHealthVisitor(long healthVisitorId) {
@@ -101,7 +95,7 @@ public class AppointmentCreateModel {
     /**
      * Returns the AppointmentStateTypeBean for the given Id
      *
-     * @param appointmentStateTypeId
+     * @param appointmentStateTypeId the Id of the AppointmentStateType to get
      * @return the found {@link AppointmentStateTypeBean} or <code>null</code> if AppointmentStateTypeBean could not be found
      */
     public AppointmentStateTypeBean getAppointmentStateType(long appointmentStateTypeId) {
@@ -111,7 +105,7 @@ public class AppointmentCreateModel {
     private boolean validateAppointment(AppointmentBean appointmentBean) {
         long hvId;
         long patientId;
-        AppointmentStateTypeBean appointmentState;
+        AppointmentStateTypeBean appointmentState = appointmentBean.getAppointmentStateType();
         LocalDateTime from;
         LocalDateTime to;
         ArrayList<String> errors = new ArrayList<>();
@@ -125,7 +119,6 @@ public class AppointmentCreateModel {
         }catch(NullPointerException e){
             patientId = 0;
         }
-        appointmentState = appointmentBean.getAppointmentStateType();
         try {
             from = appointmentBean.getFrom();
             if(from == null)from = LocalDateTime.MIN;

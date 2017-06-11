@@ -12,9 +12,8 @@ import com.vaadin.server.Resource;
 public enum DashboardViewType {
     MYDAY("MyDay", MyDayView.class, VaadinIcons.HOME, false, true),
     JOURNAL("Journal", JournalView.class, VaadinIcons.CALENDAR, false, false),
-   // APPOINTMENT("Appointment", AppointmentView.class, VaadinIcons.CALENDAR, false, false),
     APPOINTMENT_DETAIL("AppointmentDetail", AppointmentDetailView.class, VaadinIcons.CALENDAR, false, false),
-    APPOINTMENT_CREATE("AppointmentCreate", AppointmentCreateView.class, VaadinIcons.BUG, false, false),
+    APPOINTMENT_CREATE("AppointmentCreate", AppointmentCreateView.class, VaadinIcons.CALENDAR, false, false),
     PATIENT("Patients", PatientView.class, VaadinIcons.USER, false, true);
 
 

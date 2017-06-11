@@ -67,28 +67,22 @@ public class AppointmentCreateViewImpl extends VerticalLayout implements Appoint
         comboBoxPatient.setItems(allPatients);
         comboBoxPatient.setItemCaptionGenerator(PersonBean::getFullName);
 
-        //TODO: Make this work!
-        TextField textFieldState = new TextField("State");
-        textFieldState.setDescription(model.getAppointmentStateType().getDescription());
-
         ComboBox<AppointmentStateTypeBean> comboBoxState = new ComboBox<>("State");
         comboBoxState.setItems(allApppointmentStates);
         comboBoxState.setItemCaptionGenerator(p -> p.getDescription());
+        comboBoxState.setEnabled(false);
 
-        appForm.addComponents(from, to, comboBoxPatient, textFieldState);
+        appForm.addComponents(from, to, comboBoxPatient, comboBoxState);
 
         // bindings
         binder.forField(from).bind("from");
         binder.forField(to).bind("to");
         binder.forField(comboBoxPatient).bind("patient");
         binder.forField(comboBoxState).bind("appointmentStateType");
-        //binder.forField(textFieldState).bind("appointmentStateType");
         binder.setBean(model);
 
         // events
-        comboBoxPatient.addValueChangeListener(event -> {
-            initializeView();
-        });
+        comboBoxPatient.addValueChangeListener(event -> initializeView());
 
         // styles
         appointmentCreatePanel.setResponsive(true);
@@ -103,24 +97,23 @@ public class AppointmentCreateViewImpl extends VerticalLayout implements Appoint
         HorizontalLayout buttons = new HorizontalLayout();
         buttonBarLayout.addComponent(buttons);
 
+        // buttons
         Button cancelButton = new Button("Cancel");
         Button saveButton = new Button("Save", VaadinIcons.DISC);
         Button resetButton = new Button("Reset", VaadinIcons.BACKWARDS);
         buttons.addComponents(cancelButton,resetButton, saveButton);
 
+        // add listeners to buttons
         cancelButton.addClickListener(event ->
                 getUI().getNavigator().navigateTo("MyDay")
         );
-
         resetButton.addClickListener(event -> {
-            model.reset();
+            viewListener.initScreen(1);
             initializeView();
         });
-
         saveButton.addClickListener(event -> {
             viewListener.saveAppointment(model);
             initializeView();
-            Notification.show("Appointment has bees saved successfully");
         });
 
         // styles
