@@ -9,6 +9,10 @@ import org.springframework.stereotype.Component;
 
 import java.util.Set;
 
+/**
+ * Presenter Class (MVP) for Creating new Appointments
+ * @author schms27
+ */
 @Component
 public class AppointmentCreatePresenter implements AppointmentCreateViewListener {
 

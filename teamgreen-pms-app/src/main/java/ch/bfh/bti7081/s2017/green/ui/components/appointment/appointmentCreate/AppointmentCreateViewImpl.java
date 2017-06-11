@@ -16,6 +16,10 @@ import org.springframework.stereotype.Component;
 
 import java.util.Set;
 
+/**
+ * View Class (MVP) for Creating new Appointments
+ * @author schms27
+ */
 @Component
 public class AppointmentCreateViewImpl extends VerticalLayout implements AppointmentCreateView {
 
