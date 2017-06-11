@@ -9,6 +9,7 @@ import ch.bfh.bti7081.s2017.green.util.PmsConstants;
 import com.vaadin.icons.VaadinIcons;
 import com.vaadin.navigator.ViewChangeListener;
 import com.vaadin.ui.*;
+import com.vaadin.ui.themes.ValoTheme;
 import org.springframework.stereotype.Component;
 import org.vaadin.addons.stackpanel.StackPanel;
 
@@ -55,6 +56,8 @@ public class MyDayViewImpl extends VerticalLayout implements MyDayView {
 
         this.removeAllComponents();
         addComponent(appointmentSearch);
+        // add button bar
+        addComponent(buildButtonbar());
         for (AppointmentBean appointment : appointments) {
 
             FormLayout layout = new FormLayout();
@@ -73,12 +76,8 @@ public class MyDayViewImpl extends VerticalLayout implements MyDayView {
             details.setIcon(VaadinIcons.CLIPBOARD_PULSE);
             details.addClickListener(e -> getUI().getNavigator().navigateTo("AppointmentDetail" + "/" + appointment.getId()));
 
-            Button create = new Button("Create new Appointment");
-            create.setIcon(VaadinIcons.BUG);
-            create.addClickListener(e -> getUI().getNavigator().navigateTo("AppointmentCreate" + "/" + 1));
 
-
-            layout.addComponents(to,patientname,street,adr,details,create);
+            layout.addComponents(to,patientname,street,adr,details);
 
             Panel contentPanel = new Panel(" Appointment from: " + appointment.getFrom().format(format) + " Patient: " + appointment.getPatient().getFullName());
             contentPanel.setContent(layout);
@@ -91,7 +90,29 @@ public class MyDayViewImpl extends VerticalLayout implements MyDayView {
 
         }
 
+    }
 
+    private HorizontalLayout buildButtonbar() {
+
+        HorizontalLayout buttonBarLayout = new HorizontalLayout();
+        buttonBarLayout.setDefaultComponentAlignment(Alignment.BOTTOM_RIGHT);
+        buttonBarLayout.setWidth(100, Unit.PERCENTAGE);
+        HorizontalLayout buttons = new HorizontalLayout();
+        buttonBarLayout.addComponent(buttons);
+
+        // buttons
+        Button create = new Button("Create new Appointment");
+        buttons.addComponents(create);
+
+        //listener
+        create.addClickListener(e -> getUI().getNavigator().navigateTo("AppointmentCreate" + "/" + 1));
+
+        // styles
+        create.addStyleName(ValoTheme.BUTTON_FRIENDLY);
+        create.setIcon(VaadinIcons.CALENDAR_USER);
+        buttonBarLayout.setResponsive(true);
+
+        return buttonBarLayout;
     }
 
 
