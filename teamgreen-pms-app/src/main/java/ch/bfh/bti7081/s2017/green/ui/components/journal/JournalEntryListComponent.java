@@ -3,6 +3,7 @@ package ch.bfh.bti7081.s2017.green.ui.components.journal;
 import ch.bfh.bti7081.s2017.green.bean.AppointmentJournalEntryBean;
 import ch.bfh.bti7081.s2017.green.bean.JournalEntryBean;
 import com.vaadin.icons.VaadinIcons;
+import com.vaadin.shared.Registration;
 import com.vaadin.shared.ui.MarginInfo;
 import com.vaadin.ui.*;
 
@@ -12,22 +13,31 @@ public class JournalEntryListComponent extends CustomComponent {
 
     private Panel mainPanel;
     private VerticalLayout mainPanelLayout;
-
+    private Button addJournalEntryButton;
 
     public JournalEntryListComponent(List<JournalEntryBean> journal) {
 
-        this.mainPanel = new Panel();
+        mainPanel = new Panel();
         mainPanel.setCaption("Journal");
 
-        this.mainPanelLayout = new VerticalLayout();
+        addJournalEntryButton = new Button("New Entry");
+        addJournalEntryButton.setIcon(VaadinIcons.PLUS_CIRCLE);
+        addJournalEntryButton.addClickListener(e -> this.fireEvent(new Event(this)) );
+
+        mainPanelLayout = new VerticalLayout();
         mainPanelLayout.setMargin(false);
         mainPanelLayout.setSpacing(false);
+        mainPanelLayout.addComponent(addJournalEntryButton);
+
 
         mainPanel.setContent(mainPanelLayout);
-
         setCompositionRoot(mainPanel);
 
         addJournalEntriesToLayout(journal);
+    }
+
+    public Registration addNewJournalListener(JournalButtonClickEvent event){
+        return this.addListener(Event.class, event, JournalButtonClickEvent.BUTTON_CLICK_METHOD);
     }
 
     private void addJournalEntriesToLayout(List<JournalEntryBean> entries){
@@ -66,3 +76,4 @@ public class JournalEntryListComponent extends CustomComponent {
         }
     }
 }
+

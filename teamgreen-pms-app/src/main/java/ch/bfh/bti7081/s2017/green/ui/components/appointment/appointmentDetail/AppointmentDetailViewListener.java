@@ -1,6 +1,7 @@
 package ch.bfh.bti7081.s2017.green.ui.components.appointment.appointmentDetail;
 
 import ch.bfh.bti7081.s2017.green.bean.AppointmentBean;
+import ch.bfh.bti7081.s2017.green.bean.JournalEntryBean;
 
 public interface AppointmentDetailViewListener {
 
@@ -15,6 +16,15 @@ public interface AppointmentDetailViewListener {
      * @param appointmentBean the {@link AppointmentBean} to persist
      */
     void saveAppointment(AppointmentBean appointmentBean);
+
+    /**
+     * on Click event handler for add journal-entry-button
+     */
+    void onAddJournalEntryButtonClick();
+
+    //Todo: JavaDoc
+
+    void onSaveJournalEntryButtonClick(JournalEntryBean bean);
 
     /**
      * event which gets fired when the state confirm button gets clicked
