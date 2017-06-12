@@ -21,13 +21,16 @@ public class JournalViewImpl extends VerticalLayout implements JournalView {
     @Override
     public void addListener(JournalViewListener listener) {
         this.listener = listener;
-        this.newEntry = new Button("New Entry");
-        newEntry.setIcon(VaadinIcons.PLUS_CIRCLE);
     }
 
     @Override
     public void init(PatientBean patient) {
         removeAllComponents();
+
+        this.newEntry = new Button("New Entry");
+        newEntry.setIcon(VaadinIcons.PLUS_CIRCLE);
+        newEntry.addClickListener(e -> listener.);
+
         addComponent(newEntry);
         addComponent(new JournalEntryListComponent(patient.getJournal().getJournalEntries()));
     }
@@ -37,4 +40,6 @@ public class JournalViewImpl extends VerticalLayout implements JournalView {
         String param = viewChangeEvent.getParameters();
         listener.getData(Long.valueOf(param).longValue());
     }
+
+
 }
