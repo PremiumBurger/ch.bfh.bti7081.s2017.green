@@ -10,7 +10,7 @@ public class H1Title extends Label {
         super(title);
         setSizeUndefined();
         addStyleName(ValoTheme.LABEL_H1);
-
+        addStyleName(ValoTheme.LABEL_NO_MARGIN);
 
     }
 
