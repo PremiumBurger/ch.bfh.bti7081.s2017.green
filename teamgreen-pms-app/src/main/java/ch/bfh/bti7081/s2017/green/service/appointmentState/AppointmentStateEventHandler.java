@@ -11,7 +11,7 @@ public interface AppointmentStateEventHandler {
 
     /**
      * Event to get called when the State on the appointment has been set/changed
-     * @param appointmentBean
+     * @param appointmentBean where the state has been changed
      */
     void onStateSet(AppointmentBean appointmentBean);
 }
