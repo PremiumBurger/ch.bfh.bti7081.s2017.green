@@ -1,12 +1,12 @@
 package ch.bfh.bti7081.s2017.green.ui.components.alarm;
 
+import ch.bfh.bti7081.s2017.green.ui.controls.LinkButton;
 import com.vaadin.icons.VaadinIcons;
 import com.vaadin.navigator.ViewChangeListener;
-import com.vaadin.ui.Button;
-import com.vaadin.ui.Label;
-import com.vaadin.ui.PopupView;
-import com.vaadin.ui.VerticalLayout;
+import com.vaadin.server.ExternalResource;
+import com.vaadin.ui.*;
 import com.vaadin.ui.themes.ValoTheme;
+import org.hibernate.boot.jaxb.SourceType;
 import org.springframework.stereotype.Component;
 
 /**
@@ -15,26 +15,10 @@ import org.springframework.stereotype.Component;
 @Component
 public class AlarmViewImpl extends VerticalLayout implements AlarmView{
     AlarmViewListener listener;
-    Button alarm;
-    PopupView alarmPopUp;
-    VerticalLayout alarmConentPopUp;
 
     public AlarmViewImpl() {
-        alarm = new Button("Alarm");
-        alarm.setIcon(VaadinIcons.BELL_O);
-        alarm.setWidth("100%");
-        alarm.setHeight("100%");
-        alarm.addStyleName(ValoTheme.BUTTON_DANGER);
-        alarm.addClickListener(e -> alarmPopUp.setPopupVisible(true));
-
-        alarmConentPopUp = new VerticalLayout();
-        Label helpMessage = new Label("Help is Comming!!!");
-        alarmConentPopUp.addComponent(helpMessage);
-
-        alarmPopUp = new PopupView("Alarm", alarmConentPopUp);
-        alarmPopUp.addStyleName(ValoTheme.NOTIFICATION_WARNING);
-
-        addComponents(alarm, alarmPopUp);
+        LinkButton alarmLink = new LinkButton("Alarm",new ExternalResource("tel:0774099434"));
+        addComponents(alarmLink);
 
     }
 
