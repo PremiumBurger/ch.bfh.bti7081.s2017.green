@@ -1,4 +1,4 @@
-package ch.bfh.bti7081.s2017.green.ui.components.appointment.appointmentState;
+package ch.bfh.bti7081.s2017.green.service.appointmentState;
 
 import ch.bfh.bti7081.s2017.green.bean.AppointmentBean;
 
@@ -8,6 +8,10 @@ import ch.bfh.bti7081.s2017.green.bean.AppointmentBean;
  */
 public interface AppointmentStateEventHandler {
 
-    //Event to get called when the State on the appointment has been set/changed
+
+    /**
+     * Event to get called when the State on the appointment has been set/changed
+     * @param appointmentBean
+     */
     void onStateSet(AppointmentBean appointmentBean);
 }

@@ -1,4 +1,4 @@
-package ch.bfh.bti7081.s2017.green.ui.components.appointment.appointmentState;
+package ch.bfh.bti7081.s2017.green.service.appointmentState;
 
 import ch.bfh.bti7081.s2017.green.bean.AppointmentBean;
 import com.vaadin.ui.Notification;
