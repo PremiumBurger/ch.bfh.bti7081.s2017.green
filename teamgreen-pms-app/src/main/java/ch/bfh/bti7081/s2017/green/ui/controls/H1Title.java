@@ -11,6 +11,7 @@ public class H1Title extends Label {
         setSizeUndefined();
         addStyleName(ValoTheme.LABEL_H1);
         addStyleName(ValoTheme.LABEL_NO_MARGIN);
+
     }
 
 }
