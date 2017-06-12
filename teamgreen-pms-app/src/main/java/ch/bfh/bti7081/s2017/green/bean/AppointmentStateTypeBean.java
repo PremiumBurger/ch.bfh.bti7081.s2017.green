@@ -1,13 +1,13 @@
 package ch.bfh.bti7081.s2017.green.bean;
 
 import ch.bfh.bti7081.s2017.green.domain.AppointmentStateType;
-import ch.bfh.bti7081.s2017.green.ui.components.appointment.appointmentState.AppointmentState;
-import ch.bfh.bti7081.s2017.green.ui.components.appointment.appointmentState.AppointmentStateEventHandler;
-import ch.bfh.bti7081.s2017.green.ui.components.appointment.appointmentState.AppointmentStateNew;
+import ch.bfh.bti7081.s2017.green.service.appointmentState.AppointmentState;
+import ch.bfh.bti7081.s2017.green.service.appointmentState.AppointmentStateEventHandler;
+import ch.bfh.bti7081.s2017.green.service.appointmentState.AppointmentStateNew;
 
 /**
- * Created by Simu on 18.05.2017 for Project ch.bfh.bti7081.s2017.green.
- * TEstbeschreibung
+ * Bean Class Appointment State Type
+ * @author schms27
  */
 public class AppointmentStateTypeBean extends EntityBean<AppointmentStateType> implements AppointmentStateEventHandler{
 

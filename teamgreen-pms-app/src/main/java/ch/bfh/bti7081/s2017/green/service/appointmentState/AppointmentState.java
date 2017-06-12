@@ -1,4 +1,4 @@
-package ch.bfh.bti7081.s2017.green.ui.components.appointment.appointmentState;
+package ch.bfh.bti7081.s2017.green.service.appointmentState;
 
 /**
  * Appointment State Class to extend from to create new Appointment States
