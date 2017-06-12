@@ -1,6 +1,7 @@
 package ch.bfh.bti7081.s2017.green.ui.components.appointment.appointmentDetail;
 
 import ch.bfh.bti7081.s2017.green.bean.AppointmentBean;
+import ch.bfh.bti7081.s2017.green.bean.AppointmentJournalEntryBean;
 import ch.bfh.bti7081.s2017.green.bean.AppointmentStateTypeBean;
 import ch.bfh.bti7081.s2017.green.bean.LocationBean;
 import ch.bfh.bti7081.s2017.green.bean.PatientBean;
@@ -24,6 +25,8 @@ public interface AppointmentDetailView extends View {
      * @param locationBean the location bean
      */
     void setModel(AppointmentBean appointmentBean, Set<PatientBean> allPatients, Set<AppointmentStateTypeBean> allApppointmentStates, LocationBean locationBean);
+
+    void openModal(AppointmentJournalEntryBean bean);
 
     /**
      * Updates the two State-dependent Buttons on the view

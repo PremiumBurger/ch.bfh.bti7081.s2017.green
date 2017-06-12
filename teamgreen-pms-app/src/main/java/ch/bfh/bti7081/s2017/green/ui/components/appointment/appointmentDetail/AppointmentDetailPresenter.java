@@ -1,9 +1,8 @@
 package ch.bfh.bti7081.s2017.green.ui.components.appointment.appointmentDetail;
 
-import ch.bfh.bti7081.s2017.green.bean.AppointmentBean;
-import ch.bfh.bti7081.s2017.green.bean.AppointmentStateTypeBean;
+import ch.bfh.bti7081.s2017.green.bean.*;
+import ch.bfh.bti7081.s2017.green.domain.AppointmentJournalEntry;
 import ch.bfh.bti7081.s2017.green.bean.LocationBean;
-import ch.bfh.bti7081.s2017.green.bean.PatientBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -74,4 +73,22 @@ public class AppointmentDetailPresenter implements AppointmentDetailViewListener
     public AppointmentStateTypeBean getAppointmentStateTypeBean(long id) {
         return appDetailModel.getAppointmentStateTypeBean(id);
     }
+
+    public void saveAppoinmtentJournalEntry(AppointmentJournalEntryBean appointmentJournalEntryBean){
+        //Kann ich den Eintrag über das Appointment herunterschreiben oder braucht es einen Service?
+        }
+
+    @Override
+    public void onAddJournalEntryButtonClick(){
+        AppointmentJournalEntryBean appointmentJournalEntryBean = new AppointmentJournalEntryBean();
+        this.appDetailView.openModal(appointmentJournalEntryBean);
+    }
+
+    @Override
+    public void onSaveJournalEntryButtonClick(JournalEntryBean bean){
+
+        System.out.println("onSaveJournalEntryButtonClick ausgeführt");
+        //speichern Methode aufrufen
+}
+
 }

@@ -1,6 +1,9 @@
 package ch.bfh.bti7081.s2017.green.ui.components.appointment.appointmentDetail;
 
 import ch.bfh.bti7081.s2017.green.bean.*;
+import ch.bfh.bti7081.s2017.green.domain.AppointmentJournalEntry;
+import ch.bfh.bti7081.s2017.green.ui.components.journal.JournalCRUD;
+import ch.bfh.bti7081.s2017.green.ui.components.journal.JournalEntryListComponent;
 import ch.bfh.bti7081.s2017.green.ui.controls.H1Title;
 import ch.bfh.bti7081.s2017.green.ui.controls.H2Title;
 import ch.bfh.bti7081.s2017.green.ui.stub.PmsDummyImages;
@@ -17,6 +20,7 @@ import com.vaadin.ui.*;
 import com.vaadin.ui.themes.ValoTheme;
 import org.springframework.stereotype.Component;
 
+import java.time.LocalDateTime;
 import java.util.Set;
 
 @Component
@@ -88,6 +92,13 @@ public class AppointmentDetailViewImpl extends VerticalLayout implements Appoint
 
         // linked journal entries
         // TODO: aluege mitm Tobi!
+        JournalEntryListComponent journalComponent = new JournalEntryListComponent(model.getPatient().getJournal().getJournalEntries());
+
+        journalComponent.addNewJournalListener(e -> {
+            this.viewListener.onAddJournalEntryButtonClick();
+        });
+
+        addComponent(journalComponent);
 
         // styles
         twoColLayout.setWidth(100, Unit.PERCENTAGE);
@@ -363,5 +374,30 @@ public class AppointmentDetailViewImpl extends VerticalLayout implements Appoint
     public void enter(ViewChangeListener.ViewChangeEvent event) {
         String parameters = event.getParameters();
         viewListener.initScreen(Long.valueOf(parameters));
+    }
+
+    public void openModal(AppointmentJournalEntryBean bean){
+        //Todo: Review: diese Logik hier?
+        bean.setAppointment(this.model);
+        bean.setCreatedBy(this.model.getHealthVisitor());  //Todo: change to current user
+        bean.setCreatedOn(LocalDateTime.now());
+
+        JournalCRUD modal = new JournalCRUD(bean);
+
+
+        modal.addSaveJournalEntryListener(e -> {
+            this.viewListener.onSaveJournalEntryButtonClick(modal.getBean());
+        });
+
+//        modal.addSaveJournalEntryAndNextListener(e -> {
+//            modal.getBean();
+//            this.viewListener.onSaveJournalEntryAndNextButtonClick();
+//        });
+
+        modal.center();
+        modal.setModal(true);
+        modal.setWidth(350.0f, Unit.PIXELS);
+        modal.setHeight(400.0f, Unit.PIXELS);
+        this.getUI().addWindow(modal);
     }
 }
