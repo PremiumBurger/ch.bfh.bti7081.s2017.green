@@ -8,6 +8,9 @@ import com.vaadin.data.BeanValidationBinder;
 import com.vaadin.data.Binder;
 import com.vaadin.icons.VaadinIcons;
 import com.vaadin.navigator.ViewChangeListener;
+import com.vaadin.tapio.googlemaps.GoogleMap;
+import com.vaadin.tapio.googlemaps.client.LatLon;
+import com.vaadin.tapio.googlemaps.client.overlays.GoogleMapMarker;
 import com.vaadin.ui.*;
 import com.vaadin.ui.themes.ValoTheme;
 import org.springframework.stereotype.Component;
@@ -48,11 +51,8 @@ public class AppointmentDetailViewImpl extends VerticalLayout implements Appoint
         // set page title
         addComponent(new H1Title("Appointment (#" + model.getId() + ")"));
 
-        // set appointment details
-        addComponent(buildAppointmentDetail());
-
-        // add button bar
-        addComponent(buildButtonbar());
+        // add appointment detail and map
+        addComponent(buildDetailAndMap());
 
         // set patient and healthvisitor details
         involvedLayout = buildInvolved();
@@ -62,6 +62,18 @@ public class AppointmentDetailViewImpl extends VerticalLayout implements Appoint
         // TODO: aluege mitm Tobi!
     }
 
+    private HorizontalLayout buildDetailAndMap() {
+        HorizontalLayout detailMapLayout = new HorizontalLayout();
+        VerticalLayout detailButtonLayout = new VerticalLayout();
+        detailButtonLayout.addComponents(buildAppointmentDetail(), buildButtonbar());
+        detailMapLayout.addComponents(detailButtonLayout, buildLocationMap());
+
+        // styles
+        detailMapLayout.setWidth(100, Unit.PERCENTAGE);
+        detailButtonLayout.setMargin(false);
+
+        return detailMapLayout;
+    }
     private HorizontalLayout buildInvolved() {
         HorizontalLayout involvedLayout = new HorizontalLayout();
         involvedLayout.setWidth(100, Unit.PERCENTAGE);
@@ -226,6 +238,22 @@ public class AppointmentDetailViewImpl extends VerticalLayout implements Appoint
         appointmentDetailPanel.setResponsive(true);
         appForm.setResponsive(true);
         return appointmentDetailPanel;
+    }
+
+    private Panel buildLocationMap() {
+        Panel panel = new Panel("Location");
+        VerticalLayout mapLayout = new VerticalLayout();
+        GoogleMap googleMap = new GoogleMap(PmsConstants.GOOGLE_MAPS_API_KEY, null, "german");
+        googleMap.setSizeFull();
+        LatLon bfhBern = new LatLon(46.964815, 7.456026);
+        googleMap.addMarker("Appointment Location", bfhBern, false, null);
+        googleMap.setCenter(bfhBern);
+        googleMap.setMinZoom(4);
+        googleMap.setMaxZoom(16);
+        mapLayout.addComponent(googleMap);
+        panel.setContent(mapLayout);
+        panel.setWidth(100, Unit.PERCENTAGE);
+        return panel;
     }
 
     @Override
