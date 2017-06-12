@@ -76,7 +76,7 @@ public class PatientViewImpl extends VerticalLayout implements PatientView {
             journalButton.addClickListener(e -> getUI().getNavigator().navigateTo("Journal" + "/" + patient.getId()));
             formLayout.setMargin(true);
             formLayout.setSpacing(false);
-            formLayout.addComponents(firstName, lastName, street,address,ahv,healthVisitorBeanGrid,journalButton);
+            formLayout.addComponents(firstName, lastName, street,address,ahv,journalButton);
             Panel contentPanel = new Panel();
             contentPanel.setContent(formLayout);
             contentPanel.setCaption(patient.getFullName());
