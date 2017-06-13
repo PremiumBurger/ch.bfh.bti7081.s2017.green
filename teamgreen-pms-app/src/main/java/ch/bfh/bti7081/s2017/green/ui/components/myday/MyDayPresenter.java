@@ -38,6 +38,6 @@ public class MyDayPresenter implements MyDayViewListener {
      */
     @Override
     public void getData() {
-        myDayView.init(myDay.getAll());
+        myDayView.init(myDay.getAllAppointments(), myDay.getAllPatients());
     }
 }
