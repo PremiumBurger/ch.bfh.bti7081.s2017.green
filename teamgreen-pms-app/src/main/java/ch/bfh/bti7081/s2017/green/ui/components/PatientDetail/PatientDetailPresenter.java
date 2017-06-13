@@ -18,15 +18,10 @@ public class PatientDetailPresenter implements PatientDetailViewListener {
     private PatientDetailView patientDetailView;
 
     @Autowired
-    public PatientDetailPresenter(PatientDetailModel patientDetail, PatientDetailView patientDetailView){
+    public PatientDetailPresenter(PatientDetailModel patientDetail, PatientDetailView patientDetailView) {
         this.patientDetail = patientDetail;
         this.patientDetailView = patientDetailView;
         patientDetailView.addListener(this);
-    }
-
-    @Override
-    public void getData() {
-
     }
 
     @Override
