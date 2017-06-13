@@ -7,6 +7,7 @@ import ch.bfh.bti7081.s2017.green.util.PmsConstants;
 import com.vaadin.icons.VaadinIcons;
 import com.vaadin.navigator.ViewChangeListener;
 import com.vaadin.ui.*;
+import com.vaadin.ui.themes.ValoTheme;
 import org.springframework.stereotype.Component;
 import org.vaadin.addons.stackpanel.StackPanel;
 import java.time.format.DateTimeFormatter;
@@ -87,6 +88,10 @@ public class MyDayViewImpl extends VerticalLayout implements MyDayView {
 
         //Remove all Components
         this.removeAllComponents();
+        addComponent(appointmentSearch);
+      
+        // add button bar
+        addComponent(buildButtonbar());
 
         //Add Search to this Vertical Layout
         addComponent(patientSearch);
@@ -141,5 +146,28 @@ public class MyDayViewImpl extends VerticalLayout implements MyDayView {
             //Add contentPanel to this VerticalLayout
             addComponent(contentPanel);
         }
+    }
+
+    private HorizontalLayout buildButtonbar() {
+
+        HorizontalLayout buttonBarLayout = new HorizontalLayout();
+        buttonBarLayout.setDefaultComponentAlignment(Alignment.BOTTOM_RIGHT);
+        buttonBarLayout.setWidth(100, Unit.PERCENTAGE);
+        HorizontalLayout buttons = new HorizontalLayout();
+        buttonBarLayout.addComponent(buttons);
+
+        // buttons
+        Button create = new Button("Create new Appointment");
+        buttons.addComponents(create);
+
+        //listener
+        create.addClickListener(e -> getUI().getNavigator().navigateTo("AppointmentCreate" + "/" + 1));
+
+        // styles
+        create.addStyleName(ValoTheme.BUTTON_FRIENDLY);
+        create.setIcon(VaadinIcons.CALENDAR_USER);
+        buttonBarLayout.setResponsive(true);
+
+        return buttonBarLayout;
     }
 }

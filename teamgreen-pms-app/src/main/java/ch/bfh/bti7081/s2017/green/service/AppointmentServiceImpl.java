@@ -23,13 +23,15 @@ public class AppointmentServiceImpl extends BaseService<Appointment, Appointment
     /**
      * Overrides save Method from BaseService
      * to trigger the state-dependent Events
-     * @param appointmentBean
+     * @param appointmentBean the Appointment Bean to save
      */
     public long save(AppointmentBean appointmentBean) {
-        AppointmentStateTypeBean oldAppointmentStateTypeBean = this.getOne(appointmentBean.getId()).getAppointmentStateType();
-        AppointmentStateTypeBean newAppointmentStateTypeBean = appointmentBean.getAppointmentStateType();
-        if(newAppointmentStateTypeBean != oldAppointmentStateTypeBean){
-            newAppointmentStateTypeBean.onStateSet(appointmentBean);
+        if(appointmentBean.getId()>0) {
+            AppointmentStateTypeBean oldAppointmentStateTypeBean = this.getOne(appointmentBean.getId()).getAppointmentStateType();
+            AppointmentStateTypeBean newAppointmentStateTypeBean = appointmentBean.getAppointmentStateType();
+            if (!newAppointmentStateTypeBean.getDescription().equals(oldAppointmentStateTypeBean.getDescription())) {
+                newAppointmentStateTypeBean.onStateSet(appointmentBean);
+            }
         }
         return super.save(appointmentBean);
     }
