@@ -20,6 +20,6 @@ public class AppointmentStateConfirmed extends AppointmentState {
 
     @Override
     public void remove(AppointmentBean appointmentBean, AppointmentServiceImpl service) {
-
+        appointmentBean.getAppointmentStateType().setAppointmentState(new AppointmentStateCancelled());
     }
 }

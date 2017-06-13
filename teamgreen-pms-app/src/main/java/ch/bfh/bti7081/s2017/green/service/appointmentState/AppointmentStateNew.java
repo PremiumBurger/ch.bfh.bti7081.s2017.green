@@ -2,9 +2,7 @@ package ch.bfh.bti7081.s2017.green.service.appointmentState;
 
 import ch.bfh.bti7081.s2017.green.bean.AppointmentBean;
 import ch.bfh.bti7081.s2017.green.bean.AppointmentStateTypeBean;
-import ch.bfh.bti7081.s2017.green.service.AppointmentService;
 import ch.bfh.bti7081.s2017.green.service.AppointmentServiceImpl;
-import ch.bfh.bti7081.s2017.green.service.AppointmentStateTypeServiceImpl;
 import com.vaadin.ui.Notification;
 
 import java.time.LocalDateTime;
@@ -33,11 +31,17 @@ public class AppointmentStateNew extends AppointmentState {
 
     @Override
     public void confirm(AppointmentBean appointmentBean, AppointmentServiceImpl service) {
-        appointmentBean.getAppointmentStateType().setAppointmentState(new AppointmentStateConfirmed());
+        //Get new AppointmentStateTypeBean 'CONFIRMED'
+        AppointmentStateTypeBean type = service.getStateTypeService().getOne(4);
+        type.setAppointmentState(new AppointmentStateConfirmed());
+        appointmentBean.setAppointmentStateType(type);
     }
 
     @Override
     public void remove(AppointmentBean appointmentBean, AppointmentServiceImpl service) {
-        appointmentBean.getAppointmentStateType().setAppointmentState(new AppointmentStateCancelled());
+        //Get new AppointmentStateTypeBean 'CANCELLED'
+        AppointmentStateTypeBean type = service.getStateTypeService().getOne(3);
+        type.setAppointmentState(new AppointmentStateCancelled());
+        appointmentBean.setAppointmentStateType(type);
     }
 }
