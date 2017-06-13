@@ -1,5 +1,6 @@
 package ch.bfh.bti7081.s2017.green.ui.components.myday;
 
+import ch.bfh.bti7081.s2017.green.bean.AppointmentBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -39,5 +40,15 @@ public class MyDayPresenter implements MyDayViewListener {
     @Override
     public void getData() {
         myDayView.init(myDay.getAllAppointments(), myDay.getAllPatients());
+    }
+
+    @Override
+    public void onConfirmClicked(AppointmentBean appointmentBean) {
+
+    }
+
+    @Override
+    public void onCancelledClicked(AppointmentBean appointmentBean) {
+
     }
 }

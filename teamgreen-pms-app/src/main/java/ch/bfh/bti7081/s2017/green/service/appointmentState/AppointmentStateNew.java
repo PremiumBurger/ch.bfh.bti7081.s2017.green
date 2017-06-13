@@ -2,6 +2,7 @@ package ch.bfh.bti7081.s2017.green.service.appointmentState;
 
 import ch.bfh.bti7081.s2017.green.bean.AppointmentBean;
 import ch.bfh.bti7081.s2017.green.bean.AppointmentStateTypeBean;
+import ch.bfh.bti7081.s2017.green.service.AppointmentService;
 import ch.bfh.bti7081.s2017.green.service.AppointmentServiceImpl;
 import com.vaadin.ui.Notification;
 
@@ -25,23 +26,23 @@ public class AppointmentStateNew extends AppointmentState {
             type.setAppointmentState(new AppointmentStatePostponed());
             appointmentBean.setAppointmentStateType(type);
         }
-        service.onStateSetToNew();
+        //service.onStateSetToNew();
         Notification.show("State New has been set");
     }
 
     @Override
-    public void confirm(AppointmentBean appointmentBean, AppointmentServiceImpl service) {
+    public void confirm(AppointmentBean appointmentBean, AppointmentService service) {
         //Get new AppointmentStateTypeBean 'CONFIRMED'
-        AppointmentStateTypeBean type = service.getStateTypeService().getOne(4);
-        type.setAppointmentState(new AppointmentStateConfirmed());
-        appointmentBean.setAppointmentStateType(type);
+        //AppointmentStateTypeBean type = service.getStateTypeService().getOne(4);
+        //type.setAppointmentState(new AppointmentStateConfirmed());
+        //appointmentBean.setAppointmentStateType(type);
     }
 
     @Override
-    public void remove(AppointmentBean appointmentBean, AppointmentServiceImpl service) {
+    public void remove(AppointmentBean appointmentBean, AppointmentService service) {
         //Get new AppointmentStateTypeBean 'CANCELLED'
-        AppointmentStateTypeBean type = service.getStateTypeService().getOne(3);
-        type.setAppointmentState(new AppointmentStateCancelled());
-        appointmentBean.setAppointmentStateType(type);
+        //AppointmentStateTypeBean type = service.getStateTypeService().getOne(3);
+        //type.setAppointmentState(new AppointmentStateCancelled());
+        //appointmentBean.setAppointmentStateType(type);
     }
 }
