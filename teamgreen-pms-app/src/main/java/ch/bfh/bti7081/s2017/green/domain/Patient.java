@@ -1,6 +1,10 @@
 package ch.bfh.bti7081.s2017.green.domain;
 
+import org.hibernate.annotations.*;
+import org.hibernate.annotations.CascadeType;
+
 import javax.persistence.*;
+import javax.persistence.Entity;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,6 +23,7 @@ public class Patient extends Person {
 
     @OneToOne
     @JoinColumn(name = "journalId")
+    @Cascade(CascadeType.ALL)
     private Journal journal;
 
     public Patient() {

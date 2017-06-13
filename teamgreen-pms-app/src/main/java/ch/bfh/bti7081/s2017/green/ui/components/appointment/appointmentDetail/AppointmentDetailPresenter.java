@@ -7,18 +7,22 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.Set;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 @Component
 public class AppointmentDetailPresenter implements AppointmentDetailViewListener {
 
     private AppointmentDetailModel appDetailModel;
     private AppointmentDetailView appDetailView;
+    private final static Logger LOGGER = Logger.getLogger(AppointmentDetailPresenter.class.getName());
 
     @Autowired
     public AppointmentDetailPresenter(AppointmentDetailModel appDetailModel, AppointmentDetailView appDetailView) {
         this.appDetailModel = appDetailModel;
         this.appDetailView = appDetailView;
         appDetailView.setListener(this);
+        LOGGER.setLevel(Level.INFO);
     }
 
     @Override
@@ -36,6 +40,7 @@ public class AppointmentDetailPresenter implements AppointmentDetailViewListener
         if (savedAppointmentId>0){
             appointmentBean.getAppointmentStateType().getAppointmentState().afterStateSet(appDetailModel.getAppointment(savedAppointmentId),appointmentBean,this);
         }
+		LOGGER.info("Das Appointment wurde soeben gespeichert");
     }
 
     @Override
@@ -74,21 +79,9 @@ public class AppointmentDetailPresenter implements AppointmentDetailViewListener
         return appDetailModel.getAppointmentStateTypeBean(id);
     }
 
-    public void saveAppoinmtentJournalEntry(AppointmentJournalEntryBean appointmentJournalEntryBean){
-        //Kann ich den Eintrag über das Appointment herunterschreiben oder braucht es einen Service?
-        }
-
     @Override
     public void onAddJournalEntryButtonClick(){
         AppointmentJournalEntryBean appointmentJournalEntryBean = new AppointmentJournalEntryBean();
         this.appDetailView.openModal(appointmentJournalEntryBean);
     }
-
-    @Override
-    public void onSaveJournalEntryButtonClick(JournalEntryBean bean){
-
-        System.out.println("onSaveJournalEntryButtonClick ausgeführt");
-        //speichern Methode aufrufen
-}
-
 }

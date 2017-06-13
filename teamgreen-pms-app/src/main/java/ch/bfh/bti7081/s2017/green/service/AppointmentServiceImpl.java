@@ -45,7 +45,6 @@ public class AppointmentServiceImpl extends BaseService<Appointment, Appointment
 
         return super.save(appointmentBean);
     }
-
     /**
      * Overrides save Method from BaseService
      * because the AppointmentState can not be properly mapped
