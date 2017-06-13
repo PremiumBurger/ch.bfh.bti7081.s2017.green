@@ -67,19 +67,16 @@ public class AppointmentCreateModel {
      * @param appointmentBean the {@link AppointmentBean} to persist
      */
     public long saveAppointment(AppointmentBean appointmentBean) {
-        if(validateAppointment(appointmentBean)) {
-            long savedAppointmentId = appointmentService.save(appointmentBean);
-            if (savedAppointmentId > 0) {
-                Notification notif = new Notification(
-                        "Appointment # " + savedAppointmentId + " has been saved successfully"
-                );
-                notif.setDelayMsec(5000);
-                notif.setPosition(Position.BOTTOM_CENTER);
-                notif.show(Page.getCurrent());
-            }
-            return savedAppointmentId;
+        long savedAppointmentId = appointmentService.save(appointmentBean);
+        if (savedAppointmentId > 0) {
+            Notification notif = new Notification(
+                    "Appointment # " + savedAppointmentId + " has been saved successfully"
+            );
+            notif.setDelayMsec(5000);
+            notif.setPosition(Position.BOTTOM_CENTER);
+            notif.show(Page.getCurrent());
         }
-        return -1;
+        return savedAppointmentId;
     }
 
     /**
@@ -100,61 +97,5 @@ public class AppointmentCreateModel {
      */
     public AppointmentStateTypeBean getAppointmentStateType(long appointmentStateTypeId) {
         return appointmentStateTypeService.getOne(appointmentStateTypeId);
-    }
-
-    private boolean validateAppointment(AppointmentBean appointmentBean) {
-        long hvId;
-        long patientId;
-        AppointmentStateTypeBean appointmentState = appointmentBean.getAppointmentStateType();
-        LocalDateTime from;
-        LocalDateTime to;
-        ArrayList<String> errors = new ArrayList<>();
-        try {
-            hvId = appointmentBean.getHealthVisitor().getId();
-        }catch(NullPointerException e){
-            hvId = 0;
-        }
-        try {
-            patientId = appointmentBean.getPatient().getId();
-        }catch(NullPointerException e){
-            patientId = 0;
-        }
-        try {
-            from = appointmentBean.getFrom();
-            if(from == null)from = LocalDateTime.MIN;
-        }catch(NullPointerException e){
-            from = LocalDateTime.MIN;
-        }
-        try {
-            to = appointmentBean.getTo();
-            if(to == null)to = LocalDateTime.MIN;
-        }catch(NullPointerException e){
-            to = LocalDateTime.MIN;
-        }
-
-        if (hvId <= 0)errors.add("Health Visitor not set");
-        if (patientId <= 0)errors.add("Patient not set");
-        if (appointmentState == null)errors.add("State not set");
-        if(from.equals(LocalDateTime.MIN))errors.add("From can not be empty");
-        if(to.equals(LocalDateTime.MIN))errors.add("To can not be empty");
-        if(to.isBefore(from))errors.add("To can not be earlier than From");
-
-        //get all validation errors, notify user
-        if(!errors.isEmpty()){
-            StringBuilder error = new StringBuilder();
-            for(String string : errors) {
-                error.append(string);
-                error.append(", ");
-            }
-            Notification errorNotif = new Notification(
-                    "Warning",
-                    error.substring(0, error.length() - 1) + " Appointment has not been saved",
-                    Notification.TYPE_ERROR_MESSAGE);
-            errorNotif.setDelayMsec(10000);
-            errorNotif.setPosition(Position.BOTTOM_CENTER);
-            errorNotif.show(Page.getCurrent());
-            return false;
-        }
-        return true;
     }
 }

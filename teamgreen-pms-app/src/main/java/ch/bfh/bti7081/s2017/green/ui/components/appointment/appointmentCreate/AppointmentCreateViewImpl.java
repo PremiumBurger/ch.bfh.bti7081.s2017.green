@@ -10,10 +10,12 @@ import ch.bfh.bti7081.s2017.green.util.PmsConstants;
 import com.vaadin.data.BeanValidationBinder;
 import com.vaadin.icons.VaadinIcons;
 import com.vaadin.navigator.ViewChangeListener;
+import com.vaadin.server.Page;
 import com.vaadin.ui.*;
 import com.vaadin.ui.themes.ValoTheme;
 import org.springframework.stereotype.Component;
 
+import java.time.LocalDateTime;
 import java.util.Set;
 
 /**
@@ -27,6 +29,7 @@ public class AppointmentCreateViewImpl extends VerticalLayout implements Appoint
     private AppointmentBean model;
     private Set<AppointmentStateTypeBean> allApppointmentStates;
     private Set<PatientBean>  allPatients;
+    private BeanValidationBinder<AppointmentBean> binder = new BeanValidationBinder<>(AppointmentBean.class);
 
     @Override
     public void setModel(AppointmentBean appointmentBean, Set<PatientBean> allPatients, Set<AppointmentStateTypeBean> allApppointmentStates) {
@@ -60,7 +63,6 @@ public class AppointmentCreateViewImpl extends VerticalLayout implements Appoint
         VerticalLayout appForm = new VerticalLayout();
         appForm.setMargin(true);
         appointmentCreatePanel.setContent(appForm);
-        BeanValidationBinder binder = new BeanValidationBinder<>(AppointmentBean.class);
 
         DateTimeField from = new DateTimeField("From");
         DateTimeField to = new DateTimeField("To");
@@ -79,8 +81,14 @@ public class AppointmentCreateViewImpl extends VerticalLayout implements Appoint
         appForm.addComponents(from, to, comboBoxPatient, comboBoxState);
 
         // bindings
-        binder.forField(from).bind("from");
-        binder.forField(to).bind("to");
+        binder.forField(from)
+                .withValidator(f ->  to.getValue()==null || f.isBefore(to.getValue()),
+                        "End Date can not be before Start Date")
+                .bind("from");
+        binder.forField(to)
+                .withValidator(t -> from.getValue().isBefore(t),
+                        "End Date can not be before Start Date")
+                .bind("to");
         binder.forField(comboBoxPatient).bind("patient");
         binder.forField(comboBoxState).bind("appointmentStateType");
         binder.setBean(model);
@@ -109,15 +117,17 @@ public class AppointmentCreateViewImpl extends VerticalLayout implements Appoint
 
         // add listeners to buttons
         cancelButton.addClickListener(event ->
-                getUI().getNavigator().navigateTo("MyDay")
+            getUI().getNavigator().navigateTo("MyDay")
         );
         resetButton.addClickListener(event -> {
             viewListener.initScreen(1);
             initializeView();
         });
         saveButton.addClickListener(event -> {
-            viewListener.saveAppointment(model);
-            initializeView();
+            if(binder.isValid()) {
+                viewListener.saveAppointment(model);
+                initializeView();
+            }
         });
 
         // styles
