@@ -12,9 +12,16 @@ import java.util.Set;
  */
 public interface PatientDetailView extends View {
 
-    public void addListener(PatientDetailViewListener listener);
+    /**
+     * Sets the ViewListener of this view
+     * @param patientDetailViewListener the {@link PatientDetailViewListener} to set
+     */
+    public void addListener(PatientDetailViewListener patientDetailViewListener);
 
-    public void init(PatientBean patient);
-
+    /**
+     * Sets the Model of the View
+     * @param patientBean the patientBean which will be populated to the screen
+     * @param apointments the list of all appointments with the Patient
+     */
     public void setModel(PatientBean patientBean, List<AppointmentBean> apointments);
 }

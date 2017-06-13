@@ -24,10 +24,18 @@ public class PatientDetailModel {
         this.patientService = patientService;
     }
 
+    /**
+     * Returns a PatientBean
+     * @param patientId id of the Patient to get
+     * @return the found patient or <code>null</code> if no patient found*/
     public PatientBean getPatient(long patientId){
         return patientService.getOne(patientId);
     }
 
+    /**
+     * Returns all Appointments from the patient
+     * @param patientId id of the patient
+     * @return A List of all Appointments*/
     public List<AppointmentBean> getAllAppointments(long patientId){
         return patientService.getOne(patientId).getAppointments();
     }

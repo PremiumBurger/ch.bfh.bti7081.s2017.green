@@ -38,9 +38,10 @@ public class PatientDetailViewImpl extends VerticalLayout implements PatientDeta
         });
     }
 
-    public void initializeView(){
+    private void initializeView(){
+        //clean all Components before creating new
         removeAllComponents();
-
+        //create new Components
         addComponent(buildPatientDetail());
         addComponent(buildPatientsAppointments());
         addComponent(buidPatientJournal());
@@ -54,10 +55,6 @@ public class PatientDetailViewImpl extends VerticalLayout implements PatientDeta
         this.listener = listener;
     }
 
-    @Override
-    public void init(PatientBean patient) {
-
-    }
 
     @Override
     public void setModel(PatientBean patientBean, List<AppointmentBean> appointments) {
