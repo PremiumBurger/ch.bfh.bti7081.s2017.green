@@ -154,8 +154,6 @@
             <version>${version.junit}</version>
             <scope>test</scope>
         </dependency>
-
-        <!-- Internal dependencies -->
         <dependency>
             <groupId>org.powermock</groupId>
             <artifactId>powermock-api-mockito</artifactId>
@@ -174,6 +172,8 @@
             <version>1.6.4</version>
             <scope>test</scope>
         </dependency>
+
+        <!-- Internal dependencies -->
         <dependency>
             <groupId>ch.bfh.bti7081.s2017.green</groupId>
             <artifactId>greenmvp</artifactId>
