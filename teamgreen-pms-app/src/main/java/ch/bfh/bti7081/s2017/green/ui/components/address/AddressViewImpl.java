@@ -41,6 +41,7 @@ public class AddressViewImpl extends AbsoluteLayout implements AddressView {
         layout.addComponents(grid, btnTest);
         layout.setSizeFull();
         addComponent(layout);
+
     }
 
     @Override

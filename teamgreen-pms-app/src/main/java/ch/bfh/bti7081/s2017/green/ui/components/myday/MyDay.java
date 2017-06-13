@@ -1,33 +1,52 @@
 package ch.bfh.bti7081.s2017.green.ui.components.myday;
 
 import ch.bfh.bti7081.s2017.green.bean.AppointmentBean;
+import ch.bfh.bti7081.s2017.green.bean.PatientBean;
 import ch.bfh.bti7081.s2017.green.service.*;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
-
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
+
+/**
+ * UI Model fo the myDaydataStructure
+ */
 @Transactional
 @Component
 public class MyDay {
 
-    private HealthVisitorService healthVisitorService;
-    private AlarmService alarmService;
-    private PatientService patientService;
+    /**
+     * Declares appointmentService
+     */
     private AppointmentService appointmentService;
-    private AddressService addressService;
 
-    public MyDay(HealthVisitorService healthVisitorService, AlarmService alarmService, PatientService patientService, AppointmentService appointmentService, AddressService addressService) {
-        this.healthVisitorService = healthVisitorService;
-        this.alarmService = alarmService;
-        this.patientService = patientService;
+    /**
+     * Declares patientService
+     */
+    private PatientService patientService;
+
+    /**
+     * @param appointmentService Initializes appointmentservice and patientservice
+     */
+    public MyDay(AppointmentService appointmentService, PatientService patientService) {
         this.appointmentService = appointmentService;
-        this.addressService = addressService;
+        this.patientService = patientService;
     }
 
-    public List<AppointmentBean> getAll(){
+    /**
+     * @return returns a List of Appointmentbeans as a List
+     * AppointmentService delivers Appointmentbeans
+     */
+    public List<AppointmentBean> getAllAppointments(){
         return new ArrayList<AppointmentBean>(appointmentService.getAll());
+    }
+
+    /**
+     * @return returns a List of Patientbeans as a List
+     * PatientService delivers Patientbeans
+     */
+    public List<PatientBean> getAllPatients(){
+        return new ArrayList<PatientBean>(patientService.getAll());
     }
 }
