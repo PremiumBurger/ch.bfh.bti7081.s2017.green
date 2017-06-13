@@ -49,4 +49,8 @@ public class MyDay {
     public List<PatientBean> getAllPatients(){
         return new ArrayList<PatientBean>(patientService.getAll());
     }
+
+    public void confirmState(AppointmentBean appointmentBean){
+        appointmentBean.getAppointmentStateType().confirm(appointmentBean,appointmentService);
+    }
 }

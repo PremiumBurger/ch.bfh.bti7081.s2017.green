@@ -89,11 +89,11 @@ public class MyDayViewImpl extends VerticalLayout implements MyDayView {
         //Remove all Components
         this.removeAllComponents();
 
-        // add button bar
-        addComponent(buildButtonbar());
-
         //Add Search to this Vertical Layout
         addComponent(patientSearch);
+
+        // add button bar
+        addComponent(buildButtonbar());
 
         //Set Header for all Appointments
         H1Title dashBoardHeader = new H1Title("My Day");
@@ -124,16 +124,27 @@ public class MyDayViewImpl extends VerticalLayout implements MyDayView {
             Button details = new Button("Show Details");
             details.setIcon(VaadinIcons.CLIPBOARD_PULSE);
 
-            //Confirm Appointment
+            //Confirm Appointment (State)
             Button confirmAppointment = new Button("Confirm");
+            confirmAppointment.setIcon(VaadinIcons.BUG);
+            confirmAppointment.setVisible(false);
+
+            //Cancel Appointment (State)
+            Button cancelAppointment = new Button("Confirm");
             confirmAppointment.setIcon(VaadinIcons.BUG);
             confirmAppointment.setVisible(false);
 
             //CLicklistener for Appointment Details
             details.addClickListener(e -> getUI().getNavigator().navigateTo("patientDetail" + "/" + appointment.getPatient().getId()));
 
+            //CLicklistener for Appointment Confirm
+            confirmAppointment.addClickListener(e -> listener.onConfirmClicked(appointment));
+
+            //CLicklistener for Appointment Confirm
+            cancelAppointment.addClickListener(e -> listener.onCancelledClicked(appointment));
+
             //Add Components to Layout
-            layout.addComponents(to,patientname,street,adr,details);
+            layout.addComponents(to,patientname,street,adr,details,confirmAppointment);
 
             //Create Content Panel
             Panel contentPanel = new Panel(" Appointment from: " + appointment.getFrom().format(format) + " Patient: " + appointment.getPatient().getFullName());

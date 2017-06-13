@@ -1,6 +1,7 @@
 package ch.bfh.bti7081.s2017.green.service.appointmentState;
 
 import ch.bfh.bti7081.s2017.green.bean.AppointmentBean;
+import ch.bfh.bti7081.s2017.green.service.AppointmentService;
 import ch.bfh.bti7081.s2017.green.service.AppointmentServiceImpl;
 
 /**
@@ -18,8 +19,8 @@ public interface AppointmentStateEventHandler {
      */
     void onStateSet(AppointmentBean appointmentBean, AppointmentServiceImpl service, AppointmentBean oldAppointment);
 
-    void confirm(AppointmentBean appointmentBean, AppointmentServiceImpl service);
+    void confirm(AppointmentBean appointmentBean, AppointmentService service);
 
-    void remove(AppointmentBean appointmentBean, AppointmentServiceImpl service);
+    void remove(AppointmentBean appointmentBean, AppointmentService service);
 
 }
