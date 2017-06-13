@@ -32,4 +32,6 @@ public class HealthVisitorBean extends PersonBean {
     public List<AlarmBean> getAlarms() {
         return alarms;
     }
+
+    public String getName() {return getFirstName()+" "+getLastName();}
 }
