@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
 public class MyDayPresenter implements MyDayViewListener {
 
     /**
-     * Declaration of myDayView
+     * Declaration of MyDay
      * Access to MyDay Model
      */
     private MyDay myDay;
