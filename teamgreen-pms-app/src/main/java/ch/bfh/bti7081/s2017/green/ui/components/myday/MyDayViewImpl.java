@@ -88,7 +88,7 @@ public class MyDayViewImpl extends VerticalLayout implements MyDayView {
 
         //Remove all Components
         this.removeAllComponents();
-      
+
         // add button bar
         addComponent(buildButtonbar());
 
@@ -123,6 +123,11 @@ public class MyDayViewImpl extends VerticalLayout implements MyDayView {
             //Details Button
             Button details = new Button("Show Details");
             details.setIcon(VaadinIcons.CLIPBOARD_PULSE);
+
+            //Confirm Appointment
+            Button confirmAppointment = new Button("Confirm");
+            confirmAppointment.setIcon(VaadinIcons.BUG);
+            confirmAppointment.setVisible(false);
 
             //CLicklistener for Appointment Details
             details.addClickListener(e -> getUI().getNavigator().navigateTo("patientDetail" + "/" + appointment.getPatient().getId()));

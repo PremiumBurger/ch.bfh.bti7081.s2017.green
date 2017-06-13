@@ -14,6 +14,9 @@ public class AppointmentServiceImpl extends BaseService<Appointment, Appointment
     private GoogleGeocodingWebService googleGeocodingWebService;
 
     @Autowired
+    private AppointmentStateTypeServiceImpl stateTypeService;
+
+    @Autowired
     public AppointmentServiceImpl(AppointmentRepository repository, GoogleGeocodingWebService googleGeocodingWebService) {
         super(repository);
         this.googleGeocodingWebService = googleGeocodingWebService;
@@ -31,14 +34,19 @@ public class AppointmentServiceImpl extends BaseService<Appointment, Appointment
      */
     public long save(AppointmentBean appointmentBean) {
         if(appointmentBean.getId()>0) {
-            AppointmentStateTypeBean oldAppointmentStateTypeBean = this.getOne(appointmentBean.getId()).getAppointmentStateType();
+            AppointmentBean oldBean = this.getOne(appointmentBean.getId());
+            AppointmentStateTypeBean oldAppointmentStateTypeBean = oldBean.getAppointmentStateType();
             AppointmentStateTypeBean newAppointmentStateTypeBean = appointmentBean.getAppointmentStateType();
-            if (!newAppointmentStateTypeBean.getDescription().equals(oldAppointmentStateTypeBean.getDescription())) {
-                newAppointmentStateTypeBean.onStateSet(appointmentBean);
+            if (!newAppointmentStateTypeBean != oldAppointmentStateTypeBean)) {
+                newAppointmentStateTypeBean.onStateSet(appointmentBean,this,oldBean);
             }
         }
 
         return super.save(appointmentBean);
+    }
+
+    public AppointmentStateTypeServiceImpl getStateTypeService() {
+        return stateTypeService;
     }
 
 }
