@@ -88,7 +88,6 @@ public class MyDayViewImpl extends VerticalLayout implements MyDayView {
 
         //Remove all Components
         this.removeAllComponents();
-        addComponent(appointmentSearch);
       
         // add button bar
         addComponent(buildButtonbar());
