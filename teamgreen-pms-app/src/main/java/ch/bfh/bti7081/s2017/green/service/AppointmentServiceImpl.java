@@ -11,6 +11,9 @@ import org.springframework.stereotype.Service;
 public class AppointmentServiceImpl extends BaseService<Appointment, AppointmentBean, AppointmentRepository> implements AppointmentService {
 
     @Autowired
+    private AppointmentStateTypeServiceImpl stateTypeService;
+
+    @Autowired
     public AppointmentServiceImpl(AppointmentRepository repository) {
         super(repository);
     }
@@ -23,17 +26,25 @@ public class AppointmentServiceImpl extends BaseService<Appointment, Appointment
     /**
      * Overrides save Method from BaseService
      * to trigger the state-dependent Events
-     * @param appointmentBean the Appointment Bean to save
+     * @param appointmentBean to save
      */
     public long save(AppointmentBean appointmentBean) {
-        if(appointmentBean.getId()>0) {
-            AppointmentStateTypeBean oldAppointmentStateTypeBean = this.getOne(appointmentBean.getId()).getAppointmentStateType();
-            AppointmentStateTypeBean newAppointmentStateTypeBean = appointmentBean.getAppointmentStateType();
-            if (!newAppointmentStateTypeBean.getDescription().equals(oldAppointmentStateTypeBean.getDescription())) {
-                newAppointmentStateTypeBean.onStateSet(appointmentBean);
-            }
+        AppointmentBean oldBean = this.getOne(appointmentBean.getId());
+        AppointmentStateTypeBean oldAppointmentStateTypeBean = oldBean.getAppointmentStateType();
+        AppointmentStateTypeBean newAppointmentStateTypeBean = appointmentBean.getAppointmentStateType();
+        if(newAppointmentStateTypeBean != oldAppointmentStateTypeBean){
+            newAppointmentStateTypeBean.onStateSet(appointmentBean,this,oldBean);
         }
         return super.save(appointmentBean);
     }
+
+    public void onStateSetToNew(){
+
+    }
+
+    public AppointmentStateTypeServiceImpl getStateTypeService() {
+        return stateTypeService;
+    }
+
 
 }

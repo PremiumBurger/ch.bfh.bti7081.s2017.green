@@ -1,6 +1,7 @@
 package ch.bfh.bti7081.s2017.green.bean;
 
 import ch.bfh.bti7081.s2017.green.domain.AppointmentStateType;
+import ch.bfh.bti7081.s2017.green.service.AppointmentServiceImpl;
 import ch.bfh.bti7081.s2017.green.service.appointmentState.AppointmentState;
 import ch.bfh.bti7081.s2017.green.service.appointmentState.AppointmentStateEventHandler;
 import ch.bfh.bti7081.s2017.green.service.appointmentState.AppointmentStateNew;
@@ -39,8 +40,19 @@ public class AppointmentStateTypeBean extends EntityBean<AppointmentStateType> i
         this.description = description;
     }
 
+    //Todo: Methoden hier entfernen und nur auf State implementieren
     @Override
-    public void onStateSet(AppointmentBean appointmentBean) {
-        appointmentBean.getAppointmentStateType().getAppointmentState().onStateSet(appointmentBean);
+    public void onStateSet(AppointmentBean appointmentBean, AppointmentServiceImpl service, AppointmentBean oldAppointment) {
+        appointmentBean.getAppointmentStateType().getAppointmentState().onStateSet(appointmentBean, service, oldAppointment);
+    }
+
+    @Override
+    public void confirm(AppointmentBean appointmentBean, AppointmentServiceImpl service) {
+
+    }
+
+    @Override
+    public void remove(AppointmentBean appointmentBean, AppointmentServiceImpl service) {
+
     }
 }

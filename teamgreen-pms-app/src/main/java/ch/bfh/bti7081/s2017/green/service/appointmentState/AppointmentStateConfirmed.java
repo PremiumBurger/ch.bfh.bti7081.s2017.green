@@ -2,17 +2,15 @@ package ch.bfh.bti7081.s2017.green.service.appointmentState;
 
 import ch.bfh.bti7081.s2017.green.bean.AppointmentBean;
 import ch.bfh.bti7081.s2017.green.service.AppointmentServiceImpl;
-import com.vaadin.ui.Notification;
 
 /**
- * This Class represents the State of a cancelled Appointment
- * @author schms27
+ * Created by simon.schmid on 12.06.2017.
  */
-public class AppointmentStateCancelled extends AppointmentState {
+public class AppointmentStateConfirmed extends AppointmentState {
 
     @Override
     public void onStateSet(AppointmentBean appointmentBean, AppointmentServiceImpl service, AppointmentBean oldAppointment) {
-        Notification.show("State Cancelled has been set");
+
     }
 
     @Override
