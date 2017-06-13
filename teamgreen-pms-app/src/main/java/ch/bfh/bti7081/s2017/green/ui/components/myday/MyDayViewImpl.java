@@ -1,5 +1,6 @@
 package ch.bfh.bti7081.s2017.green.ui.components.myday;
 import ch.bfh.bti7081.s2017.green.bean.AppointmentBean;
+import ch.bfh.bti7081.s2017.green.bean.PatientBean;
 import ch.bfh.bti7081.s2017.green.ui.components.autcomplete.Autocomplete;
 import ch.bfh.bti7081.s2017.green.ui.controls.H1Title;
 import ch.bfh.bti7081.s2017.green.util.PmsConstants;
@@ -31,18 +32,23 @@ public class MyDayViewImpl extends VerticalLayout implements MyDayView {
     /**
      * Declares the ComboBox for the PatientSearch
      */
-    ComboBox<AppointmentBean> appointmentSearch;
+    ComboBox<PatientBean> patientSearch;
 
     /**
      * Default Constructor initializes UI Components
      */
     public MyDayViewImpl() {
+        //Disable Spacing between Components
         setSpacing(false);
-        appointmentSearch = new Autocomplete<AppointmentBean>();
-        appointmentSearch.setWidth("100%");
-        appointmentSearch.addValueChangeListener(e -> {
+
+        //Initialize Search
+        patientSearch = new Autocomplete<PatientBean>();
+        patientSearch.setWidth("100%");
+
+        //Add Navigation to patientDetail
+        patientSearch.addValueChangeListener(e -> {
             if(e.getValue() != null) {
-            appointmentSearch.setValue(null);
+            patientSearch.setValue(null);
             getUI().getNavigator().navigateTo("AppointmentDetail" + "/" + e.getValue().getId());
             }
         });
@@ -68,41 +74,71 @@ public class MyDayViewImpl extends VerticalLayout implements MyDayView {
     }
 
     /**
-     * @param appointments List of Appointment Beans
+     * @param appointments List of Appointment Beans and List of Patient Beans for the Search
      * passes Appointments to UI Components and builds a Overview Panel for each Appointment
      *
      */
-    public void init (List<AppointmentBean> appointments) {
-        appointmentSearch.setItems(appointments);
+    public void init (List<AppointmentBean> appointments, List<PatientBean> patientBeans) {
+        //Set Data for PatientSearch
+        patientSearch.setItems(patientBeans);
+
+        //Define DateFormat for all Date Labels
         DateTimeFormatter format = DateTimeFormatter.ofPattern(PmsConstants.SWISS_DATE_FORMAT);
+
+        //Remove all Components
         this.removeAllComponents();
-        addComponent(appointmentSearch);
+
+        //Add Search to this Vertical Layout
+        addComponent(patientSearch);
+
+        //Set Header for all Appointments
         H1Title dashBoardHeader = new H1Title("My Day");
 
         addComponent(dashBoardHeader);
         for (AppointmentBean appointment : appointments) {
             FormLayout layout = new FormLayout();
-            layout.setId(String.valueOf(appointment.getId()));
+
+            //to Date Label
             Label to = new Label(appointment.getTo().format(format));
             to.setCaption("To");
             to.setIcon(VaadinIcons.CLOCK);
+
+            //Patient Name Label
             Label patientname = new Label(appointment.getPatient().getFullName());
             patientname.setCaption("Name");
             patientname.setIcon(VaadinIcons.USER);
+
+            //Street Name Label
             Label street = new Label(appointment.getPatient().getAddress().getStrasse());
             street.setIcon(VaadinIcons.HOME);
             street.setCaption("Address");
+
+            //PLZ and Town Label
             Label adr = new Label(appointment.getPatient().getAddress().getPlz() + " " + appointment.getPatient().getAddress().getCity());
+
+            //Details Button
             Button details = new Button("Show Details");
             details.setIcon(VaadinIcons.CLIPBOARD_PULSE);
+
+            //CLicklistener for Appointment Details
             details.addClickListener(e -> getUI().getNavigator().navigateTo("AppointmentDetail" + "/" + appointment.getId()));
+
+            //Add Components to Layout
             layout.addComponents(to,patientname,street,adr,details);
+
+            //Create Content Panel
             Panel contentPanel = new Panel(" Appointment from: " + appointment.getFrom().format(format) + " Patient: " + appointment.getPatient().getFullName());
             contentPanel.setContent(layout);
             contentPanel.setIcon(VaadinIcons.CLOCK);
+
+            //Set Layout Styling
             layout.setMargin(true);
             layout.setSpacing(false);
+
+            //Convert contentPanel to StackPanel
             StackPanel stackPanel =  StackPanel.extend(contentPanel);
+
+            //Add contentPanel to this VerticalLayout
             addComponent(contentPanel);
         }
     }

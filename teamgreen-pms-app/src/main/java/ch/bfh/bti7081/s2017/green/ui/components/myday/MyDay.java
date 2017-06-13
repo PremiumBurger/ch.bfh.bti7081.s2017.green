@@ -1,6 +1,7 @@
 package ch.bfh.bti7081.s2017.green.ui.components.myday;
 
 import ch.bfh.bti7081.s2017.green.bean.AppointmentBean;
+import ch.bfh.bti7081.s2017.green.bean.PatientBean;
 import ch.bfh.bti7081.s2017.green.service.*;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
@@ -21,17 +22,31 @@ public class MyDay {
     private AppointmentService appointmentService;
 
     /**
-     * @param appointmentService Initializes appointmentservice
+     * Declares patientService
      */
-    public MyDay(AppointmentService appointmentService) {
+    private PatientService patientService;
+
+    /**
+     * @param appointmentService Initializes appointmentservice and patientservice
+     */
+    public MyDay(AppointmentService appointmentService, PatientService patientService) {
         this.appointmentService = appointmentService;
+        this.patientService = patientService;
     }
 
     /**
      * @return returns a List of Appointmentbeans as a List
      * AppointmentService delivers Appointmentbeans
      */
-    public List<AppointmentBean> getAll(){
+    public List<AppointmentBean> getAllAppointments(){
         return new ArrayList<AppointmentBean>(appointmentService.getAll());
+    }
+
+    /**
+     * @return returns a List of Patientbeans as a List
+     * PatientService delivers Patientbeans
+     */
+    public List<PatientBean> getAllPatients(){
+        return new ArrayList<PatientBean>(patientService.getAll());
     }
 }
