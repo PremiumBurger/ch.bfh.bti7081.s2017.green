@@ -46,6 +46,22 @@
             <column name="ahvNr" value="756.2831.3945.39"/>
             <column name="email" value="sabi@yeah.ch"/>
         </insert>
+
+        <!-- Health Visitors -->
+        <insert tableName="Person">
+            <column name="id" value="6"/>
+            <column name="personType" value="healthvisitor"/>
+            <column name="addressId" value="3"/>
+            <column name="genderTypeId" value="2"/>
+
+            <column name="firstName" value="Whity"/>
+            <column name="lastName" value="MacWhite"/>
+            <column name="birthDate" value="1978-01-25"/>
+            <column name="phone" value="0160 666666"/>
+            <column name="mobile" value="0990 666666"/>
+            <column name="ahvNr" value="756.2831.3945.39"/>
+            <column name="email" value="whitymcwhite@msn.com"/>
+        </insert>
     </changeSet>
 
     <changeSet id="testdata_Journal" author="tobi">
