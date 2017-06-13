@@ -23,6 +23,8 @@ public class AppointmentBean extends EntityBean<Appointment> implements Autocomp
     @NotNull
     private AppointmentStateTypeBean appointmentStateType;
 
+    private AddressBean address;
+
     public AppointmentBean() {
         setEntity(new Appointment(), false);
     }
@@ -65,6 +67,14 @@ public class AppointmentBean extends EntityBean<Appointment> implements Autocomp
 
     public void setAppointmentStateType(AppointmentStateTypeBean appointmentStateType) {
         this.appointmentStateType = appointmentStateType;
+    }
+
+    public AddressBean getAddress() {
+        return address;
+    }
+
+    public void setAddress(AddressBean address) {
+        this.address = address;
     }
 
     @Override
