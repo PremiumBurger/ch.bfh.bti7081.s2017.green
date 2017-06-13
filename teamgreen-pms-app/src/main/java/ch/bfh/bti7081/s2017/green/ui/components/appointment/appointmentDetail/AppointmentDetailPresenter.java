@@ -2,6 +2,7 @@ package ch.bfh.bti7081.s2017.green.ui.components.appointment.appointmentDetail;
 
 import ch.bfh.bti7081.s2017.green.bean.AppointmentBean;
 import ch.bfh.bti7081.s2017.green.bean.AppointmentStateTypeBean;
+import ch.bfh.bti7081.s2017.green.bean.LocationBean;
 import ch.bfh.bti7081.s2017.green.bean.PatientBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -26,7 +27,8 @@ public class AppointmentDetailPresenter implements AppointmentDetailViewListener
         AppointmentBean foundBean = appDetailModel.getAppointment(appointmentId);
         Set<PatientBean> allPatients = appDetailModel.getAllPatients();
         Set<AppointmentStateTypeBean> allAppointmentStateTypes = appDetailModel.getAllAppointmentStateTypes();
-        appDetailView.setModel(foundBean, allPatients, allAppointmentStateTypes);
+        LocationBean locationBean = appDetailModel.getLocationBean(foundBean.getAddress());
+        appDetailView.setModel(foundBean, allPatients, allAppointmentStateTypes, locationBean);
     }
 
     @Override

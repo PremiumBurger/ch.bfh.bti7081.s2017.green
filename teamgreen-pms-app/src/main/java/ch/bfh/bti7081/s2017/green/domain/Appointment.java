@@ -1,10 +1,10 @@
 package ch.bfh.bti7081.s2017.green.domain;
 
-import javax.persistence.Column;
+import org.hibernate.annotations.*;
+import org.hibernate.annotations.CascadeType;
+
+import javax.persistence.*;
 import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import java.time.LocalDateTime;
 import java.util.Set;
 
@@ -28,9 +28,13 @@ public class Appointment extends BaseEntity {
     @JoinColumn(name = "patientId")
     private Patient patient;
 
+    @OneToOne
+    @JoinColumn(name = "addressId")
+    @Cascade(CascadeType.ALL)
+    private Address address;
+
     @OneToMany(mappedBy = "appointment")
     private Set<AppointmentJournalEntry> journalEntries;
-
 
     public HealthVisitor getHealthVisitor() {
         return healthVisitor;
@@ -70,5 +74,13 @@ public class Appointment extends BaseEntity {
 
     public void setAppointmentStateType(AppointmentStateType appointmentStateType) {
         this.appointmentStateType = appointmentStateType;
+    }
+
+    public Address getAddress() {
+        return address;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
     }
 }

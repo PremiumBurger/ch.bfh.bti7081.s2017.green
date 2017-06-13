@@ -3,10 +3,8 @@ package ch.bfh.bti7081.s2017.green.service;
 import ch.bfh.bti7081.s2017.green.bean.AppointmentBean;
 import ch.bfh.bti7081.s2017.green.bean.AppointmentStateTypeBean;
 import ch.bfh.bti7081.s2017.green.data.AppointmentRepository;
-import ch.bfh.bti7081.s2017.green.domain.Address;
 import ch.bfh.bti7081.s2017.green.domain.Appointment;
 import ch.bfh.bti7081.s2017.green.webservice.GoogleGeocodingWebService;
-import ch.bfh.bti7081.s2017.green.webservice.dto.Geometry;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,18 +17,6 @@ public class AppointmentServiceImpl extends BaseService<Appointment, Appointment
     public AppointmentServiceImpl(AppointmentRepository repository, GoogleGeocodingWebService googleGeocodingWebService) {
         super(repository);
         this.googleGeocodingWebService = googleGeocodingWebService;
-
-
-        Address addr = new Address();
-        addr.setStrasse("Metzgergasse 1");
-        addr.setPlz("3400");
-        addr.setCity("Burgdorf");
-
-        Geometry coordinatesByAddress = googleGeocodingWebService.getCoordinatesByAddress(addr);
-
-        String test = "";
-
-
     }
 
     @Override
@@ -51,6 +37,7 @@ public class AppointmentServiceImpl extends BaseService<Appointment, Appointment
                 newAppointmentStateTypeBean.onStateSet(appointmentBean);
             }
         }
+
         return super.save(appointmentBean);
     }
 
