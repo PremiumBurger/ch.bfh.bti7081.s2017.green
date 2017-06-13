@@ -5,6 +5,7 @@ import ch.bfh.bti7081.s2017.green.data.AppointmentRepository;
 import ch.bfh.bti7081.s2017.green.domain.Appointment;
 import ch.bfh.bti7081.s2017.green.domain.builder.AppointmentBuilder;
 import ch.bfh.bti7081.s2017.green.service.AppointmentServiceImpl;
+import ch.bfh.bti7081.s2017.green.webservice.GoogleGeocodingWebService;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -27,6 +28,9 @@ public class PmsAppointmentTest {
     @Mock
     private AppointmentRepository repository;
 
+    @Mock
+    private GoogleGeocodingWebService googleGeocodingWebService;
+
     private AppointmentServiceImpl service;
 
     Set<Appointment> allAppointments = new HashSet<Appointment>();
@@ -41,7 +45,7 @@ public class PmsAppointmentTest {
         appointmentDomainModel.getAppointmentStateType().setDescription("New");
 
         allAppointments.add(appointmentDomainModel);
-        service = new AppointmentServiceImpl(repository);
+        service = new AppointmentServiceImpl(repository, googleGeocodingWebService);
 
         //Mock repos functionality
         Mockito.when(repository.findAll()).thenReturn(() -> allAppointments.iterator());
