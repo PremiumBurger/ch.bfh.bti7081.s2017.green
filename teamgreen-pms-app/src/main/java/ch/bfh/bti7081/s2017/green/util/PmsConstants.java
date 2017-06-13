@@ -10,5 +10,10 @@ public class PmsConstants {
      */
     public static final String SWISS_DATE_FORMAT = "dd.MM.yyyy hh:mm";
 
+    /**
+     * API Key to use google Maps
+     */
+    public static final String GOOGLE_MAPS_API_KEY = "AIzaSyCHPziSWTE2VBPPyOAKVF13Gca3onwgxkU";
+
 
 }

@@ -1,11 +1,10 @@
 package ch.bfh.bti7081.s2017.green.ui.components.appointment.appointmentDetail;
 
-import ch.bfh.bti7081.s2017.green.bean.AppointmentBean;
-import ch.bfh.bti7081.s2017.green.bean.AppointmentStateTypeBean;
-import ch.bfh.bti7081.s2017.green.bean.PatientBean;
+import ch.bfh.bti7081.s2017.green.bean.*;
 import ch.bfh.bti7081.s2017.green.service.AppointmentService;
 import ch.bfh.bti7081.s2017.green.service.AppointmentStateTypeService;
 import ch.bfh.bti7081.s2017.green.service.PatientService;
+import ch.bfh.bti7081.s2017.green.webservice.GoogleGeocodingWebService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
@@ -22,11 +21,18 @@ public class AppointmentDetailModel {
 
     private AppointmentStateTypeService appointmentStateTypeService;
 
+    private GoogleGeocodingWebService googleGeocodingWebService;
+
     @Autowired
-    public AppointmentDetailModel(AppointmentService appointmentService, PatientService patientService, AppointmentStateTypeService appointmentStateTypeService) {
+    public AppointmentDetailModel(AppointmentService appointmentService,
+                                  PatientService patientService,
+                                  AppointmentStateTypeService appointmentStateTypeService,
+                                  GoogleGeocodingWebService googleGeocodingWebService) {
+
         this.appointmentService = appointmentService;
         this.patientService = patientService;
         this.appointmentStateTypeService = appointmentStateTypeService;
+        this.googleGeocodingWebService = googleGeocodingWebService;
     }
 
     /**
@@ -62,4 +68,13 @@ public class AppointmentDetailModel {
         appointmentService.save(appointmentBean);
     }
 
+
+    /**
+     * Gets the location of the appointment
+     * @param addressBean
+     * @return
+     */
+    public LocationBean getLocationBean(AddressBean addressBean) {
+        return googleGeocodingWebService.getCoordinatesByAddress(addressBean);
+    }
 }

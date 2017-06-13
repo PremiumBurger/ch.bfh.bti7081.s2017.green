@@ -89,6 +89,9 @@
             <column name="patientId" type="BIGINT">
                 <constraints nullable="true" foreignKeyName="fk_appointment_patient" references="Person(id)"/>
             </column>
+            <column name="addressId" type="BIGINT">
+                <constraints nullable="true" foreignKeyName="fk_appointment_address" references="Address(id)"/>
+            </column>
             <column name="from" type="TIMESTAMP">
                 <constraints nullable="true"/>
             </column>

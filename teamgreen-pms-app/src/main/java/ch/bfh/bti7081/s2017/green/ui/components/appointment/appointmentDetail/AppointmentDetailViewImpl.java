@@ -2,12 +2,16 @@ package ch.bfh.bti7081.s2017.green.ui.components.appointment.appointmentDetail;
 
 import ch.bfh.bti7081.s2017.green.bean.*;
 import ch.bfh.bti7081.s2017.green.ui.controls.H1Title;
+import ch.bfh.bti7081.s2017.green.ui.controls.H2Title;
 import ch.bfh.bti7081.s2017.green.ui.stub.PmsDummyImages;
 import ch.bfh.bti7081.s2017.green.util.PmsConstants;
 import com.vaadin.data.BeanValidationBinder;
 import com.vaadin.data.Binder;
 import com.vaadin.icons.VaadinIcons;
 import com.vaadin.navigator.ViewChangeListener;
+import com.vaadin.tapio.googlemaps.GoogleMap;
+import com.vaadin.tapio.googlemaps.client.LatLon;
+import com.vaadin.tapio.googlemaps.client.overlays.GoogleMapMarker;
 import com.vaadin.ui.*;
 import com.vaadin.ui.themes.ValoTheme;
 import org.springframework.stereotype.Component;
@@ -26,18 +30,23 @@ public class AppointmentDetailViewImpl extends VerticalLayout implements Appoint
 
     private Set<PatientBean>  allPatients;
 
+    private LocationBean appointmentLocation;
+
     private boolean isUpdateMode;
 
     /**
      * Needs to be global to update this partially
      */
     private HorizontalLayout involvedLayout;
+    private VerticalLayout rightCol;
+    private Panel patientDetailPanel;
 
     @Override
-    public void setModel(AppointmentBean appointmentBean, Set<PatientBean> allPatients, Set<AppointmentStateTypeBean> allApppointmentStates) {
+    public void setModel(AppointmentBean appointmentBean, Set<PatientBean> allPatients, Set<AppointmentStateTypeBean> allApppointmentStates, LocationBean locationBean) {
         this.allPatients = allPatients;
         this.allApppointmentStates = allApppointmentStates;
-        model = appointmentBean;
+        this.model = appointmentBean;
+        this.appointmentLocation = locationBean;
         initializeView();
     }
 
@@ -45,21 +54,34 @@ public class AppointmentDetailViewImpl extends VerticalLayout implements Appoint
         removeAllComponents();
         setResponsive(true);
 
-        // set page title
+        HorizontalLayout twoColLayout = new HorizontalLayout();
+        VerticalLayout leftCol = new VerticalLayout();
+        rightCol = new VerticalLayout();
+        twoColLayout.addComponents(leftCol, rightCol);
+
         addComponent(new H1Title("Appointment (#" + model.getId() + ")"));
+        addComponent(twoColLayout);
 
-        // set appointment details
-        addComponent(buildAppointmentDetail());
+        // setup left column
+        VerticalLayout detailButtonLayout = new VerticalLayout();
+        detailButtonLayout.addComponents(buildAppointmentDetail(), buildButtonbar());
+        leftCol.addComponent(detailButtonLayout);
+        detailButtonLayout.setMargin(false);
 
-        // add button bar
-        addComponent(buildButtonbar());
 
-        // set patient and healthvisitor details
-        involvedLayout = buildInvolved();
-        addComponent(involvedLayout);
+        // setup right column
+        patientDetailPanel = buildPatientDetail();
+        rightCol.addComponents(buildLocationMap(), buildHealthVisitorDetail(), patientDetailPanel);
 
         // linked journal entries
         // TODO: aluege mitm Tobi!
+
+        // styles
+        twoColLayout.setWidth(100, Unit.PERCENTAGE);
+        leftCol.setWidth(100, Unit.PERCENTAGE);
+        rightCol.setWidth(100, Unit.PERCENTAGE);
+        leftCol.setMargin(false);
+        rightCol.setMargin(false);
     }
 
     private HorizontalLayout buildInvolved() {
@@ -181,10 +203,20 @@ public class AppointmentDetailViewImpl extends VerticalLayout implements Appoint
 
     private Panel buildAppointmentDetail() {
         Panel appointmentDetailPanel = new Panel("Details");
-        HorizontalLayout appForm = new HorizontalLayout();
-        appForm.setMargin(true);
-        appointmentDetailPanel.setContent(appForm);
+        HorizontalLayout formContainer = new HorizontalLayout();
+        formContainer.setMargin(true);
+        VerticalLayout appForm = new VerticalLayout();
+        VerticalLayout addressForm = new VerticalLayout();
+
+        formContainer.setWidth(100, Unit.PERCENTAGE);
+        appForm.setWidth(100, Unit.PERCENTAGE);
+        addressForm.setWidth(100, Unit.PERCENTAGE);
+
+        formContainer.addComponents(appForm, addressForm);
+
+        appointmentDetailPanel.setContent(formContainer);
         BeanValidationBinder binder = new BeanValidationBinder<>(AppointmentBean.class);
+        BeanValidationBinder addressBinder = new BeanValidationBinder<>(AddressBean.class);
 
         DateTimeField from = new DateTimeField("From");
         DateTimeField to = new DateTimeField("To");
@@ -198,13 +230,22 @@ public class AppointmentDetailViewImpl extends VerticalLayout implements Appoint
         ComboBox<AppointmentStateTypeBean> comboBoxState = new ComboBox<>("State");
         comboBoxState.setItems(allApppointmentStates);
         comboBoxState.setItemCaptionGenerator(p -> p.getDescription());
-        appForm.addComponents(from, to, comboBoxPatient, comboBoxState);
+        appForm.addComponents(new H2Title("Appointment"), from, to, comboBoxPatient, comboBoxState);
+
+        // address form
+        TextField street = new TextField("Street");
+        TextField postalCode = new TextField("Postal Code");
+        TextField city = new TextField("City");
+        addressForm.addComponents(new H2Title("Appointment Location"), street, postalCode, city);
 
         // mode specific
         from.setEnabled(isUpdateMode);
         to.setEnabled(isUpdateMode);
         comboBoxPatient.setEnabled(isUpdateMode);
         comboBoxState.setEnabled(isUpdateMode);
+        street.setEnabled(isUpdateMode);
+        postalCode.setEnabled(isUpdateMode);
+        city.setEnabled(isUpdateMode);
 
         // bindings
         binder.forField(from).bind("from");
@@ -213,19 +254,53 @@ public class AppointmentDetailViewImpl extends VerticalLayout implements Appoint
         binder.forField(comboBoxState).bind("appointmentStateType");
         binder.setBean(model);
 
+        addressBinder.forField(street).bind("strasse");
+        addressBinder.forField(postalCode).bind("plz");
+        addressBinder.forField(city).bind("city");
+        addressBinder.setBean(model.getAddress());
+
         // events
         comboBoxPatient.addValueChangeListener(event -> {
             if (binder.isValid()) {
-                removeComponent(involvedLayout);
-                involvedLayout = buildInvolved();
-                addComponent(involvedLayout);
+                rightCol.removeComponent(patientDetailPanel);
+                patientDetailPanel = buildPatientDetail();
+                rightCol.addComponent(patientDetailPanel);
             }
         });
 
         // styles
         appointmentDetailPanel.setResponsive(true);
-        appForm.setResponsive(true);
+        formContainer.setResponsive(true);
         return appointmentDetailPanel;
+    }
+
+    private Panel buildLocationMap() {
+        Panel panel = new Panel("Location");
+        if (appointmentLocation != null) {
+            VerticalLayout mapLayout = new VerticalLayout();
+
+            // setup google map
+            GoogleMap googleMap = new GoogleMap(PmsConstants.GOOGLE_MAPS_API_KEY, null, "german");
+            googleMap.setSizeFull();
+            LatLon bfhBern = new LatLon(appointmentLocation.getLat(), appointmentLocation.getLon());
+            googleMap.addMarker("Appointment Location", bfhBern, false, null);
+            googleMap.setCenter(bfhBern);
+            googleMap.setMinZoom(10);
+            googleMap.setMaxZoom(26);
+
+            // layout
+            mapLayout.addComponent(googleMap);
+            panel.setContent(mapLayout);
+            panel.setWidth(100, Unit.PERCENTAGE);
+        } else {
+            // if no location is available
+            VerticalLayout emptyLayout = new VerticalLayout();
+            emptyLayout.setDefaultComponentAlignment(Alignment.MIDDLE_CENTER);
+            emptyLayout.addComponent(new Label("No Location found"));
+            panel.setContent(emptyLayout);
+        }
+
+        return panel;
     }
 
     @Override
