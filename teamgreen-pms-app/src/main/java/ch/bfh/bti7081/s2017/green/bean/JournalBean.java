@@ -33,7 +33,11 @@ public class JournalBean extends EntityBean<Journal>{
         return journalEntries;
     }
 
+    public void addJournalEntry(JournalEntryBean journalEntry) {
+        this.journalEntries.add(journalEntry);
+    }
     public void setJournalEntries(List<JournalEntryBean> journalEntries) {
         this.journalEntries = journalEntries;
+
     }
 }

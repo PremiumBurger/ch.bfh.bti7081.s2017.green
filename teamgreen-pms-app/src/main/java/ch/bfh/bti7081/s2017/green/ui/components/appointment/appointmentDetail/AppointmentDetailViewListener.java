@@ -18,13 +18,10 @@ public interface AppointmentDetailViewListener {
     void saveAppointment(AppointmentBean appointmentBean);
 
     /**
-     * on Click event handler for add journal-entry-button
+     * on Click event handler for add-journal-entry-button
      */
     void onAddJournalEntryButtonClick();
 
-    //Todo: JavaDoc
-
-    void onSaveJournalEntryButtonClick(JournalEntryBean bean);
 
     /**
      * event which gets fired when the state confirm button gets clicked
@@ -43,5 +40,4 @@ public interface AppointmentDetailViewListener {
      * @param appointmentBean the bean to act on
      */
     void getStateRefresh(AppointmentBean appointmentBean);
-
 }

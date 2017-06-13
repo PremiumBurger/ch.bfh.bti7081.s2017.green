@@ -29,15 +29,15 @@ public class JournalEntryListComponent extends CustomComponent {
         mainPanelLayout.setSpacing(false);
         mainPanelLayout.addComponent(addJournalEntryButton);
 
-
         mainPanel.setContent(mainPanelLayout);
         setCompositionRoot(mainPanel);
 
-        addJournalEntriesToLayout(journal);
-    }
-
-    public Registration addNewJournalListener(JournalButtonClickEvent event){
-        return this.addListener(Event.class, event, JournalButtonClickEvent.BUTTON_CLICK_METHOD);
+        if(journal.size()>0){
+            addJournalEntriesToLayout(journal);
+        }
+        else{
+            mainPanelLayout.addComponent(new Label("Keine Einträge vorhanden"));
+        }
     }
 
     private void addJournalEntriesToLayout(List<JournalEntryBean> entries){
@@ -74,6 +74,15 @@ public class JournalEntryListComponent extends CustomComponent {
 
             mainPanelLayout.addComponent(entryPanel);
         }
+    }
+
+    /**
+     *
+     * @param event The event to be called on add-button click
+     * @return //Todo: Lüku fragen
+     */
+    public Registration addNewJournalListener(JournalButtonClickEvent event){
+        return this.addListener(Event.class, event, JournalButtonClickEvent.BUTTON_CLICK_METHOD);
     }
 }
 

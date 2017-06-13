@@ -9,6 +9,9 @@ public class AppointmentJournalEntryBean extends JournalEntryBean {
 
     private AppointmentBean appointment;
 
+    public AppointmentJournalEntryBean() {
+        setEntity(new AppointmentJournalEntry(), false);
+    }
 
     public AppointmentBean getAppointment() {
         return appointment;

@@ -1,6 +1,6 @@
 package ch.bfh.bti7081.s2017.green.domain;
 
-import org.hibernate.annotations.*;
+import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.CascadeType;
 
 import javax.persistence.*;
@@ -26,6 +26,7 @@ public class Appointment extends BaseEntity {
 
     @ManyToOne
     @JoinColumn(name = "patientId")
+    @Cascade(CascadeType.ALL)
     private Patient patient;
 
     @OneToOne
@@ -34,6 +35,7 @@ public class Appointment extends BaseEntity {
     private Address address;
 
     @OneToMany(mappedBy = "appointment")
+
     private Set<AppointmentJournalEntry> journalEntries;
 
     public HealthVisitor getHealthVisitor() {

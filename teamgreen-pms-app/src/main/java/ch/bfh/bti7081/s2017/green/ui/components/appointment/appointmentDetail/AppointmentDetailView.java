@@ -26,6 +26,10 @@ public interface AppointmentDetailView extends View {
      */
     void setModel(AppointmentBean appointmentBean, Set<PatientBean> allPatients, Set<AppointmentStateTypeBean> allApppointmentStates, LocationBean locationBean);
 
+    /**
+     * Opens the Appointment-Journal-Entry Input modal
+     * @param bean Bean to Work on it
+     */
     void openModal(AppointmentJournalEntryBean bean);
 
     /**

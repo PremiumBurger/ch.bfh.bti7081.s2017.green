@@ -1,5 +1,8 @@
 package ch.bfh.bti7081.s2017.green.domain;
 
+import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.CascadeType;
+
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
@@ -16,6 +19,7 @@ public class Journal extends BaseEntity{
     private Patient patient;
 
     @OneToMany(mappedBy = "journal")
+    @Cascade(CascadeType.ALL)
     private List<JournalEntry> journalEntries;
 
     private LocalDateTime createdOn;

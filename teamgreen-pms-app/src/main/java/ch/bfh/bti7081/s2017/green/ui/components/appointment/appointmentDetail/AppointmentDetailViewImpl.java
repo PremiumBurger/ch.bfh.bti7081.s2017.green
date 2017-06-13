@@ -4,6 +4,7 @@ import ch.bfh.bti7081.s2017.green.bean.*;
 import ch.bfh.bti7081.s2017.green.domain.AppointmentJournalEntry;
 import ch.bfh.bti7081.s2017.green.ui.components.journal.JournalCRUD;
 import ch.bfh.bti7081.s2017.green.ui.components.journal.JournalEntryListComponent;
+import ch.bfh.bti7081.s2017.green.ui.components.journal.JournalEntrySaveEvent;
 import ch.bfh.bti7081.s2017.green.ui.controls.H1Title;
 import ch.bfh.bti7081.s2017.green.ui.controls.H2Title;
 import ch.bfh.bti7081.s2017.green.ui.stub.PmsDummyImages;
@@ -12,6 +13,7 @@ import com.vaadin.data.BeanValidationBinder;
 import com.vaadin.data.Binder;
 import com.vaadin.icons.VaadinIcons;
 import com.vaadin.navigator.ViewChangeListener;
+import com.vaadin.server.Page;
 import com.vaadin.tapio.googlemaps.GoogleMap;
 import com.vaadin.tapio.googlemaps.client.LatLon;
 import com.vaadin.tapio.googlemaps.client.overlays.GoogleMapMarker;
@@ -21,11 +23,12 @@ import com.vaadin.ui.themes.ValoTheme;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 @Component
 public class AppointmentDetailViewImpl extends VerticalLayout implements AppointmentDetailView {
-
 
     private AppointmentDetailViewListener viewListener;
 
@@ -34,6 +37,8 @@ public class AppointmentDetailViewImpl extends VerticalLayout implements Appoint
     private Set<AppointmentStateTypeBean> allApppointmentStates;
 
     private Set<PatientBean>  allPatients;
+
+    private JournalEntryListComponent journalComponent;
 
     private LocationBean appointmentLocation;
 
@@ -91,22 +96,34 @@ public class AppointmentDetailViewImpl extends VerticalLayout implements Appoint
         rightCol.addComponents(buildLocationMap(), buildHealthVisitorDetail(), patientDetailPanel);
 
         // linked journal entries
-        // TODO: aluege mitm Tobi!
-        JournalEntryListComponent journalComponent = new JournalEntryListComponent(model.getPatient().getJournal().getJournalEntries());
 
-        journalComponent.addNewJournalListener(e -> {
-            this.viewListener.onAddJournalEntryButtonClick();
-        });
-
+        // Set the Appointment Journal
+        journalComponent = buildJournalList();
         addComponent(journalComponent);
-
-        // styles
+		
+		// styles
         twoColLayout.setWidth(100, Unit.PERCENTAGE);
         leftCol.setWidth(100, Unit.PERCENTAGE);
         rightCol.setWidth(100, Unit.PERCENTAGE);
         leftCol.setMargin(false);
         rightCol.setMargin(false);
     }
+
+    private JournalEntryListComponent buildJournalList() {
+        //Todo: Anpassen: Hole diese Daten über das Model
+        List<JournalEntryBean> entries = model.getPatient().getJournal().getJournalEntries().stream()
+                .filter(e-> e instanceof AppointmentJournalEntryBean)
+                .filter(e-> ((AppointmentJournalEntryBean)e).getAppointment().getId() == model.getId())
+                .sorted((e,d) -> d.getCreatedOn().compareTo(e.getCreatedOn()))
+                .collect(Collectors.toList());
+        JournalEntryListComponent journalComponent = new JournalEntryListComponent(entries);
+
+        journalComponent.addNewJournalListener(e -> {
+            this.viewListener.onAddJournalEntryButtonClick();
+        });
+        return journalComponent;
+    }
+
 
     private HorizontalLayout buildInvolved() {
         HorizontalLayout involvedLayout = new HorizontalLayout();
@@ -378,26 +395,25 @@ public class AppointmentDetailViewImpl extends VerticalLayout implements Appoint
 
     public void openModal(AppointmentJournalEntryBean bean){
         //Todo: Review: diese Logik hier?
-        bean.setAppointment(this.model);
-        bean.setCreatedBy(this.model.getHealthVisitor());  //Todo: change to current user
+        bean.setAppointment(model);
+        bean.setCreatedBy(model.getHealthVisitor());  //Todo: change to current user
         bean.setCreatedOn(LocalDateTime.now());
+        bean.setJournal(model.getPatient().getJournal());
 
         JournalCRUD modal = new JournalCRUD(bean);
-
-
-        modal.addSaveJournalEntryListener(e -> {
-            this.viewListener.onSaveJournalEntryButtonClick(modal.getBean());
-        });
-
-//        modal.addSaveJournalEntryAndNextListener(e -> {
-//            modal.getBean();
-//            this.viewListener.onSaveJournalEntryAndNextButtonClick();
-//        });
-
         modal.center();
         modal.setModal(true);
         modal.setWidth(350.0f, Unit.PIXELS);
         modal.setHeight(400.0f, Unit.PIXELS);
+
+        modal.addSaveJournalEntryListener((JournalEntrySaveEvent e) -> {
+            model.getPatient().getJournal().addJournalEntry(e.<AppointmentJournalEntryBean>getEntryBean());
+            this.viewListener.saveAppointment(model);
+            removeComponent(journalComponent);
+
+            journalComponent = buildJournalList();
+            addComponent(journalComponent);
+        });
         this.getUI().addWindow(modal);
     }
 }
