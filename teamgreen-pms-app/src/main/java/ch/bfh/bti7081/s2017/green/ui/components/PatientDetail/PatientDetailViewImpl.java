@@ -9,6 +9,7 @@ import ch.bfh.bti7081.s2017.green.util.PmsConstants;
 import com.vaadin.navigator.ViewChangeListener;
 import com.vaadin.ui.ComboBox;
 import com.vaadin.ui.Label;
+import com.vaadin.ui.renderers.ButtonRenderer;
 import org.springframework.stereotype.Component;
 import com.vaadin.ui.*;
 import org.vaadin.addons.stackpanel.StackPanel;
@@ -125,11 +126,9 @@ public class PatientDetailViewImpl extends VerticalLayout implements PatientDeta
         grid.addColumn(app -> app.getFrom().format(format)).setCaption("From");
         grid.addColumn(app -> app.getTo().format(format)).setCaption("To");
         grid.addColumn(app -> app.getAppointmentStateType().getDescription()).setCaption("State");
-
-        //render a Button that navigates to Appointment Detail
-        grid.addSelectionListener(e -> {
-            getUI().getNavigator().navigateTo("AppointmentDetail" + "/" + e.getFirstSelectedItem().get().getId());
-        });
+        grid.addColumn(AppointmentBean->"Detail",new ButtonRenderer<AppointmentBean>(e -> {
+            getUI().getNavigator().navigateTo("AppointmentDetail" + "/" + e.getItem().getId());
+                }));
 
         //style of Grid
         grid.setWidth(100,Unit.PERCENTAGE);
