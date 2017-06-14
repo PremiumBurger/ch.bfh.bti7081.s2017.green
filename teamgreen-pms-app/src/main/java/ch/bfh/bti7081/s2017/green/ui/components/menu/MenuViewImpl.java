@@ -6,7 +6,7 @@ package ch.bfh.bti7081.s2017.green.ui.components.menu;
 
 import ch.bfh.bti7081.s2017.green.event.UserContexteCreated;
 import ch.bfh.bti7081.s2017.green.event.UserLoginRequestedEvent;
-import ch.bfh.bti7081.s2017.green.ui.DashboardViewType;
+import ch.bfh.bti7081.s2017.green.ui.navigation.DashboardViewType;
 import ch.bfh.bti7081.s2017.green.ui.controls.LinkButton;
 import com.vaadin.icons.VaadinIcons;
 import com.vaadin.server.ExternalResource;

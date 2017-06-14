@@ -1,4 +1,4 @@
-package ch.bfh.bti7081.s2017.green.ui;
+package ch.bfh.bti7081.s2017.green.ui.navigation;
 
 import ch.bfh.bti7081.s2017.green.ui.components.appointment.appointmentCreate.AppointmentCreateView;
 import ch.bfh.bti7081.s2017.green.ui.components.PatientDetail.PatientDetailView;
