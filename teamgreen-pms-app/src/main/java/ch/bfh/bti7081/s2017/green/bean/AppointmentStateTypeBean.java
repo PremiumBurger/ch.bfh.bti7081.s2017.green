@@ -40,10 +40,4 @@ public class AppointmentStateTypeBean extends EntityBean<AppointmentStateType>{
     public void setDescription(String description) {
         this.description = description;
     }
-
-    //Todo: Methoden hier entfernen und nur auf State implementieren
-    /*@Override
-    public void onStateSet(AppointmentBean appointmentBean, AppointmentServiceImpl service, AppointmentBean oldAppointment) {
-        appointmentBean.getAppointmentStateType().getAppointmentState().onStateSet(appointmentBean, service, oldAppointment);
-    }*/
 }

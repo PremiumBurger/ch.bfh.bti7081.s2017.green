@@ -45,20 +45,22 @@ public class AppointmentDetailPresenter implements AppointmentDetailViewListener
     @Override
     public void onConfirmClicked(AppointmentBean appointmentBean) {
         appointmentBean.getAppointmentStateType().getAppointmentState().confirm(appointmentBean,this);
+        saveAppointment(appointmentBean);
     }
 
     @Override
     public void onCancelledClicked(AppointmentBean appointmentBean) {
         appointmentBean.getAppointmentStateType().getAppointmentState().remove(appointmentBean,this);
+        saveAppointment(appointmentBean);
     }
 
-    public void updateConfirmButton(boolean visible, String buttonCaption) {
-        appDetailView.updateConfirmButton(visible,buttonCaption);
+    @Override
+    public void getStateRefresh(AppointmentBean appointmentBean) {
+        appointmentBean.getAppointmentStateType().getAppointmentState().afterStateSet(appointmentBean,appointmentBean,this);
     }
 
-
-    public void updateCancelButton(boolean visible, String buttonCaption) {
-        appDetailView.updateCancelButton(visible,buttonCaption);
+    public void updateStateButtons(boolean confirmButtonVisible, String confirmButtonCaption, boolean cancelButtonVisible, String cancelButtonCaption) {
+        appDetailView.updateStateButtons(confirmButtonVisible,confirmButtonCaption,cancelButtonVisible,cancelButtonCaption);
     }
 
     /**

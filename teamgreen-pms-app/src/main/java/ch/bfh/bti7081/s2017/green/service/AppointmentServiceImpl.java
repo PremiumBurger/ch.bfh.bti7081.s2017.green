@@ -46,6 +46,34 @@ public class AppointmentServiceImpl extends BaseService<Appointment, Appointment
     }
 
     /**
+     * Overrides save Method from BaseService
+     * because the AppointmentState can not be properly mapped
+     * @param id of the appointment to look for
+     * @return foundBean or null of not found
+     */
+    public AppointmentBean getOne(long id) {
+        AppointmentBean foundBean = super.getOne(id);
+        if(foundBean==null) return null;
+        AppointmentState appointmentState = new AppointmentStateNew();
+        switch(foundBean.getAppointmentStateType().getDescription()) {
+            case "CANCELLED":
+                appointmentState = new AppointmentStateCancelled();
+                break;
+            case "CONFIRMED":
+                appointmentState = new AppointmentStateConfirmed();
+                break;
+            case "POSTPONED":
+                appointmentState = new AppointmentStatePostponed();
+                break;
+            case "FINISHED":
+                appointmentState = new AppointmentStateFinished();
+                break;
+        }
+        foundBean.getAppointmentStateType().setAppointmentState(appointmentState);
+        return  foundBean;
+    }
+
+    /**
      * Get the service of the State Type
      * @return stateTypeService
      */
