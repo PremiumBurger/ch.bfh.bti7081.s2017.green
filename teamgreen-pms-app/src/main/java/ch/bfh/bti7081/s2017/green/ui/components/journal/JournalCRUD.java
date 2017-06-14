@@ -1,18 +1,13 @@
 package ch.bfh.bti7081.s2017.green.ui.components.journal;
 
-import ch.bfh.bti7081.s2017.green.bean.HealthVisitorBean;
-import ch.bfh.bti7081.s2017.green.bean.JournalBean;
 import ch.bfh.bti7081.s2017.green.bean.JournalEntryBean;
-import ch.bfh.bti7081.s2017.green.domain.Journal;
-import ch.bfh.bti7081.s2017.green.domain.JournalEntry;
-import ch.bfh.bti7081.s2017.green.domain.builder.JournalBuilder;
 import com.vaadin.data.BeanValidationBinder;
-import com.vaadin.navigator.View;
 import com.vaadin.shared.Registration;
 import com.vaadin.ui.*;
 
-import java.time.LocalDateTime;
-
+/**
+ * Creates a Window to add (and edit) journal entries
+ */
 public class JournalCRUD extends Window {
 
     private FormLayout mainLayout;
@@ -69,8 +64,8 @@ public class JournalCRUD extends Window {
     }
 
     /**
-     * @param event Event to be triggered on save Button click
-     * @return //Todo:
+     * @param -Event to be triggered on save Button click
+     * @return
      */
     public Registration addSaveJournalEntryListener(JournalEntrySaveButtonClickEvent event){
         return this.addListener(JournalEntrySaveEvent.class, event, JournalEntrySaveButtonClickEvent.BUTTON_CLICK_METHOD);
