@@ -1,15 +1,11 @@
 package ch.bfh.bti7081.s2017.green.ui.components.login;
 
-import ch.bfh.bti7081.s2017.green.event.UserLoginRequestedEvent;
-import com.github.scribejava.core.model.OAuth2AccessToken;
 import com.github.scribejava.core.model.Token;
 import com.vaadin.navigator.ViewChangeListener;
 import com.vaadin.server.Responsive;
 import com.vaadin.ui.*;
 import com.vaadin.ui.themes.ValoTheme;
 import green.auth.OAuthService;
-import green.auth.UserProfile;
-import green.auth.UserToken;
 import green.event.EventBus;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.vaadin.addon.oauthpopup.OAuthListener;
@@ -85,16 +81,8 @@ public class LoginViewImpl extends VerticalLayout implements LoginView {
     private OAuthPopupButton initButton (OAuthPopupButton button, final OAuthService.Service service, final String key, final String secret) {
         button.addOAuthListener(new OAuthListener() {
             @Override
-            public void authSuccessful (Token token, boolean b) {
-                OAuth2AccessToken oauthToken = (OAuth2AccessToken) token;
-                UserToken userToken = new UserToken(oauthToken.getAccessToken());
-                OAuthService serv = OAuthService.createService(service, key, secret, userToken);
-                UserProfile profile = serv.getUserProfile();
-                if (profile != null) {
-                    eventBus.fireEvent(new UserLoginRequestedEvent(profile));
-                } else {
-                    Notification.show("Not authenticated.");
-                }
+            public void authSuccessful (Token token, boolean isOAuth2) {
+                eventBus.fireEvent(new AuthenticationSuccessfulEvent(token, isOAuth2, service, key, secret));
             }
 
             @Override
@@ -131,11 +119,6 @@ public class LoginViewImpl extends VerticalLayout implements LoginView {
 
     @Override
     public void enter (ViewChangeListener.ViewChangeEvent viewChangeEvent) {
-
-    }
-
-    @Override
-    public void addListener (LoginViewListener listener) {
 
     }
 }
