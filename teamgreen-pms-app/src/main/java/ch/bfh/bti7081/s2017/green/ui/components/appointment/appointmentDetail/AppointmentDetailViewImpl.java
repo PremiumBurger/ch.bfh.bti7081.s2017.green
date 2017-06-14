@@ -109,12 +109,23 @@ public class AppointmentDetailViewImpl extends VerticalLayout implements Appoint
         buttonBarLayout.setDefaultComponentAlignment(Alignment.BOTTOM_RIGHT);
         buttonBarLayout.setWidth(100, Unit.PERCENTAGE);
         HorizontalLayout buttons = new HorizontalLayout();
+        HorizontalLayout stateButtons = new HorizontalLayout();
+        buttonBarLayout.addComponent(stateButtons);
         buttonBarLayout.addComponent(buttons);
+        buttonBarLayout.setComponentAlignment(stateButtons,Alignment.MIDDLE_LEFT);
+        buttonBarLayout.setComponentAlignment(buttons,Alignment.MIDDLE_RIGHT);
 
         if (isUpdateMode) {
+            //init buttons
             Button cancelButton = new Button("Cancel");
             Button saveButton = new Button("Save", VaadinIcons.DISC);
+            Button confirmAppointmentButton = new Button(confirmAppointmentButtonCaption);
+            Button cancelAppointmentButton = new Button(cancelAppointmentButtonCaption);
             buttons.addComponents(cancelButton, saveButton);
+            stateButtons.addComponent(confirmAppointmentButton);
+            stateButtons.addComponent(cancelAppointmentButton);
+            stateButtons.setComponentAlignment(confirmAppointmentButton,Alignment.MIDDLE_LEFT);
+            stateButtons.setComponentAlignment(cancelAppointmentButton,Alignment.MIDDLE_LEFT);
 
             cancelButton.addClickListener(event -> {
                 isUpdateMode = false;
@@ -130,12 +141,10 @@ public class AppointmentDetailViewImpl extends VerticalLayout implements Appoint
             });
 
             //Confirm Appointment (State)
-            Button confirmAppointmentButton = new Button(confirmAppointmentButtonCaption);
             confirmAppointmentButton.setIcon(VaadinIcons.CHECK);
             confirmAppointmentButton.setVisible(isConfirmAppointmentButtonVisible);
 
             //Cancel Appointment (State)
-            Button cancelAppointmentButton = new Button(cancelAppointmentButtonCaption);
             cancelAppointmentButton.setIcon(VaadinIcons.CLOSE);
             cancelAppointmentButton.setVisible(isCancelAppointmentButtonVisible);
 
@@ -154,9 +163,6 @@ public class AppointmentDetailViewImpl extends VerticalLayout implements Appoint
                 //viewListener.saveAppointment(model);
                 initializeView();
             });
-
-            buttons.addComponent(confirmAppointmentButton);
-            buttons.addComponent(cancelAppointmentButton);
 
             // styles
             buttonBarLayout.setResponsive(true);

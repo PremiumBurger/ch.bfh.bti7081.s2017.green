@@ -3,9 +3,7 @@ package ch.bfh.bti7081.s2017.green.service.appointmentState;
 import ch.bfh.bti7081.s2017.green.bean.AppointmentBean;
 import ch.bfh.bti7081.s2017.green.bean.AppointmentStateTypeBean;
 import ch.bfh.bti7081.s2017.green.service.AppointmentService;
-import ch.bfh.bti7081.s2017.green.service.AppointmentServiceImpl;
 import ch.bfh.bti7081.s2017.green.ui.components.appointment.appointmentDetail.AppointmentDetailPresenter;
-import ch.bfh.bti7081.s2017.green.ui.components.myday.MyDayPresenter;
 import com.vaadin.ui.Notification;
 
 import java.time.LocalDateTime;
@@ -27,6 +25,7 @@ public class AppointmentStateNew extends AppointmentState {
         LocalDateTime ldtToBefore = oldAppointment.getTo();
         LocalDateTime ldtFromAfter = appointmentBean.getFrom();
         LocalDateTime ldtToAfter = appointmentBean.getTo();
+        if(ldtToBefore==null || ldtFromBefore == null || ldtToAfter==null || ldtFromAfter==null)return;
         if(!ldtFromBefore.isEqual(ldtFromAfter) || !ldtToBefore.isEqual(ldtToAfter)){
             AppointmentStateTypeBean type = service.getStateTypeService().getOne(2);
             type.setAppointmentState(new AppointmentStatePostponed());
