@@ -8,7 +8,7 @@ public class PmsConstants {
     /**
      * The Swiss Date Time Format Pattern
      */
-    public static final String SWISS_DATE_FORMAT = "dd.MM.yyyy hh:mm";
+    public static final String SWISS_DATE_FORMAT = "dd.MM.yyyy HH:mm";
 
     /**
      * API Key to use google Maps

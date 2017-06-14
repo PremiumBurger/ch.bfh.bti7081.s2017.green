@@ -43,6 +43,12 @@ public class AppointmentDetailPresenter implements AppointmentDetailViewListener
     }
 
     @Override
+    public void updateLocation(AddressBean addressBean) {
+        LocationBean locationBean = appDetailModel.getLocationBean(addressBean);
+        appDetailView.setAppointmentLocation(locationBean);
+    }
+
+    @Override
     public void onConfirmClicked(AppointmentBean appointmentBean) {
         appointmentBean.getAppointmentStateType().getAppointmentState().confirm(appointmentBean,this);
         saveAppointment(appointmentBean);

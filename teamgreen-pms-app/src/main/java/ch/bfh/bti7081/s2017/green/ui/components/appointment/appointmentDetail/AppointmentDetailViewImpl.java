@@ -12,11 +12,13 @@ import com.vaadin.data.BeanValidationBinder;
 import com.vaadin.data.Binder;
 import com.vaadin.icons.VaadinIcons;
 import com.vaadin.navigator.ViewChangeListener;
+import com.vaadin.server.Responsive;
 import com.vaadin.tapio.googlemaps.GoogleMap;
 import com.vaadin.tapio.googlemaps.client.LatLon;
 import com.vaadin.ui.*;
 import com.vaadin.ui.themes.ValoTheme;
 import org.springframework.stereotype.Component;
+import org.vaadin.addons.stackpanel.StackPanel;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -68,6 +70,8 @@ public class AppointmentDetailViewImpl extends VerticalLayout implements Appoint
         cancelAppointmentButtonCaption = cancelButtonCaption;
     }
 
+
+
     private void initializeView () {
         removeAllComponents();
         setResponsive(true);
@@ -86,7 +90,6 @@ public class AppointmentDetailViewImpl extends VerticalLayout implements Appoint
         leftCol.addComponent(detailButtonLayout);
         detailButtonLayout.setMargin(false);
 
-
         // setup right column
         patientDetailPanel = buildPatientDetail();
         rightCol.addComponents(buildLocationMap(), buildHealthVisitorDetail(), patientDetailPanel);
@@ -103,7 +106,7 @@ public class AppointmentDetailViewImpl extends VerticalLayout implements Appoint
         rightCol.setWidth(100, Unit.PERCENTAGE);
         leftCol.setMargin(false);
         rightCol.setMargin(false);
-    }
+	}
 
     private JournalEntryListComponent buildJournalList () {
         //Todo: Anpassen: Hole diese Daten über das Model
@@ -120,12 +123,6 @@ public class AppointmentDetailViewImpl extends VerticalLayout implements Appoint
         return journalComponent;
     }
 
-
-    private HorizontalLayout buildInvolved () {
-        HorizontalLayout involvedLayout = new HorizontalLayout();
-        involvedLayout.setWidth(100, Unit.PERCENTAGE);
-        involvedLayout.addComponents(buildHealthVisitorDetail(), buildPatientDetail());
-        return involvedLayout;
     }
 
     private HorizontalLayout buildButtonbar () {
@@ -160,6 +157,7 @@ public class AppointmentDetailViewImpl extends VerticalLayout implements Appoint
             saveButton.addClickListener(event -> {
                 isUpdateMode = false;
                 viewListener.saveAppointment(model);
+                viewListener.updateLocation(model.getAddress());
                 initializeView();
                 Notification.show("Appointment has been saved successfully");
             });
@@ -242,6 +240,7 @@ public class AppointmentDetailViewImpl extends VerticalLayout implements Appoint
         // styling
         healthVisitorDetails.setResponsive(true);
         healthVisitorDetails.setWidth(100, Unit.PERCENTAGE);
+        StackPanel.extend(healthVisitorDetails);
         return healthVisitorDetails;
     }
 
@@ -254,7 +253,7 @@ public class AppointmentDetailViewImpl extends VerticalLayout implements Appoint
         horizontalLayout.setSpacing(true);
         horizontalLayout.setMargin(true);
         FormLayout patForm = new FormLayout();
-        horizontalLayout.addComponents(PmsDummyImages.getPatientImage(), patForm);
+        horizontalLayout.addComponents(PmsDummyImages.getPatientImage(patModel.getId()), patForm);
         patForm.setMargin(true);
         patientDetails.setContent(horizontalLayout);
 
@@ -271,8 +270,9 @@ public class AppointmentDetailViewImpl extends VerticalLayout implements Appoint
         binder.setBean(patModel);
 
         // styling
-        patientDetails.setResponsive(true);
+        // patientDetails.setResponsive(true);
         patientDetails.setWidth(100, Unit.PERCENTAGE);
+        StackPanel.extend(patientDetails);
         return patientDetails;
     }
 
@@ -344,8 +344,13 @@ public class AppointmentDetailViewImpl extends VerticalLayout implements Appoint
         });
 
         // styles
+        street.setSizeFull();
+        city.setSizeFull();
+        postalCode.setSizeFull();
+
         appointmentDetailPanel.setResponsive(true);
         formContainer.setResponsive(true);
+        StackPanel.extend(appointmentDetailPanel);
         return appointmentDetailPanel;
     }
 
@@ -374,6 +379,9 @@ public class AppointmentDetailViewImpl extends VerticalLayout implements Appoint
             emptyLayout.addComponent(new Label("No Location found"));
             panel.setContent(emptyLayout);
         }
+
+        // styles
+        StackPanel.extend(panel);
 
         return panel;
     }
@@ -411,5 +419,10 @@ public class AppointmentDetailViewImpl extends VerticalLayout implements Appoint
             addComponent(journalComponent);
         });
         this.getUI().addWindow(modal);
+    }
+
+    @Override
+    public void setAppointmentLocation(LocationBean locationBean) {
+        this.appointmentLocation = locationBean;
     }
 }

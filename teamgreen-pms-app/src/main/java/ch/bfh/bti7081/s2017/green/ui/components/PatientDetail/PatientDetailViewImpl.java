@@ -103,7 +103,7 @@ public class PatientDetailViewImpl extends VerticalLayout implements PatientDeta
         vertical.addComponents(name,ahv,address,tel,hv);
 
         horizontal.addComponent(vertical);
-        horizontal.addComponent(PmsDummyImages.getPatientImage());
+        horizontal.addComponent(PmsDummyImages.getPatientImage(patientBean.getId()));
         panel.setContent(horizontal);
         StackPanel.extend(panel);
 

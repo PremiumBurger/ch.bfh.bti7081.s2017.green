@@ -10,8 +10,8 @@ public abstract class PmsDummyImages {
         return getImageResource("img/healthvisitor.jpg");
     }
 
-    public static Image getPatientImage() {
-        return getImageResource("img/patient.jpg");
+    public static Image getPatientImage(long patientId) {
+        return getImageResource("img/patient_" + patientId + ".jpg");
     }
 
     private static Image getImageResource(String resourceId) {

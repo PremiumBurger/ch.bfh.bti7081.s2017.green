@@ -1,5 +1,8 @@
 package ch.bfh.bti7081.s2017.green.ui.components.appointment.appointmentDetail;
 
+import ch.bfh.bti7081.s2017.green.bean.AddressBean;
+import ch.bfh.bti7081.s2017.green.bean.AppointmentBean;
+import ch.bfh.bti7081.s2017.green.domain.Appointment;
 import ch.bfh.bti7081.s2017.green.bean.AppointmentBean;
 import ch.bfh.bti7081.s2017.green.bean.JournalEntryBean;
 
@@ -40,4 +43,11 @@ public interface AppointmentDetailViewListener {
      * @param appointmentBean the bean to act on
      */
     void getStateRefresh(AppointmentBean appointmentBean);
+
+    /**
+     * Refresh the Location
+     * @param addressBean the {@link AddressBean}
+     */
+    void updateLocation(AddressBean addressBean);
+
 }

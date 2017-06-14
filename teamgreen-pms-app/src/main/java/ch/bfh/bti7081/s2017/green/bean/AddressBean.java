@@ -2,12 +2,20 @@ package ch.bfh.bti7081.s2017.green.bean;
 
 import ch.bfh.bti7081.s2017.green.domain.Address;
 
+import javax.validation.constraints.Digits;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
 public class AddressBean extends EntityBean<Address> {
 
+    @NotNull
     private String strasse;
 
+    @NotNull
+    @Size(min = 4, max = 6)
     private String plz;
 
+    @NotNull
     private String city;
 
     private String country;
