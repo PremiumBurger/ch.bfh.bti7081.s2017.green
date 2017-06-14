@@ -95,7 +95,7 @@ public class DashboardUI extends UI {
         if (user == null) {
             user = healthVisitorService.createFromUserContext(userLoginRequest);
         }
-        this.userContext.setUserContext(user.getFirstName(), user.getLastName(), user.getExternalKey(), userLoginRequest.getImageUrl());
+        this.userContext.setUserContext(user.getId(), user.getFirstName(), user.getLastName(), user.getExternalKey(), userLoginRequest.getImageUrl());
 
         VaadinSession.getCurrent().setAttribute(UserContext.class.getName(), this.userContext);
         updateContent();

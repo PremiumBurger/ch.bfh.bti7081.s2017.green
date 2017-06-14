@@ -8,29 +8,29 @@ import org.springframework.stereotype.Component;
  */
 @Component
 public class UserContext {
+    private long userId;
     private String firstname;
     private String lastname;
     private String identifier;
     private String imageUrl;
 
-    public UserContext() {}
-
-    public void setUserContext (String firstname, String lastname, String identifier, String imageUrl) {
+    public void setUserContext(long userId, String firstname, String lastname, String identifier, String imageUrl) {
+        this.userId = userId;
         this.firstname = firstname;
         this.lastname = lastname;
         this.identifier = identifier;
         this.imageUrl = imageUrl;
     }
 
-    public boolean isAuthenticated () {
+    public boolean isAuthenticated() {
         return !StringUtils.isBlank(identifier);
     }
 
-    public String getLastname () {
+    public String getLastname() {
         return lastname;
     }
 
-    public String getFirstname () {
+    public String getFirstname() {
         return firstname;
     }
 
@@ -38,7 +38,7 @@ public class UserContext {
         return identifier;
     }
 
-    public String getImageUrl () {
+    public String getImageUrl() {
         return imageUrl;
     }
 
@@ -47,5 +47,9 @@ public class UserContext {
         this.firstname = null;
         this.lastname = null;
         this.imageUrl = null;
+    }
+
+    public long getUserId() {
+        return userId;
     }
 }
