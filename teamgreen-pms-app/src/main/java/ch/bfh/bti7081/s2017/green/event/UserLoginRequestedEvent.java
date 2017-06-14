@@ -1,7 +1,7 @@
 package ch.bfh.bti7081.s2017.green.event;
 
 import green.auth.UserProfile;
-import green.mvp.event.Event;
+import green.event.Event;
 
 /**
  * Created by Lukas on 26.05.2017.

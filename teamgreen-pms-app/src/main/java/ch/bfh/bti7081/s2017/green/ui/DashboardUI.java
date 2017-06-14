@@ -4,7 +4,6 @@ import ch.bfh.bti7081.s2017.green.bean.HealthVisitorBean;
 import ch.bfh.bti7081.s2017.green.event.UserContexteCreated;
 import ch.bfh.bti7081.s2017.green.event.UserLoginRequestedEvent;
 import ch.bfh.bti7081.s2017.green.service.HealthVisitorService;
-import com.restfb.util.StringUtils;
 import com.vaadin.annotations.PreserveOnRefresh;
 import com.vaadin.annotations.Push;
 import com.vaadin.annotations.Theme;
@@ -15,8 +14,8 @@ import com.vaadin.spring.annotation.SpringUI;
 import com.vaadin.ui.UI;
 import com.vaadin.ui.themes.ValoTheme;
 import green.auth.UserContext;
-import green.mvp.event.EventBus;
-import green.mvp.event.EventHandler;
+import green.event.EventBus;
+import green.event.EventHandler;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.Locale;

@@ -14,8 +14,8 @@ import com.vaadin.shared.ui.ContentMode;
 import com.vaadin.ui.*;
 import com.vaadin.ui.themes.ValoTheme;
 import green.auth.UserContext;
-import green.mvp.event.EventBus;
-import green.mvp.event.EventHandler;
+import green.event.EventBus;
+import green.event.EventHandler;
 import org.springframework.beans.factory.annotation.Autowired;
 
 /**

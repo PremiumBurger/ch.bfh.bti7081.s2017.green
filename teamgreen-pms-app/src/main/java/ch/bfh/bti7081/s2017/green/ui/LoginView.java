@@ -10,7 +10,7 @@ import green.auth.OAuthService;
 import green.auth.OAuthService.Service;
 import green.auth.UserProfile;
 import green.auth.UserToken;
-import green.mvp.event.EventBus;
+import green.event.EventBus;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.vaadin.addon.oauthpopup.OAuthListener;
 import org.vaadin.addon.oauthpopup.OAuthPopupButton;

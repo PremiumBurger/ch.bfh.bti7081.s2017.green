@@ -1,4 +1,4 @@
-package green.mvp.event;
+package green.event;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
