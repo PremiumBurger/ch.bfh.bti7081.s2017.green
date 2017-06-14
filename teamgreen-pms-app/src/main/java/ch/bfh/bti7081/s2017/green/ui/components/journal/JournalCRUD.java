@@ -47,8 +47,10 @@ public class JournalCRUD extends Window {
 
         // Listeners for Buttons
         saveAndQuit.addClickListener(e -> {
-            this.fireEvent(new JournalEntrySaveEvent(this, this.bean));
-            this.close();
+            if(journalEntryBinder.isValid()) {
+                this.fireEvent(new JournalEntrySaveEvent(this, this.bean));
+                this.close();
+            }
         });
 
         cancel.addClickListener(e -> this.close() ); //wieso wird onSaveJournalEntryButtonClick ausgeführt?
