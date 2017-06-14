@@ -1,4 +1,4 @@
-package ch.bfh.bti7081.s2017.green.ui;
+package ch.bfh.bti7081.s2017.green.ui.components.menu;
 
 /**
  * Created by Lukas on 26.05.2017.
@@ -6,6 +6,7 @@ package ch.bfh.bti7081.s2017.green.ui;
 
 import ch.bfh.bti7081.s2017.green.event.UserContexteCreated;
 import ch.bfh.bti7081.s2017.green.event.UserLoginRequestedEvent;
+import ch.bfh.bti7081.s2017.green.ui.DashboardViewType;
 import ch.bfh.bti7081.s2017.green.ui.controls.LinkButton;
 import com.vaadin.icons.VaadinIcons;
 import com.vaadin.server.ExternalResource;
@@ -25,7 +26,7 @@ import org.springframework.beans.factory.annotation.Autowired;
  */
 @SuppressWarnings({"serial", "unchecked"})
 @org.springframework.stereotype.Component
-public final class DashboardMenu extends CustomComponent {
+public final class MenuViewImpl extends CustomComponent {
 
     public static final String ID = "dashboard-menu";
     public static final String NOTIFICATIONS_BADGE_ID = "dashboard-menu-notifications-badge";
@@ -36,7 +37,7 @@ public final class DashboardMenu extends CustomComponent {
     private EventBus eventBus;
 
     @Autowired
-    public DashboardMenu (UserContext userContext, EventBus eventBus) {
+    public MenuViewImpl (UserContext userContext, EventBus eventBus) {
         this.userContext = userContext;
         this.eventBus = eventBus;
         eventBus.addHandler(this);

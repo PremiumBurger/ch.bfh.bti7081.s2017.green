@@ -1,9 +1,9 @@
 package ch.bfh.bti7081.s2017.green.ui;
 
+import ch.bfh.bti7081.s2017.green.ui.components.menu.MenuViewImpl;
 import com.vaadin.ui.ComponentContainer;
 import com.vaadin.ui.CssLayout;
 import com.vaadin.ui.HorizontalLayout;
-import green.auth.UserContext;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Component;
@@ -27,7 +27,7 @@ public class MainView extends HorizontalLayout {
         setSizeFull();
         addStyleName("mainview");
         setSpacing(false);
-        DashboardMenu dashboardMenu = context.getBean(DashboardMenu.class);
+        MenuViewImpl dashboardMenu = context.getBean(MenuViewImpl.class);
         addComponent(dashboardMenu);
         content = new CssLayout();
         content.addStyleName("v-scrollable");
