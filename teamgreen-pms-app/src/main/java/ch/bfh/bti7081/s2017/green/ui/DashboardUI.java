@@ -35,12 +35,6 @@ public class DashboardUI extends UI {
     private UserContext userContext;
     private HealthVisitorService healthVisitorService;
 
-    private boolean isLoggedIn = false;
-
-    public DashboardUI () {
-        this.isLoggedIn = false;
-    }
-
     @Autowired
     public DashboardUI (LoginView loginView, MainView mainView, EventBus eventBus, UserContext userContext, HealthVisitorService healthVisitorService) {
         this.loginView = loginView;
@@ -61,10 +55,6 @@ public class DashboardUI extends UI {
         this.mainView.onAfterBeanInitializaiton();
         this.loginView.onAfterBeanInitializaiton();
         updateContent();
-
-        // Some views need to be aware of browser resize events so a
-        // BrowserResizeEvent gets fired to the event bus on every occasion.
-        // Page.getCurrent().addBrowserWindowResizeListener((Page.BrowserWindowResizeListener) event -> DashboardEventBus.post(new BrowserResizeEvent()));
     }
 
     /**
@@ -98,7 +88,6 @@ public class DashboardUI extends UI {
         }
         this.userContext.setUserContext(user.getId(), user.getFirstName(), user.getLastName(), user.getExternalKey(), userLoginRequest.getImageUrl());
 
-        VaadinSession.getCurrent().setAttribute(UserContext.class.getName(), this.userContext);
         updateContent();
     }
 }

@@ -59,7 +59,7 @@ public enum DashboardViewType {
         return icon;
     }
 
-    public boolean isVisible() {
+    public boolean showInMainNavigation () {
         return visible;
     }
 }

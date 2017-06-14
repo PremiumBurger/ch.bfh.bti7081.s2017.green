@@ -129,7 +129,7 @@ public final class MenuViewImpl extends CustomComponent {
                 menuItemComponent = buildBadgeWrapper(menuItemComponent, notificationsBadge);
             }
 
-            if (view.isVisible()) {
+            if (view.showInMainNavigation()) {
                 menuItemsLayout.addComponent(menuItemComponent);
             }
         }
