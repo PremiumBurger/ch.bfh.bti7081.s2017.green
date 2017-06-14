@@ -1,7 +1,6 @@
 package ch.bfh.bti7081.s2017.green.ui.components.appointment.appointmentDetail;
 
 import ch.bfh.bti7081.s2017.green.bean.*;
-import ch.bfh.bti7081.s2017.green.domain.AppointmentJournalEntry;
 import ch.bfh.bti7081.s2017.green.ui.components.journal.JournalCRUD;
 import ch.bfh.bti7081.s2017.green.ui.components.journal.JournalEntryListComponent;
 import ch.bfh.bti7081.s2017.green.ui.components.journal.JournalEntrySaveEvent;
@@ -13,7 +12,6 @@ import com.vaadin.data.BeanValidationBinder;
 import com.vaadin.data.Binder;
 import com.vaadin.icons.VaadinIcons;
 import com.vaadin.navigator.ViewChangeListener;
-import com.vaadin.server.Page;
 import com.vaadin.tapio.googlemaps.GoogleMap;
 import com.vaadin.tapio.googlemaps.client.LatLon;
 import com.vaadin.tapio.googlemaps.client.overlays.GoogleMapMarker;
@@ -36,7 +34,7 @@ public class AppointmentDetailViewImpl extends VerticalLayout implements Appoint
 
     private Set<AppointmentStateTypeBean> allApppointmentStates;
 
-    private Set<PatientBean>  allPatients;
+    private Set<PatientBean> allPatients;
 
     private JournalEntryListComponent journalComponent;
 
@@ -56,7 +54,7 @@ public class AppointmentDetailViewImpl extends VerticalLayout implements Appoint
     private Panel patientDetailPanel;
 
     @Override
-    public void setModel(AppointmentBean appointmentBean, Set<PatientBean> allPatients, Set<AppointmentStateTypeBean> allApppointmentStates, LocationBean locationBean) {
+    public void setModel (AppointmentBean appointmentBean, Set<PatientBean> allPatients, Set<AppointmentStateTypeBean> allApppointmentStates, LocationBean locationBean) {
         this.allPatients = allPatients;
         this.allApppointmentStates = allApppointmentStates;
         this.model = appointmentBean;
@@ -72,7 +70,7 @@ public class AppointmentDetailViewImpl extends VerticalLayout implements Appoint
         cancelAppointmentButtonCaption = cancelButtonCaption;
     }
 
-    private void initializeView() {
+    private void initializeView () {
         removeAllComponents();
         setResponsive(true);
 
@@ -100,8 +98,8 @@ public class AppointmentDetailViewImpl extends VerticalLayout implements Appoint
         // Set the Appointment Journal
         journalComponent = buildJournalList();
         addComponent(journalComponent);
-		
-		// styles
+
+        // styles
         twoColLayout.setWidth(100, Unit.PERCENTAGE);
         leftCol.setWidth(100, Unit.PERCENTAGE);
         rightCol.setWidth(100, Unit.PERCENTAGE);
@@ -109,12 +107,12 @@ public class AppointmentDetailViewImpl extends VerticalLayout implements Appoint
         rightCol.setMargin(false);
     }
 
-    private JournalEntryListComponent buildJournalList() {
+    private JournalEntryListComponent buildJournalList () {
         //Todo: Anpassen: Hole diese Daten über das Model
         List<JournalEntryBean> entries = model.getPatient().getJournal().getJournalEntries().stream()
-                .filter(e-> e instanceof AppointmentJournalEntryBean)
-                .filter(e-> ((AppointmentJournalEntryBean)e).getAppointment().getId() == model.getId())
-                .sorted((e,d) -> d.getCreatedOn().compareTo(e.getCreatedOn()))
+                .filter(e -> e instanceof AppointmentJournalEntryBean)
+                .filter(e -> ((AppointmentJournalEntryBean) e).getAppointment().getId() == model.getId())
+                .sorted((e, d) -> d.getCreatedOn().compareTo(e.getCreatedOn()))
                 .collect(Collectors.toList());
         JournalEntryListComponent journalComponent = new JournalEntryListComponent(entries);
 
@@ -125,14 +123,14 @@ public class AppointmentDetailViewImpl extends VerticalLayout implements Appoint
     }
 
 
-    private HorizontalLayout buildInvolved() {
+    private HorizontalLayout buildInvolved () {
         HorizontalLayout involvedLayout = new HorizontalLayout();
         involvedLayout.setWidth(100, Unit.PERCENTAGE);
         involvedLayout.addComponents(buildHealthVisitorDetail(), buildPatientDetail());
         return involvedLayout;
     }
 
-    private HorizontalLayout buildButtonbar() {
+    private HorizontalLayout buildButtonbar () {
         HorizontalLayout buttonBarLayout = new HorizontalLayout();
         buttonBarLayout.setDefaultComponentAlignment(Alignment.BOTTOM_RIGHT);
         buttonBarLayout.setWidth(100, Unit.PERCENTAGE);
@@ -203,10 +201,10 @@ public class AppointmentDetailViewImpl extends VerticalLayout implements Appoint
             Button editButton = new Button("Edit", VaadinIcons.EDIT);
             buttons.addComponent(editButton);
 
-            editButton.addClickListener( event -> {
-               isUpdateMode = true;
-               viewListener.getStateRefresh(model);
-               initializeView();
+            editButton.addClickListener(event -> {
+                isUpdateMode = true;
+            	viewListener.getStateRefresh(model);
+                initializeView();
             });
 
             // styles
@@ -216,7 +214,7 @@ public class AppointmentDetailViewImpl extends VerticalLayout implements Appoint
         return buttonBarLayout;
     }
 
-    private Panel buildHealthVisitorDetail() {
+    private Panel buildHealthVisitorDetail () {
         HealthVisitorBean hvModel = model.getHealthVisitor();
 
         // layout
@@ -249,7 +247,7 @@ public class AppointmentDetailViewImpl extends VerticalLayout implements Appoint
         return healthVisitorDetails;
     }
 
-    private Panel buildPatientDetail() {
+    private Panel buildPatientDetail () {
         PatientBean patModel = model.getPatient();
 
         // layout
@@ -280,7 +278,7 @@ public class AppointmentDetailViewImpl extends VerticalLayout implements Appoint
         return patientDetails;
     }
 
-    private Panel buildAppointmentDetail() {
+    private Panel buildAppointmentDetail () {
         Panel appointmentDetailPanel = new Panel("Details");
         HorizontalLayout formContainer = new HorizontalLayout();
         formContainer.setMargin(true);
@@ -353,7 +351,7 @@ public class AppointmentDetailViewImpl extends VerticalLayout implements Appoint
         return appointmentDetailPanel;
     }
 
-    private Panel buildLocationMap() {
+    private Panel buildLocationMap () {
         Panel panel = new Panel("Location");
         if (appointmentLocation != null) {
             VerticalLayout mapLayout = new VerticalLayout();
@@ -383,17 +381,17 @@ public class AppointmentDetailViewImpl extends VerticalLayout implements Appoint
     }
 
     @Override
-    public void setListener(AppointmentDetailViewListener appDetailViewListener) {
+    public void setListener (AppointmentDetailViewListener appDetailViewListener) {
         this.viewListener = appDetailViewListener;
     }
 
     @Override
-    public void enter(ViewChangeListener.ViewChangeEvent event) {
+    public void enter (ViewChangeListener.ViewChangeEvent event) {
         String parameters = event.getParameters();
         viewListener.initScreen(Long.valueOf(parameters));
     }
 
-    public void openModal(AppointmentJournalEntryBean bean){
+    public void openModal (AppointmentJournalEntryBean bean) {
         //Todo: Review: diese Logik hier?
         bean.setAppointment(model);
         bean.setCreatedBy(model.getHealthVisitor());  //Todo: change to current user
