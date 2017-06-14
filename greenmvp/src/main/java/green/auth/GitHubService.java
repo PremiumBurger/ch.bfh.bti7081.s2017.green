@@ -34,8 +34,9 @@ public class GitHubService extends OAuthService {
 			GHMyself me = gh.getMyself();
 			String id = me.getLogin();
 			String name = me.getName();
-			String lastName = StringUtils.isBlank(name) ? id : name;
-			String firstName = StringUtils.isBlank(name) ? id : name;
+			name = StringUtils.isBlank(name) ? id : name;
+			String lastName = name;
+			String firstName = name;
 			String[] nameSplit = name.split(" ");
 			if (nameSplit.length > 0) {
 				lastName = nameSplit[nameSplit.length-1];
