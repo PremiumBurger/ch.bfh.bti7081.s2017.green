@@ -4,7 +4,6 @@ import ch.bfh.bti7081.s2017.green.bean.AppointmentBean;
 import ch.bfh.bti7081.s2017.green.bean.AppointmentStateTypeBean;
 import ch.bfh.bti7081.s2017.green.service.AppointmentService;
 import ch.bfh.bti7081.s2017.green.ui.components.appointment.appointmentDetail.AppointmentDetailPresenter;
-import com.vaadin.ui.Notification;
 
 import java.time.LocalDateTime;
 
@@ -31,8 +30,6 @@ public class AppointmentStateNew extends AppointmentState {
             type.setAppointmentState(new AppointmentStatePostponed());
             appointmentBean.setAppointmentStateType(type);
         }
-        //service.onStateSetToNew();
-        Notification.show("State New has been set");
     }
 
     @Override

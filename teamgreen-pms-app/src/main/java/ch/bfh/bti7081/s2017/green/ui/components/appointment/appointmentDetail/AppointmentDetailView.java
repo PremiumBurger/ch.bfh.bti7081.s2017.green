@@ -4,7 +4,6 @@ import ch.bfh.bti7081.s2017.green.bean.AppointmentBean;
 import ch.bfh.bti7081.s2017.green.bean.AppointmentStateTypeBean;
 import ch.bfh.bti7081.s2017.green.bean.LocationBean;
 import ch.bfh.bti7081.s2017.green.bean.PatientBean;
-import ch.bfh.bti7081.s2017.green.domain.Patient;
 import com.vaadin.navigator.View;
 
 import java.util.Set;
@@ -26,5 +25,12 @@ public interface AppointmentDetailView extends View {
      */
     void setModel(AppointmentBean appointmentBean, Set<PatientBean> allPatients, Set<AppointmentStateTypeBean> allApppointmentStates, LocationBean locationBean);
 
+    /**
+     * Updates the two State-dependent Buttons on the view
+     * @param confirmButtonVisible sets confirm button visible/invisible
+     * @param confirmButtonCaption sets caption of the confirm button
+     * @param cancelButtonVisible sets cancel button visible/invisible
+     * @param cancelButtonCaption sets caption of cancel button
+     */
     void updateStateButtons(boolean confirmButtonVisible, String confirmButtonCaption, boolean cancelButtonVisible, String cancelButtonCaption);
 }

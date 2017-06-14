@@ -33,13 +33,10 @@ public class AppointmentDetailPresenter implements AppointmentDetailViewListener
 
     @Override
     public void saveAppointment(AppointmentBean appointmentBean) {
-        //appointmentBean.getAppointmentStateType().getAppointmentState().beforeStateSet(appointmentBean,this);
-        AppointmentBean oldBean = appointmentBean;
         long savedAppointmentId = appDetailModel.saveAppointment(appointmentBean);
         if (savedAppointmentId>0){
-            appointmentBean.getAppointmentStateType().getAppointmentState().afterStateSet(appDetailModel.getAppointment(savedAppointmentId),oldBean,this);
+            appointmentBean.getAppointmentStateType().getAppointmentState().afterStateSet(appDetailModel.getAppointment(savedAppointmentId),appointmentBean,this);
         }
-
     }
 
     @Override
@@ -59,6 +56,13 @@ public class AppointmentDetailPresenter implements AppointmentDetailViewListener
         appointmentBean.getAppointmentStateType().getAppointmentState().afterStateSet(appointmentBean,appointmentBean,this);
     }
 
+    /**
+     *  update the state-dependent buttons on the view
+     * @param confirmButtonVisible sets confirm button visible/invisible
+     * @param confirmButtonCaption sets caption of the confirm button
+     * @param cancelButtonVisible sets cancel button visible/invisible
+     * @param cancelButtonCaption sets caption of cancel button
+     */
     public void updateStateButtons(boolean confirmButtonVisible, String confirmButtonCaption, boolean cancelButtonVisible, String cancelButtonCaption) {
         appDetailView.updateStateButtons(confirmButtonVisible,confirmButtonCaption,cancelButtonVisible,cancelButtonCaption);
     }

@@ -4,6 +4,7 @@ import ch.bfh.bti7081.s2017.green.bean.AppointmentBean;
 import ch.bfh.bti7081.s2017.green.bean.AppointmentStateTypeBean;
 import ch.bfh.bti7081.s2017.green.data.AppointmentRepository;
 import ch.bfh.bti7081.s2017.green.domain.Appointment;
+import ch.bfh.bti7081.s2017.green.service.appointmentState.*;
 import ch.bfh.bti7081.s2017.green.webservice.GoogleGeocodingWebService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,7 +15,7 @@ public class AppointmentServiceImpl extends BaseService<Appointment, Appointment
     private GoogleGeocodingWebService googleGeocodingWebService;
 
     @Autowired
-    private AppointmentStateTypeServiceImpl stateTypeService;
+    private AppointmentStateTypeService stateTypeService;
 
     @Autowired
     public AppointmentServiceImpl(AppointmentRepository repository, GoogleGeocodingWebService googleGeocodingWebService) {
@@ -77,7 +78,7 @@ public class AppointmentServiceImpl extends BaseService<Appointment, Appointment
      * Get the service of the State Type
      * @return stateTypeService
      */
-    public AppointmentStateTypeServiceImpl getStateTypeService() {
+    public AppointmentStateTypeService getStateTypeService() {
         return stateTypeService;
     }
 
