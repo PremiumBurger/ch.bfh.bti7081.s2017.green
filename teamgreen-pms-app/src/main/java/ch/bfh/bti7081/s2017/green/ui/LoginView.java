@@ -15,6 +15,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.vaadin.addon.oauthpopup.OAuthListener;
 import org.vaadin.addon.oauthpopup.OAuthPopupButton;
 import org.vaadin.addon.oauthpopup.buttons.FacebookButton;
+import org.vaadin.addon.oauthpopup.buttons.GitHubButton;
 
 @SuppressWarnings("serial")
 @org.springframework.stereotype.Component
@@ -52,7 +53,24 @@ public class LoginView extends VerticalLayout {
             fields.addComponent(fbButton);
             fields.setComponentAlignment(fbButton, Alignment.BOTTOM_LEFT);
         }
+
+        OAuthPopupButton githubButton = createGithubButton();
+        if (githubButton != null) {
+            fields.addComponent(githubButton);
+            fields.setComponentAlignment(fbButton, Alignment.BOTTOM_LEFT);
+        }
         return fields;
+    }
+
+    private OAuthPopupButton createGithubButton () {
+        String key = "48bfec40a5c7b78b46ef";
+        String secret = "2dcb7ad8cdbcafef1615357c0eb6a176eeb28f5c";
+        if (key == null || secret == null) {
+            return null;
+        }
+        GitHubButton button = new GitHubButton(key, secret);
+        button.setCaption("Login with Github");
+        return initButton(button, Service.GITHUB, key, secret);
     }
 
     private OAuthPopupButton createFacebookButton () {
