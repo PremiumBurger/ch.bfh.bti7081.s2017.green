@@ -9,6 +9,9 @@ import com.vaadin.ui.*;
 
 import java.util.List;
 
+/**
+ * A CustomComponent to Display the journal entries in a Panel.
+ */
 public class JournalEntryListComponent extends CustomComponent {
 
     private Panel mainPanel;
@@ -17,19 +20,24 @@ public class JournalEntryListComponent extends CustomComponent {
 
     public JournalEntryListComponent(List<JournalEntryBean> journal) {
 
+        // Set up the Mainpaneel
         mainPanel = new Panel();
         mainPanel.setCaption("Journal");
 
         addJournalEntryButton = new Button("New Entry");
         addJournalEntryButton.setIcon(VaadinIcons.PLUS_CIRCLE);
+
+        // Listener for the add Entry Button
         addJournalEntryButton.addClickListener(e -> this.fireEvent(new Event(this)) );
 
+        // Set up the content layout
         mainPanelLayout = new VerticalLayout();
         mainPanelLayout.setMargin(false);
         mainPanelLayout.setSpacing(false);
         mainPanelLayout.addComponent(addJournalEntryButton);
 
         mainPanel.setContent(mainPanelLayout);
+
         setCompositionRoot(mainPanel);
 
         if(journal.size()>0){
@@ -77,12 +85,10 @@ public class JournalEntryListComponent extends CustomComponent {
     }
 
     /**
-     *
      * @param event The event to be called on add-button click
-     * @return //Todo: Lüku fragen
+     * @return
      */
     public Registration addNewJournalListener(JournalButtonClickEvent event){
         return this.addListener(Event.class, event, JournalButtonClickEvent.BUTTON_CLICK_METHOD);
     }
 }
-
