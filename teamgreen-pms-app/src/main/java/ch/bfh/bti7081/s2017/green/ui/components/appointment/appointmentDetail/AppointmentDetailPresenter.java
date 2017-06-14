@@ -1,7 +1,6 @@
 package ch.bfh.bti7081.s2017.green.ui.components.appointment.appointmentDetail;
 
 import ch.bfh.bti7081.s2017.green.bean.*;
-import ch.bfh.bti7081.s2017.green.domain.AppointmentJournalEntry;
 import ch.bfh.bti7081.s2017.green.bean.LocationBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
