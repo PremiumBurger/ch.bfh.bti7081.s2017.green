@@ -19,5 +19,6 @@ public interface AppointmentDetailViewListener {
 
     void onConfirmClicked(AppointmentBean appointmentBean);
     void onCancelledClicked(AppointmentBean appointmentBean);
+    void getStateRefresh(AppointmentBean appointmentBean);
 
 }

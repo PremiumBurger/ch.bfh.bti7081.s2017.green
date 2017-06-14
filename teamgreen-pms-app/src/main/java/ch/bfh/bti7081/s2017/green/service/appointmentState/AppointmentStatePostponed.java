@@ -9,14 +9,14 @@ import ch.bfh.bti7081.s2017.green.ui.components.myday.MyDayPresenter;
 import com.vaadin.ui.Notification;
 
 /**
- * This Class represents the State of the Appointment, when it has been postponed
+ * This Class represents the State of the Appointment, when its date (to, from) has been changed
  * @author schms27
  */
 public class AppointmentStatePostponed extends AppointmentState {
 
     @Override
     public void afterStateSet(AppointmentBean appointmentBean, AppointmentBean oldAppointment, AppointmentDetailPresenter presenter) {
-
+        presenter.updateStateButtons(true,"Confirm Appointment",true,"Cancel Appointment");
     }
 
     @Override
@@ -30,9 +30,6 @@ public class AppointmentStatePostponed extends AppointmentState {
         AppointmentStateTypeBean type = presenter.getAppointmentStateTypeBean(4);
         type.setAppointmentState(new AppointmentStateConfirmed());
         appointmentBean.setAppointmentStateType(type);
-
-        presenter.updateCancelButton(true,"Cancel Appointment");
-        presenter.updateConfirmButton(true,"Finish Appointment");
     }
 
     @Override
