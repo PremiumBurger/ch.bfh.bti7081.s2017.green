@@ -60,12 +60,21 @@ public class AppointmentDetailModel {
         return appointmentStateTypeService.getAll();
     }
 
+
+    /**
+     * Getter for
+     * @return AppointmentStateTypeBean
+     */
+    public AppointmentStateTypeBean getAppointmentStateTypeBean(long id) {
+        return appointmentStateTypeService.getOne(id);
+    }
+
     /**
      * Persists the {@link AppointmentBean}
      * @param appointmentBean the {@link AppointmentBean} to persist
      */
-    public void saveAppointment(AppointmentBean appointmentBean) {
-        appointmentService.save(appointmentBean);
+    public long saveAppointment(AppointmentBean appointmentBean) {
+       return appointmentService.save(appointmentBean);
     }
 
 

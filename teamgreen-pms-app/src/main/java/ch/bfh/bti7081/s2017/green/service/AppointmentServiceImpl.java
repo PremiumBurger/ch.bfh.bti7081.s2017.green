@@ -38,7 +38,7 @@ public class AppointmentServiceImpl extends BaseService<Appointment, Appointment
             AppointmentStateTypeBean oldAppointmentStateTypeBean = oldBean.getAppointmentStateType();
             AppointmentStateTypeBean newAppointmentStateTypeBean = appointmentBean.getAppointmentStateType();
             if (newAppointmentStateTypeBean != oldAppointmentStateTypeBean) {
-                newAppointmentStateTypeBean.onStateSet(appointmentBean, this, oldBean);
+                newAppointmentStateTypeBean.getAppointmentState().onStateSet(appointmentBean, this, oldBean);
             }
         }
 

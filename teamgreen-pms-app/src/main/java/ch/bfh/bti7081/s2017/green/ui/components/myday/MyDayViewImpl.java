@@ -124,27 +124,11 @@ public class MyDayViewImpl extends VerticalLayout implements MyDayView {
             Button details = new Button("Show Details");
             details.setIcon(VaadinIcons.CLIPBOARD_PULSE);
 
-            //Confirm Appointment (State)
-            Button confirmAppointment = new Button("Confirm");
-            confirmAppointment.setIcon(VaadinIcons.BUG);
-            confirmAppointment.setVisible(false);
-
-            //Cancel Appointment (State)
-            Button cancelAppointment = new Button("Confirm");
-            confirmAppointment.setIcon(VaadinIcons.BUG);
-            confirmAppointment.setVisible(false);
-
             //CLicklistener for Appointment Details
             details.addClickListener(e -> getUI().getNavigator().navigateTo("patientDetail" + "/" + appointment.getPatient().getId()));
 
-            //CLicklistener for Appointment Confirm
-            confirmAppointment.addClickListener(e -> listener.onConfirmClicked(appointment));
-
-            //CLicklistener for Appointment Confirm
-            cancelAppointment.addClickListener(e -> listener.onCancelledClicked(appointment));
-
             //Add Components to Layout
-            layout.addComponents(to,patientname,street,adr,details,confirmAppointment);
+            layout.addComponents(to,patientname,street,adr,details);
 
             //Create Content Panel
             Panel contentPanel = new Panel(" Appointment from: " + appointment.getFrom().format(format) + " Patient: " + appointment.getPatient().getFullName());

@@ -17,4 +17,7 @@ public interface AppointmentDetailViewListener {
      */
     void saveAppointment(AppointmentBean appointmentBean);
 
+    void onConfirmClicked(AppointmentBean appointmentBean);
+    void onCancelledClicked(AppointmentBean appointmentBean);
+
 }

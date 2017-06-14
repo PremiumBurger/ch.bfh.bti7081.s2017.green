@@ -34,6 +34,10 @@ public class AppointmentDetailViewImpl extends VerticalLayout implements Appoint
 
     private boolean isUpdateMode;
 
+    //Buttons for State
+    Button confirmAppointment;
+    Button cancelAppointment;
+
     /**
      * Needs to be global to update this partially
      */
@@ -115,6 +119,25 @@ public class AppointmentDetailViewImpl extends VerticalLayout implements Appoint
                 initializeView();
                 Notification.show("Appointment has bees saved successfully");
             });
+
+            //Confirm Appointment (State)
+            confirmAppointment = new Button("Confirm");
+            confirmAppointment.setIcon(VaadinIcons.BUG);
+            //confirmAppointment.setVisible(false);
+
+            //Cancel Appointment (State)
+            cancelAppointment = new Button("Cancel");
+            confirmAppointment.setIcon(VaadinIcons.BUG);
+            //confirmAppointment.setVisible(false);
+
+            //CLicklistener for Appointment Confirm
+            confirmAppointment.addClickListener(e -> viewListener.onConfirmClicked(model));
+
+            //CLicklistener for Appointment Confirm
+            cancelAppointment.addClickListener(e -> viewListener.onCancelledClicked(model));
+
+            buttons.addComponent(confirmAppointment);
+            buttons.addComponent(cancelAppointment);
 
             // styles
             buttonBarLayout.setResponsive(true);
@@ -312,5 +335,15 @@ public class AppointmentDetailViewImpl extends VerticalLayout implements Appoint
     public void enter(ViewChangeListener.ViewChangeEvent event) {
         String parameters = event.getParameters();
         viewListener.initScreen(Long.valueOf(parameters));
+    }
+
+    public void updateConfirmButton(boolean visible, String buttonCaption){
+        confirmAppointment.setVisible(visible);
+        confirmAppointment.setCaption(buttonCaption);
+    }
+
+    public void updateCancelButton(boolean visible, String buttonCaption){
+        cancelAppointment.setVisible(visible);
+        cancelAppointment.setCaption(buttonCaption);
     }
 }
