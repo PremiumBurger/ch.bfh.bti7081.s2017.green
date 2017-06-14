@@ -2,7 +2,9 @@ package ch.bfh.bti7081.s2017.green.bean;
 
 import ch.bfh.bti7081.s2017.green.domain.JournalEntry;
 
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
@@ -11,6 +13,8 @@ public class JournalEntryBean extends EntityBean<JournalEntry>{
     private JournalBean journal;
 
     @Pattern(regexp ="\\[A-Za-z0-9]\\w+")
+    @Size(min=1, max=240)
+    @NotNull
     private String text;
     private boolean isImportant;
     private LocalDateTime createdOn;
