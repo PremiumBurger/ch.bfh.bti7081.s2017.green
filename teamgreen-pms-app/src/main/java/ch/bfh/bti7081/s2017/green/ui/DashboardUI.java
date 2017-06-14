@@ -4,6 +4,8 @@ import ch.bfh.bti7081.s2017.green.bean.HealthVisitorBean;
 import ch.bfh.bti7081.s2017.green.event.UserContexteCreated;
 import ch.bfh.bti7081.s2017.green.event.UserLoginRequestedEvent;
 import ch.bfh.bti7081.s2017.green.service.HealthVisitorService;
+import ch.bfh.bti7081.s2017.green.ui.components.login.LoginView;
+import ch.bfh.bti7081.s2017.green.ui.components.login.LoginViewImpl;
 import com.vaadin.annotations.PreserveOnRefresh;
 import com.vaadin.annotations.Push;
 import com.vaadin.annotations.Theme;
@@ -78,7 +80,7 @@ public class DashboardUI extends UI {
             navigator.navigateTo(navigator.getState());
             eventBus.fireEvent(new UserContexteCreated());
         } else {
-            setContent(loginView);
+            setContent((LoginViewImpl)loginView);
             addStyleName("loginview");
         }
     }

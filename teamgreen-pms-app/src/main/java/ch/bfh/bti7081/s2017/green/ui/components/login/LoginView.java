@@ -5,5 +5,5 @@ import com.vaadin.navigator.View;
 public interface LoginView extends View {
     void addListener(LoginViewListener listener);
 
-    void login();
+    void onAfterBeanInitializaiton ();
 }
