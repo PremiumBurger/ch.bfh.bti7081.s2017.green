@@ -8,4 +8,6 @@ import java.util.Set;
 @Repository
 public interface HealthVisitorRepository extends BaseRepository<HealthVisitor> {
     Set<HealthVisitor> findByLastNameStartsWithIgnoreCase(String lastName);
+
+    Set<HealthVisitor> findByExternalKeyStartsWithIgnoreCase(String externalKey);
 }

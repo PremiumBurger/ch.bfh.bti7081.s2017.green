@@ -46,7 +46,7 @@
                 <constraints nullable="true" foreignKeyName="fk_person_address" references="Address(id)"/>
             </column>
             <column name="genderTypeId" type="BIGINT">
-                <constraints nullable="false" foreignKeyName="fk_person_gender" references="GenderType(id)"/>
+                <constraints nullable="true" foreignKeyName="fk_person_gender" references="GenderType(id)"/>
             </column>
             <column name="journalId" type="BIGINT">
                 <constraints nullable="true" foreignKeyName="fk_person_journal" references="Journal(id)"/>
@@ -54,11 +54,24 @@
 
             <column name="firstName" type="VARCHAR(255)"/>
             <column name="lastName" type="VARCHAR(255)"/>
-            <column name="birthDate" type="DATE"/>
-            <column name="phone" type="VARCHAR(50)"/>
-            <column name="mobile" type="VARCHAR(50)"/>
-            <column name="ahvNr" type="VARCHAR(16)"/>
-            <column name="email" type="VARCHAR(255)"/>
+            <column name="birthDate" type="DATE">
+                <constraints nullable="true" />
+            </column>
+            <column name="phone" type="VARCHAR(50)">
+                <constraints nullable="true" />
+            </column>
+            <column name="mobile" type="VARCHAR(50)">
+                <constraints nullable="true" />
+            </column>
+            <column name="ahvNr" type="VARCHAR(16)">
+                <constraints nullable="true" />
+            </column>
+            <column name="email" type="VARCHAR(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="externalkey" type="VARCHAR(255)">
+                <constraints nullable="true" />
+            </column>
         </createTable>
 
         <createTable tableName="Alarm">
