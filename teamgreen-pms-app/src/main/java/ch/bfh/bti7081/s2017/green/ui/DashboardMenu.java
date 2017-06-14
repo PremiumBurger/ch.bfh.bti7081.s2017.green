@@ -4,38 +4,44 @@ package ch.bfh.bti7081.s2017.green.ui;
  * Created by Lukas on 26.05.2017.
  */
 
-import ch.bfh.bti7081.s2017.green.event.PostViewChangeEvent;
-import com.google.common.eventbus.Subscribe;
+import ch.bfh.bti7081.s2017.green.event.UserContexteCreated;
+import ch.bfh.bti7081.s2017.green.event.UserLoginRequestedEvent;
 import com.vaadin.icons.VaadinIcons;
+import com.vaadin.server.ExternalResource;
+import com.vaadin.server.Resource;
 import com.vaadin.server.ThemeResource;
 import com.vaadin.shared.ui.ContentMode;
 import com.vaadin.ui.*;
 import com.vaadin.ui.themes.ValoTheme;
+import green.auth.UserContext;
+import green.mvp.event.EventBus;
+import green.mvp.event.EventHandler;
+import org.springframework.beans.factory.annotation.Autowired;
 
 /**
  * A responsive menu component providing user information and the controls for
  * primary navigation between the views.
  */
 @SuppressWarnings({"serial", "unchecked"})
+@org.springframework.stereotype.Component
 public final class DashboardMenu extends CustomComponent {
 
     public static final String ID = "dashboard-menu";
-    public static final String REPORTS_BADGE_ID = "dashboard-menu-reports-badge";
     public static final String NOTIFICATIONS_BADGE_ID = "dashboard-menu-notifications-badge";
     private static final String STYLE_VISIBLE = "valo-menu-visible";
     private Label notificationsBadge;
-    private Label reportsBadge;
     private MenuBar.MenuItem settingsItem;
+    private UserContext userContext;
+    private EventBus eventBus;
 
-    public DashboardMenu () {
+    @Autowired
+    public DashboardMenu (UserContext userContext, EventBus eventBus) {
+        this.userContext = userContext;
+        this.eventBus = eventBus;
+        eventBus.addHandler(this);
         setPrimaryStyleName("valo-menu");
         setId(ID);
         setSizeUndefined();
-
-        // There's only one DashboardMenu per UI so this doesn't need to be
-        // unregistered from the UI-scoped DashboardEventBus.
-        //DashboardEventBus.register(this);
-
         setCompositionRoot(buildContent());
     }
 
@@ -66,34 +72,27 @@ public final class DashboardMenu extends CustomComponent {
         return logoWrapper;
     }
 
-    /*private User getCurrentUser() {
-        return (User) VaadinSession.getCurrent()
-                .getAttribute(User.class.getName());
-    }*/
+    @EventHandler
+    public void updateUserName (UserContexteCreated userContexteCreated) {
+        if (userContext.isAuthenticated()) {
+            settingsItem.setText(userContext.getFirstname() + " " + userContext.getLastname());
+        }
+
+        Resource userIcon = userContext.isAuthenticated() ? new ExternalResource(userContext.getImageUrl()) : new ThemeResource("img/profile-pic-300px.jpg");
+        settingsItem.setIcon(userIcon);
+    }
 
     private Component buildUserMenu () {
         final MenuBar settings = new MenuBar();
         settings.addStyleName("user-menu");
-        // final User user = getCurrentUser();
         settingsItem = settings.addItem("", new ThemeResource("img/profile-pic-300px.jpg"), null);
-        //updateUserName(null);
-        settingsItem.addItem("Edit Profile", new MenuBar.Command() {
-            @Override
-            public void menuSelected (final MenuBar.MenuItem selectedItem) {
-                // ProfilePreferencesWindow.open(user, false);
-            }
-        });
-        settingsItem.addItem("Preferences", new MenuBar.Command() {
-            @Override
-            public void menuSelected (final MenuBar.MenuItem selectedItem) {
-                // ProfilePreferencesWindow.open(user, true);
-            }
-        });
+        updateUserName(null);
         settingsItem.addSeparator();
         settingsItem.addItem("Sign Out", new MenuBar.Command() {
             @Override
             public void menuSelected (final MenuBar.MenuItem selectedItem) {
-                // DashboardEventBus.post(new UserLoggedOutEvent());
+                userContext.logout();
+                eventBus.fireEvent(new UserLoginRequestedEvent(null));
             }
         });
         return settings;
@@ -122,13 +121,13 @@ public final class DashboardMenu extends CustomComponent {
         for (final DashboardViewType view : DashboardViewType.values()) {
             Component menuItemComponent = new ValoMenuItemButton(view);
 
-                if (view == DashboardViewType.MYDAY) {
-                    notificationsBadge = new Label();
-                    notificationsBadge.setId(NOTIFICATIONS_BADGE_ID);
-                    menuItemComponent = buildBadgeWrapper(menuItemComponent, notificationsBadge);
-                }
+            if (view == DashboardViewType.MYDAY) {
+                notificationsBadge = new Label();
+                notificationsBadge.setId(NOTIFICATIONS_BADGE_ID);
+                menuItemComponent = buildBadgeWrapper(menuItemComponent, notificationsBadge);
+            }
 
-            if(view.isVisible()) {
+            if (view.isVisible()) {
                 menuItemsLayout.addComponent(menuItemComponent);
             }
         }
@@ -150,33 +149,7 @@ public final class DashboardMenu extends CustomComponent {
     @Override
     public void attach () {
         super.attach();
-        // updateNotificationsCount(null);
     }
-
-    @Subscribe
-    public void postViewChange (final PostViewChangeEvent event) {
-        // After a successful view change the menu can be hidden in mobile view.
-        getCompositionRoot().removeStyleName(STYLE_VISIBLE);
-    }
-
-    /*@Subscribe
-    public void updateNotificationsCount(final NotificationsCountUpdatedEvent event) {
-        int unreadNotificationsCount = DashboardUI.getDataProvider().getUnreadNotificationsCount();
-        notificationsBadge.setValue(String.valueOf(unreadNotificationsCount));
-        notificationsBadge.setVisible(unreadNotificationsCount > 0);
-    }
-
-    @Subscribe
-    public void updateReportsCount(final ReportsCountUpdatedEvent event) {
-        reportsBadge.setValue(String.valueOf(event.getCount()));
-        reportsBadge.setVisible(event.getCount() > 0);
-    }
-
-    @Subscribe
-    public void updateUserName(final ProfileUpdatedEvent event) {
-        User user = getCurrentUser();
-        settingsItem.setText(user.getFirstName() + " " + user.getLastName());
-    }*/
 
     public final class ValoMenuItemButton extends Button {
 
@@ -189,17 +162,8 @@ public final class DashboardMenu extends CustomComponent {
             setPrimaryStyleName("valo-menu-item");
             setIcon(view.getIcon());
             setCaption(view.getViewName().substring(0, 1).toUpperCase() + view.getViewName().substring(1));
-            // DashboardEventBus.register(this);
             addClickListener((ClickListener) event -> UI.getCurrent().getNavigator().navigateTo(view.getViewName()));
 
         }
-
-       /* @Subscribe
-        public void postViewChange(final PostViewChangeEvent event) {
-            removeStyleName(STYLE_SELECTED);
-            if (event.getView() == view) {
-                addStyleName(STYLE_SELECTED);
-            }
-        }*/
     }
 }

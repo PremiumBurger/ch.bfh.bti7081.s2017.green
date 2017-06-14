@@ -1,5 +1,6 @@
 package ch.bfh.bti7081.s2017.green.ui;
 
+import ch.bfh.bti7081.s2017.green.event.UserLoginRequestedEvent;
 import com.github.scribejava.core.model.OAuth2AccessToken;
 import com.github.scribejava.core.model.Token;
 import com.vaadin.server.Responsive;
@@ -51,8 +52,6 @@ public class LoginView extends VerticalLayout {
             fields.addComponent(fbButton);
             fields.setComponentAlignment(fbButton, Alignment.BOTTOM_LEFT);
         }
-
-        //usignInButton.addClickListener((ClickListener) event -> eventBus.fireEvent(new UserLoginRequestedEvent(username.getValue(), password.getValue())));
         return fields;
     }
 
@@ -63,7 +62,6 @@ public class LoginView extends VerticalLayout {
             return null;
         }
         FacebookButton button = new FacebookButton(key, secret);
-        //button.addStyleName("loginBtn loginBtn--facebook");
         button.setCaption("Login with Facebook");
         return initButton(button, Service.FACEBOOK, key, secret);
     }
@@ -77,7 +75,7 @@ public class LoginView extends VerticalLayout {
                 OAuthService serv = OAuthService.createService(service, key, secret, userToken);
                 UserProfile profile = serv.getUserProfile();
                 if (profile != null) {
-                    // login(User.newUser(profile));
+                    eventBus.fireEvent(new UserLoginRequestedEvent(profile));
                 } else {
                     Notification.show("Not authenticated.");
                 }
