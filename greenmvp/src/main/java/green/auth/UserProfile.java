@@ -5,15 +5,17 @@ public class UserProfile {
 	private final OAuthService.Service service;
 	private final UserToken token;
 	private final String identifier;
-	private final String name;
+	private final String firstName;
+	private final String lastName;
 	private final String email;
 	private final String imgUrl;
 	
-	public UserProfile(OAuthService.Service service, UserToken token, String identifier, String name, String email, String imgUrl) {
+	public UserProfile(OAuthService.Service service, UserToken token, String identifier, String firstName, String lastName, String email, String imgUrl) {
 		this.service = service;
 		this.token = token;
 		this.identifier = identifier;
-		this.name = name;
+		this.firstName = firstName;
+		this.lastName = lastName;
 		this.email = email;
 		this.imgUrl = imgUrl;
 	}
@@ -30,8 +32,12 @@ public class UserProfile {
 		return token;
 	}
 
-	public String getName() {
-		return name;
+	public String getFirstName() {
+		return firstName;
+	}
+
+	public String getLastName() {
+		return lastName;
 	}
 
 	public String getEmail() {

@@ -35,7 +35,7 @@ public class GitHubService extends OAuthService {
 			String name = me.getName();
 			String email = me.getEmail();
 			String imgUrl = me.getAvatarUrl();
-			return new UserProfile(Service.GITHUB, getUserToken(), id, name, email, imgUrl);
+			return new UserProfile(Service.GITHUB, getUserToken(), id, name, name, email, imgUrl);
 		} catch (IOException e) {
 			e.printStackTrace();
 			return null;
