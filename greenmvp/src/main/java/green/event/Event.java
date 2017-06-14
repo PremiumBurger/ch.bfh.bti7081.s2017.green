@@ -1,4 +1,4 @@
-package green.mvp.event;
+package green.event;
 
 import java.io.Serializable;
 

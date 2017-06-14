@@ -1,8 +1,5 @@
 package ch.bfh.bti7081.s2017.green.domain;
 
-import org.hibernate.annotations.Cascade;
-import org.hibernate.annotations.CascadeType;
-
 import javax.persistence.*;
 import java.time.LocalDate;
 
@@ -24,18 +21,25 @@ public abstract class Person extends BaseEntity {
     private String ahvNr;
 
     private String email;
-
-    public Person() {
-        // empty constructor
-    }
-
+    private String externalKey;
     @OneToOne
     @JoinColumn(name = "addressId")
     private Address address;
-
     @ManyToOne
     @JoinColumn(name = "genderTypeId")
     private GenderType genderType;
+
+    public Person () {
+        // empty constructor
+    }
+
+    public String getExternalKey() {
+        return externalKey;
+    }
+
+    public void setExternalKey(String externalKey) {
+        this.externalKey = externalKey;
+    }
 
     public Address getAddress() {
         return address;

@@ -1,16 +1,21 @@
 package ch.bfh.bti7081.s2017.green.ui;
 
+import ch.bfh.bti7081.s2017.green.bean.HealthVisitorBean;
+import ch.bfh.bti7081.s2017.green.event.UserContexteCreated;
 import ch.bfh.bti7081.s2017.green.event.UserLoginRequestedEvent;
+import ch.bfh.bti7081.s2017.green.service.HealthVisitorService;
+import com.vaadin.annotations.PreserveOnRefresh;
+import com.vaadin.annotations.Push;
 import com.vaadin.annotations.Theme;
 import com.vaadin.annotations.Title;
 import com.vaadin.navigator.Navigator;
-import com.vaadin.server.Responsive;
-import com.vaadin.server.VaadinRequest;
+import com.vaadin.server.*;
 import com.vaadin.spring.annotation.SpringUI;
 import com.vaadin.ui.UI;
 import com.vaadin.ui.themes.ValoTheme;
-import green.mvp.event.EventBus;
-import green.mvp.event.EventHandler;
+import green.auth.UserContext;
+import green.event.EventBus;
+import green.event.EventHandler;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.Locale;
@@ -18,11 +23,15 @@ import java.util.Locale;
 @SpringUI
 @Theme("dashboard")
 @Title("PMS")
+@Push
+@PreserveOnRefresh
 @SuppressWarnings("serial")
 public class DashboardUI extends UI {
     private LoginView loginView;
     private MainView mainView;
     private EventBus eventBus;
+    private UserContext userContext;
+    private HealthVisitorService healthVisitorService;
 
     private boolean isLoggedIn = false;
 
@@ -31,20 +40,24 @@ public class DashboardUI extends UI {
     }
 
     @Autowired
-    public DashboardUI (LoginView loginView, MainView mainView, EventBus eventBus) {
+    public DashboardUI (LoginView loginView, MainView mainView, EventBus eventBus, UserContext userContext, HealthVisitorService healthVisitorService) {
         this.loginView = loginView;
         this.mainView = mainView;
         this.eventBus = eventBus;
+        this.userContext = userContext;
+        this.healthVisitorService = healthVisitorService;
     }
 
     @Override
     protected void init (final VaadinRequest request) {
         setLocale(Locale.US);
+        VaadinSession.getCurrent().setErrorHandler((ErrorHandler) errorEvent -> {});
         eventBus.addHandler(this);
 
         Responsive.makeResponsive(this);
         addStyleName(ValoTheme.UI_WITH_MENU);
         this.mainView.onAfterBeanInitializaiton();
+        this.loginView.onAfterBeanInitializaiton();
         updateContent();
 
         // Some views need to be aware of browser resize events so a
@@ -58,14 +71,12 @@ public class DashboardUI extends UI {
      * Otherwise login view is shown.
      */
     private void updateContent () {
-        //User user = (User) VaadinSession.getCurrent().getAttribute(User.class.getName());
-        //if (user != null && "admin".equals(user.getRole())) {
-        if (isLoggedIn) {
-            // Authenticated user
+        if (this.userContext.isAuthenticated()) {
             setContent(mainView);
             removeStyleName("loginview");
             Navigator navigator = getNavigator();
             navigator.navigateTo(navigator.getState());
+            eventBus.fireEvent(new UserContexteCreated());
         } else {
             setContent(loginView);
             addStyleName("loginview");
@@ -74,25 +85,18 @@ public class DashboardUI extends UI {
 
     @EventHandler
     public void userLoginRequested (UserLoginRequestedEvent userLoginRequest) {
-        /*User user = getDataProvider().authenticate(event.getUserName(), event.getPassword());
-        VaadinSession.getCurrent().setAttribute(User.class.getName(), user);*/
-        isLoggedIn = true;
+        if (!userLoginRequest.hasProfile()) {
+            updateContent();
+            return;
+        }
+
+        HealthVisitorBean user = healthVisitorService.get(userLoginRequest.getIdentifier());
+        if (user == null) {
+            user = healthVisitorService.createFromUserContext(userLoginRequest);
+        }
+        this.userContext.setUserContext(user.getId(), user.getFirstName(), user.getLastName(), user.getExternalKey(), userLoginRequest.getImageUrl());
+
+        VaadinSession.getCurrent().setAttribute(UserContext.class.getName(), this.userContext);
         updateContent();
     }
-
-    /*@Subscribe
-    public void userLoggedOut(final UserLoggedOutEvent event) {
-        // When the user logs out, current VaadinSession gets closed and the
-        // page gets reloaded on the login screen. Do notice the this doesn't
-        // invalidate the current HttpSession.
-        VaadinSession.getCurrent().close();
-        Page.getCurrent().reload();
-    }
-
-    @Subscribe
-    public void closeOpenWindows(final CloseOpenWindowsEvent event) {
-        for (Window window : getWindows()) {
-            window.close();
-        }
-    }*/
 }
