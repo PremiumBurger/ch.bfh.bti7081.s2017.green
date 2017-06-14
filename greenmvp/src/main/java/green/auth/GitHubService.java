@@ -33,9 +33,16 @@ public class GitHubService extends OAuthService {
 			GHMyself me = gh.getMyself();
 			String id = me.getLogin();
 			String name = me.getName();
+			String lastName = name;
+			String firstName = name;
+			String[] nameSplit = name.split(" ");
+			if (nameSplit.length > 0) {
+				lastName = nameSplit[nameSplit.length-1];
+				firstName = name.substring(0, name.length() - lastName.length());
+			}
 			String email = me.getEmail();
 			String imgUrl = me.getAvatarUrl();
-			return new UserProfile(Service.GITHUB, getUserToken(), id, name, name, email, imgUrl);
+			return new UserProfile(Service.GITHUB, getUserToken(), id, firstName, lastName, email, imgUrl);
 		} catch (IOException e) {
 			e.printStackTrace();
 			return null;
