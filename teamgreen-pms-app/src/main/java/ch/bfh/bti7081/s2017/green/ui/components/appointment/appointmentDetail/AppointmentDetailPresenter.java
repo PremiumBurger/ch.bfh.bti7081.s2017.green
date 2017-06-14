@@ -31,6 +31,39 @@ public class AppointmentDetailPresenter implements AppointmentDetailViewListener
 
     @Override
     public void saveAppointment(AppointmentBean appointmentBean) {
-        appDetailModel.saveAppointment(appointmentBean);
+        //appointmentBean.getAppointmentStateType().getAppointmentState().beforeStateSet(appointmentBean,this);
+        AppointmentBean oldBean = appointmentBean;
+        long savedAppointmentId = appDetailModel.saveAppointment(appointmentBean);
+        if (savedAppointmentId>0){
+            appointmentBean.getAppointmentStateType().getAppointmentState().afterStateSet(appDetailModel.getAppointment(savedAppointmentId),oldBean,this);
+        }
+
+    }
+
+    @Override
+    public void onConfirmClicked(AppointmentBean appointmentBean) {
+        appointmentBean.getAppointmentStateType().getAppointmentState().confirm(appointmentBean,this);
+    }
+
+    @Override
+    public void onCancelledClicked(AppointmentBean appointmentBean) {
+        appointmentBean.getAppointmentStateType().getAppointmentState().remove(appointmentBean,this);
+    }
+
+    public void updateConfirmButton(boolean visible, String buttonCaption) {
+        appDetailView.updateConfirmButton(visible,buttonCaption);
+    }
+
+
+    public void updateCancelButton(boolean visible, String buttonCaption) {
+        appDetailView.updateCancelButton(visible,buttonCaption);
+    }
+
+    /**
+     * Getter for
+     * @return AppointmentStateTypeBean
+     */
+    public AppointmentStateTypeBean getAppointmentStateTypeBean(long id) {
+        return appDetailModel.getAppointmentStateTypeBean(id);
     }
 }

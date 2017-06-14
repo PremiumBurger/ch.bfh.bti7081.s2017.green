@@ -1,7 +1,11 @@
 package ch.bfh.bti7081.s2017.green.service.appointmentState;
 
 import ch.bfh.bti7081.s2017.green.bean.AppointmentBean;
+import ch.bfh.bti7081.s2017.green.bean.AppointmentStateTypeBean;
+import ch.bfh.bti7081.s2017.green.service.AppointmentService;
 import ch.bfh.bti7081.s2017.green.service.AppointmentServiceImpl;
+import ch.bfh.bti7081.s2017.green.ui.components.appointment.appointmentDetail.AppointmentDetailPresenter;
+import ch.bfh.bti7081.s2017.green.ui.components.myday.MyDayPresenter;
 import com.vaadin.ui.Notification;
 
 /**
@@ -11,17 +15,32 @@ import com.vaadin.ui.Notification;
 public class AppointmentStatePostponed extends AppointmentState {
 
     @Override
-    public void onStateSet(AppointmentBean appointmentBean, AppointmentServiceImpl service, AppointmentBean oldAppointment) {
+    public void afterStateSet(AppointmentBean appointmentBean, AppointmentBean oldAppointment, AppointmentDetailPresenter presenter) {
+
+    }
+
+    @Override
+    public void onStateSet(AppointmentBean appointmentBean, AppointmentService service, AppointmentBean oldAppointment) {
         Notification.show("State Postponed has been set");
     }
 
     @Override
-    public void confirm(AppointmentBean appointmentBean, AppointmentServiceImpl service) {
+    public void confirm(AppointmentBean appointmentBean, AppointmentDetailPresenter presenter) {
+        //Get new AppointmentStateTypeBean 'CONFIRMED'
+        AppointmentStateTypeBean type = presenter.getAppointmentStateTypeBean(4);
+        type.setAppointmentState(new AppointmentStateConfirmed());
+        appointmentBean.setAppointmentStateType(type);
 
+        presenter.updateCancelButton(true,"Cancel Appointment");
+        presenter.updateConfirmButton(true,"Finish Appointment");
     }
 
     @Override
-    public void remove(AppointmentBean appointmentBean, AppointmentServiceImpl service) {
-
+    public void remove(AppointmentBean appointmentBean, AppointmentDetailPresenter presenter) {
+        //Get new AppointmentStateTypeBean 'CANCELLED'
+        AppointmentStateTypeBean type = presenter.getAppointmentStateTypeBean(3);
+        type.setAppointmentState(new AppointmentStateCancelled());
+        appointmentBean.setAppointmentStateType(type);
     }
+
 }

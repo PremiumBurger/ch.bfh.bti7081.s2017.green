@@ -1,6 +1,8 @@
 package ch.bfh.bti7081.s2017.green.ui.components.myday;
 
 import ch.bfh.bti7081.s2017.green.bean.AppointmentBean;
+import ch.bfh.bti7081.s2017.green.bean.AppointmentStateTypeBean;
+import ch.bfh.bti7081.s2017.green.service.appointmentState.AppointmentStateEventHandler;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -42,13 +44,4 @@ public class MyDayPresenter implements MyDayViewListener {
         myDayView.init(myDay.getAllAppointments(), myDay.getAllPatients());
     }
 
-    @Override
-    public void onConfirmClicked(AppointmentBean appointmentBean) {
-
-    }
-
-    @Override
-    public void onCancelledClicked(AppointmentBean appointmentBean) {
-
-    }
 }

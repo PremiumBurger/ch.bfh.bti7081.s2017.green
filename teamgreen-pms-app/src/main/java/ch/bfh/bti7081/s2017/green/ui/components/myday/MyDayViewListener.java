@@ -7,6 +7,4 @@ import ch.bfh.bti7081.s2017.green.bean.AppointmentBean;
  */
 public interface MyDayViewListener {
     void getData();
-    void onConfirmClicked(AppointmentBean appointmentBean);
-    void onCancelledClicked(AppointmentBean appointmentBean);
 }

@@ -1,6 +1,7 @@
 package ch.bfh.bti7081.s2017.green.ui.components.myday;
 
 import ch.bfh.bti7081.s2017.green.bean.AppointmentBean;
+import ch.bfh.bti7081.s2017.green.bean.AppointmentStateTypeBean;
 import ch.bfh.bti7081.s2017.green.bean.PatientBean;
 import ch.bfh.bti7081.s2017.green.service.*;
 import org.springframework.stereotype.Component;
@@ -50,7 +51,12 @@ public class MyDay {
         return new ArrayList<PatientBean>(patientService.getAll());
     }
 
-    public void confirmState(AppointmentBean appointmentBean){
-        appointmentBean.getAppointmentStateType().confirm(appointmentBean,appointmentService);
+
+    /**
+     * Getter for
+     * @return AppointmentStateTypeBean
+     */
+    public AppointmentStateTypeBean getAppointmentStateTypeBean(long id) {
+        return appointmentService.getStateTypeService().getOne(id);
     }
 }

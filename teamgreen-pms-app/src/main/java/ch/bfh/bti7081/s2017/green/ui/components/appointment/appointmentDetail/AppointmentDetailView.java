@@ -24,5 +24,6 @@ public interface AppointmentDetailView extends View {
      */
     void setModel(AppointmentBean appointmentBean, Set<PatientBean> allPatients, Set<AppointmentStateTypeBean> allApppointmentStates);
 
-
+    void updateConfirmButton(boolean visible, String buttonCaption);
+    void updateCancelButton(boolean visible, String buttonCaption);
 }

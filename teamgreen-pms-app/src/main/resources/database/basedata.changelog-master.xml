@@ -35,5 +35,9 @@
             <column name="id" value="4"/>
             <column name="description" value="CONFIRMED"/>
         </insert>
+        <insert tableName="AppointmentStateType">
+            <column name="id" value="5"/>
+            <column name="description" value="FINISHED"/>
+        </insert>
     </changeSet>
 </databaseChangeLog>
