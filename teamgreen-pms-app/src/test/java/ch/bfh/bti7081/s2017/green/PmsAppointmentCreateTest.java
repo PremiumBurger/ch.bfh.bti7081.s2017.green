@@ -89,34 +89,4 @@ public class PmsAppointmentCreateTest {
         //Assert
         Assert.assertTrue(mvpmodel.saveAppointment(appointmentBean)>=0);
     }
-
-    /**
-     * Trying to save an Appointment with no set Patient
-     * Test passes if Save gets rejected
-     */
-    @Test
-    public void TestAppointmentCreateSaveNoPatient() {
-        // Act
-        appointmentBean.setPatient(null);
-
-        // Assert
-        Assert.assertEquals(mvpmodel.saveAppointment(appointmentBean),-1);
-    }
-
-    /**
-     * Trying to save an Appointment with incorrect End Date
-     * (End Date before Start Date)
-     * Test passes if Save gets rejected
-     */
-    @Test
-    public void TestAppointmentCreateSaveDateToError() {
-        // Act
-        appointmentBean.setTo(LocalDateTime.now().minusHours(2));
-
-        //Assert
-        Assert.assertEquals(mvpmodel.saveAppointment(appointmentBean),-1);
-    }
-
-
-
 }
