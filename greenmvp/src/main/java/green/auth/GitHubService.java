@@ -1,5 +1,6 @@
 package green.auth;
 
+import com.restfb.util.StringUtils;
 import org.kohsuke.github.GHMyself;
 import org.kohsuke.github.GHRepository;
 import org.kohsuke.github.GitHub;
@@ -33,8 +34,8 @@ public class GitHubService extends OAuthService {
 			GHMyself me = gh.getMyself();
 			String id = me.getLogin();
 			String name = me.getName();
-			String lastName = name;
-			String firstName = name;
+			String lastName = StringUtils.isBlank(name) ? id : name;
+			String firstName = StringUtils.isBlank(name) ? id : name;
 			String[] nameSplit = name.split(" ");
 			if (nameSplit.length > 0) {
 				lastName = nameSplit[nameSplit.length-1];
