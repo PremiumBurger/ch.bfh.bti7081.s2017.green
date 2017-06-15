@@ -176,7 +176,6 @@ public class MyDayViewImpl extends VerticalLayout implements MyDayView {
         createAppButton.addClickListener(e -> getUI().getNavigator().navigateTo("AppointmentCreate"));
 
         // styles
-        // createAppButton.setWidth(30, Unit.PIXELS);
         createAppButton.setIcon(VaadinIcons.PLUS);
         createAppButton.addStyleName(ValoTheme.BUTTON_PRIMARY);
         createAppButton.addStyleName(ValoTheme.BUTTON_SMALL);
