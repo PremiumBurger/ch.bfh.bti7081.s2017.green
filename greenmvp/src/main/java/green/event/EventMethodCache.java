@@ -11,9 +11,7 @@ import java.util.concurrent.ConcurrentHashMap;
  * A simple cache for eventhandlers found via reflection.
  * Created by Lukas on 28.05.2017.
  */
-public class EventMethodCache implements Serializable {
-
-    private static final long serialVersionUID = -3835595439788993624L;
+public class EventMethodCache {
 
     private final Map<Class<?>, Set<Method>> methodMap;
 

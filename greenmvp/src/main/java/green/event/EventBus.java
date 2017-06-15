@@ -20,10 +20,7 @@ import java.util.concurrent.ConcurrentHashMap;
  * @see #removeHandler(Object)
  */
 @Component
-public class EventBus implements Serializable {
-
-    private static final long serialVersionUID = 5500479291713928578L;
-
+public class EventBus {
     private static final EventMethodCache eventMethodChache = new EventMethodCache();
     private static boolean caching = true;
     private final Map<Class<? extends Event>, Set<EventDispatcher>> handlerMap;

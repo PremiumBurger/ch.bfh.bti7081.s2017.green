@@ -54,7 +54,7 @@ public class PmsAppointmentTest {
     }
 
     @Test
-    public void TestAppointmentService() {
+    public void appointmentService() {
         // Arrange
         Set<AppointmentBean> allAppointmentBeans = service.getAll();
         AppointmentBean bean = service.getOne(1);

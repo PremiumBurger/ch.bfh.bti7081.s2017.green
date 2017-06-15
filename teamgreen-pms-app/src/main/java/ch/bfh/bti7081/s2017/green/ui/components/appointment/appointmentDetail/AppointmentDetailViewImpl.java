@@ -45,10 +45,6 @@ public class AppointmentDetailViewImpl extends VerticalLayout implements Appoint
     private String confirmAppointmentButtonCaption = "Confirm Appointment";
     private String cancelAppointmentButtonCaption = "Cancel Appointment";
 
-    /**
-     * Needs to be global to update this partially
-     */
-    private HorizontalLayout involvedLayout;
     private VerticalLayout rightCol;
     private Panel patientDetailPanel;
 
@@ -393,7 +389,7 @@ public class AppointmentDetailViewImpl extends VerticalLayout implements Appoint
     @Override
     public void enter (ViewChangeListener.ViewChangeEvent event) {
         String parameters = event.getParameters();
-        viewListener.initScreen(Long.valueOf(parameters));
+        viewListener.initScreen(Long.parseLong(parameters));
     }
 
     public void openModal (AppointmentJournalEntryBean bean) {

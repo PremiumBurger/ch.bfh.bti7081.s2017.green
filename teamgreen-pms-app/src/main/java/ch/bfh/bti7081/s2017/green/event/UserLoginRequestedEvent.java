@@ -8,7 +8,7 @@ import java.io.Serializable;
 /**
  * Created by Lukas on 26.05.2017.
  */
-public final class UserLoginRequestedEvent extends Event implements Serializable {
+public final class UserLoginRequestedEvent extends Event {
     private UserProfile profile;
 
     public UserLoginRequestedEvent (UserProfile profile) {
