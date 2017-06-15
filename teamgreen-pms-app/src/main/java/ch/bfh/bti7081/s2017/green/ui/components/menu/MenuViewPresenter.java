@@ -4,10 +4,12 @@ import ch.bfh.bti7081.s2017.green.event.UserContexteCreated;
 import green.auth.UserContext;
 import green.event.EventBus;
 import green.event.EventHandler;
+import org.springframework.stereotype.Component;
 
 /**
  * Created by Lukas on 15.06.2017.
  */
+@Component
 public class MenuViewPresenter {
     private MenuView view;
     private Menu menu;
