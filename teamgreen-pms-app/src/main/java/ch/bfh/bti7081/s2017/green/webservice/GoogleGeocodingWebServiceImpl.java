@@ -42,7 +42,7 @@ public class GoogleGeocodingWebServiceImpl implements GoogleGeocodingWebService 
 
         GeocodeRequest geocodeRequest = restTemplate.getForObject(requestUrl, GeocodeRequest.class, params);
 
-        if (geocodeRequest != null && geocodeRequest.getResults() != null) {
+        if (geocodeRequest != null && geocodeRequest.getResults() != null && !geocodeRequest.getResults().isEmpty()) {
             LocationBean locBean = new LocationBean();
             Result result = geocodeRequest.getResults().get(0);
             locBean.setLat(result.getGeometry().getLocation().getLat());

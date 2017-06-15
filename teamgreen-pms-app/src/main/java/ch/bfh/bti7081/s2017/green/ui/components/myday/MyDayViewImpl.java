@@ -1,8 +1,10 @@
 package ch.bfh.bti7081.s2017.green.ui.components.myday;
+import ch.bfh.bti7081.s2017.green.bean.AddressBean;
 import ch.bfh.bti7081.s2017.green.bean.AppointmentBean;
 import ch.bfh.bti7081.s2017.green.bean.PatientBean;
 import ch.bfh.bti7081.s2017.green.ui.components.autcomplete.Autocomplete;
 import ch.bfh.bti7081.s2017.green.ui.controls.H1Title;
+import ch.bfh.bti7081.s2017.green.ui.controls.H2Title;
 import ch.bfh.bti7081.s2017.green.util.PmsConstants;
 import com.vaadin.icons.VaadinIcons;
 import com.vaadin.navigator.ViewChangeListener;
@@ -10,6 +12,8 @@ import com.vaadin.ui.*;
 import com.vaadin.ui.themes.ValoTheme;
 import org.springframework.stereotype.Component;
 import org.vaadin.addons.stackpanel.StackPanel;
+import org.yaml.snakeyaml.tokens.ValueToken;
+
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 
@@ -39,9 +43,6 @@ public class MyDayViewImpl extends VerticalLayout implements MyDayView {
      * Default Constructor initializes UI Components
      */
     public MyDayViewImpl() {
-        //Disable Spacing between Components
-        setSpacing(false);
-
         //Initialize Search
         patientSearch = new Autocomplete<PatientBean>();
         patientSearch.setWidth("100%");
@@ -88,25 +89,31 @@ public class MyDayViewImpl extends VerticalLayout implements MyDayView {
 
         //Remove all Components
         this.removeAllComponents();
+        addComponent(new H1Title("My Day"));
 
         //Add Search to this Vertical Layout
         addComponent(patientSearch);
 
-        // add button bar
-        addComponent(buildButtonbar());
+        // set title
+        HorizontalLayout appTitleBar = new HorizontalLayout();
+        appTitleBar.addComponents(new H2Title("My Appointments"), buildCreateButton());
+        addComponent(appTitleBar);
 
         //Set Header for all Appointments
-        H1Title dashBoardHeader = new H1Title("My Day");
+        VerticalLayout appointmentPanels = new VerticalLayout();
+        appointmentPanels.setSpacing(false);
+        appointmentPanels.setMargin(false);
+        addComponent(appointmentPanels);
 
-        addComponent(dashBoardHeader);
-
-        createAppointmentList(appointments, format);
+        createAppointmentList(appointments, appointmentPanels, format);
     }
 
-    private void createAppointmentList (List<AppointmentBean> appointments, DateTimeFormatter format) {
+    private void createAppointmentList (List<AppointmentBean> appointments, VerticalLayout appointmentPanels, DateTimeFormatter format) {
         appointments.sort((a,b) -> b.getFrom().compareTo(b.getFrom()));
 
-        for (AppointmentBean appointment : appointments) {
+        for (int i = 0; i < appointments.size(); i++) {
+			AppointmentBean appointment = appointments.get(i);
+
             FormLayout layout = new FormLayout();
 
             //to Date Label
@@ -116,16 +123,17 @@ public class MyDayViewImpl extends VerticalLayout implements MyDayView {
 
             //Patient Name Label
             Label patientname = new Label(appointment.getPatient().getFullName());
-            patientname.setCaption("Name");
+            patientname.setCaption("Patient");
             patientname.setIcon(VaadinIcons.USER);
 
             //Street Name Label
-            Label street = new Label(appointment.getPatient().getAddress().getStrasse());
+            AddressBean appAddress = appointment.getAddress();
+            Label street = new Label(appAddress.getStrasse());
             street.setIcon(VaadinIcons.HOME);
             street.setCaption("Address");
 
             //PLZ and Town Label
-            Label adr = new Label(appointment.getPatient().getAddress().getPlz() + " " + appointment.getPatient().getAddress().getCity());
+            Label adr = new Label(appAddress.getPlz() + " " + appAddress.getCity());
 
             //Details Button
             Button details = new Button("Show Details");
@@ -149,31 +157,26 @@ public class MyDayViewImpl extends VerticalLayout implements MyDayView {
             //Convert contentPanel to StackPanel
             StackPanel stackPanel =  StackPanel.extend(contentPanel);
 
+            // only open first appointment
+            if (i != 0) {
+                stackPanel.close();
+            }
+
             //Add contentPanel to this VerticalLayout
-            addComponent(contentPanel);
+            appointmentPanels.addComponent(contentPanel);
         }
     }
 
-    private HorizontalLayout buildButtonbar() {
-
-        HorizontalLayout buttonBarLayout = new HorizontalLayout();
-        buttonBarLayout.setDefaultComponentAlignment(Alignment.BOTTOM_RIGHT);
-        buttonBarLayout.setWidth(100, Unit.PERCENTAGE);
-        HorizontalLayout buttons = new HorizontalLayout();
-        buttonBarLayout.addComponent(buttons);
-
-        // buttons
-        Button create = new Button("Create new Appointment");
-        buttons.addComponents(create);
+    private Button buildCreateButton() {
+        Button createAppButton = new Button("New");
 
         //listener
-        create.addClickListener(e -> getUI().getNavigator().navigateTo("AppointmentCreate" + "/" + 1));
+        createAppButton.addClickListener(e -> getUI().getNavigator().navigateTo("AppointmentCreate"));
 
         // styles
-        create.addStyleName(ValoTheme.BUTTON_FRIENDLY);
-        create.setIcon(VaadinIcons.CALENDAR_USER);
-        buttonBarLayout.setResponsive(true);
-
-        return buttonBarLayout;
+        createAppButton.setIcon(VaadinIcons.PLUS);
+        createAppButton.addStyleName(ValoTheme.BUTTON_PRIMARY);
+        createAppButton.addStyleName(ValoTheme.BUTTON_SMALL);
+        return createAppButton;
     }
 }

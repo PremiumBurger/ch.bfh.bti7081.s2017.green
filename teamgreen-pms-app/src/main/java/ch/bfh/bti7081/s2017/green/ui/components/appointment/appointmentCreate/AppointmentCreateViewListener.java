@@ -7,9 +7,8 @@ public interface AppointmentCreateViewListener {
 
     /**
      * Gets the initial Data for this Screen
-     * @param appointmentId the appointmentId
      */
-    void initScreen(long appointmentId);
+    void initScreen();
 
 
     /**
