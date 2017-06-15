@@ -40,11 +40,6 @@ public class DashboardNavigator extends Navigator {
 
             @Override
             public void afterViewChange(final ViewChangeEvent event) {
-                DashboardViewType view = DashboardViewType.getByViewName(event.getViewName());
-                // Appropriate events get fired after the view is changed.
-                //DashboardEventBus.post(new PostViewChangeEvent(view));
-                //DashboardEventBus.post(new BrowserResizeEvent());
-                /*DashboardEventBus.post(new CloseOpenWindowsEvent());*/
             }
         });
     }

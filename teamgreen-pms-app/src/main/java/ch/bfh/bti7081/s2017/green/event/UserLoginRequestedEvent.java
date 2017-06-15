@@ -3,10 +3,12 @@ package ch.bfh.bti7081.s2017.green.event;
 import green.auth.UserProfile;
 import green.event.Event;
 
+import java.io.Serializable;
+
 /**
  * Created by Lukas on 26.05.2017.
  */
-public final class UserLoginRequestedEvent extends Event {
+public final class UserLoginRequestedEvent extends Event implements Serializable {
     private UserProfile profile;
 
     public UserLoginRequestedEvent (UserProfile profile) {
