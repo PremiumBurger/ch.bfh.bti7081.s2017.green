@@ -24,8 +24,8 @@ public class AppointmentCreateViewImpl extends VerticalLayout implements Appoint
     private AppointmentCreateViewListener viewListener;
     private AppointmentBean model;
     private Set<PatientBean>  allPatients;
-    private BeanValidationBinder<AppointmentBean> binder = new BeanValidationBinder<>(AppointmentBean.class);
-    private BeanValidationBinder<AddressBean> addressBinder = new BeanValidationBinder<>(AddressBean.class);
+    private BeanValidationBinder<AppointmentBean> binder;
+    private BeanValidationBinder<AddressBean> addressBinder;
 
     @Override
     public void setModel(AppointmentBean appointmentBean, Set<PatientBean> allPatients) {
@@ -55,6 +55,8 @@ public class AppointmentCreateViewImpl extends VerticalLayout implements Appoint
 
     private Panel buildAppointmentCreate() {
         Panel appointmentCreatePanel = new Panel("Details");
+        binder = new BeanValidationBinder<>(AppointmentBean.class);
+        addressBinder = new BeanValidationBinder<>(AddressBean.class);
 
         HorizontalLayout formContainer = new HorizontalLayout();
 
