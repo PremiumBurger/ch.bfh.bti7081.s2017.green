@@ -95,8 +95,11 @@ public class AppointmentDetailViewImpl extends VerticalLayout implements Appoint
         // linked journal entries
 
         // Set the Appointment Journal
-        journalComponent = buildJournalList();
-        addComponent(journalComponent);
+        if(model.getPatient().getJournal() != null){
+            journalComponent = buildJournalList();
+            addComponent(journalComponent);
+        }
+
 
         // styles
         twoColLayout.setWidth(100, Unit.PERCENTAGE);

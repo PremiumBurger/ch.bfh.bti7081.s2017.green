@@ -26,7 +26,7 @@ public class Appointment extends BaseEntity {
 
     @ManyToOne
     @JoinColumn(name = "patientId")
-    @Cascade(CascadeType.ALL)
+    @Cascade(CascadeType.MERGE)
     private Patient patient;
 
     @OneToOne
