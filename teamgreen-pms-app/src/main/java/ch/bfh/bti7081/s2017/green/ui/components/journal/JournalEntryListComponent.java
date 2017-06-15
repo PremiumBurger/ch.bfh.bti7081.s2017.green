@@ -6,6 +6,7 @@ import com.vaadin.icons.VaadinIcons;
 import com.vaadin.shared.Registration;
 import com.vaadin.shared.ui.MarginInfo;
 import com.vaadin.ui.*;
+import org.vaadin.addons.stackpanel.StackPanel;
 
 import java.util.List;
 
@@ -19,6 +20,10 @@ public class JournalEntryListComponent extends CustomComponent {
     private Button addJournalEntryButton;
 
     public JournalEntryListComponent(List<JournalEntryBean> journal) {
+        this(journal,true);
+    }
+
+    public JournalEntryListComponent(List<JournalEntryBean> journal, boolean createButton) {
 
         // Set up the Mainpaneel
         mainPanel = new Panel();
@@ -34,9 +39,12 @@ public class JournalEntryListComponent extends CustomComponent {
         mainPanelLayout = new VerticalLayout();
         mainPanelLayout.setMargin(false);
         mainPanelLayout.setSpacing(false);
-        mainPanelLayout.addComponent(addJournalEntryButton);
+        if(createButton) {
+            mainPanelLayout.addComponent(addJournalEntryButton);
+        }
 
         mainPanel.setContent(mainPanelLayout);
+
 
         setCompositionRoot(mainPanel);
 
@@ -82,6 +90,10 @@ public class JournalEntryListComponent extends CustomComponent {
 
             mainPanelLayout.addComponent(entryPanel);
         }
+    }
+
+    public void makeStackpanel(){
+        StackPanel.extend(mainPanel);
     }
 
     /**

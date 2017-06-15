@@ -66,7 +66,10 @@ public class PatientBean extends PersonBean implements Autocompletable {
     }
 
     public JournalBean getJournal() {
-        return journal;
+        if(journal != null) {
+            return journal;
+        }
+        return new JournalBean();
     }
 
     public void setJournal(JournalBean journal) {

@@ -5,6 +5,7 @@ import ch.bfh.bti7081.s2017.green.domain.Journal;
 
 import javax.persistence.Entity;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
@@ -12,6 +13,10 @@ public class JournalBean extends EntityBean<Journal>{
     private PatientBean patient;
     private List<JournalEntryBean> journalEntries;
     private LocalDateTime createdOn;
+
+    public JournalBean() {
+        journalEntries = new ArrayList<JournalEntryBean>();
+    }
 
     public PatientBean getPatient() {
         return patient;
@@ -30,6 +35,7 @@ public class JournalBean extends EntityBean<Journal>{
     }
 
     public List<JournalEntryBean> getJournalEntries() {
+
         return journalEntries;
     }
 
