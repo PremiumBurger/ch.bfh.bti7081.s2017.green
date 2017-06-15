@@ -89,8 +89,8 @@
             <column name="addressId" value="3"/>
             <column name="genderTypeId" value="1"/>
 
-            <column name="firstName" value="Beat"/>
-            <column name="lastName" value="Orderline"/>
+            <column name="firstName" value="Cedric"/>
+            <column name="lastName" value="von Allmen"/>
             <column name="birthDate" value="1980-08-15"/>
             <column name="phone" value="077 555 55 25"/>
             <column name="mobile" value="088 544 54 25"/>
@@ -118,8 +118,8 @@
             <column name="personType" value="patient"/>
             <column name="addressId" value="2"/>
             <column name="genderTypeId" value="1"/>
-            <column name="firstName" value="Forest"/>
-            <column name="lastName" value="Gump"/>
+            <column name="firstName" value="Lukas"/>
+            <column name="lastName" value="Läderach"/>
             <column name="birthDate" value="1991-02-14"/>
             <column name="phone" value="076 666 66 66"/>
             <column name="mobile" value="090 544 44 44"/>
@@ -132,8 +132,36 @@
             <column name="personType" value="patient"/>
             <column name="addressId" value="1"/>
             <column name="genderTypeId" value="2"/>
-            <column name="firstName" value="Celine"/>
-            <column name="lastName" value="danone"/>
+            <column name="firstName" value="Tobias"/>
+            <column name="lastName" value="Joder"/>
+            <column name="birthDate" value="1985-01-22"/>
+            <column name="phone" value="079 88 66 76"/>
+            <column name="mobile" value="090 674 94 54"/>
+            <column name="ahvNr" value="796.2820.3225.49"/>
+            <column name="email" value="danone@mail.ch"/>
+        </insert>
+
+        <insert tableName="Person">
+            <column name="id" value="7"/>
+            <column name="personType" value="patient"/>
+            <column name="addressId" value="1"/>
+            <column name="genderTypeId" value="2"/>
+            <column name="firstName" value="Mathew"/>
+            <column name="lastName" value="Thekkekara"/>
+            <column name="birthDate" value="1985-01-22"/>
+            <column name="phone" value="079 88 66 76"/>
+            <column name="mobile" value="090 674 94 54"/>
+            <column name="ahvNr" value="796.2820.3225.49"/>
+            <column name="email" value="danone@mail.ch"/>
+        </insert>
+
+        <insert tableName="Person">
+            <column name="id" value="8"/>
+            <column name="personType" value="patient"/>
+            <column name="addressId" value="1"/>
+            <column name="genderTypeId" value="2"/>
+            <column name="firstName" value="Simon"/>
+            <column name="lastName" value="Schmid"/>
             <column name="birthDate" value="1985-01-22"/>
             <column name="phone" value="079 88 66 76"/>
             <column name="mobile" value="090 674 94 54"/>
