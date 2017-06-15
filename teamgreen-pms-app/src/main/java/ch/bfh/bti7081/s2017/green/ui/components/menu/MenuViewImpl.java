@@ -4,10 +4,9 @@ package ch.bfh.bti7081.s2017.green.ui.components.menu;
  * Created by Lukas on 26.05.2017.
  */
 
-import ch.bfh.bti7081.s2017.green.event.UserContexteCreated;
 import ch.bfh.bti7081.s2017.green.event.UserLoginRequestedEvent;
-import ch.bfh.bti7081.s2017.green.ui.navigation.DashboardViewType;
 import ch.bfh.bti7081.s2017.green.ui.controls.LinkButton;
+import ch.bfh.bti7081.s2017.green.ui.navigation.DashboardViewType;
 import com.vaadin.icons.VaadinIcons;
 import com.vaadin.server.ExternalResource;
 import com.vaadin.server.Resource;
@@ -17,7 +16,6 @@ import com.vaadin.ui.*;
 import com.vaadin.ui.themes.ValoTheme;
 import green.auth.UserContext;
 import green.event.EventBus;
-import green.event.EventHandler;
 import org.springframework.beans.factory.annotation.Autowired;
 
 /**
@@ -26,7 +24,7 @@ import org.springframework.beans.factory.annotation.Autowired;
  */
 @SuppressWarnings({"serial", "unchecked"})
 @org.springframework.stereotype.Component
-public final class MenuViewImpl extends CustomComponent {
+public final class MenuViewImpl extends CustomComponent implements MenuView {
 
     public static final String ID = "dashboard-menu";
     public static final String NOTIFICATIONS_BADGE_ID = "dashboard-menu-notifications-badge";
@@ -40,7 +38,6 @@ public final class MenuViewImpl extends CustomComponent {
     public MenuViewImpl (UserContext userContext, EventBus eventBus) {
         this.userContext = userContext;
         this.eventBus = eventBus;
-        eventBus.addHandler(this);
         setPrimaryStyleName("valo-menu");
         setId(ID);
         setSizeUndefined();
@@ -74,28 +71,15 @@ public final class MenuViewImpl extends CustomComponent {
         return logoWrapper;
     }
 
-    @EventHandler
-    public void updateUserName (UserContexteCreated userContexteCreated) {
-        if (userContext.isAuthenticated()) {
-            settingsItem.setText(userContext.getFirstname() + " " + userContext.getLastname());
-        }
-
-        Resource userIcon = userContext.isAuthenticated() ? new ExternalResource(userContext.getImageUrl()) : new ThemeResource("img/profile-pic-300px.jpg");
-        settingsItem.setIcon(userIcon);
-    }
-
     private Component buildUserMenu () {
         final MenuBar settings = new MenuBar();
         settings.addStyleName("user-menu");
         settingsItem = settings.addItem("", new ThemeResource("img/profile-pic-300px.jpg"), null);
-        updateUserName(null);
+        updateUserMenu(userContext);
         settingsItem.addSeparator();
-        settingsItem.addItem("Sign Out", new MenuBar.Command() {
-            @Override
-            public void menuSelected (final MenuBar.MenuItem selectedItem) {
-                userContext.logout();
-                eventBus.fireEvent(new UserLoginRequestedEvent(null));
-            }
+        settingsItem.addItem("Sign Out", (MenuBar.Command) selectedItem -> {
+            userContext.logout();
+            eventBus.fireEvent(new UserLoginRequestedEvent(null));
         });
         return settings;
     }
@@ -154,25 +138,21 @@ public final class MenuViewImpl extends CustomComponent {
         super.attach();
     }
 
-    public final class ValoMenuItemButton extends Button {
-
-        private static final String STYLE_SELECTED = "selected";
-
-        private final DashboardViewType view;
-
-        public ValoMenuItemButton (final DashboardViewType view) {
-            this.view = view;
-            setPrimaryStyleName("valo-menu-item");
-            setIcon(view.getIcon());
-            setCaption(view.getViewName().substring(0, 1).toUpperCase() + view.getViewName().substring(1));
-            addClickListener((ClickListener) event -> UI.getCurrent().getNavigator().navigateTo(view.getViewName()));
-
+    @Override
+    public void updateUserMenu (UserContext userContext) {
+        if (userContext.isAuthenticated()) {
+            settingsItem.setText(userContext.getFirstname() + " " + userContext.getLastname());
         }
+
+        Resource userIcon = userContext.isAuthenticated() ? new ExternalResource(userContext.getImageUrl()) : new ThemeResource("img/profile-pic-300px.jpg");
+        settingsItem.setIcon(userIcon);
     }
-    private Component buildAlarmButton(){
+
+    private Component buildAlarmButton () {
         VerticalLayout alarmLayout = new VerticalLayout();
         LinkButton alarmbutton = new LinkButton("Alarm!", new ExternalResource("tel:0774099434"));
         alarmLayout.addComponent(alarmbutton);
         return alarmLayout;
     }
+
 }
