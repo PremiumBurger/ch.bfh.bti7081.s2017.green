@@ -88,12 +88,12 @@ public class MyDayViewImpl extends VerticalLayout implements MyDayView {
 
         //Remove all Components
         this.removeAllComponents();
-      
-        // add button bar
-        addComponent(buildButtonbar());
 
         //Add Search to this Vertical Layout
         addComponent(patientSearch);
+
+        // add button bar
+        addComponent(buildButtonbar());
 
         //Set Header for all Appointments
         H1Title dashBoardHeader = new H1Title("My Day");

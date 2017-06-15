@@ -12,6 +12,7 @@ import com.vaadin.navigator.ViewChangeListener;
 import com.vaadin.tapio.googlemaps.GoogleMap;
 import com.vaadin.tapio.googlemaps.client.LatLon;
 import com.vaadin.tapio.googlemaps.client.overlays.GoogleMapMarker;
+import com.vaadin.server.Page;
 import com.vaadin.ui.*;
 import com.vaadin.ui.themes.ValoTheme;
 import org.springframework.stereotype.Component;
@@ -33,6 +34,10 @@ public class AppointmentDetailViewImpl extends VerticalLayout implements Appoint
     private LocationBean appointmentLocation;
 
     private boolean isUpdateMode;
+    private boolean isConfirmAppointmentButtonVisible = true;
+    private boolean isCancelAppointmentButtonVisible = true;
+    private String  confirmAppointmentButtonCaption = "Confirm Appointment";
+    private String  cancelAppointmentButtonCaption = "Cancel Appointment";
 
     /**
      * Needs to be global to update this partially
@@ -48,6 +53,14 @@ public class AppointmentDetailViewImpl extends VerticalLayout implements Appoint
         this.model = appointmentBean;
         this.appointmentLocation = locationBean;
         initializeView();
+    }
+
+    @Override
+    public void updateStateButtons(boolean confirmButtonVisible, String confirmButtonCaption, boolean cancelButtonVisible, String cancelButtonCaption) {
+        isConfirmAppointmentButtonVisible = confirmButtonVisible;
+        confirmAppointmentButtonCaption = confirmButtonCaption;
+        isCancelAppointmentButtonVisible = cancelButtonVisible;
+        cancelAppointmentButtonCaption = cancelButtonCaption;
     }
 
     private void initializeView() {
@@ -96,12 +109,23 @@ public class AppointmentDetailViewImpl extends VerticalLayout implements Appoint
         buttonBarLayout.setDefaultComponentAlignment(Alignment.BOTTOM_RIGHT);
         buttonBarLayout.setWidth(100, Unit.PERCENTAGE);
         HorizontalLayout buttons = new HorizontalLayout();
+        HorizontalLayout stateButtons = new HorizontalLayout();
+        buttonBarLayout.addComponent(stateButtons);
         buttonBarLayout.addComponent(buttons);
+        buttonBarLayout.setComponentAlignment(stateButtons,Alignment.MIDDLE_LEFT);
+        buttonBarLayout.setComponentAlignment(buttons,Alignment.MIDDLE_RIGHT);
 
         if (isUpdateMode) {
+            //init buttons
             Button cancelButton = new Button("Cancel");
             Button saveButton = new Button("Save", VaadinIcons.DISC);
+            Button confirmAppointmentButton = new Button(confirmAppointmentButtonCaption);
+            Button cancelAppointmentButton = new Button(cancelAppointmentButtonCaption);
             buttons.addComponents(cancelButton, saveButton);
+            stateButtons.addComponent(confirmAppointmentButton);
+            stateButtons.addComponent(cancelAppointmentButton);
+            stateButtons.setComponentAlignment(confirmAppointmentButton,Alignment.MIDDLE_LEFT);
+            stateButtons.setComponentAlignment(cancelAppointmentButton,Alignment.MIDDLE_LEFT);
 
             cancelButton.addClickListener(event -> {
                 isUpdateMode = false;
@@ -113,13 +137,39 @@ public class AppointmentDetailViewImpl extends VerticalLayout implements Appoint
                 isUpdateMode = false;
                 viewListener.saveAppointment(model);
                 initializeView();
-                Notification.show("Appointment has bees saved successfully");
+                Notification.show("Appointment has been saved successfully");
+            });
+
+            //Confirm Appointment (State)
+            confirmAppointmentButton.setIcon(VaadinIcons.CHECK);
+            confirmAppointmentButton.setVisible(isConfirmAppointmentButtonVisible);
+
+            //Cancel Appointment (State)
+            cancelAppointmentButton.setIcon(VaadinIcons.CLOSE);
+            cancelAppointmentButton.setVisible(isCancelAppointmentButtonVisible);
+
+            //CLicklistener for Appointment Confirm
+            confirmAppointmentButton.addClickListener(e -> {
+                isUpdateMode = false;
+                viewListener.onConfirmClicked(model);
+                //viewListener.saveAppointment(model);
+                initializeView();
+            });
+
+            //CLicklistener for Appointment Cancel
+            cancelAppointmentButton.addClickListener(e -> {
+                isUpdateMode = false;
+                viewListener.onCancelledClicked(model);
+                //viewListener.saveAppointment(model);
+                initializeView();
             });
 
             // styles
             buttonBarLayout.setResponsive(true);
             cancelButton.addStyleName(ValoTheme.BUTTON_DANGER);
             saveButton.addStyleName(ValoTheme.BUTTON_FRIENDLY);
+            cancelAppointmentButton.addStyleName(ValoTheme.BUTTON_DANGER);
+            confirmAppointmentButton.addStyleName(ValoTheme.BUTTON_FRIENDLY);
 
         } else {
             Button editButton = new Button("Edit", VaadinIcons.EDIT);
@@ -127,6 +177,7 @@ public class AppointmentDetailViewImpl extends VerticalLayout implements Appoint
 
             editButton.addClickListener( event -> {
                isUpdateMode = true;
+               viewListener.getStateRefresh(model);
                initializeView();
             });
 
@@ -242,7 +293,7 @@ public class AppointmentDetailViewImpl extends VerticalLayout implements Appoint
         from.setEnabled(isUpdateMode);
         to.setEnabled(isUpdateMode);
         comboBoxPatient.setEnabled(isUpdateMode);
-        comboBoxState.setEnabled(isUpdateMode);
+        comboBoxState.setEnabled(false);
         street.setEnabled(isUpdateMode);
         postalCode.setEnabled(isUpdateMode);
         city.setEnabled(isUpdateMode);
