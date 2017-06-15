@@ -3,6 +3,8 @@ package ch.bfh.bti7081.s2017.green.event;
 import green.auth.UserProfile;
 import green.event.Event;
 
+import java.io.Serializable;
+
 /**
  * Created by Lukas on 26.05.2017.
  */

@@ -12,7 +12,7 @@ import ch.bfh.bti7081.s2017.green.ui.DashboardUI;
 import ch.bfh.bti7081.s2017.green.ui.components.appointment.appointmentCreate.AppointmentCreateModel;
 import com.vaadin.server.Page;
 import com.vaadin.ui.UI;
-import junit.framework.Assert;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -85,7 +85,7 @@ public class PmsAppointmentCreateTest {
      * Test passes if Save is successful
      */
     @Test
-    public void TestAppointmentCreateSaveAllCorrect() {
+    public void appointmentCreateSaveAllCorrect() {
         //Assert
         Assert.assertTrue(mvpmodel.saveAppointment(appointmentBean)>=0);
     }

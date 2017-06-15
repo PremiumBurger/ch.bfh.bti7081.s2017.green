@@ -72,7 +72,7 @@ public class PatientDetailViewImpl extends VerticalLayout implements PatientDeta
     @Override
     public void enter (ViewChangeListener.ViewChangeEvent event) {
         String parameters = event.getParameters();
-        listener.initScreen(Long.valueOf(parameters));
+        listener.initScreen(Long.parseLong(parameters));
     }
 
     private Panel buildPatientDetail() {

@@ -11,10 +11,7 @@ import java.lang.reflect.Method;
  *
  * @author Lukas Läderach
  */
-public class EventDispatcher implements Serializable {
-
-    private static final long serialVersionUID = -7359501691640084178L;
-
+public class EventDispatcher {
     private final Object target;
     private final Method method;
 

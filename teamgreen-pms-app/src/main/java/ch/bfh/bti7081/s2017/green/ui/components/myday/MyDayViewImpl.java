@@ -28,11 +28,6 @@ public class MyDayViewImpl extends VerticalLayout implements MyDayView {
      * Declares listener which can be used to access presenter
      */
     MyDayViewListener listener;
-    /**
-     * Declares AppointmentBean List
-     * will be available after init Method get's called
-     */
-    List<AppointmentBean> appointments;
 
     /**
      * Declares the ComboBox for the PatientSearch

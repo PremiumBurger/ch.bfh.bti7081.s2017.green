@@ -34,7 +34,6 @@ public class AppointmentCreatePresenter implements AppointmentCreateViewListener
         HealthVisitorBean healthVisitor = appCreateModel.getHealthVisitor(1);
         newBean.setHealthVisitor(healthVisitor);
         Set<PatientBean> allPatients = appCreateModel.getAllPatients();
-        Set<AppointmentStateTypeBean> allAppointmentStateTypes = appCreateModel.getAllAppointmentStateTypes();
         appCreateView.setModel(newBean, allPatients);
     }
 
