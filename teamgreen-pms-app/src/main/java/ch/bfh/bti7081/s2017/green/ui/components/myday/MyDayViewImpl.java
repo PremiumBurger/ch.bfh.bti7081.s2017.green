@@ -99,6 +99,13 @@ public class MyDayViewImpl extends VerticalLayout implements MyDayView {
         H1Title dashBoardHeader = new H1Title("My Day");
 
         addComponent(dashBoardHeader);
+
+        createAppointmentList(appointments, format);
+    }
+
+    private void createAppointmentList (List<AppointmentBean> appointments, DateTimeFormatter format) {
+        appointments.sort((a,b) -> b.getFrom().compareTo(b.getFrom()));
+
         for (AppointmentBean appointment : appointments) {
             FormLayout layout = new FormLayout();
 
