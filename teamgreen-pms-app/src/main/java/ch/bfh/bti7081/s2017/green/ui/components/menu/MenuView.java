@@ -1,11 +1,10 @@
 package ch.bfh.bti7081.s2017.green.ui.components.menu;
 
-import com.vaadin.navigator.View;
+import green.auth.UserContext;
 
 /**
- * Created by joris on 05.05.17.
+ * Created by Lukas on 15.06.2017.
  */
-
-public interface MenuView extends View{
-    void addListener(MenuViewListener viewListener);
+public interface MenuView {
+    void updateUserMenu (UserContext userContext);
 }

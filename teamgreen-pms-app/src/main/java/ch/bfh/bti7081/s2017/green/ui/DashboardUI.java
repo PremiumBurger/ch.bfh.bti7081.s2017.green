@@ -4,6 +4,8 @@ import ch.bfh.bti7081.s2017.green.bean.HealthVisitorBean;
 import ch.bfh.bti7081.s2017.green.event.UserContexteCreated;
 import ch.bfh.bti7081.s2017.green.event.UserLoginRequestedEvent;
 import ch.bfh.bti7081.s2017.green.service.HealthVisitorService;
+import ch.bfh.bti7081.s2017.green.ui.components.login.LoginView;
+import ch.bfh.bti7081.s2017.green.ui.components.login.LoginViewImpl;
 import com.vaadin.annotations.PreserveOnRefresh;
 import com.vaadin.annotations.Push;
 import com.vaadin.annotations.Theme;
@@ -16,6 +18,7 @@ import com.vaadin.ui.themes.ValoTheme;
 import green.auth.UserContext;
 import green.event.EventBus;
 import green.event.EventHandler;
+import org.apache.tomcat.jni.Local;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.Locale;
@@ -33,12 +36,6 @@ public class DashboardUI extends UI {
     private UserContext userContext;
     private HealthVisitorService healthVisitorService;
 
-    private boolean isLoggedIn = false;
-
-    public DashboardUI () {
-        this.isLoggedIn = false;
-    }
-
     @Autowired
     public DashboardUI (LoginView loginView, MainView mainView, EventBus eventBus, UserContext userContext, HealthVisitorService healthVisitorService) {
         this.loginView = loginView;
@@ -50,7 +47,7 @@ public class DashboardUI extends UI {
 
     @Override
     protected void init (final VaadinRequest request) {
-        setLocale(Locale.US);
+        setLocale(new Locale("de", "CH"));
         VaadinSession.getCurrent().setErrorHandler((ErrorHandler) errorEvent -> {});
         eventBus.addHandler(this);
 
@@ -59,10 +56,6 @@ public class DashboardUI extends UI {
         this.mainView.onAfterBeanInitializaiton();
         this.loginView.onAfterBeanInitializaiton();
         updateContent();
-
-        // Some views need to be aware of browser resize events so a
-        // BrowserResizeEvent gets fired to the event bus on every occasion.
-        // Page.getCurrent().addBrowserWindowResizeListener((Page.BrowserWindowResizeListener) event -> DashboardEventBus.post(new BrowserResizeEvent()));
     }
 
     /**
@@ -78,7 +71,7 @@ public class DashboardUI extends UI {
             navigator.navigateTo(navigator.getState());
             eventBus.fireEvent(new UserContexteCreated());
         } else {
-            setContent(loginView);
+            setContent((LoginViewImpl)loginView);
             addStyleName("loginview");
         }
     }
@@ -96,7 +89,6 @@ public class DashboardUI extends UI {
         }
         this.userContext.setUserContext(user.getId(), user.getFirstName(), user.getLastName(), user.getExternalKey(), userLoginRequest.getImageUrl());
 
-        VaadinSession.getCurrent().setAttribute(UserContext.class.getName(), this.userContext);
         updateContent();
     }
 }
