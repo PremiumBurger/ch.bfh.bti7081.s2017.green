@@ -12,7 +12,6 @@ import com.vaadin.data.BeanValidationBinder;
 import com.vaadin.data.Binder;
 import com.vaadin.icons.VaadinIcons;
 import com.vaadin.navigator.ViewChangeListener;
-import com.vaadin.server.Responsive;
 import com.vaadin.tapio.googlemaps.GoogleMap;
 import com.vaadin.tapio.googlemaps.client.LatLon;
 import com.vaadin.ui.*;
@@ -43,8 +42,8 @@ public class AppointmentDetailViewImpl extends VerticalLayout implements Appoint
     private boolean isUpdateMode;
     private boolean isConfirmAppointmentButtonVisible = true;
     private boolean isCancelAppointmentButtonVisible = true;
-    private String  confirmAppointmentButtonCaption = "Confirm Appointment";
-    private String  cancelAppointmentButtonCaption = "Cancel Appointment";
+    private String confirmAppointmentButtonCaption = "Confirm Appointment";
+    private String cancelAppointmentButtonCaption = "Cancel Appointment";
 
     /**
      * Needs to be global to update this partially
@@ -63,13 +62,12 @@ public class AppointmentDetailViewImpl extends VerticalLayout implements Appoint
     }
 
     @Override
-    public void updateStateButtons(boolean confirmButtonVisible, String confirmButtonCaption, boolean cancelButtonVisible, String cancelButtonCaption) {
+    public void updateStateButtons (boolean confirmButtonVisible, String confirmButtonCaption, boolean cancelButtonVisible, String cancelButtonCaption) {
         isConfirmAppointmentButtonVisible = confirmButtonVisible;
         confirmAppointmentButtonCaption = confirmButtonCaption;
         isCancelAppointmentButtonVisible = cancelButtonVisible;
         cancelAppointmentButtonCaption = cancelButtonCaption;
     }
-
 
 
     private void initializeView () {
@@ -106,7 +104,7 @@ public class AppointmentDetailViewImpl extends VerticalLayout implements Appoint
         rightCol.setWidth(100, Unit.PERCENTAGE);
         leftCol.setMargin(false);
         rightCol.setMargin(false);
-	}
+    }
 
     private JournalEntryListComponent buildJournalList () {
         //Todo: Anpassen: Hole diese Daten über das Model
@@ -123,8 +121,6 @@ public class AppointmentDetailViewImpl extends VerticalLayout implements Appoint
         return journalComponent;
     }
 
-    }
-
     private HorizontalLayout buildButtonbar () {
         HorizontalLayout buttonBarLayout = new HorizontalLayout();
         buttonBarLayout.setDefaultComponentAlignment(Alignment.BOTTOM_RIGHT);
@@ -133,8 +129,8 @@ public class AppointmentDetailViewImpl extends VerticalLayout implements Appoint
         HorizontalLayout stateButtons = new HorizontalLayout();
         buttonBarLayout.addComponent(stateButtons);
         buttonBarLayout.addComponent(buttons);
-        buttonBarLayout.setComponentAlignment(stateButtons,Alignment.MIDDLE_LEFT);
-        buttonBarLayout.setComponentAlignment(buttons,Alignment.MIDDLE_RIGHT);
+        buttonBarLayout.setComponentAlignment(stateButtons, Alignment.MIDDLE_LEFT);
+        buttonBarLayout.setComponentAlignment(buttons, Alignment.MIDDLE_RIGHT);
 
         if (isUpdateMode) {
             //init buttons
@@ -145,8 +141,8 @@ public class AppointmentDetailViewImpl extends VerticalLayout implements Appoint
             buttons.addComponents(cancelButton, saveButton);
             stateButtons.addComponent(confirmAppointmentButton);
             stateButtons.addComponent(cancelAppointmentButton);
-            stateButtons.setComponentAlignment(confirmAppointmentButton,Alignment.MIDDLE_LEFT);
-            stateButtons.setComponentAlignment(cancelAppointmentButton,Alignment.MIDDLE_LEFT);
+            stateButtons.setComponentAlignment(confirmAppointmentButton, Alignment.MIDDLE_LEFT);
+            stateButtons.setComponentAlignment(cancelAppointmentButton, Alignment.MIDDLE_LEFT);
 
             cancelButton.addClickListener(event -> {
                 isUpdateMode = false;
@@ -199,7 +195,7 @@ public class AppointmentDetailViewImpl extends VerticalLayout implements Appoint
 
             editButton.addClickListener(event -> {
                 isUpdateMode = true;
-            	viewListener.getStateRefresh(model);
+                viewListener.getStateRefresh(model);
                 initializeView();
             });
 
@@ -422,7 +418,7 @@ public class AppointmentDetailViewImpl extends VerticalLayout implements Appoint
     }
 
     @Override
-    public void setAppointmentLocation(LocationBean locationBean) {
+    public void setAppointmentLocation (LocationBean locationBean) {
         this.appointmentLocation = locationBean;
     }
 }

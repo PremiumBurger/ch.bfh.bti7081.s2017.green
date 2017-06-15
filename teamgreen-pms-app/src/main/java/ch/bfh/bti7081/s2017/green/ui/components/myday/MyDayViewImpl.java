@@ -105,8 +105,6 @@ public class MyDayViewImpl extends VerticalLayout implements MyDayView {
         appointmentPanels.setMargin(false);
         addComponent(appointmentPanels);
 
-        addComponent(dashBoardHeader);
-
         createAppointmentList(appointments, appointmentPanels, format);
     }
 
