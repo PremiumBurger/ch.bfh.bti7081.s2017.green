@@ -18,6 +18,7 @@ import com.vaadin.ui.themes.ValoTheme;
 import green.auth.UserContext;
 import green.event.EventBus;
 import green.event.EventHandler;
+import org.apache.tomcat.jni.Local;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.Locale;
@@ -46,7 +47,7 @@ public class DashboardUI extends UI {
 
     @Override
     protected void init (final VaadinRequest request) {
-        setLocale(Locale.US);
+        setLocale(new Locale("de", "CH"));
         VaadinSession.getCurrent().setErrorHandler((ErrorHandler) errorEvent -> {});
         eventBus.addHandler(this);
 
