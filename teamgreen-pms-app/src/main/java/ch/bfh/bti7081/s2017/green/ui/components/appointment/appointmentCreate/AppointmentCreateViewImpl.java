@@ -1,21 +1,17 @@
 package ch.bfh.bti7081.s2017.green.ui.components.appointment.appointmentCreate;
 
 
-import ch.bfh.bti7081.s2017.green.bean.AppointmentBean;
-import ch.bfh.bti7081.s2017.green.bean.AppointmentStateTypeBean;
-import ch.bfh.bti7081.s2017.green.bean.PatientBean;
-import ch.bfh.bti7081.s2017.green.bean.PersonBean;
+import ch.bfh.bti7081.s2017.green.bean.*;
 import ch.bfh.bti7081.s2017.green.ui.controls.H1Title;
+import ch.bfh.bti7081.s2017.green.ui.controls.H2Title;
 import ch.bfh.bti7081.s2017.green.util.PmsConstants;
 import com.vaadin.data.BeanValidationBinder;
 import com.vaadin.icons.VaadinIcons;
 import com.vaadin.navigator.ViewChangeListener;
-import com.vaadin.server.Page;
 import com.vaadin.ui.*;
 import com.vaadin.ui.themes.ValoTheme;
 import org.springframework.stereotype.Component;
 
-import java.time.LocalDateTime;
 import java.util.Set;
 
 /**
@@ -27,15 +23,14 @@ public class AppointmentCreateViewImpl extends VerticalLayout implements Appoint
 
     private AppointmentCreateViewListener viewListener;
     private AppointmentBean model;
-    private Set<AppointmentStateTypeBean> allApppointmentStates;
     private Set<PatientBean>  allPatients;
     private BeanValidationBinder<AppointmentBean> binder = new BeanValidationBinder<>(AppointmentBean.class);
+    private BeanValidationBinder<AddressBean> addressBinder = new BeanValidationBinder<>(AddressBean.class);
 
     @Override
-    public void setModel(AppointmentBean appointmentBean, Set<PatientBean> allPatients, Set<AppointmentStateTypeBean> allApppointmentStates) {
+    public void setModel(AppointmentBean appointmentBean, Set<PatientBean> allPatients) {
         this.model = appointmentBean;
         this.allPatients = allPatients;
-        this.allApppointmentStates = allApppointmentStates;
         initializeView();
     }
 
@@ -47,7 +42,7 @@ public class AppointmentCreateViewImpl extends VerticalLayout implements Appoint
         addComponent(new H1Title("New Appointment"));
 
         // set appointment details
-        addComponent(buildAppointmentDetail());
+        addComponent(buildAppointmentCreate());
 
         // add button bar
         addComponent(buildButtonbar());
@@ -58,11 +53,16 @@ public class AppointmentCreateViewImpl extends VerticalLayout implements Appoint
         this.viewListener = appCreateViewListener;
     }
 
-    private Panel buildAppointmentDetail() {
+    private Panel buildAppointmentCreate() {
         Panel appointmentCreatePanel = new Panel("Details");
+
+        HorizontalLayout formContainer = new HorizontalLayout();
+
         VerticalLayout appForm = new VerticalLayout();
+        VerticalLayout addressForm = new VerticalLayout();
         appForm.setMargin(true);
-        appointmentCreatePanel.setContent(appForm);
+        addressForm.setMargin(true);
+        appointmentCreatePanel.setContent(formContainer);
 
         DateTimeField from = new DateTimeField("From");
         DateTimeField to = new DateTimeField("To");
@@ -73,12 +73,14 @@ public class AppointmentCreateViewImpl extends VerticalLayout implements Appoint
         comboBoxPatient.setItems(allPatients);
         comboBoxPatient.setItemCaptionGenerator(PersonBean::getFullName);
 
-        ComboBox<AppointmentStateTypeBean> comboBoxState = new ComboBox<>("State");
-        comboBoxState.setItems(allApppointmentStates);
-        comboBoxState.setItemCaptionGenerator(p -> p.getDescription());
-        comboBoxState.setEnabled(false);
+        appForm.addComponents(new H2Title("Appointment"), from, to, comboBoxPatient);
 
-        appForm.addComponents(from, to, comboBoxPatient, comboBoxState);
+        TextField street = new TextField("Street");
+        TextField postalCode = new TextField("Postal Code");
+        TextField city = new TextField("City");
+        addressForm.addComponents(new H2Title("Appointment Location"), street, postalCode, city);
+
+        formContainer.addComponents(appForm, addressForm);
 
         // bindings
         binder.forField(from)
@@ -90,11 +92,12 @@ public class AppointmentCreateViewImpl extends VerticalLayout implements Appoint
                         "End Date can not be before Start Date")
                 .bind("to");
         binder.forField(comboBoxPatient).bind("patient");
-        binder.forField(comboBoxState).bind("appointmentStateType");
         binder.setBean(model);
 
-        // events
-        comboBoxPatient.addValueChangeListener(event -> initializeView());
+        addressBinder.forField(street).bind("strasse");
+        addressBinder.forField(postalCode).bind("plz");
+        addressBinder.forField(city).bind("city");
+        addressBinder.setBean(model.getAddress());
 
         // styles
         appointmentCreatePanel.setResponsive(true);
@@ -120,13 +123,13 @@ public class AppointmentCreateViewImpl extends VerticalLayout implements Appoint
             getUI().getNavigator().navigateTo("MyDay")
         );
         resetButton.addClickListener(event -> {
-            viewListener.initScreen(1);
+            model.reset();
             initializeView();
         });
         saveButton.addClickListener(event -> {
-            if(binder.isValid()) {
+            if(binder.isValid() && addressBinder.isValid()) {
                 viewListener.saveAppointment(model);
-                initializeView();
+                getUI().getNavigator().navigateTo("MyDay");
             }
         });
 
@@ -141,8 +144,6 @@ public class AppointmentCreateViewImpl extends VerticalLayout implements Appoint
 
     @Override
     public void enter(ViewChangeListener.ViewChangeEvent event) {
-        //String parameters = event.getParameters();
-        //TODO: angemeldeten Healtvisitor mitgeben
-        viewListener.initScreen(1);
+        viewListener.initScreen();
     }
 }

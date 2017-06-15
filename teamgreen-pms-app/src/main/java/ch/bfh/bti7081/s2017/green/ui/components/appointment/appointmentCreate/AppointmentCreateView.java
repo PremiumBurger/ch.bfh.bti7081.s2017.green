@@ -20,8 +20,7 @@ public interface AppointmentCreateView extends View {
      * Sets the Model of the View
      * @param appointmentBean the appoinmentBean wich will be populated to the screen
      * @param allPatients the list of all available patients
-     * @param allApppointmentStates al list of all available appointment states
      */
-    void setModel(AppointmentBean appointmentBean, Set<PatientBean> allPatients, Set<AppointmentStateTypeBean> allApppointmentStates);
+    void setModel(AppointmentBean appointmentBean, Set<PatientBean> allPatients);
 
 }

@@ -55,4 +55,8 @@ public class AddressBean extends EntityBean<Address> {
     public void setCountry(String country) {
         this.country = country;
     }
+
+    public String getDisplayString() {
+        return strasse + ", " + plz + " " + city;
+    }
 }

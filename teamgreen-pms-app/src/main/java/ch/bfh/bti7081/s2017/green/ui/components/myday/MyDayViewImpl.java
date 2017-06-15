@@ -1,4 +1,5 @@
 package ch.bfh.bti7081.s2017.green.ui.components.myday;
+import ch.bfh.bti7081.s2017.green.bean.AddressBean;
 import ch.bfh.bti7081.s2017.green.bean.AppointmentBean;
 import ch.bfh.bti7081.s2017.green.bean.PatientBean;
 import ch.bfh.bti7081.s2017.green.ui.components.autcomplete.Autocomplete;
@@ -116,16 +117,17 @@ public class MyDayViewImpl extends VerticalLayout implements MyDayView {
 
             //Patient Name Label
             Label patientname = new Label(appointment.getPatient().getFullName());
-            patientname.setCaption("Name");
+            patientname.setCaption("Patient");
             patientname.setIcon(VaadinIcons.USER);
 
             //Street Name Label
-            Label street = new Label(appointment.getPatient().getAddress().getStrasse());
+            AddressBean appAddress = appointment.getAddress();
+            Label street = new Label(appAddress.getStrasse());
             street.setIcon(VaadinIcons.HOME);
             street.setCaption("Address");
 
             //PLZ and Town Label
-            Label adr = new Label(appointment.getPatient().getAddress().getPlz() + " " + appointment.getPatient().getAddress().getCity());
+            Label adr = new Label(appAddress.getPlz() + " " + appAddress.getCity());
 
             //Details Button
             Button details = new Button("Show Details");
@@ -167,7 +169,7 @@ public class MyDayViewImpl extends VerticalLayout implements MyDayView {
         buttons.addComponents(create);
 
         //listener
-        create.addClickListener(e -> getUI().getNavigator().navigateTo("AppointmentCreate" + "/" + 1));
+        create.addClickListener(e -> getUI().getNavigator().navigateTo("AppointmentCreate"));
 
         // styles
         create.addStyleName(ValoTheme.BUTTON_FRIENDLY);
