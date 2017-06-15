@@ -6,6 +6,7 @@ package ch.bfh.bti7081.s2017.green.ui;
 
 import ch.bfh.bti7081.s2017.green.event.UserContexteCreated;
 import ch.bfh.bti7081.s2017.green.event.UserLoginRequestedEvent;
+import ch.bfh.bti7081.s2017.green.ui.controls.LinkButton;
 import com.vaadin.icons.VaadinIcons;
 import com.vaadin.server.ExternalResource;
 import com.vaadin.server.Resource;
@@ -131,6 +132,7 @@ public final class DashboardMenu extends CustomComponent {
                 menuItemsLayout.addComponent(menuItemComponent);
             }
         }
+        menuItemsLayout.addComponent(buildAlarmButton());
         return menuItemsLayout;
 
     }
@@ -165,5 +167,11 @@ public final class DashboardMenu extends CustomComponent {
             addClickListener((ClickListener) event -> UI.getCurrent().getNavigator().navigateTo(view.getViewName()));
 
         }
+    }
+    private Component buildAlarmButton(){
+        VerticalLayout alarmLayout = new VerticalLayout();
+        LinkButton alarmbutton = new LinkButton("Alarm!", new ExternalResource("tel:0774099434"));
+        alarmLayout.addComponent(alarmbutton);
+        return alarmLayout;
     }
 }
