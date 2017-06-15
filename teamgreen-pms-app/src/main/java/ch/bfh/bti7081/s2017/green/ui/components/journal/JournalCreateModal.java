@@ -8,7 +8,7 @@ import com.vaadin.ui.*;
 /**
  * Creates a Window to add (and edit) journal entries
  */
-public class JournalCRUD extends Window {
+public class JournalCreateModal extends Window {
 
     private FormLayout mainLayout;
     private Button saveAndQuit;
@@ -16,8 +16,7 @@ public class JournalCRUD extends Window {
     private BeanValidationBinder<JournalEntryBean> journalEntryBinder;
     private JournalEntryBean bean;
 
-    public  JournalCRUD(JournalEntryBean bean) {
-
+    public JournalCreateModal (JournalEntryBean bean) {
         // Set Workbean
         this.bean = bean;
         this.journalEntryBinder = new BeanValidationBinder<>(JournalEntryBean.class);
@@ -38,7 +37,7 @@ public class JournalCRUD extends Window {
         CheckBox isWichtig = new CheckBox("Wichtig:");
 
         // Binding
-        journalEntryBinder.forField(text).bind(JournalEntryBean::getText, JournalEntryBean::setText);
+        journalEntryBinder.forField(text).bind("text");
         journalEntryBinder.forField(isWichtig).bind(JournalEntryBean::isImportant, JournalEntryBean::setImportant);
 
         // Set Buttons

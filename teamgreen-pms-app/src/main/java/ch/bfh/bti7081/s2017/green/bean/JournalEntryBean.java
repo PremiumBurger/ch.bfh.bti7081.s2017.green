@@ -12,7 +12,6 @@ public class JournalEntryBean extends EntityBean<JournalEntry>{
 
     private JournalBean journal;
 
-    @Pattern(regexp ="\\[A-Za-z0-9]\\w+")
     @Size(min=1, max=240)
     @NotNull
     private String text;

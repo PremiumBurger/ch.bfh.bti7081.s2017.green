@@ -1,7 +1,7 @@
 package ch.bfh.bti7081.s2017.green.ui.components.appointment.appointmentDetail;
 
 import ch.bfh.bti7081.s2017.green.bean.*;
-import ch.bfh.bti7081.s2017.green.ui.components.journal.JournalCRUD;
+import ch.bfh.bti7081.s2017.green.ui.components.journal.JournalCreateModal;
 import ch.bfh.bti7081.s2017.green.ui.components.journal.JournalEntryListComponent;
 import ch.bfh.bti7081.s2017.green.ui.components.journal.JournalEntrySaveEvent;
 import ch.bfh.bti7081.s2017.green.ui.controls.H1Title;
@@ -14,8 +14,6 @@ import com.vaadin.icons.VaadinIcons;
 import com.vaadin.navigator.ViewChangeListener;
 import com.vaadin.tapio.googlemaps.GoogleMap;
 import com.vaadin.tapio.googlemaps.client.LatLon;
-import com.vaadin.tapio.googlemaps.client.overlays.GoogleMapMarker;
-import com.vaadin.server.Page;
 import com.vaadin.ui.*;
 import com.vaadin.ui.themes.ValoTheme;
 import org.springframework.stereotype.Component;
@@ -398,7 +396,7 @@ public class AppointmentDetailViewImpl extends VerticalLayout implements Appoint
         bean.setCreatedOn(LocalDateTime.now());
         bean.setJournal(model.getPatient().getJournal());
 
-        JournalCRUD modal = new JournalCRUD(bean);
+        JournalCreateModal modal = new JournalCreateModal(bean);
         modal.center();
         modal.setModal(true);
         modal.setWidth(350.0f, Unit.PIXELS);
