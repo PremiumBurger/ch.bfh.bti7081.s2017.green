@@ -15,5 +15,9 @@ public class PmsConstants {
      */
     public static final String GOOGLE_MAPS_API_KEY = "AIzaSyCHPziSWTE2VBPPyOAKVF13Gca3onwgxkU";
 
+    /**
+     * ID of the NEW AppointmentStateType
+     */
+    public static final long APPOINTMENT_STATE_TPYE_NEW = 1;
 
 }

@@ -2,6 +2,7 @@ package ch.bfh.bti7081.s2017.green.bean;
 
 import ch.bfh.bti7081.s2017.green.domain.Appointment;
 import ch.bfh.bti7081.s2017.green.ui.components.autcomplete.Autocompletable;
+import org.apache.commons.codec.binary.StringUtils;
 
 import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
@@ -27,6 +28,7 @@ public class AppointmentBean extends EntityBean<Appointment> implements Autocomp
 
     public AppointmentBean() {
         setEntity(new Appointment(), true);
+        address = new AddressBean();
     }
 
     public HealthVisitorBean getHealthVisitor() {
@@ -80,5 +82,12 @@ public class AppointmentBean extends EntityBean<Appointment> implements Autocomp
     @Override
     public String getSearchString() {
         return getPatient().getFirstName() + " " + getPatient().getLastName() +  " " + "From: " + getFrom() + " " + "To: " + getTo();
+    }
+
+    public String getAddressString() {
+        if (address != null) {
+            return address.getDisplayString();
+        }
+        return null;
     }
 }

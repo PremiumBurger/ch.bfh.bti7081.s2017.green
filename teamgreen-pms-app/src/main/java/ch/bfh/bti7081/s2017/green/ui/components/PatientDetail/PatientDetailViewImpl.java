@@ -123,6 +123,7 @@ public class PatientDetailViewImpl extends VerticalLayout implements PatientDeta
         grid.addColumn(app -> app.getFrom().format(format)).setCaption("From");
         grid.addColumn(app -> app.getTo().format(format)).setCaption("To");
         grid.addColumn(app -> app.getAppointmentStateType().getDescription()).setCaption("State");
+        grid.addColumn(app -> app.getAddressString()).setCaption("Address");
         grid.addColumn(AppointmentBean->"Detail",new ButtonRenderer<AppointmentBean>(e -> {
             getUI().getNavigator().navigateTo("AppointmentDetail" + "/" + e.getItem().getId());
                 }));
