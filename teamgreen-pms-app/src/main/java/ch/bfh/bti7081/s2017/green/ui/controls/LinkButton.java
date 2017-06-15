@@ -11,7 +11,15 @@ import com.vaadin.ui.Link;
 public class LinkButton extends Label {
 
     public LinkButton(String caption, ExternalResource externalResource){
-        super("<div style='padding:50px'><a style='background-color: red; border-radius: 50px; font-family: Arial; color: #ffffff; font-size: 20px;text-decoration: none; padding: 50%; margin:50px' href=" + externalResource.getURL() + ">" + caption + "</a></div>", ContentMode.HTML
+        super(   "<a style='text-decoration: none; background-color:red' href='"+externalResource.getURL()+"'>" +
+                "<div class='v-button' tabindex='0'>" +
+                "<span class='v-button-wrap'>" +
+                "<span class='v-button-caption'>"+
+                caption +
+                "</span>"+
+                "</span>"+
+                "</div>"+
+                "</a>", ContentMode.HTML
         );
     }
 }

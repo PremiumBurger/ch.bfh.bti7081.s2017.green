@@ -125,7 +125,7 @@ public class MyDayViewImpl extends VerticalLayout implements MyDayView {
             details.setIcon(VaadinIcons.CLIPBOARD_PULSE);
 
             //CLicklistener for Appointment Details
-            details.addClickListener(e -> getUI().getNavigator().navigateTo("patientDetail" + "/" + appointment.getPatient().getId()));
+            details.addClickListener(e -> getUI().getNavigator().navigateTo("AppointmentDetail" + "/" + appointment.getId()));
 
             //Add Components to Layout
             layout.addComponents(to,patientname,street,adr,details);
