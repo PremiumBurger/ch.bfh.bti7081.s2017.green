@@ -25,3 +25,6 @@
 * [CS2 - Task01](http://htmlpreview.github.io/?https://github.com/PremiumBurger/ch.bfh.bti7081.s2017.green/blob/master/teamgreen-pms/src/main/resources/doc/cs02/task01/task01.html)
 * [CS2 - Task02](http://htmlpreview.github.io/?https://github.com/PremiumBurger/ch.bfh.bti7081.s2017.green/blob/master/teamgreen-pms/src/main/resources/doc/cs02/task02/task02.html)
 * [CS2 - Task03](http://htmlpreview.github.io/?https://github.com/PremiumBurger/ch.bfh.bti7081.s2017.green/blob/master/teamgreen-pms/src/main/resources/doc/cs02/task03/task03.html)
+
+## Installationsanleitung
+Siehe Readme im Verzeichnis: [teamgreen-pms-app](https://github.com/PremiumBurger/ch.bfh.bti7081.s2017.green/tree/master/teamgreen-pms-app)
